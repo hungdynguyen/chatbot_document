@@ -1,284 +1,200 @@
 INFO:     Will watch for changes in these directories: ['/root/chatbot/backend']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [65008] using WatchFiles
+INFO:     Started reloader process [22638] using WatchFiles
 /root/chatbot/backend/utils/embedding_handler.py:174: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
   embedding_model = HuggingFaceEmbeddings(
-INFO:     Started server process [65012]
+INFO:     Started server process [22642]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 🧠 Đang tải / khởi tạo embedding model …
 ✅ Embedding model sẵn sàng.
-✅ File 'KH001_Phuong_An_Kinh_Doanh.txt' đã được lưu thành công với tên 'c52ed12e-e53f-4b37-a957-8b15a4aa7a7b.txt'
-INFO:     127.0.0.1:37592 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Bao_Cao_CIC_Chi_Tiet.txt' đã được lưu thành công với tên 'd5e6d594-33f9-4e7c-8ded-0a83ed70c9d6.txt'
-INFO:     127.0.0.1:37592 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Don_Xin_Vay_Von.txt' đã được lưu thành công với tên 'cf4fcdad-6e20-488c-a7fa-4b6f1d10ba76.txt'
-INFO:     127.0.0.1:37592 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Giay_Chung_Nhan_DKKD.txt' đã được lưu thành công với tên 'c5bcba07-cf7e-4c33-98cf-f8b01192ad0d.txt'
-INFO:     127.0.0.1:37592 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Ho_So_TSDB_Chi_Tiet.txt' đã được lưu thành công với tên '266d512f-3fb4-4460-8e26-5697f47ef177.txt'
-INFO:     127.0.0.1:37592 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Kinh_Te_Mau.txt' đã được lưu thành công với tên 'ca5540ca-3fd8-4a66-805a-16d4eda2a4cc.txt'
-INFO:     127.0.0.1:37592 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Tin_Dung.txt' đã được lưu thành công với tên '6a7b7f0e-a9f8-4d4c-8361-6bb6dae0932f.txt'
-INFO:     127.0.0.1:37592 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Hop_Dong_Tin_Dung.txt' đã được lưu thành công với tên '472448eb-4206-4f20-9d23-72048d7d67f2.txt'
+INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Hop_Dong_Kinh_Te_Mau.txt' đã được lưu thành công với tên '4666c6bf-6403-4b6d-bb59-2ac3c124e405.txt'
+INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Ho_So_TSDB_Chi_Tiet.txt' đã được lưu thành công với tên 'c44fa11a-99a3-4b64-8f97-988c9cadc61f.txt'
+INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Giay_Chung_Nhan_DKKD.txt' đã được lưu thành công với tên 'ee5bdd97-5dec-4439-b5a5-39875ab814d2.txt'
+INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Don_Xin_Vay_Von.txt' đã được lưu thành công với tên '3203fb05-12b0-45c0-a960-3f9d3c15e0ea.txt'
+INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Bao_Cao_CIC_Chi_Tiet.txt' đã được lưu thành công với tên 'af495acf-36c6-4e95-9894-774a888cf4b0.txt'
+INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Phuong_An_Kinh_Doanh.txt' đã được lưu thành công với tên 'f6060780-815c-408c-a902-bc15a8f2a12c.txt'
+INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40072 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
 🚀 Nhận được yêu cầu xử lý cho 7 file với prompt: 'hi'
-   Các File ID: ['c52ed12e-e53f-4b37-a957-8b15a4aa7a7b', 'd5e6d594-33f9-4e7c-8ded-0a83ed70c9d6', 'cf4fcdad-6e20-488c-a7fa-4b6f1d10ba76', 'c5bcba07-cf7e-4c33-98cf-f8b01192ad0d', '266d512f-3fb4-4460-8e26-5697f47ef177', 'ca5540ca-3fd8-4a66-805a-16d4eda2a4cc', '6a7b7f0e-a9f8-4d4c-8361-6bb6dae0932f']
-🚀 New collection: session-55811a6c-aacc-488b-ad4d-054262be0315
-Đọc file:   0%|          | 0/7 [00:00<?, ?it/s]/root/chatbot/backend/utils/embedding_handler.py:223: LangChainDeprecationWarning: The class `UnstructuredFileLoader` was deprecated in LangChain 0.2.8 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-unstructured package and should be used instead. To use it run `pip install -U :class:`~langchain-unstructured` and import as `WARNING:  StatReload detected changes in 'config.py'. Reloading...
-Process SpawnProcess-2:
-Traceback (most recent call last):
-  File "/root/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
-    self.run()
-    ~~~~~~~~^^
-  File "/root/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
-    target(sockets=sockets)
-    ~~~~~~^^^^^^^^^^^^^^^^^
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
-    return asyncio.run(self.serve(sockets=sockets))
-           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
-    return runner.run(main)
-           ~~~~~~~~~~^^^^^^
-  File "/root/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "/root/miniconda3/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
-    return future.result()
-           ~~~~~~~~~~~~~^^
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
-    await self._serve(sockets)
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
-    config.load()
-    ~~~~~~~~~~~^^
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 436, in load
-    self.loaded_app = import_from_string(self.app)
-                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 22, in import_from_string
-    raise exc from None
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
-    module = importlib.import_module(module_str)
-  File "/root/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
-  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
-  File "/root/chatbot/backend/api/main.py", line 17, in <module>
-    from utils.embedding_handler import embed_files_to_qdrant, qdrant_client
-  File "/root/chatbot/backend/utils/embedding_handler.py", line 159, in <module>
-    from qdrant_client import QdrantClient
-ModuleNotFoundError: No module named 'qdrant_client'
-WARNING:  StatReload detected changes in 'config.py'. Reloading...
-Process SpawnProcess-3:
-Traceback (most recent call last):
-  File "/root/miniconda3/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
-    self.run()
-    ~~~~~~~~^^
-  File "/root/miniconda3/lib/python3.13/multiprocessing/process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
-    target(sockets=sockets)
-    ~~~~~~^^^^^^^^^^^^^^^^^
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 67, in run
-    return asyncio.run(self.serve(sockets=sockets))
-           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
-    return runner.run(main)
-           ~~~~~~~~~~^^^^^^
-  File "/root/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "/root/miniconda3/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
-    return future.result()
-           ~~~~~~~~~~~~~^^
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 71, in serve
-    await self._serve(sockets)
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/server.py", line 78, in _serve
-    config.load()
-    ~~~~~~~~~~~^^
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/config.py", line 436, in load
-    self.loaded_app = import_from_string(self.app)
-                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 22, in import_from_string
-    raise exc from None
-  File "/root/miniconda3/lib/python3.13/site-packages/uvicorn/importer.py", line 19, in import_from_string
-    module = importlib.import_module(module_str)
-  File "/root/miniconda3/lib/python3.13/importlib/__init__.py", line 88, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
-  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
-  File "/root/chatbot/backend/api/main.py", line 17, in <module>
-    from utils.embedding_handler import embed_files_to_qdrant, qdrant_client
-  File "/root/chatbot/backend/utils/embedding_handler.py", line 159, in <module>
-    from qdrant_client import QdrantClient
-ModuleNotFoundError: No module named 'qdrant_client'
-hành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 1 trường: địa chỉ trụ sở chính
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 11/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 1 trường: ngành nghề kinh doanh chính
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 12/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 6 trường: vốn điều lệ, tên người đại diện theo pháp luật, chức vụ người đại diện, số CCCD/CMND của người đại diện, số tiền đề nghị vay, thời hạn vay (tháng)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 13/20 | Đang xử lý lô 3 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 3 trường: vốn điều lệ, tên người đại diện theo pháp luật, chức vụ người đại diện
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 14/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 1 trường: vốn điều lệ
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 15/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 2 trường: tên người đại diện theo pháp luật, chức vụ người đại diện
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 16/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 1 trường: tên người đại diện theo pháp luật
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 17/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 1 trường: chức vụ người đại diện
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 18/20 | Đang xử lý lô 3 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 3 trường: số CCCD/CMND của người đại diện, số tiền đề nghị vay, thời hạn vay (tháng)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 19/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 1 trường: số CCCD/CMND của người đại diện
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 20/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-55811a6c-aacc-488b-ad4d-054262be0315'
-  - Lỗi kết nối tới Langflow: Expecting value: line 1 column 1 (char 0)
-  - Không tìm thấy 2 trường: số tiền đề nghị vay, thời hạn vay (tháng)
-  -> Chia nhỏ lô thất bại...
-
-
-✅ Quá trình trích xuất hoàn tất!
-🧹 Dọn dẹp, xóa collection: session-55811a6c-aacc-488b-ad4d-054262be0315
-✅ Collection 'session-55811a6c-aacc-488b-ad4d-054262be0315' đã được xóa.
-INFO:     127.0.0.1:37592 - "POST /process_prompt HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'config.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [65012]
-/root/chatbot/backend/utils/embedding_handler.py:174: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
-  embedding_model = HuggingFaceEmbeddings(
-INFO:     Started server process [67659]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'config.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [67659]
-/root/chatbot/backend/utils/embedding_handler.py:174: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
-  embedding_model = HuggingFaceEmbeddings(
-INFO:     Started server process [67870]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-🧠 Đang tải / khởi tạo embedding model …
-✅ Embedding model sẵn sàng.
-✅ File 'KH001_Bao_Cao_CIC_Chi_Tiet.txt' đã được lưu thành công với tên 'be47f2d3-6786-44b0-8239-fb1bcfcacc12.txt'
-INFO:     127.0.0.1:42086 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Don_Xin_Vay_Von.txt' đã được lưu thành công với tên '6cbff8f6-0502-4abf-9e7c-57e04c56fe19.txt'
-INFO:     127.0.0.1:42086 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Giay_Chung_Nhan_DKKD.txt' đã được lưu thành công với tên '05a78b21-06f3-44ee-8e89-95c89cc0093c.txt'
-INFO:     127.0.0.1:42086 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Ho_So_TSDB_Chi_Tiet.txt' đã được lưu thành công với tên '5ac69435-3af8-4e87-b884-4420adc5e513.txt'
-INFO:     127.0.0.1:42086 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Kinh_Te_Mau.txt' đã được lưu thành công với tên 'a0370240-39db-4624-a920-6e46a5ce79e1.txt'
-INFO:     127.0.0.1:42086 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Tin_Dung.txt' đã được lưu thành công với tên 'a22e32eb-12ba-4c4e-b478-9c95bb053c2a.txt'
-INFO:     127.0.0.1:42086 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Phuong_An_Kinh_Doanh.txt' đã được lưu thành công với tên '4538fa1b-e75f-43d4-9311-08e8fa709e98.txt'
-INFO:     127.0.0.1:42086 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:42086 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
-🚀 Nhận được yêu cầu xử lý cho 7 file với prompt: 'hi'
-   Các File ID: ['be47f2d3-6786-44b0-8239-fb1bcfcacc12', '6cbff8f6-0502-4abf-9e7c-57e04c56fe19', '05a78b21-06f3-44ee-8e89-95c89cc0093c', '5ac69435-3af8-4e87-b884-4420adc5e513', 'a0370240-39db-4624-a920-6e46a5ce79e1', 'a22e32eb-12ba-4c4e-b478-9c95bb053c2a', '4538fa1b-e75f-43d4-9311-08e8fa709e98']
-🚀 New collection: session-d88d225d-a624-44f1-9dee-49402ef3e6b3
+   Các File ID: ['472448eb-4206-4f20-9d23-72048d7d67f2', '4666c6bf-6403-4b6d-bb59-2ac3c124e405', 'c44fa11a-99a3-4b64-8f97-988c9cadc61f', 'ee5bdd97-5dec-4439-b5a5-39875ab814d2', '3203fb05-12b0-45c0-a960-3f9d3c15e0ea', 'af495acf-36c6-4e95-9894-774a888cf4b0', 'f6060780-815c-408c-a902-bc15a8f2a12c']
+🚀 New collection: session-df3f0343-3b25-48f8-a96b-f51bf3b60c86
 Đọc file:   0%|          | 0/7 [00:00<?, ?it/s]/root/chatbot/backend/utils/embedding_handler.py:223: LangChainDeprecationWarning: The class `UnstructuredFileLoader` was deprecated in LangChain 0.2.8 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-unstructured package and should be used instead. To use it run `pip install -U :class:`~langchain-unstructured` and import as `from :class:`~langchain_unstructured import UnstructuredLoader``.
   docs_raw.extend(UnstructuredFileLoader(fp).load())
-Đọc file:  14%|█▍        | 1/7 [00:06<00:39,  6.60s/it]Đọc file: 100%|██████████| 7/7 [00:06<00:00,  1.06it/s]
-Lỗi ./uploaded_files/be47f2d3-6786-44b0-8239-fb1bcfcacc12.txt: cannot import name 'PSSyntaxError' from 'pdfminer.pdfparser' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/pdfminer/pdfparser.py)
-Lỗi ./uploaded_files/6cbff8f6-0502-4abf-9e7c-57e04c56fe19.txt: cannot import name 'PSSyntaxError' from 'pdfminer.pdfparser' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/pdfminer/pdfparser.py)
-Lỗi ./uploaded_files/05a78b21-06f3-44ee-8e89-95c89cc0093c.txt: cannot import name 'PSSyntaxError' from 'pdfminer.pdfparser' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/pdfminer/pdfparser.py)
-Lỗi ./uploaded_files/5ac69435-3af8-4e87-b884-4420adc5e513.txt: cannot import name 'PSSyntaxError' from 'pdfminer.pdfparser' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/pdfminer/pdfparser.py)
-Lỗi ./uploaded_files/a0370240-39db-4624-a920-6e46a5ce79e1.txt: cannot import name 'PSSyntaxError' from 'pdfminer.pdfparser' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/pdfminer/pdfparser.py)
-Lỗi ./uploaded_files/a22e32eb-12ba-4c4e-b478-9c95bb053c2a.txt: cannot import name 'PSSyntaxError' from 'pdfminer.pdfparser' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/pdfminer/pdfparser.py)
-Lỗi ./uploaded_files/4538fa1b-e75f-43d4-9311-08e8fa709e98.txt: cannot import name 'PSSyntaxError' from 'pdfminer.pdfparser' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/pdfminer/pdfparser.py)
-⚠️ Không có chunk.
-Các file đã được embedding vào collection: session-d88d225d-a624-44f1-9dee-49402ef3e6b3
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'...
+Đọc file:  14%|█▍        | 1/7 [00:09<00:57,  9.56s/it]Đọc file:  57%|█████▋    | 4/7 [00:10<00:06,  2.15s/it]Đọc file: 100%|██████████| 7/7 [00:10<00:00,  1.55s/it]
+/root/chatbot/backend/utils/embedding_handler.py:237: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.0.37 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-qdrant package and should be used instead. To use it run `pip install -U :class:`~langchain-qdrant` and import as `from :class:`~langchain_qdrant import Qdrant``.
+  qstore = Qdrant(
+Lỗi ./uploaded_files/472448eb-4206-4f20-9d23-72048d7d67f2.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+Lỗi ./uploaded_files/4666c6bf-6403-4b6d-bb59-2ac3c124e405.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+Lỗi ./uploaded_files/c44fa11a-99a3-4b64-8f97-988c9cadc61f.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+Lỗi ./uploaded_files/3203fb05-12b0-45c0-a960-3f9d3c15e0ea.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+Lỗi ./uploaded_files/af495acf-36c6-4e95-9894-774a888cf4b0.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+Lỗi ./uploaded_files/f6060780-815c-408c-a902-bc15a8f2a12c.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+⏳ Embedding & ghi Qdrant …
+✅ Hoàn tất collection session-df3f0343-3b25-48f8-a96b-f51bf3b60c86
+Các file đã được embedding vào collection: session-df3f0343-3b25-48f8-a96b-f51bf3b60c86
+🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'...
 
 --- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
     ✅ Đã tìm thấy 'tên đầy đủ của doanh nghiệp': Đặng và Lê Công ty TNHH MTV Cổ phần
     ✅ Đã tìm thấy 'mã số doanh nghiệp': 2532514855
+    ✅ Đã tìm thấy 'ngày cấp giấy chứng nhận đăng ký kinh doanh': 30/05/2016
     ✅ Đã tìm thấy 'địa chỉ trụ sở chính': 521 Đặng Tổ, JohnXã, 435086
     ✅ Đã tìm thấy 'ngành nghề kinh doanh chính': Sản xuất thực phẩm
-  - Không tìm thấy 2 trường: ngày cấp giấy chứng nhận đăng ký kinh doanh, nơi cấp giấy chứng nhận đăng ký kinh doanh
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 2/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
-  - Không tìm thấy 1 trường: ngày cấp giấy chứng nhận đăng ký kinh doanh
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
   - Không tìm thấy 1 trường: nơi cấp giấy chứng nhận đăng ký kinh doanh
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 4/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 2/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
     ✅ Đã tìm thấy 'vốn điều lệ': 13,535,817,293 VNĐ
     ✅ Đã tìm thấy 'tên người đại diện theo pháp luật': Bác Tú Lê
     ✅ Đã tìm thấy 'chức vụ người đại diện': Giám đốc/Tổng Giám đốc
     ✅ Đã tìm thấy 'số CCCD/CMND của người đại diện': 145-42-1986
-    ✅ Đã tìm thấy 'số tiền đề nghị vay': 8972916744
+    ✅ Đã tìm thấy 'số tiền đề nghị vay': 8,972,916,744 VNĐ
     ✅ Đã tìm thấy 'thời hạn vay (tháng)': 48
 
---- VÒNG LẶP 5/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 3/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
     ✅ Đã tìm thấy 'mục đích vay vốn': Đầu tư kho lạnh
     ✅ Đã tìm thấy 'sản phẩm tín dụng đăng ký': Vay đầu tư cơ sở hạ tầng
     ✅ Đã tìm thấy 'phương thức trả nợ': Trả góp đều hàng tháng
@@ -286,303 +202,381 @@ Các file đã được embedding vào collection: session-d88d225d-a624-44f1-9d
   - Không tìm thấy 2 trường: lãi suất cho vay (%/năm), phí trả nợ trước hạn (%)
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 4/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
   - Không tìm thấy 1 trường: lãi suất cho vay (%/năm)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 5/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
   - Không tìm thấy 1 trường: phí trả nợ trước hạn (%)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 8/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 6/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
     ✅ Đã tìm thấy 'lợi nhuận ròng năm gần nhất': 15,332,007,383 VNĐ
     ✅ Đã tìm thấy 'tổng tài sản ước tính': 136,893,822,170 VNĐ
     ✅ Đã tìm thấy 'kế hoạch phân bổ vốn vay cho đầu tư kho lạnh': 7,333,193,551 VNĐ
   - Không tìm thấy 3 trường: dự báo doanh thu năm 1 sau khi vay, điểm tín dụng doanh nghiệp (CIC), xếp hạng tín dụng doanh nghiệp (CIC)
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 9/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
   - Không tìm thấy 1 trường: dự báo doanh thu năm 1 sau khi vay
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 10/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 8/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
   - Không tìm thấy 2 trường: điểm tín dụng doanh nghiệp (CIC), xếp hạng tín dụng doanh nghiệp (CIC)
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 11/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
-  - Không tìm thấy 1 trường: điểm tín dụng doanh nghiệp (CIC)
-  -> Lô quá nhỏ, không chia nữa.
+--- VÒNG LẶP 9/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
+    ✅ Đã tìm thấy 'điểm tín dụng doanh nghiệp (CIC)': Báo cáo CIC doanh nghiệp và cá nhân người đại diện
 
---- VÒNG LẶP 12/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 10/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
     ✅ Đã tìm thấy 'xếp hạng tín dụng doanh nghiệp (CIC)': Báo cáo CIC doanh nghiệp và cá nhân người đại diện
 
---- VÒNG LẶP 13/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
-    ✅ Đã tìm thấy 'tổng dư nợ tại các tổ chức tín dụng khác': BIDV: 8,000,000,000 VNĐ; VPBank: 1,000,000,000 VNĐ
+--- VÒNG LẶP 11/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
+    ✅ Đã tìm thấy 'tổng dư nợ tại các tổ chức tín dụng khác': 9,000,000,000 VNĐ (BIDV: 8,000,000,000 VNĐ + VPBank: 1,000,000,000 VNĐ)
     ✅ Đã tìm thấy 'loại tài sản bảo đảm chính': Bất động sản, Bảo lãnh của bên thứ ba, Xe tải chuyên dụng
   - Không tìm thấy 4 trường: phân loại nợ hiện tại của doanh nghiệp (CIC), dư nợ tại Vietcombank (CIC), lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC), chủ sở hữu tài sản bảo đảm
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 14/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 12/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
   - Không tìm thấy 2 trường: phân loại nợ hiện tại của doanh nghiệp (CIC), dư nợ tại Vietcombank (CIC)
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 15/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
   - Không tìm thấy 1 trường: phân loại nợ hiện tại của doanh nghiệp (CIC)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 16/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 14/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
   - Không tìm thấy 1 trường: dư nợ tại Vietcombank (CIC)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 17/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 15/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
   - Không tìm thấy 2 trường: lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC), chủ sở hữu tài sản bảo đảm
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 18/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
-  - Không tìm thấy 1 trường: lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC)
-  -> Lô quá nhỏ, không chia nữa.
+--- VÒNG LẶP 16/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
+    ✅ Đã tìm thấy 'lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC)': null
 
---- VÒNG LẶP 19/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
+--- VÒNG LẶP 17/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
   - Không tìm thấy 1 trường: chủ sở hữu tài sản bảo đảm
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 20/20 | Đang xử lý lô 4 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3'
-  - Không tìm thấy 4 trường: giá trị tài sản bảo đảm theo thẩm định, đơn vị thẩm định giá, tỷ lệ cho vay tối đa trên tài sản bảo đảm (%), tên người bảo lãnh cho khoản vay
-  -> Chia nhỏ lô thất bại...
+--- VÒNG LẶP 18/20 | Đang xử lý lô 4 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
+    ✅ Đã tìm thấy 'giá trị tài sản bảo đảm theo thẩm định': null
+    ✅ Đã tìm thấy 'đơn vị thẩm định giá': null
+    ✅ Đã tìm thấy 'tỷ lệ cho vay tối đa trên tài sản bảo đảm (%)': null
+    ✅ Đã tìm thấy 'tên người bảo lãnh cho khoản vay': Bác Tú Lê
 
 
 ✅ Quá trình trích xuất hoàn tất!
-🧹 Dọn dẹp, xóa collection: session-d88d225d-a624-44f1-9dee-49402ef3e6b3
-✅ Collection 'session-d88d225d-a624-44f1-9dee-49402ef3e6b3' đã được xóa.
-INFO:     127.0.0.1:42086 - "POST /process_prompt HTTP/1.1" 200 OK
-✅ File 'KH001_Bao_Cao_CIC_Chi_Tiet.txt' đã được lưu thành công với tên '7dba2b50-371a-4e1c-9700-850a5d833786.txt'
-INFO:     127.0.0.1:45466 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Don_Xin_Vay_Von.txt' đã được lưu thành công với tên '4935508b-f186-4589-b307-e58697a0d7e8.txt'
-INFO:     127.0.0.1:45466 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Giay_Chung_Nhan_DKKD.txt' đã được lưu thành công với tên '53b38638-3ce6-45d5-8047-f9a3bf6a30aa.txt'
-INFO:     127.0.0.1:45466 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Ho_So_TSDB_Chi_Tiet.txt' đã được lưu thành công với tên '352795a0-0140-4597-8b8d-e4fb036b6c9f.txt'
-INFO:     127.0.0.1:45466 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Kinh_Te_Mau.txt' đã được lưu thành công với tên '4427e172-3b56-433d-965e-7b100a1947c3.txt'
-INFO:     127.0.0.1:45466 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Tin_Dung.txt' đã được lưu thành công với tên '57c938a6-b366-4aa9-84f8-a5fec038b254.txt'
-INFO:     127.0.0.1:45466 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Phuong_An_Kinh_Doanh.txt' đã được lưu thành công với tên 'baf49e21-7eeb-4d36-b972-1a5e10455a47.txt'
-INFO:     127.0.0.1:45466 - "POST /upload_file HTTP/1.1" 200 OK
-🚀 Nhận được yêu cầu xử lý cho 7 file với prompt: 'tạo cho tôi báo cáo thẩm định từ những tài liệu trên'
-   Các File ID: ['7dba2b50-371a-4e1c-9700-850a5d833786', '4935508b-f186-4589-b307-e58697a0d7e8', '53b38638-3ce6-45d5-8047-f9a3bf6a30aa', '352795a0-0140-4597-8b8d-e4fb036b6c9f', '4427e172-3b56-433d-965e-7b100a1947c3', '57c938a6-b366-4aa9-84f8-a5fec038b254', 'baf49e21-7eeb-4d36-b972-1a5e10455a47']
-🚀 New collection: session-3873f84c-94d6-4aee-af96-1339abe080fb
-Đọc file:   0%|          | 0/7 [00:00<?, ?it/s]Đọc file:  14%|█▍        | 1/7 [00:00<00:01,  4.82it/s]Đọc file: 100%|██████████| 7/7 [00:00<00:00, 32.55it/s]
-Lỗi ./uploaded_files/7dba2b50-371a-4e1c-9700-850a5d833786.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/4935508b-f186-4589-b307-e58697a0d7e8.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/53b38638-3ce6-45d5-8047-f9a3bf6a30aa.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/352795a0-0140-4597-8b8d-e4fb036b6c9f.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/4427e172-3b56-433d-965e-7b100a1947c3.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/57c938a6-b366-4aa9-84f8-a5fec038b254.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/baf49e21-7eeb-4d36-b972-1a5e10455a47.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-⚠️ Không có chunk.
-Các file đã được embedding vào collection: session-3873f84c-94d6-4aee-af96-1339abe080fb
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-3873f84c-94d6-4aee-af96-1339abe080fb'...
+🧹 Dọn dẹp, xóa collection: session-df3f0343-3b25-48f8-a96b-f51bf3b60c86
+✅ Collection 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86' đã được xóa.
+INFO:     127.0.0.1:40072 - "POST /process_prompt HTTP/1.1" 200 OK
+✅ File 'KH001_Bao_Cao_CIC_Chi_Tiet.txt' đã được lưu thành công với tên '7d6c07f7-15a3-4fc3-b8af-f2a5929be05a.txt'
+INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Phuong_An_Kinh_Doanh.txt' đã được lưu thành công với tên '39056010-ffc1-4c27-9ca1-6b1cb691958b.txt'
+INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Hop_Dong_Tin_Dung.txt' đã được lưu thành công với tên 'aa6f0acb-b0b7-4009-ab8e-3ba075fc1084.txt'
+INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Hop_Dong_Kinh_Te_Mau.txt' đã được lưu thành công với tên '7eeefd26-4ae6-42e4-84f2-4c06646db1db.txt'
+INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Ho_So_TSDB_Chi_Tiet.txt' đã được lưu thành công với tên '38afe2e2-c9b3-4f0f-ad47-0a653b6730d9.txt'
+INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Giay_Chung_Nhan_DKKD.txt' đã được lưu thành công với tên '067a57bc-fdd4-46e4-afe0-5ad5b38f2ac1.txt'
+INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'KH001_Don_Xin_Vay_Von.txt' đã được lưu thành công với tên 'fc90da6b-4d8a-4878-8d7b-651e80351952.txt'
+INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
+🚀 Nhận được yêu cầu xử lý cho 7 file với prompt: 'hi'
+   Các File ID: ['7d6c07f7-15a3-4fc3-b8af-f2a5929be05a', '39056010-ffc1-4c27-9ca1-6b1cb691958b', 'aa6f0acb-b0b7-4009-ab8e-3ba075fc1084', '7eeefd26-4ae6-42e4-84f2-4c06646db1db', '38afe2e2-c9b3-4f0f-ad47-0a653b6730d9', '067a57bc-fdd4-46e4-afe0-5ad5b38f2ac1', 'fc90da6b-4d8a-4878-8d7b-651e80351952']
+🚀 New collection: session-0e92e861-c8fa-4c19-aa48-f99fc6212a16
+Đọc file:   0%|          | 0/7 [00:00<?, ?it/s]Đọc file:  14%|█▍        | 1/7 [00:00<00:02,  2.87it/s]Đọc file:  57%|█████▋    | 4/7 [00:00<00:00, 10.54it/s]Đọc file:  86%|████████▌ | 6/7 [00:00<00:00, 11.12it/s]Đọc file: 100%|██████████| 7/7 [00:00<00:00, 10.77it/s]
+Lỗi ./uploaded_files/7d6c07f7-15a3-4fc3-b8af-f2a5929be05a.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+Lỗi ./uploaded_files/39056010-ffc1-4c27-9ca1-6b1cb691958b.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+Lỗi ./uploaded_files/aa6f0acb-b0b7-4009-ab8e-3ba075fc1084.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+Lỗi ./uploaded_files/7eeefd26-4ae6-42e4-84f2-4c06646db1db.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+Lỗi ./uploaded_files/38afe2e2-c9b3-4f0f-ad47-0a653b6730d9.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+Lỗi ./uploaded_files/fc90da6b-4d8a-4878-8d7b-651e80351952.txt: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger_eng[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger_eng')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
+    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+⏳ Embedding & ghi Qdrant …
+✅ Hoàn tất collection session-0e92e861-c8fa-4c19-aa48-f99fc6212a16
+Các file đã được embedding vào collection: session-0e92e861-c8fa-4c19-aa48-f99fc6212a16
+🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'...
 
 --- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
     ✅ Đã tìm thấy 'tên đầy đủ của doanh nghiệp': Đặng và Lê Công ty TNHH MTV Cổ phần
     ✅ Đã tìm thấy 'mã số doanh nghiệp': 2532514855
+    ✅ Đã tìm thấy 'ngày cấp giấy chứng nhận đăng ký kinh doanh': 30/05/2016
     ✅ Đã tìm thấy 'địa chỉ trụ sở chính': 521 Đặng Tổ, JohnXã, 435086
     ✅ Đã tìm thấy 'ngành nghề kinh doanh chính': Sản xuất thực phẩm
-  - Không tìm thấy 2 trường: ngày cấp giấy chứng nhận đăng ký kinh doanh, nơi cấp giấy chứng nhận đăng ký kinh doanh
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 2/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
-  - Không tìm thấy 1 trường: ngày cấp giấy chứng nhận đăng ký kinh doanh
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
   - Không tìm thấy 1 trường: nơi cấp giấy chứng nhận đăng ký kinh doanh
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 4/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 2/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
     ✅ Đã tìm thấy 'vốn điều lệ': 13,535,817,293 VNĐ
     ✅ Đã tìm thấy 'tên người đại diện theo pháp luật': Bác Tú Lê
     ✅ Đã tìm thấy 'chức vụ người đại diện': Giám đốc/Tổng Giám đốc
     ✅ Đã tìm thấy 'số CCCD/CMND của người đại diện': 145-42-1986
-    ✅ Đã tìm thấy 'số tiền đề nghị vay': 8972916744
+    ✅ Đã tìm thấy 'số tiền đề nghị vay': 8,972,916,744 VNĐ
     ✅ Đã tìm thấy 'thời hạn vay (tháng)': 48
 
---- VÒNG LẶP 5/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 3/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
     ✅ Đã tìm thấy 'mục đích vay vốn': Đầu tư kho lạnh
     ✅ Đã tìm thấy 'sản phẩm tín dụng đăng ký': Vay đầu tư cơ sở hạ tầng
     ✅ Đã tìm thấy 'phương thức trả nợ': Trả góp đều hàng tháng
-    ✅ Đã tìm thấy 'doanh thu năm gần nhất': 131,499,079,698 VNĐ
+    ✅ Đã tìm thấy 'doanh thu năm gần nhất': 131499079698
   - Không tìm thấy 2 trường: lãi suất cho vay (%/năm), phí trả nợ trước hạn (%)
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 4/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
   - Không tìm thấy 1 trường: lãi suất cho vay (%/năm)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 5/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
   - Không tìm thấy 1 trường: phí trả nợ trước hạn (%)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 8/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 6/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
     ✅ Đã tìm thấy 'lợi nhuận ròng năm gần nhất': 15,332,007,383 VNĐ
     ✅ Đã tìm thấy 'tổng tài sản ước tính': 136,893,822,170 VNĐ
     ✅ Đã tìm thấy 'kế hoạch phân bổ vốn vay cho đầu tư kho lạnh': 7,333,193,551 VNĐ
   - Không tìm thấy 3 trường: dự báo doanh thu năm 1 sau khi vay, điểm tín dụng doanh nghiệp (CIC), xếp hạng tín dụng doanh nghiệp (CIC)
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 9/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
   - Không tìm thấy 1 trường: dự báo doanh thu năm 1 sau khi vay
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 10/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 8/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
   - Không tìm thấy 2 trường: điểm tín dụng doanh nghiệp (CIC), xếp hạng tín dụng doanh nghiệp (CIC)
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 11/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 9/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
     ✅ Đã tìm thấy 'điểm tín dụng doanh nghiệp (CIC)': Báo cáo CIC doanh nghiệp và cá nhân người đại diện
 
---- VÒNG LẶP 12/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 10/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
     ✅ Đã tìm thấy 'xếp hạng tín dụng doanh nghiệp (CIC)': Báo cáo CIC doanh nghiệp và cá nhân người đại diện
 
---- VÒNG LẶP 13/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 11/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
     ✅ Đã tìm thấy 'tổng dư nợ tại các tổ chức tín dụng khác': 9,000,000,000 VNĐ (BIDV: 8,000,000,000 VNĐ + VPBank: 1,000,000,000 VNĐ)
-    ✅ Đã tìm thấy 'loại tài sản bảo đảm chính': Xe tải chuyên dụng
+    ✅ Đã tìm thấy 'loại tài sản bảo đảm chính': Bất động sản, Bảo lãnh của bên thứ ba, Xe tải chuyên dụng
   - Không tìm thấy 4 trường: phân loại nợ hiện tại của doanh nghiệp (CIC), dư nợ tại Vietcombank (CIC), lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC), chủ sở hữu tài sản bảo đảm
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 14/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 12/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
   - Không tìm thấy 2 trường: phân loại nợ hiện tại của doanh nghiệp (CIC), dư nợ tại Vietcombank (CIC)
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 15/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
   - Không tìm thấy 1 trường: phân loại nợ hiện tại của doanh nghiệp (CIC)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 16/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 14/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
   - Không tìm thấy 1 trường: dư nợ tại Vietcombank (CIC)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 17/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 15/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
   - Không tìm thấy 2 trường: lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC), chủ sở hữu tài sản bảo đảm
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 18/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 16/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
   - Không tìm thấy 1 trường: lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 19/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
+--- VÒNG LẶP 17/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
   - Không tìm thấy 1 trường: chủ sở hữu tài sản bảo đảm
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 20/20 | Đang xử lý lô 4 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3873f84c-94d6-4aee-af96-1339abe080fb'
-    ✅ Đã tìm thấy 'giá trị tài sản bảo đảm theo thẩm định': null
-    ✅ Đã tìm thấy 'đơn vị thẩm định giá': null
-    ✅ Đã tìm thấy 'tỷ lệ cho vay tối đa trên tài sản bảo đảm (%)': Chấp nhận tỷ lệ cho vay tối đa theo quy định của Ngân hàng
-    ✅ Đã tìm thấy 'tên người bảo lãnh cho khoản vay': null
+--- VÒNG LẶP 18/20 | Đang xử lý lô 4 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 4 trường: giá trị tài sản bảo đảm theo thẩm định, đơn vị thẩm định giá, tỷ lệ cho vay tối đa trên tài sản bảo đảm (%), tên người bảo lãnh cho khoản vay
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 19/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
+  - Không tìm thấy 2 trường: giá trị tài sản bảo đảm theo thẩm định, đơn vị thẩm định giá
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 20/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
+  - Không tìm thấy 1 trường: giá trị tài sản bảo đảm theo thẩm định
+  -> Lô quá nhỏ, không chia nữa.
 
 
 ✅ Quá trình trích xuất hoàn tất!
-🧹 Dọn dẹp, xóa collection: session-3873f84c-94d6-4aee-af96-1339abe080fb
-✅ Collection 'session-3873f84c-94d6-4aee-af96-1339abe080fb' đã được xóa.
-INFO:     127.0.0.1:45476 - "POST /process_prompt HTTP/1.1" 200 OK
-✅ File 'KH001_Giay_Chung_Nhan_DKKD.txt' đã được lưu thành công với tên 'e0f9fd86-31b8-47e4-863d-21b791893361.txt'
-INFO:     127.0.0.1:45302 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Ho_So_TSDB_Chi_Tiet.txt' đã được lưu thành công với tên 'ad52be84-de00-4b2d-8356-ccdf792099c3.txt'
-INFO:     127.0.0.1:45302 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Kinh_Te_Mau.txt' đã được lưu thành công với tên 'dcc363f0-addb-4904-a115-507fb1f7fc6f.txt'
-INFO:     127.0.0.1:45302 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Tin_Dung.txt' đã được lưu thành công với tên '62261b4a-043b-4625-a2e7-a610b3ddf8bf.txt'
-INFO:     127.0.0.1:45302 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Phuong_An_Kinh_Doanh.txt' đã được lưu thành công với tên 'ed284800-2323-40f2-bd90-b5f89e4b76c8.txt'
-INFO:     127.0.0.1:45302 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Bao_Cao_CIC_Chi_Tiet.txt' đã được lưu thành công với tên '8d5d4f7a-951f-4839-90ab-ec4d7b31ecb2.txt'
-INFO:     127.0.0.1:45302 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Don_Xin_Vay_Von.txt' đã được lưu thành công với tên 'd132d939-fb20-4192-82cb-75c305f9a95e.txt'
-INFO:     127.0.0.1:45302 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49010 - "OPTIONS /chat_rag HTTP/1.1" 200 OK
-🗨️ Nhận được câu hỏi RAG: 'công ty muốn vay bao nhiêu tiền'
-   Trên các File ID: ['e0f9fd86-31b8-47e4-863d-21b791893361', 'ad52be84-de00-4b2d-8356-ccdf792099c3', 'dcc363f0-addb-4904-a115-507fb1f7fc6f', '62261b4a-043b-4625-a2e7-a610b3ddf8bf', 'ed284800-2323-40f2-bd90-b5f89e4b76c8', '8d5d4f7a-951f-4839-90ab-ec4d7b31ecb2', 'd132d939-fb20-4192-82cb-75c305f9a95e']
-🚀 New collection: session-10c5bcc1-0a56-4404-a22b-b9a189aca62c
-Đọc file:   0%|          | 0/7 [00:00<?, ?it/s]Đọc file: 100%|██████████| 7/7 [00:00<00:00, 88.13it/s]
-Lỗi ./uploaded_files/e0f9fd86-31b8-47e4-863d-21b791893361.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/ad52be84-de00-4b2d-8356-ccdf792099c3.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/dcc363f0-addb-4904-a115-507fb1f7fc6f.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/62261b4a-043b-4625-a2e7-a610b3ddf8bf.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/ed284800-2323-40f2-bd90-b5f89e4b76c8.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/8d5d4f7a-951f-4839-90ab-ec4d7b31ecb2.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-Lỗi ./uploaded_files/d132d939-fb20-4192-82cb-75c305f9a95e.txt: cannot import name 'remove_control_characters' from 'unstructured.partition.pdf_image.pdf_image_utils' (/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/unstructured/partition/pdf_image/pdf_image_utils.py)
-⚠️ Không có chunk.
-⭐️ Các file cho RAG đã được embedding vào collection: session-10c5bcc1-0a56-4404-a22b-b9a189aca62c
-  - Gửi tới RAG Flow với collection 'session-10c5bcc1-0a56-4404-a22b-b9a189aca62c': công ty muốn vay bao nhiêu tiền
-🧹 Dọn dẹp RAG collection: session-10c5bcc1-0a56-4404-a22b-b9a189aca62c
-✅ RAG Collection 'session-10c5bcc1-0a56-4404-a22b-b9a189aca62c' đã được xóa.
-INFO:     127.0.0.1:49010 - "POST /chat_rag HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Tin_Dung.txt' đã được lưu thành công với tên 'c8bd0279-3a84-4ad1-9b5a-1b831708edaf.txt'
-INFO:     127.0.0.1:36868 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Phuong_An_Kinh_Doanh.txt' đã được lưu thành công với tên 'b1ef53ba-475b-40c3-8f77-1d7e9f9e6b0f.txt'
-INFO:     127.0.0.1:36868 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Bao_Cao_CIC_Chi_Tiet.txt' đã được lưu thành công với tên 'd61e0f8e-3c85-4992-8a04-8bac0c2de5a1.txt'
-INFO:     127.0.0.1:36868 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Don_Xin_Vay_Von.txt' đã được lưu thành công với tên 'a66e0dc7-2c77-47c8-9e99-64d8b81eb479.txt'
-INFO:     127.0.0.1:36868 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Giay_Chung_Nhan_DKKD.txt' đã được lưu thành công với tên 'c92033e5-044f-425d-adfc-036ae32ae1b0.txt'
-INFO:     127.0.0.1:36868 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Ho_So_TSDB_Chi_Tiet.txt' đã được lưu thành công với tên '5a5b5cd9-6d4d-46f5-af68-f558662091ae.txt'
-INFO:     127.0.0.1:36868 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Kinh_Te_Mau.txt' đã được lưu thành công với tên 'd095b737-1fa9-4c85-9ba8-3bfd4eaad030.txt'
-INFO:     127.0.0.1:36868 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Ho_So_TSDB_Chi_Tiet.txt' đã được lưu thành công với tên '468272cf-2dd4-428a-86b7-c56d445ea927.txt'
-INFO:     127.0.0.1:54204 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Kinh_Te_Mau.txt' đã được lưu thành công với tên 'c9ba79b6-5045-4edc-bc7d-664f0ab737e0.txt'
-INFO:     127.0.0.1:54204 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Tin_Dung.txt' đã được lưu thành công với tên '69da3b4d-1baa-4954-a323-af5fa7f78a46.txt'
-INFO:     127.0.0.1:54204 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Phuong_An_Kinh_Doanh.txt' đã được lưu thành công với tên '80a1a83d-552e-4cba-92c1-c7e4e48b7515.txt'
-INFO:     127.0.0.1:54204 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Bao_Cao_CIC_Chi_Tiet.txt' đã được lưu thành công với tên '9b159b8e-72ff-4bee-8c13-ce82e2285fd4.txt'
-INFO:     127.0.0.1:54204 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Don_Xin_Vay_Von.txt' đã được lưu thành công với tên 'ac486516-5e1c-448d-acc7-0cfe950a14b6.txt'
-INFO:     127.0.0.1:54204 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Giay_Chung_Nhan_DKKD.txt' đã được lưu thành công với tên '1bcdebb9-fb39-4d6e-a39d-3c77c85b00bd.txt'
-INFO:     127.0.0.1:54204 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:54204 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
-🚀 Nhận được yêu cầu xử lý cho 7 file với prompt: 'hi'
-   Các File ID: ['468272cf-2dd4-428a-86b7-c56d445ea927', 'c9ba79b6-5045-4edc-bc7d-664f0ab737e0', '69da3b4d-1baa-4954-a323-af5fa7f78a46', '80a1a83d-552e-4cba-92c1-c7e4e48b7515', '9b159b8e-72ff-4bee-8c13-ce82e2285fd4', 'ac486516-5e1c-448d-acc7-0cfe950a14b6', '1bcdebb9-fb39-4d6e-a39d-3c77c85b00bd']
-🚀 New collection: session-723f6968-abc9-4f36-aeec-3b63ac9c3d39
-Đọc file:   0%|          | 0/7 [00:00<?, ?it/s]Đọc file:  14%|█▍        | 1/7 [00:00<00:01,  4.49it/s]Đọc file: 100%|██████████| 7/7 [00:00<00:00, 30.49it/s]
+🧹 Dọn dẹp, xóa collection: session-0e92e861-c8fa-4c19-aa48-f99fc6212a16
+✅ Collection 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16' đã được xóa.
+INFO:     127.0.0.1:42278 - "POST /process_prompt HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'api/main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22642]
+/root/chatbot/backend/utils/embedding_handler.py:174: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
+  embedding_model = HuggingFaceEmbeddings(
+INFO:     Started server process [26710]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

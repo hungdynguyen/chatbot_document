@@ -116,14 +116,10 @@ async def process_prompt(request: ProcessRequest):
 
 
 # -------------------------------------------------------------
-# 5. ENDPOINT MỚI CHO CHỨC NĂNG CHAT RAG (Cần cải tiến tương tự)
+# 5. ENDPOINT MỚI CHO CHỨC NĂNG CHAT RAG 
 # -------------------------------------------------------------
 @app.post("/chat_rag")
 async def chat_rag(request: RagRequest):
-    """
-    Nhận câu hỏi và file_ids để thực hiện RAG.
-    Quy trình: Embed file vào collection tạm -> Query -> Xóa collection
-    """
     if not request.file_ids:
          raise HTTPException(status_code=400, detail="Vui lòng cung cấp file_ids để thực hiện RAG.")
 
