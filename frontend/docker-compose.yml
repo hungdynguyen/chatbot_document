@@ -1,0 +1,21 @@
+services:
+  nextjs-app: 
+    build:
+      context: . 
+      dockerfile: Dockerfile 
+    container_name: my_nextjs
+    ports:
+      - "3002:3000" 
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/.next
+    environment:
+      NODE_ENV: development
+    networks:
+      - backend
+
+networks:
+  backend:
+    external: true
+    
