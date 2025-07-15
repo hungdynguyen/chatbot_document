@@ -1,0 +1,354 @@
+# ==============================================
+# RPAGENT PROJECT .gitignore
+# ==============================================
+
+# ===== PYTHON =====
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ===== NODE.JS / NEXT.JS =====
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+
+# Production build
+build/
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# ===== BACKEND SPECIFIC =====
+# Upload files directory
+backend/uploaded_files/
+backend/uploads/
+backend/temp/
+
+# Model cache
+backend/.cache/
+backend/models/
+backend/model_cache/
+
+# Logs
+backend/logs/
+backend/*.log
+*.log
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Configuration files with secrets
+backend/config_local.py
+backend/secrets.py
+
+# ===== QDRANT STORAGE =====
+qdrant_storage/
+qdrant_data/
+
+# ===== TEXT EMBEDDINGS =====
+text-embeddings-inference/target/
+text-embeddings-inference/data/
+text-embeddings-inference/models/
+
+# ===== LANGFLOW =====
+langflow/
+langflow_data/
+flows/
+*.json.backup
+
+# ===== AI/ML SPECIFIC =====
+# Hugging Face cache
+transformers/
+safetensors/
+.cache/
+huggingface_cache/
+
+# Model files
+*.bin
+*.safetensors
+*.onnx
+*.pt
+*.pth
+*.pkl
+*.joblib
+
+# Large data files
+*.parquet
+*.feather
+*.hdf5
+*.h5
+
+# ===== DOCKER =====
+# Docker files (keep Dockerfile but ignore others)
+docker-compose.override.yml
+.dockerignore
+
+# ===== SYSTEM FILES =====
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ===== IDE/EDITOR =====
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PyCharm
+.idea/
+
+# Sublime Text
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# ===== TEMPORARY FILES =====
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.swp
+*.swo
+
+# ===== TESTING =====
+# Test files
+test_uploads/
+test_data/
+test_results/
+coverage_reports/
+
+# ===== API KEYS & SECRETS =====
+# Environment variables
+.env*
+secrets/
+api_keys/
+credentials/
+
+# ===== DOCUMENTATION =====
+# Documentation build
+docs/_build/
+docs/build/
+
+# ===== MONITORING & LOGS =====
+# Log files
+logs/
+*.log
+*.log.*
+access.log
+error.log
+debug.log
+
+# Monitoring data
+monitoring/
+metrics/
+
+# ===== CUSTOM PROJECT SPECIFIC =====
+# Frontend build artifacts
+frontend/build/
+frontend/dist/
+frontend/.next/
+
+# Backend artifacts
+backend/dist/
+backend/build/
+
+# Data files (don't commit sensitive data)
+data/private/
+data/sensitive/
+data/customer/
+
+# Backup files
+backup/
+backups/
+*.backup
+
+# Configuration overrides
+config.local.*
+settings.local.*
+
+# ===== DEPENDENCIES =====
+# Package manager files
+package-lock.json
+yarn.lock
+Pipfile.lock
+poetry.lock
+
+# ===== DEPLOYMENT =====
+# Deployment scripts with secrets
+deploy_prod.sh
+deploy_staging.sh
+kubernetes/secrets/
+
+# ===== PERFORMANCE =====
+# Profile data
+*.prof
+profile_*
+
+# Benchmark results
+benchmark_*
+perf_*
+
+# ===== KEEP THESE (EXPLICITLY TRACKED) =====
+# Don't ignore these important files
+!.gitkeep
+!README.md
+!requirements.txt
+!package.json
+!Dockerfile
+!docker-compose.yml
+!.github/
