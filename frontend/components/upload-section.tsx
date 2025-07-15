@@ -23,6 +23,16 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { LoanAssessmentOldPreview } from "./template-previews/LoanAssessmentOldPreview"
+import { LoanAssessmentNewPreview } from "./template-previews/LoanAssessmentNewPreview"
+
 
 interface UploadedFile {
   id: string
@@ -36,24 +46,20 @@ interface UploadedFile {
 }
 
 interface UploadSectionProps {
-  sectionId: string
-  onDocumentGenerated?: (content: any, sectionId:string) => void
-  onRemoveSection?: (sectionId: string) => void
-  onUploadSuccess?: (fileIds: string[]) => void
+  onDocumentGenerated?: (content: any, fileIds: string[], templateId: string, collectionName: string) => void
 }
 
 export function UploadSection({
-  sectionId,
   onDocumentGenerated,
-  onRemoveSection,
-  onUploadSuccess,
 }: UploadSectionProps) {
   const [files, setFiles] = useState<UploadedFile[]>([])
-  const [prompt, setPrompt] = useState("")
+  const [prompt, setPrompt] = useState("Trích xuất thông tin theo mẫu Báo cáo thẩm định.")
   const [isProcessing, setIsProcessing] = useState(false)
   const [isDragOver, setIsDragOver] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [showActions, setShowActions] = useState(false)
+  const [selectedTemplate, setSelectedTemplate] = useState("loan_assessment_old")
+  const [showPreview, setShowPreview] = useState(false)
   const router = useRouter()
 
   const getFileIcon = (type: string) => {
@@ -118,20 +124,12 @@ export function UploadSection({
           f.id === fileId
             ? {
                 ...f,
-                status: "uploaded",
+                status: "uploaded" as const,
                 progress: 100,
                 file_id: result.file_id,
               }
             : f,
         )
-        
-        const uploadedFileIds = updatedFiles
-          .filter(f => f.status === "uploaded" && f.file_id)
-          .map(f => f.file_id!)
-
-        if (onUploadSuccess && uploadedFileIds.length > 0) {
-          onUploadSuccess(uploadedFileIds)
-        }
         
         return updatedFiles
       })
@@ -218,78 +216,30 @@ export function UploadSection({
         body: JSON.stringify({
           prompt: prompt.trim(),
           file_ids: uploadedFileIds,
+          template_id: selectedTemplate, // Gửi template_id cho backend
         }),
       })
 
       if (!response.ok) {
-        throw new Error(`Processing failed: ${response.statusText}`)
+        const errorData = await response.json().catch(() => ({ detail: response.statusText }));
+        throw new Error(`Processing failed: ${errorData.detail || response.statusText}`)
       }
 
       const result = await response.json()
+      console.log("Server Response:", result)
 
       if (onDocumentGenerated) {
-        // Transform result to document format similar to chat-interface
-        const extracted = result.extracted_data || {}
-        
-        const formatCurrency = (value: any) => {
-          if (!value) return null;
-          const number = Number(String(value).replace(/[^0-9.-]+/g,""));
-          if (isNaN(number)) return value;
-          return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number);
-        };
-
-        const documentData = {
-          title: `Báo cáo Thẩm định Khoản vay - ${extracted["tên đầy đủ của doanh nghiệp"] || "Chưa xác định"}`,
-          company: extracted["tên đầy đủ của doanh nghiệp"],
-          loanAmount: formatCurrency(extracted["số tiền đề nghị vay"]),
-          reportType: "Thẩm định Khoản vay",
-          period: new Date().getFullYear().toString(),
-          executiveSummary: `Dựa trên phân tích ${uploadedFileIds.length} tài liệu, hệ thống đã trích xuất thông tin chi tiết về doanh nghiệp ${extracted["tên đầy đủ của doanh nghiệp"] || ""} và khoản vay đề nghị.`,
-          borrowerProfile: {
-            companyName: extracted["tên đầy đủ của doanh nghiệp"],
-            businessType: extracted["mã số doanh nghiệp"],
-            mainBusiness: extracted["ngành nghề kinh doanh chính"],
-            legalRep: extracted["địa chỉ trụ sở chính"],
-            legalRepName: extracted["tên người đại diện theo pháp luật"],
-            establishedYear: 0,
-            employees: 0,
-          },
-          loanDetails: {
-            amount: formatCurrency(extracted["số tiền đề nghị vay"]),
-            purpose: extracted["mục đích vay vốn"],
-            term: extracted["thời hạn vay (tháng)"] ? `${extracted["thời hạn vay (tháng)"]} tháng` : null,
-            requestedRate: extracted["lãi suất cho vay (%/năm)"] ? `${extracted["lãi suất cho vay (%/năm)"]} %/năm` : null,
-            repaymentMethod: extracted["phương thức trả nợ"],
-          },
-          financialHighlights: [
-            { label: "Vốn điều lệ", value: formatCurrency(extracted["vốn điều lệ"]), available: !!extracted["vốn điều lệ"] },
-            { label: "Doanh thu năm gần nhất", value: formatCurrency(extracted["doanh thu năm gần nhất"]), available: !!extracted["doanh thu năm gần nhất"] },
-            { label: "Lợi nhuận ròng năm gần nhất", value: formatCurrency(extracted["lợi nhuận ròng năm gần nhất"]), available: !!extracted["lợi nhuận ròng năm gần nhất"] },
-            { label: "Tổng tài sản ước tính", value: formatCurrency(extracted["tổng tài sản ước tính"]), available: !!extracted["tổng tài sản ước tính"] },
-          ].filter(item => item.available),
-          financialRatios: [
-            { label: "Điểm tín dụng (CIC)", value: extracted["điểm tín dụng doanh nghiệp (CIC)"], status: "good" },
-            { label: "Xếp hạng (CIC)", value: extracted["xếp hạng tín dụng doanh nghiệp (CIC)"], status: "good" },
-            { label: "Phân loại nợ (CIC)", value: extracted["phân loại nợ hiện tại của doanh nghiệp (CIC)"], status: "good"},
-            { label: "Tổng dư nợ", value: formatCurrency(extracted["tổng dư nợ tại các tổ chức tín dụng khác"]), status: "warning"},
-          ].filter(item => item.value),
-          collateralEvaluation: {
-            realEstateValue: extracted["loại tài sản bảo đảm chính"],
-            totalValue: formatCurrency(extracted["giá trị tài sản bảo đảm theo thẩm định"]),
-            ltvRatio: extracted["tỷ lệ cho vay tối đa trên tài sản bảo đảm (%)"] ? `${extracted["tỷ lệ cho vay tối đa trên tài sản bảo đảm (%)"]} %` : null,
-            equipmentValue: null,
-            adequacy: null,
-          },
-          conclusion: "Báo cáo được tạo tự động. Chuyên viên tín dụng cần xem xét, xác minh lại thông tin và đưa ra kết luận cuối cùng.",
-        }
-
-        onDocumentGenerated(documentData, sectionId)
+        onDocumentGenerated(
+          result.extracted_data,
+          result.file_ids,
+          selectedTemplate,
+          result.collection_name // Truyền collection_name lên component cha
+        )
       }
-
-      setPrompt("")
     } catch (error) {
       console.error("Processing error:", error)
-      alert(`Processing failed: ${error instanceof Error ? error.message : "Unknown error"}`)
+      alert(`Lỗi xử lý: ${error instanceof Error ? error.message : "Unknown error"}`);
+      // Handle error state in UI
     } finally {
       setIsProcessing(false)
     }
@@ -330,14 +280,6 @@ export function UploadSection({
             Upload Section ({uploadedFiles.length} files)
           </h3>
         </div>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => onRemoveSection?.(sectionId)}
-          className="text-gray-400 hover:text-red-500"
-        >
-          <X className="h-4 w-4" />
-        </Button>
       </div>
 
       {/* Content */}
@@ -437,6 +379,37 @@ export function UploadSection({
           {/* Actions */}
           {showActions && uploadedFiles.length > 0 && (
             <div className="space-y-4 pt-4 border-t border-gray-200">
+              {/* Template Selector */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700">
+                  Chọn Mẫu Báo cáo
+                </label>
+                <div className="flex gap-2">
+                  <Select value={selectedTemplate} onValueChange={(value) => {
+                    setSelectedTemplate(value);
+                    setShowPreview(false); // Hide preview on change
+                  }}>
+                    <SelectTrigger className="flex-1">
+                      <SelectValue placeholder="Chọn một mẫu báo cáo..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="loan_assessment_old">Mẫu Thẩm định cho vay (Cũ)</SelectItem>
+                      <SelectItem value="new_template">Mẫu Thẩm định chi tiết (Mới)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Button variant="outline" onClick={() => setShowPreview(!showPreview)}>
+                    {showPreview ? "Ẩn Preview" : "Xem Preview"}
+                  </Button>
+                </div>
+              </div>
+
+              {/* Template Preview */}
+              {showPreview && (
+                <div className="p-4 border rounded-md bg-gray-50">
+                  {selectedTemplate === 'loan_assessment_old' ? <LoanAssessmentOldPreview /> : <LoanAssessmentNewPreview />}
+                </div>
+              )}
+
               {/* Prompt Input */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700">

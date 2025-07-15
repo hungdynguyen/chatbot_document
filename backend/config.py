@@ -34,5 +34,5 @@ LANGFLOW_RAG_URL = "http://localhost:7860/api/v1/run/129d05dd-3f4d-4a81-b1f2-85e
 HEADERS = {"Content-Type": "application/json; charset=utf-8"}
 
 # Component IDs trong các Langflow flows
-QDRANT_COMPONENT_ID_EXTRACTOR = "QdrantVectorStoreComponent-IEpPF"
+QDRANT_COMPONENT_ID_EXTRACTOR = "QdrantVectorStoreComponent-L0lVV"
 QDRANT_COMPONENT_ID_RAG = "QdrantVectorStoreComponent-VEffS"

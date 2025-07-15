@@ -1,582 +1,527 @@
 INFO:     Will watch for changes in these directories: ['/root/chatbot/backend']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [22638] using WatchFiles
-/root/chatbot/backend/utils/embedding_handler.py:174: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
-  embedding_model = HuggingFaceEmbeddings(
-INFO:     Started server process [22642]
+INFO:     Started reloader process [63350] using WatchFiles
+INFO:     Started server process [63360]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'utils/embedding_handler.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [63360]
+INFO:     Started server process [66019]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 🧠 Đang tải / khởi tạo embedding model …
 ✅ Embedding model sẵn sàng.
-✅ File 'KH001_Hop_Dong_Tin_Dung.txt' đã được lưu thành công với tên '472448eb-4206-4f20-9d23-72048d7d67f2.txt'
-INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Kinh_Te_Mau.txt' đã được lưu thành công với tên '4666c6bf-6403-4b6d-bb59-2ac3c124e405.txt'
-INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Ho_So_TSDB_Chi_Tiet.txt' đã được lưu thành công với tên 'c44fa11a-99a3-4b64-8f97-988c9cadc61f.txt'
-INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Giay_Chung_Nhan_DKKD.txt' đã được lưu thành công với tên 'ee5bdd97-5dec-4439-b5a5-39875ab814d2.txt'
-INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Don_Xin_Vay_Von.txt' đã được lưu thành công với tên '3203fb05-12b0-45c0-a960-3f9d3c15e0ea.txt'
-INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Bao_Cao_CIC_Chi_Tiet.txt' đã được lưu thành công với tên 'af495acf-36c6-4e95-9894-774a888cf4b0.txt'
-INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Phuong_An_Kinh_Doanh.txt' đã được lưu thành công với tên 'f6060780-815c-408c-a902-bc15a8f2a12c.txt'
-INFO:     127.0.0.1:40062 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:40072 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
-🚀 Nhận được yêu cầu xử lý cho 7 file với prompt: 'hi'
-   Các File ID: ['472448eb-4206-4f20-9d23-72048d7d67f2', '4666c6bf-6403-4b6d-bb59-2ac3c124e405', 'c44fa11a-99a3-4b64-8f97-988c9cadc61f', 'ee5bdd97-5dec-4439-b5a5-39875ab814d2', '3203fb05-12b0-45c0-a960-3f9d3c15e0ea', 'af495acf-36c6-4e95-9894-774a888cf4b0', 'f6060780-815c-408c-a902-bc15a8f2a12c']
-🚀 New collection: session-df3f0343-3b25-48f8-a96b-f51bf3b60c86
-Đọc file:   0%|          | 0/7 [00:00<?, ?it/s]/root/chatbot/backend/utils/embedding_handler.py:223: LangChainDeprecationWarning: The class `UnstructuredFileLoader` was deprecated in LangChain 0.2.8 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-unstructured package and should be used instead. To use it run `pip install -U :class:`~langchain-unstructured` and import as `from :class:`~langchain_unstructured import UnstructuredLoader``.
-  docs_raw.extend(UnstructuredFileLoader(fp).load())
-Đọc file:  14%|█▍        | 1/7 [00:09<00:57,  9.56s/it]Đọc file:  57%|█████▋    | 4/7 [00:10<00:06,  2.15s/it]Đọc file: 100%|██████████| 7/7 [00:10<00:00,  1.55s/it]
-/root/chatbot/backend/utils/embedding_handler.py:237: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.0.37 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-qdrant package and should be used instead. To use it run `pip install -U :class:`~langchain-qdrant` and import as `from :class:`~langchain_qdrant import Qdrant``.
+✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '5dd9fe5a-8ad1-4e58-8789-b9ae410ea821.txt'
+INFO:     127.0.0.1:60836 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '3f7d79e8-a49b-4694-90a0-c3ef3bbceb85.txt'
+INFO:     127.0.0.1:60836 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên '18b1b1a7-0897-47d1-958d-2af1a7bf99b9.txt'
+INFO:     127.0.0.1:60836 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên 'c1a8ac5b-83c4-409c-a285-57c06b723ad7.txt'
+INFO:     127.0.0.1:60836 - "POST /upload_file HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60836 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
+🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'new_template'
+   Các File ID: ['5dd9fe5a-8ad1-4e58-8789-b9ae410ea821', '3f7d79e8-a49b-4694-90a0-c3ef3bbceb85', '18b1b1a7-0897-47d1-958d-2af1a7bf99b9', 'c1a8ac5b-83c4-409c-a285-57c06b723ad7']
+🚀 New collection: session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c
+Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:13<00:40, 13.52s/it]Đọc file: 100%|██████████| 4/4 [00:13<00:00,  3.39s/it]
+/root/chatbot/backend/utils/embedding_handler.py:89: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
   qstore = Qdrant(
-Lỗi ./uploaded_files/472448eb-4206-4f20-9d23-72048d7d67f2.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-Lỗi ./uploaded_files/4666c6bf-6403-4b6d-bb59-2ac3c124e405.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-Lỗi ./uploaded_files/c44fa11a-99a3-4b64-8f97-988c9cadc61f.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-Lỗi ./uploaded_files/3203fb05-12b0-45c0-a960-3f9d3c15e0ea.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-Lỗi ./uploaded_files/af495acf-36c6-4e95-9894-774a888cf4b0.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-Lỗi ./uploaded_files/f6060780-815c-408c-a902-bc15a8f2a12c.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c/points?wait=true "HTTP/1.1 200 OK"
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c/points?wait=true "HTTP/1.1 200 OK"
+📄 Đã đọc 75 docs, chia thành 75 chunk.
 ⏳ Embedding & ghi Qdrant …
-✅ Hoàn tất collection session-df3f0343-3b25-48f8-a96b-f51bf3b60c86
-Các file đã được embedding vào collection: session-df3f0343-3b25-48f8-a96b-f51bf3b60c86
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'...
+✅ Hoàn tất collection session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c
+Các file đã được embedding vào collection: session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c
+Sử dụng danh sách trường cho MẪU MỚI.
+🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c' cho template 'new_template'...
 
 --- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-    ✅ Đã tìm thấy 'tên đầy đủ của doanh nghiệp': Đặng và Lê Công ty TNHH MTV Cổ phần
-    ✅ Đã tìm thấy 'mã số doanh nghiệp': 2532514855
-    ✅ Đã tìm thấy 'ngày cấp giấy chứng nhận đăng ký kinh doanh': 30/05/2016
-    ✅ Đã tìm thấy 'địa chỉ trụ sở chính': 521 Đặng Tổ, JohnXã, 435086
-    ✅ Đã tìm thấy 'ngành nghề kinh doanh chính': Sản xuất thực phẩm
-  - Không tìm thấy 1 trường: nơi cấp giấy chứng nhận đăng ký kinh doanh
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 2/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-    ✅ Đã tìm thấy 'vốn điều lệ': 13,535,817,293 VNĐ
-    ✅ Đã tìm thấy 'tên người đại diện theo pháp luật': Bác Tú Lê
-    ✅ Đã tìm thấy 'chức vụ người đại diện': Giám đốc/Tổng Giám đốc
-    ✅ Đã tìm thấy 'số CCCD/CMND của người đại diện': 145-42-1986
-    ✅ Đã tìm thấy 'số tiền đề nghị vay': 8,972,916,744 VNĐ
-    ✅ Đã tìm thấy 'thời hạn vay (tháng)': 48
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-    ✅ Đã tìm thấy 'mục đích vay vốn': Đầu tư kho lạnh
-    ✅ Đã tìm thấy 'sản phẩm tín dụng đăng ký': Vay đầu tư cơ sở hạ tầng
-    ✅ Đã tìm thấy 'phương thức trả nợ': Trả góp đều hàng tháng
-    ✅ Đã tìm thấy 'doanh thu năm gần nhất': 131499079698
-  - Không tìm thấy 2 trường: lãi suất cho vay (%/năm), phí trả nợ trước hạn (%)
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 6 trường: BBC (Báo cáo bởi), CBC (Cán bộ chính), ID đề xuất, Ngày báo cáo, Ngày cập nhật, Mục đích thẩm định
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 4/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-  - Không tìm thấy 1 trường: lãi suất cho vay (%/năm)
+--- VÒNG LẶP 2/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: BBC (Báo cáo bởi), CBC (Cán bộ chính), ID đề xuất
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: BBC (Báo cáo bởi)
   -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 4/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: CBC (Cán bộ chính), ID đề xuất
+  -> Chia nhỏ lô thất bại...
 
 --- VÒNG LẶP 5/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-  - Không tìm thấy 1 trường: phí trả nợ trước hạn (%)
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: CBC (Cán bộ chính)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 6/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-    ✅ Đã tìm thấy 'lợi nhuận ròng năm gần nhất': 15,332,007,383 VNĐ
-    ✅ Đã tìm thấy 'tổng tài sản ước tính': 136,893,822,170 VNĐ
-    ✅ Đã tìm thấy 'kế hoạch phân bổ vốn vay cho đầu tư kho lạnh': 7,333,193,551 VNĐ
-  - Không tìm thấy 3 trường: dự báo doanh thu năm 1 sau khi vay, điểm tín dụng doanh nghiệp (CIC), xếp hạng tín dụng doanh nghiệp (CIC)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-  - Không tìm thấy 1 trường: dự báo doanh thu năm 1 sau khi vay
+--- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: ID đề xuất
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 8/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-  - Không tìm thấy 2 trường: điểm tín dụng doanh nghiệp (CIC), xếp hạng tín dụng doanh nghiệp (CIC)
+--- VÒNG LẶP 7/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: Ngày báo cáo, Ngày cập nhật, Mục đích thẩm định
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 9/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-    ✅ Đã tìm thấy 'điểm tín dụng doanh nghiệp (CIC)': Báo cáo CIC doanh nghiệp và cá nhân người đại diện
+--- VÒNG LẶP 8/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Ngày báo cáo
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 9/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: Ngày cập nhật, Mục đích thẩm định
+  -> Chia nhỏ lô thất bại...
 
 --- VÒNG LẶP 10/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-    ✅ Đã tìm thấy 'xếp hạng tín dụng doanh nghiệp (CIC)': Báo cáo CIC doanh nghiệp và cá nhân người đại diện
-
---- VÒNG LẶP 11/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-    ✅ Đã tìm thấy 'tổng dư nợ tại các tổ chức tín dụng khác': 9,000,000,000 VNĐ (BIDV: 8,000,000,000 VNĐ + VPBank: 1,000,000,000 VNĐ)
-    ✅ Đã tìm thấy 'loại tài sản bảo đảm chính': Bất động sản, Bảo lãnh của bên thứ ba, Xe tải chuyên dụng
-  - Không tìm thấy 4 trường: phân loại nợ hiện tại của doanh nghiệp (CIC), dư nợ tại Vietcombank (CIC), lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC), chủ sở hữu tài sản bảo đảm
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 12/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-  - Không tìm thấy 2 trường: phân loại nợ hiện tại của doanh nghiệp (CIC), dư nợ tại Vietcombank (CIC)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-  - Không tìm thấy 1 trường: phân loại nợ hiện tại của doanh nghiệp (CIC)
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Ngày cập nhật
   -> Lô quá nhỏ, không chia nữa.
 
+--- VÒNG LẶP 11/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Mục đích thẩm định
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 12/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 6 trường: Cấp nơi, ID T24, Xếp hạng tín dụng, Ngày xếp hạng, Kết quả phân nhóm tiếp cận, Ngành
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 13/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: Cấp nơi, ID T24, Xếp hạng tín dụng
+  -> Chia nhỏ lô thất bại...
+
 --- VÒNG LẶP 14/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-  - Không tìm thấy 1 trường: dư nợ tại Vietcombank (CIC)
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Cấp nơi
   -> Lô quá nhỏ, không chia nữa.
 
 --- VÒNG LẶP 15/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-  - Không tìm thấy 2 trường: lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC), chủ sở hữu tài sản bảo đảm
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: ID T24, Xếp hạng tín dụng
   -> Chia nhỏ lô thất bại...
 
 --- VÒNG LẶP 16/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-    ✅ Đã tìm thấy 'lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC)': null
-
---- VÒNG LẶP 17/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
   - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
-  - Không tìm thấy 1 trường: chủ sở hữu tài sản bảo đảm
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 18/20 | Đang xử lý lô 4 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86'
-    ✅ Đã tìm thấy 'giá trị tài sản bảo đảm theo thẩm định': null
-    ✅ Đã tìm thấy 'đơn vị thẩm định giá': null
-    ✅ Đã tìm thấy 'tỷ lệ cho vay tối đa trên tài sản bảo đảm (%)': null
-    ✅ Đã tìm thấy 'tên người bảo lãnh cho khoản vay': Bác Tú Lê
-
-
-✅ Quá trình trích xuất hoàn tất!
-🧹 Dọn dẹp, xóa collection: session-df3f0343-3b25-48f8-a96b-f51bf3b60c86
-✅ Collection 'session-df3f0343-3b25-48f8-a96b-f51bf3b60c86' đã được xóa.
-INFO:     127.0.0.1:40072 - "POST /process_prompt HTTP/1.1" 200 OK
-✅ File 'KH001_Bao_Cao_CIC_Chi_Tiet.txt' đã được lưu thành công với tên '7d6c07f7-15a3-4fc3-b8af-f2a5929be05a.txt'
-INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Phuong_An_Kinh_Doanh.txt' đã được lưu thành công với tên '39056010-ffc1-4c27-9ca1-6b1cb691958b.txt'
-INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Tin_Dung.txt' đã được lưu thành công với tên 'aa6f0acb-b0b7-4009-ab8e-3ba075fc1084.txt'
-INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Hop_Dong_Kinh_Te_Mau.txt' đã được lưu thành công với tên '7eeefd26-4ae6-42e4-84f2-4c06646db1db.txt'
-INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Ho_So_TSDB_Chi_Tiet.txt' đã được lưu thành công với tên '38afe2e2-c9b3-4f0f-ad47-0a653b6730d9.txt'
-INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Giay_Chung_Nhan_DKKD.txt' đã được lưu thành công với tên '067a57bc-fdd4-46e4-afe0-5ad5b38f2ac1.txt'
-INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'KH001_Don_Xin_Vay_Von.txt' đã được lưu thành công với tên 'fc90da6b-4d8a-4878-8d7b-651e80351952.txt'
-INFO:     127.0.0.1:42278 - "POST /upload_file HTTP/1.1" 200 OK
-🚀 Nhận được yêu cầu xử lý cho 7 file với prompt: 'hi'
-   Các File ID: ['7d6c07f7-15a3-4fc3-b8af-f2a5929be05a', '39056010-ffc1-4c27-9ca1-6b1cb691958b', 'aa6f0acb-b0b7-4009-ab8e-3ba075fc1084', '7eeefd26-4ae6-42e4-84f2-4c06646db1db', '38afe2e2-c9b3-4f0f-ad47-0a653b6730d9', '067a57bc-fdd4-46e4-afe0-5ad5b38f2ac1', 'fc90da6b-4d8a-4878-8d7b-651e80351952']
-🚀 New collection: session-0e92e861-c8fa-4c19-aa48-f99fc6212a16
-Đọc file:   0%|          | 0/7 [00:00<?, ?it/s]Đọc file:  14%|█▍        | 1/7 [00:00<00:02,  2.87it/s]Đọc file:  57%|█████▋    | 4/7 [00:00<00:00, 10.54it/s]Đọc file:  86%|████████▌ | 6/7 [00:00<00:00, 11.12it/s]Đọc file: 100%|██████████| 7/7 [00:00<00:00, 10.77it/s]
-Lỗi ./uploaded_files/7d6c07f7-15a3-4fc3-b8af-f2a5929be05a.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-Lỗi ./uploaded_files/39056010-ffc1-4c27-9ca1-6b1cb691958b.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-Lỗi ./uploaded_files/aa6f0acb-b0b7-4009-ab8e-3ba075fc1084.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-Lỗi ./uploaded_files/7eeefd26-4ae6-42e4-84f2-4c06646db1db.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-Lỗi ./uploaded_files/38afe2e2-c9b3-4f0f-ad47-0a653b6730d9.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-Lỗi ./uploaded_files/fc90da6b-4d8a-4878-8d7b-651e80351952.txt: 
-**********************************************************************
-  Resource [93maveraged_perceptron_tagger_eng[0m not found.
-  Please use the NLTK Downloader to obtain the resource:
-
-  [31m>>> import nltk
-  >>> nltk.download('averaged_perceptron_tagger_eng')
-  [0m
-  For more information see: https://www.nltk.org/data.html
-
-  Attempted to load [93mtaggers/averaged_perceptron_tagger_eng/[0m
-
-  Searched in:
-    - '/root/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/share/nltk_data'
-    - '/root/miniconda3/envs/chatbot_env/lib/nltk_data'
-    - '/usr/share/nltk_data'
-    - '/usr/local/share/nltk_data'
-    - '/usr/lib/nltk_data'
-    - '/usr/local/lib/nltk_data'
-**********************************************************************
-
-⏳ Embedding & ghi Qdrant …
-✅ Hoàn tất collection session-0e92e861-c8fa-4c19-aa48-f99fc6212a16
-Các file đã được embedding vào collection: session-0e92e861-c8fa-4c19-aa48-f99fc6212a16
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'...
-
---- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-    ✅ Đã tìm thấy 'tên đầy đủ của doanh nghiệp': Đặng và Lê Công ty TNHH MTV Cổ phần
-    ✅ Đã tìm thấy 'mã số doanh nghiệp': 2532514855
-    ✅ Đã tìm thấy 'ngày cấp giấy chứng nhận đăng ký kinh doanh': 30/05/2016
-    ✅ Đã tìm thấy 'địa chỉ trụ sở chính': 521 Đặng Tổ, JohnXã, 435086
-    ✅ Đã tìm thấy 'ngành nghề kinh doanh chính': Sản xuất thực phẩm
-  - Không tìm thấy 1 trường: nơi cấp giấy chứng nhận đăng ký kinh doanh
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 2/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-    ✅ Đã tìm thấy 'vốn điều lệ': 13,535,817,293 VNĐ
-    ✅ Đã tìm thấy 'tên người đại diện theo pháp luật': Bác Tú Lê
-    ✅ Đã tìm thấy 'chức vụ người đại diện': Giám đốc/Tổng Giám đốc
-    ✅ Đã tìm thấy 'số CCCD/CMND của người đại diện': 145-42-1986
-    ✅ Đã tìm thấy 'số tiền đề nghị vay': 8,972,916,744 VNĐ
-    ✅ Đã tìm thấy 'thời hạn vay (tháng)': 48
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-    ✅ Đã tìm thấy 'mục đích vay vốn': Đầu tư kho lạnh
-    ✅ Đã tìm thấy 'sản phẩm tín dụng đăng ký': Vay đầu tư cơ sở hạ tầng
-    ✅ Đã tìm thấy 'phương thức trả nợ': Trả góp đều hàng tháng
-    ✅ Đã tìm thấy 'doanh thu năm gần nhất': 131499079698
-  - Không tìm thấy 2 trường: lãi suất cho vay (%/năm), phí trả nợ trước hạn (%)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 4/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 1 trường: lãi suất cho vay (%/năm)
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 5/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 1 trường: phí trả nợ trước hạn (%)
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 6/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-    ✅ Đã tìm thấy 'lợi nhuận ròng năm gần nhất': 15,332,007,383 VNĐ
-    ✅ Đã tìm thấy 'tổng tài sản ước tính': 136,893,822,170 VNĐ
-    ✅ Đã tìm thấy 'kế hoạch phân bổ vốn vay cho đầu tư kho lạnh': 7,333,193,551 VNĐ
-  - Không tìm thấy 3 trường: dự báo doanh thu năm 1 sau khi vay, điểm tín dụng doanh nghiệp (CIC), xếp hạng tín dụng doanh nghiệp (CIC)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 1 trường: dự báo doanh thu năm 1 sau khi vay
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 8/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 2 trường: điểm tín dụng doanh nghiệp (CIC), xếp hạng tín dụng doanh nghiệp (CIC)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 9/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-    ✅ Đã tìm thấy 'điểm tín dụng doanh nghiệp (CIC)': Báo cáo CIC doanh nghiệp và cá nhân người đại diện
-
---- VÒNG LẶP 10/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-    ✅ Đã tìm thấy 'xếp hạng tín dụng doanh nghiệp (CIC)': Báo cáo CIC doanh nghiệp và cá nhân người đại diện
-
---- VÒNG LẶP 11/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-    ✅ Đã tìm thấy 'tổng dư nợ tại các tổ chức tín dụng khác': 9,000,000,000 VNĐ (BIDV: 8,000,000,000 VNĐ + VPBank: 1,000,000,000 VNĐ)
-    ✅ Đã tìm thấy 'loại tài sản bảo đảm chính': Bất động sản, Bảo lãnh của bên thứ ba, Xe tải chuyên dụng
-  - Không tìm thấy 4 trường: phân loại nợ hiện tại của doanh nghiệp (CIC), dư nợ tại Vietcombank (CIC), lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC), chủ sở hữu tài sản bảo đảm
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 12/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 2 trường: phân loại nợ hiện tại của doanh nghiệp (CIC), dư nợ tại Vietcombank (CIC)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 1 trường: phân loại nợ hiện tại của doanh nghiệp (CIC)
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 14/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 1 trường: dư nợ tại Vietcombank (CIC)
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 15/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 2 trường: lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC), chủ sở hữu tài sản bảo đảm
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 16/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 1 trường: lịch sử trả nợ 12 tháng gần nhất (chuỗi trạng thái CIC)
+  - Không tìm thấy 1 trường: ID T24
   -> Lô quá nhỏ, không chia nữa.
 
 --- VÒNG LẶP 17/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 1 trường: chủ sở hữu tài sản bảo đảm
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 18/20 | Đang xử lý lô 4 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
   - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
-  - Không tìm thấy 4 trường: giá trị tài sản bảo đảm theo thẩm định, đơn vị thẩm định giá, tỷ lệ cho vay tối đa trên tài sản bảo đảm (%), tên người bảo lãnh cho khoản vay
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 19/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 2 trường: giá trị tài sản bảo đảm theo thẩm định, đơn vị thẩm định giá
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 20/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16'
-  - Không tìm thấy 1 trường: giá trị tài sản bảo đảm theo thẩm định
+  - Không tìm thấy 1 trường: Xếp hạng tín dụng
   -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 18/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: Ngày xếp hạng, Kết quả phân nhóm tiếp cận, Ngành
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 19/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Ngày xếp hạng
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 20/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: Kết quả phân nhóm tiếp cận, Ngành
+  -> Chia nhỏ lô thất bại...
 
 
 ✅ Quá trình trích xuất hoàn tất!
-🧹 Dọn dẹp, xóa collection: session-0e92e861-c8fa-4c19-aa48-f99fc6212a16
-✅ Collection 'session-0e92e861-c8fa-4c19-aa48-f99fc6212a16' đã được xóa.
-INFO:     127.0.0.1:42278 - "POST /process_prompt HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'api/main.py'. Reloading...
+🔄 Cấu trúc lại dữ liệu cho mẫu mới...
+INFO:     127.0.0.1:60836 - "POST /process_prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50632 - "OPTIONS /clear_rag_session HTTP/1.1" 200 OK
+INFO: HTTP Request: DELETE http://localhost:6333/collections/session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c "HTTP/1.1 200 OK"
+🧹 Nhận yêu cầu dọn dẹp RAG collection: session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c
+✅ RAG Collection 'session-de52d21f-8a0f-4c95-a2a4-f25fb67aa63c' đã được xóa thành công.
+INFO:     127.0.0.1:50632 - "POST /clear_rag_session HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'utils/embedding_handler.py'. Reloading...
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [22642]
-/root/chatbot/backend/utils/embedding_handler.py:174: LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists in the :class:`~langchain-huggingface package and should be used instead. To use it run `pip install -U :class:`~langchain-huggingface` and import as `from :class:`~langchain_huggingface import HuggingFaceEmbeddings``.
-  embedding_model = HuggingFaceEmbeddings(
-INFO:     Started server process [26710]
+INFO:     Finished server process [66019]
+INFO:     Started server process [67631]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
+🧠 Đang tải / khởi tạo embedding model …
+✅ Embedding model sẵn sàng.
+✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '4270538d-8bbb-4167-8e9d-ca3290dafa8e.txt'
+INFO:     127.0.0.1:56418 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên 'f01d5bad-a1c2-4551-af58-6f50f97b1698.txt'
+INFO:     127.0.0.1:56418 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên '48a25554-154a-43ab-9ea4-165471e40ae8.txt'
+INFO:     127.0.0.1:56418 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '7f71d98f-5b7a-4589-a4ec-2edd6eeda299.txt'
+INFO:     127.0.0.1:56418 - "POST /upload_file HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45254 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
+🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'new_template'
+   Các File ID: ['4270538d-8bbb-4167-8e9d-ca3290dafa8e', 'f01d5bad-a1c2-4551-af58-6f50f97b1698', '48a25554-154a-43ab-9ea4-165471e40ae8', '7f71d98f-5b7a-4589-a4ec-2edd6eeda299']
+🚀 New collection: session-61cec466-b5f7-4581-9a37-258a54b45e24
+Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:08<00:25,  8.55s/it]Đọc file: 100%|██████████| 4/4 [00:08<00:00,  2.15s/it]
+/root/chatbot/backend/utils/embedding_handler.py:92: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
+  qstore = Qdrant(
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-61cec466-b5f7-4581-9a37-258a54b45e24/points?wait=true "HTTP/1.1 200 OK"
+⏳ Embedding & ghi Qdrant …
+✅ Hoàn tất collection session-61cec466-b5f7-4581-9a37-258a54b45e24
+Các file đã được embedding vào collection: session-61cec466-b5f7-4581-9a37-258a54b45e24
+Sử dụng danh sách trường cho MẪU MỚI.
+🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-61cec466-b5f7-4581-9a37-258a54b45e24' cho template 'new_template'...
+
+--- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 6 trường: BBC (Báo cáo bởi), CBC (Cán bộ chính), ID đề xuất, Ngày báo cáo, Ngày cập nhật, Mục đích thẩm định
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 2/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: BBC (Báo cáo bởi), CBC (Cán bộ chính), ID đề xuất
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: BBC (Báo cáo bởi)
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 4/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: CBC (Cán bộ chính), ID đề xuất
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 5/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: CBC (Cán bộ chính)
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: ID đề xuất
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 7/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: Ngày báo cáo, Ngày cập nhật, Mục đích thẩm định
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 8/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Ngày báo cáo
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 9/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: Ngày cập nhật, Mục đích thẩm định
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 10/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Ngày cập nhật
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 11/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Mục đích thẩm định
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 12/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 6 trường: Cấp nơi, ID T24, Xếp hạng tín dụng, Ngày xếp hạng, Kết quả phân nhóm tiếp cận, Ngành
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 13/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: Cấp nơi, ID T24, Xếp hạng tín dụng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 14/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Cấp nơi
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 15/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: ID T24, Xếp hạng tín dụng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 16/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: ID T24
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 17/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Xếp hạng tín dụng
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 18/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: Ngày xếp hạng, Kết quả phân nhóm tiếp cận, Ngành
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 19/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Ngày xếp hạng
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 20/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-61cec466-b5f7-4581-9a37-258a54b45e24'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: Kết quả phân nhóm tiếp cận, Ngành
+  -> Chia nhỏ lô thất bại...
+
+
+✅ Quá trình trích xuất hoàn tất!
+🔄 Cấu trúc lại dữ liệu cho mẫu mới...
+INFO:     127.0.0.1:45254 - "POST /process_prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45700 - "OPTIONS /clear_rag_session HTTP/1.1" 200 OK
+INFO: HTTP Request: DELETE http://localhost:6333/collections/session-61cec466-b5f7-4581-9a37-258a54b45e24 "HTTP/1.1 200 OK"
+🧹 Nhận yêu cầu dọn dẹp RAG collection: session-61cec466-b5f7-4581-9a37-258a54b45e24
+✅ RAG Collection 'session-61cec466-b5f7-4581-9a37-258a54b45e24' đã được xóa thành công.
+INFO:     127.0.0.1:45700 - "POST /clear_rag_session HTTP/1.1" 200 OK
+✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên 'b70f4322-3dce-4d7c-8f75-f5235d776317.txt'
+INFO:     127.0.0.1:55722 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '4b19fdaf-1e13-4007-9148-4bac222366ca.txt'
+INFO:     127.0.0.1:55722 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên 'ea168871-2e08-4bfb-a649-f6321184a84e.txt'
+INFO:     127.0.0.1:55722 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '64b42aad-4734-45f2-b7f1-dceb62d5733c.txt'
+INFO:     127.0.0.1:55722 - "POST /upload_file HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55722 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
+INFO: HTTP Request: DELETE http://localhost:6333/collections/session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb "HTTP/1.1 200 OK"
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb "HTTP/1.1 200 OK"
+🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'new_template'
+   Các File ID: ['b70f4322-3dce-4d7c-8f75-f5235d776317', '4b19fdaf-1e13-4007-9148-4bac222366ca', 'ea168871-2e08-4bfb-a649-f6321184a84e', '64b42aad-4734-45f2-b7f1-dceb62d5733c']
+🚀 New collection: session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb
+Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:00<00:02,  1.35it/s]Đọc file:  50%|█████     | 2/4 [00:00<00:00,  2.69it/s]Đọc file:  75%|███████▌  | 3/4 [00:01<00:00,  3.61it/s]Đọc file: 100%|██████████| 4/4 [00:01<00:00,  3.71it/s]
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb/points?wait=true "HTTP/1.1 200 OK"
+⏳ Embedding & ghi Qdrant …
+✅ Hoàn tất collection session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb
+Các file đã được embedding vào collection: session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb
+Sử dụng danh sách trường cho MẪU MỚI.
+🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb' cho template 'new_template'...
+
+--- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 6 trường: BBC (Báo cáo bởi), CBC (Cán bộ chính), ID đề xuất, Ngày báo cáo, Ngày cập nhật, Mục đích thẩm định
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 2/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: BBC (Báo cáo bởi), CBC (Cán bộ chính), ID đề xuất
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: BBC (Báo cáo bởi)
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 4/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: CBC (Cán bộ chính), ID đề xuất
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 5/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: CBC (Cán bộ chính)
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: ID đề xuất
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 7/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: Ngày báo cáo, Ngày cập nhật, Mục đích thẩm định
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 8/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Ngày báo cáo
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 9/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: Ngày cập nhật, Mục đích thẩm định
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 10/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Ngày cập nhật
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 11/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Mục đích thẩm định
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 12/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 6 trường: Cấp nơi, ID T24, Xếp hạng tín dụng, Ngày xếp hạng, Kết quả phân nhóm tiếp cận, Ngành
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 13/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: Cấp nơi, ID T24, Xếp hạng tín dụng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 14/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Cấp nơi
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 15/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: ID T24, Xếp hạng tín dụng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 16/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: ID T24
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 17/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Xếp hạng tín dụng
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 18/20 | Đang xử lý lô 3 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 3 trường: Ngày xếp hạng, Kết quả phân nhóm tiếp cận, Ngành
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 19/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 1 trường: Ngày xếp hạng
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 20/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb'
+  - Lỗi kết nối tới Langflow: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c
+  - Không tìm thấy 2 trường: Kết quả phân nhóm tiếp cận, Ngành
+  -> Chia nhỏ lô thất bại...
+
+
+✅ Quá trình trích xuất hoàn tất!
+🔄 Cấu trúc lại dữ liệu cho mẫu mới...
+INFO:     127.0.0.1:55722 - "POST /process_prompt HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'config.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [67631]
+INFO:     Started server process [72635]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+🧠 Đang tải / khởi tạo embedding model …
+✅ Embedding model sẵn sàng.
+🧹 Nhận yêu cầu dọn dẹp RAG collection: session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb
+✅ RAG Collection 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb' đã được xóa thành công.
+INFO:     127.0.0.1:54302 - "POST /clear_rag_session HTTP/1.1" 200 OK
+🧹 Nhận yêu cầu dọn dẹp RAG collection: session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb
+✅ RAG Collection 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb' đã được xóa thành công.
+INFO:     127.0.0.1:54326 - "POST /clear_rag_session HTTP/1.1" 200 OK
+🧹 Nhận yêu cầu dọn dẹp RAG collection: session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb
+✅ RAG Collection 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb' đã được xóa thành công.
+INFO:     127.0.0.1:54336 - "POST /clear_rag_session HTTP/1.1" 200 OK
+🧹 Nhận yêu cầu dọn dẹp RAG collection: session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb
+✅ RAG Collection 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb' đã được xóa thành công.
+INFO:     127.0.0.1:54348 - "POST /clear_rag_session HTTP/1.1" 200 OK
+🧹 Nhận yêu cầu dọn dẹp RAG collection: session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb
+✅ RAG Collection 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb' đã được xóa thành công.
+INFO:     127.0.0.1:54362 - "POST /clear_rag_session HTTP/1.1" 200 OK
+🧹 Nhận yêu cầu dọn dẹp RAG collection: session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb
+✅ RAG Collection 'session-3cc291a1-9bcc-4d09-81ee-f6d752d095cb' đã được xóa thành công.
+INFO:     127.0.0.1:54372 - "POST /clear_rag_session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54672 - "POST /clear_rag_session HTTP/1.1" 422 Unprocessable Entity
+✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '0e77b2d9-796a-4e06-bf05-a15b235227ca.txt'
+INFO:     127.0.0.1:33742 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên '55abda4b-edf5-4df8-a80d-5fc8e10a2368.txt'
+INFO:     127.0.0.1:33742 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '1b653aac-3a52-494c-8514-ffd5980a2c42.txt'
+INFO:     127.0.0.1:33742 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '8dfc9c9c-f25e-4ab5-9ebd-1ee39378cfe6.txt'
+INFO:     127.0.0.1:33742 - "POST /upload_file HTTP/1.1" 200 OK
+🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'new_template'
+   Các File ID: ['0e77b2d9-796a-4e06-bf05-a15b235227ca', '55abda4b-edf5-4df8-a80d-5fc8e10a2368', '1b653aac-3a52-494c-8514-ffd5980a2c42', '8dfc9c9c-f25e-4ab5-9ebd-1ee39378cfe6']
+🚀 New collection: session-5b79c447-3e1b-42e4-8f97-57b9492b73e1
+Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:09<00:28,  9.43s/it]Đọc file: 100%|██████████| 4/4 [00:09<00:00,  2.37s/it]
+/root/chatbot/backend/utils/embedding_handler.py:92: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
+  qstore = Qdrant(
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-5b79c447-3e1b-42e4-8f97-57b9492b73e1/points?wait=true "HTTP/1.1 404 Not Found"
+⏳ Embedding & ghi Qdrant …
+❌ Lỗi nghiêm trọng trong quá trình xử lý: Unexpected Response: 404 (Not Found)
+Raw response content:
+b'{"status":{"error":"Not found: Collection `session-5b79c447-3e1b-42e4-8f97-57b9492b73e1` doesn\'t exist!"},"time":0.001559144}'
+INFO:     127.0.0.1:33742 - "POST /process_prompt HTTP/1.1" 500 Internal Server Error
+/root/miniconda3/envs/chatbot_env/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 3 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

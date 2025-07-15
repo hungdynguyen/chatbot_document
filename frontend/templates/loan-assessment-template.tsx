@@ -15,7 +15,6 @@ import { EditableField } from "@/components/editable-field"
 
 // --- INTERFACE GIỮ NGUYÊN ---
 interface LoanAssessmentData {
-  //... (giữ nguyên không thay đổi)
   title: string
   company: string
   loanAmount: string
@@ -119,8 +118,6 @@ export function LoanAssessmentTemplate({
   if (!data) {
     return <div className="p-8 text-center">Đang tải...</div>
   }
-
-  // Loại bỏ commonEditableProps, chúng ta sẽ truyền trực tiếp
   
   return (
     <div className="p-8 max-w-4xl mx-auto animate-fade-in-up">

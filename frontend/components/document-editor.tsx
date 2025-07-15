@@ -7,16 +7,18 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Download, Edit, FileText, ArrowLeft } from "lucide-react"
 import { LoanAssessmentTemplate } from "@/templates/loan-assessment-template"
+import { LoanAssessmentTemplateNew } from "@/templates/new_template"
 import { set } from 'lodash'; // Cần cài đặt lodash
 
 
 interface DocumentEditorProps {
   content?: any
+  templateId: string
   onExportPDF: () => void
   onBackToChat?: () => void
 }
 
-export function DocumentEditor({ content, onExportPDF, onBackToChat }: DocumentEditorProps) {
+export function DocumentEditor({ content, templateId, onExportPDF, onBackToChat }: DocumentEditorProps) {
   // documentData sẽ là nguồn chân lý duy nhất cho template
   const [documentData, setDocumentData] = useState<any | null>(null) 
   const [editingField, setEditingField] = useState<string | null>(null)
@@ -51,6 +53,24 @@ export function DocumentEditor({ content, onExportPDF, onBackToChat }: DocumentE
     // Cập nhật state với object mới
     setDocumentData(updatedData);
   }
+
+  const renderTemplate = () => {
+    const props = {
+      data: documentData,
+      editingField: editingField,
+      onEdit: handleEdit,
+      onStopEdit: handleStopEdit,
+      onUpdateField: handleUpdateField,
+    };
+
+    switch (templateId) {
+      case 'new_template':
+        return <LoanAssessmentTemplateNew {...props} />;
+      case 'loan_assessment':
+      default:
+        return <LoanAssessmentTemplate {...props} />;
+    }
+  };
 
   if (!documentData) {
     return (
@@ -109,16 +129,7 @@ export function DocumentEditor({ content, onExportPDF, onBackToChat }: DocumentE
       </div>
 
       {/* Template Content */}
-      <LoanAssessmentTemplate
-        data={documentData}
-        editingField={editingField}
-        onEdit={handleEdit}
-        onStopEdit={handleStopEdit}
-        onUpdateField={handleUpdateField} // Truyền hàm cập nhật mới xuống
-        // Các hàm update riêng lẻ không cần nữa
-        // onUpdateRecommendation={...}
-        // onUpdateFinancialHighlight={...}
-      />
+      {renderTemplate()}
     </div>
   )
 }
