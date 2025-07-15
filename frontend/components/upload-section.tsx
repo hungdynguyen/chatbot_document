@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -32,6 +32,8 @@ import {
 } from "@/components/ui/select"
 import { LoanAssessmentOldPreview } from "./template-previews/LoanAssessmentOldPreview"
 import { LoanAssessmentNewPreview } from "./template-previews/LoanAssessmentNewPreview"
+import { LoanAssessmentReportPreview } from "./template-previews/LoanAssessmentReportPreview"
+import { AVAILABLE_TEMPLATES, type Template } from "@/lib/templates"
 
 
 interface UploadedFile {
@@ -58,8 +60,9 @@ export function UploadSection({
   const [isDragOver, setIsDragOver] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [showActions, setShowActions] = useState(false)
-  const [selectedTemplate, setSelectedTemplate] = useState("loan_assessment_old")
+  const [selectedTemplate, setSelectedTemplate] = useState("template_1")
   const [showPreview, setShowPreview] = useState(false)
+  const [availableTemplates] = useState<Template[]>(AVAILABLE_TEMPLATES)
   const router = useRouter()
 
   const getFileIcon = (type: string) => {
@@ -393,8 +396,11 @@ export function UploadSection({
                       <SelectValue placeholder="Chọn một mẫu báo cáo..." />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="loan_assessment_old">Mẫu Thẩm định cho vay (Cũ)</SelectItem>
-                      <SelectItem value="new_template">Mẫu Thẩm định chi tiết (Mới)</SelectItem>
+                      {availableTemplates.map(template => (
+                        <SelectItem key={template.template_id} value={template.template_id}>
+                          {template.template_name}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <Button variant="outline" onClick={() => setShowPreview(!showPreview)}>
@@ -406,7 +412,9 @@ export function UploadSection({
               {/* Template Preview */}
               {showPreview && (
                 <div className="p-4 border rounded-md bg-gray-50">
-                  {selectedTemplate === 'loan_assessment_old' ? <LoanAssessmentOldPreview /> : <LoanAssessmentNewPreview />}
+                  {selectedTemplate === 'template_1' && <LoanAssessmentOldPreview />}
+                  {selectedTemplate === 'template_2' && <LoanAssessmentNewPreview />}
+                  {selectedTemplate === 'template_3' && <LoanAssessmentReportPreview />}
                 </div>
               )}
 

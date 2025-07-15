@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 # Giả sử bạn có file config.py để quản lý các hằng số
 from config import UPLOAD_DIRECTORY, origins 
 # Import các hàm xử lý logic
-from utils.extractor import extract_information_from_docs
+from utils.extractor import extract_information_from_docs, load_template_schema
 from utils.rag_client import query_rag_flow
 from utils.embedding_handler import embed_files_to_qdrant, qdrant_client 
 
@@ -36,7 +36,7 @@ app.add_middleware(
 class ProcessRequest(BaseModel):
     prompt: str
     file_ids: List[str]
-    template_id: str = "loan_assessment_old" # Thêm template_id, mặc định là template cũ
+    template_id: str = "template_1" # Thêm template_id, mặc định là template 1
 
 class RagRequest(BaseModel):
     question: str
@@ -86,7 +86,7 @@ async def process_prompt(request: ProcessRequest):
         collection_name = await embed_files_to_qdrant(request.file_ids)
         print(f"Các file đã được embedding vào collection: {collection_name}")
 
-        # --- BƯỚC 2: GỌI HÀM XỬ LÝ TRÍCH XUẤT VÀ TRUYỀN COLLECTION_NAME VÀ TEMPLATE_ID VÀO ---
+        # --- BƯỚC 2: GỌI HÀM XỬ LÝ TRÍCH XUẤT VÀ TRUYỀN COLLECTION_NAME VÀO ---
         extracted_data = await extract_information_from_docs(
             prompt=request.prompt,
             file_ids=request.file_ids,
@@ -133,7 +133,7 @@ async def chat_rag(request: RagRequest):
     try:
         # Nếu không có collection_name, hoặc có nhưng không tồn tại trên server, tạo mới
         if not collection_name:
-            print("🤔 Không có collection_name, sẽ tạo collection mới...")
+            print("Không có collection_name, sẽ tạo collection mới...")
             collection_name = await embed_files_to_qdrant(request.file_ids)
             new_collection_created = True
             print(f"⭐️ Các file cho RAG đã được embedding vào collection mới: {collection_name}")
@@ -209,7 +209,39 @@ async def clear_rag_session(request: ClearSessionRequest):
 
 
 # -------------------------------------------------------------
-# 7. ĐIỂM BẮT ĐẦU
+# 7. ENDPOINT LẤY DANH SÁCH TEMPLATES
+# -------------------------------------------------------------
+@app.get("/templates")
+async def get_templates():
+    """
+    Trả về danh sách các template có sẵn trong hệ thống.
+    """
+    try:
+        import glob
+        schemas_dir = os.path.join(os.path.dirname(__file__), "..", "utils", "..", "schemas")
+        schema_files = glob.glob(os.path.join(schemas_dir, "*.json"))
+        
+        templates = []
+        for schema_file in schema_files:
+            try:
+                schema = load_template_schema(os.path.basename(schema_file).replace('.json', ''))
+                templates.append({
+                    "template_id": schema.get("template_id"),
+                    "template_name": schema.get("template_name"),
+                    "description": schema.get("description")
+                })
+            except Exception as e:
+                print(f"Lỗi khi đọc schema {schema_file}: {e}")
+                continue
+        
+        return {"templates": templates}
+    except Exception as e:
+        print(f"❌ Lỗi khi lấy danh sách templates: {e}")
+        raise HTTPException(status_code=500, detail=f"Lỗi khi lấy danh sách templates: {e}")
+
+
+# -------------------------------------------------------------
+# 8. ĐIỂM BẮT ĐẦU
 # -------------------------------------------------------------
 if __name__ == "__main__":
     # Bạn cần file config.py có định nghĩa biến 'origins'

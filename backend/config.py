@@ -35,4 +35,4 @@ HEADERS = {"Content-Type": "application/json; charset=utf-8"}
 
 # Component IDs trong các Langflow flows
 QDRANT_COMPONENT_ID_EXTRACTOR = "QdrantVectorStoreComponent-L0lVV"
-QDRANT_COMPONENT_ID_RAG = "QdrantVectorStoreComponent-VEffS"
+QDRANT_COMPONENT_ID_RAG = "QdrantVectorStoreComponent-eImvl"

@@ -1,0 +1,79 @@
+{
+  "template_id": "template_3", 
+  "template_name": "Template 3",
+  "description": "Mẫu báo cáo thẩm định tín dụng chi tiết với thông tin khách hàng và quy định TCB",
+  "fields": [
+    "Tên đầy đủ của khách hàng",
+    "Giấy ĐKKD/GP đầu tư", 
+    "ID trên T24",
+    "Phân khúc",
+    "Loại khách hàng",
+    "Ngành nghề HĐKD theo ĐKKD",
+    "Mục đích báo cáo",
+    "Kết quả phân luồng",
+    "XHTD",
+    "Ngày thành lập",
+    "Địa chỉ trên ĐKKD",
+    "Người đại diện theo Pháp luật",
+    "Có kinh doanh Ngành nghề kinh doanh có điều kiện",
+    "Tên thành viên góp vốn/ban lãnh đạo",
+    "Tỷ lệ vốn góp (%)",
+    "Chức vụ",
+    "Mức độ ảnh hưởng tới Khách hàng",
+    "Đánh giá về năng lực, uy tín và kinh nghiệm",
+    "Thông tin khách hàng tổng quan",
+    "Pháp lý/ GPKD có ĐK",
+    "Chủ doanh nghiệp/Ban lãnh đạo",
+    "KYC",
+    "Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật",
+    "Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật",
+    "Lĩnh vực kinh tế và TPK trọng tâm",
+    "Định hướng tín dụng", 
+    "Offering/ CTKD",
+    "Đánh giá Rủi ro môi trường xã hội",
+    "Quy định khác (nếu có)"
+  ],
+  "mapping": {
+    "thongTinChung": {
+      "tenKhachHang": "Tên đầy đủ của khách hàng",
+      "giayPhep": "Giấy ĐKKD/GP đầu tư",
+      "idT24": "ID trên T24",
+      "phanKhuc": "Phân khúc",
+      "loaiKhachHang": "Loại khách hàng",
+      "nganhNghe": "Ngành nghề HĐKD theo ĐKKD",
+      "mucDichBaoCao": "Mục đích báo cáo",
+      "ketQuaPhanLuong": "Kết quả phân luồng",
+      "xhtd": "XHTD"
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "Ngày thành lập",
+        "diaChi": "Địa chỉ trên ĐKKD",
+        "nguoiDaiDien": "Người đại diện theo Pháp luật",
+        "nganhNgheCoDieuKien": "Có kinh doanh Ngành nghề kinh doanh có điều kiện"
+      },
+      "banLanhDao": {
+        "ten": "Tên thành viên góp vốn/ban lãnh đạo",
+        "tyLeVon": "Tỷ lệ vốn góp (%)",
+        "chucVu": "Chức vụ",
+        "mucDoAnhHuong": "Mức độ ảnh hưởng tới Khách hàng",
+        "danhGia": "Đánh giá về năng lực, uy tín và kinh nghiệm"
+      },
+      "nhanXet": {
+        "thongTinChung": "Thông tin khách hàng tổng quan",
+        "phapLyGpkd": "Pháp lý/ GPKD có ĐK",
+        "chuDoanhNghiep": "Chủ doanh nghiệp/Ban lãnh đạo",
+        "kyc": "KYC"
+      }
+    },
+    "kiemTraQuyDinh": {
+      "nguoiLienQuan": "Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật",
+      "mucDuNo": "Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật",
+      "linhVucKinhTe": "Lĩnh vực kinh tế và TPK trọng tâm",
+      "dinhHuongTinDung": "Định hướng tín dụng",
+      "offering": "Offering/ CTKD",
+      "ruiRoMtxh": "Đánh giá Rủi ro môi trường xã hội",
+      "quyDinhKhac": "Quy định khác (nếu có)"
+    }
+  }
+}

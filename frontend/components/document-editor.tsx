@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Download, Edit, FileText, ArrowLeft } from "lucide-react"
 import { LoanAssessmentTemplate } from "@/templates/loan-assessment-template"
 import { LoanAssessmentTemplateNew } from "@/templates/new_template"
+import { LoanReportTemplate } from "@/templates/loan-assessment-report-template"
 import { set } from 'lodash'; // Cần cài đặt lodash
 
 
@@ -55,20 +56,27 @@ export function DocumentEditor({ content, templateId, onExportPDF, onBackToChat 
   }
 
   const renderTemplate = () => {
-    const props = {
+    if (!documentData) {
+      return <div className="text-center py-8 text-gray-500">Đang tải dữ liệu...</div>
+    }
+
+    const commonProps = {
       data: documentData,
-      editingField: editingField,
+      editingField,
       onEdit: handleEdit,
       onStopEdit: handleStopEdit,
       onUpdateField: handleUpdateField,
-    };
+    }
 
     switch (templateId) {
-      case 'new_template':
-        return <LoanAssessmentTemplateNew {...props} />;
-      case 'loan_assessment':
+      case "template_1":
+        return <LoanAssessmentTemplate {...commonProps} />
+      case "template_2":
+        return <LoanAssessmentTemplateNew {...commonProps} />
+      case "template_3":
+        return <LoanReportTemplate {...commonProps} />
       default:
-        return <LoanAssessmentTemplate {...props} />;
+        return <LoanAssessmentTemplate {...commonProps} />
     }
   };
 

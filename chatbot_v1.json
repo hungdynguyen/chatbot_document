@@ -806,7 +806,7 @@
                 "tool_mode": false,
                 "trace_as_metadata": true,
                 "type": "int",
-                "value": 10
+                "value": 5
               },
               "path": {
                 "_input_type": "StrInput",
@@ -1829,7 +1829,7 @@
             "frozen": false,
             "icon": "GoogleGenerativeAI",
             "key": "GoogleGenerativeAIModel",
-            "last_updated": "2025-07-14T07:06:48.949Z",
+            "last_updated": "2025-07-15T08:54:44.391Z",
             "legacy": false,
             "lf_version": "1.4.3",
             "metadata": {},
@@ -1890,7 +1890,7 @@
                 "show": true,
                 "title_case": false,
                 "type": "str",
-                "value": "AIzaSyDLD8ZMbQZ_xS-1a474hVD1hlIeb78vrW8"
+                "value": ""
               },
               "code": {
                 "advanced": true,
@@ -2183,9 +2183,9 @@
       }
     ],
     "viewport": {
-      "x": -1740.4093491056133,
-      "y": 73.30469080478571,
-      "zoom": 0.8618522181379598
+      "x": -1221.6320167545837,
+      "y": 161.38461502458654,
+      "zoom": 0.6531618424577195
     }
   },
   "description": "Create Powerful Connections, Boost Business Value.",
