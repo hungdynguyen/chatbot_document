@@ -60,7 +60,7 @@ export function LoanReportTemplate({
   }
 
   return (
-    <div className="p-4 md:p-6 max-w-7xl mx-auto bg-white font-sans text-sm">
+    <div id="document-content" className="p-4 md:p-6 max-w-7xl mx-auto bg-white font-sans text-sm">
       <style jsx global>{`
         table {
           width: 100%;

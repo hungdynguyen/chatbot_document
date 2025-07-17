@@ -171,7 +171,7 @@ export function LoanAssessmentTemplateNew({
   const commonProps = { editingField, onEdit, onStopEdit };
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto bg-white shadow-lg animate-fade-in-up font-sans">
+    <div id="document-content" className="p-4 md:p-8 max-w-7xl mx-auto bg-white shadow-lg animate-fade-in-up font-sans">
       {/* --- HEADER --- */}
       <div className="text-center mb-6">
           <img src="https://inkythuatso.com/uploads/images/2021/09/techcombank-logo-inkythuatso-14-15-51-09.jpg" alt="Techcombank Logo" className="h-10 mx-auto mb-4"/>

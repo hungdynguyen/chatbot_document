@@ -5,7 +5,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Download, Edit, FileText, ArrowLeft } from "lucide-react"
+import { Download, Edit, FileText, ArrowLeft, FileDown } from "lucide-react"
 import { LoanAssessmentTemplate } from "@/templates/loan-assessment-template"
 import { LoanAssessmentTemplateNew } from "@/templates/new_template"
 import { LoanReportTemplate } from "@/templates/loan-assessment-report-template"
@@ -16,10 +16,11 @@ interface DocumentEditorProps {
   content?: any
   templateId: string
   onExportPDF: () => void
+  onExportWord: () => void
   onBackToChat?: () => void
 }
 
-export function DocumentEditor({ content, templateId, onExportPDF, onBackToChat }: DocumentEditorProps) {
+export function DocumentEditor({ content, templateId, onExportPDF, onExportWord, onBackToChat }: DocumentEditorProps) {
   // documentData sẽ là nguồn chân lý duy nhất cho template
   const [documentData, setDocumentData] = useState<any | null>(null) 
   const [editingField, setEditingField] = useState<string | null>(null)
@@ -116,15 +117,15 @@ export function DocumentEditor({ content, templateId, onExportPDF, onBackToChat 
           }
         </div>
         <div className="flex gap-2">
-          {/* Nút chỉnh sửa này có thể không cần thiết nữa */}
-          {/* <Button
+          <Button
             variant="outline"
             size="sm"
-            className="hover:bg-red-50 border-red-200 transition-all-smooth hover-lift bg-transparent"
+            onClick={onExportWord}
+            className="hover:bg-blue-50 border-blue-200 transition-all-smooth hover-lift"
           >
-            <Edit className="h-4 w-4 mr-2 text-red-500" />
-            Chỉnh sửa
-          </Button> */}
+            <FileDown className="h-4 w-4 mr-2 text-blue-500" />
+            Xuất Word
+          </Button>
           <Button
             size="sm"
             onClick={onExportPDF}

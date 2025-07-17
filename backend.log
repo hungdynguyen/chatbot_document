@@ -1,142 +1,199 @@
 INFO:     Will watch for changes in these directories: ['/root/chatbot/backend']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [4367] using WatchFiles
-INFO:     Started server process [4371]
+INFO:     Started reloader process [34075] using WatchFiles
+INFO:     Started server process [34082]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 🧠 Đang tải / khởi tạo embedding model …
 ✅ Embedding model sẵn sàng.
-✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '0b653ef7-4dd8-4596-adba-6bc95ed36644.txt'
-INFO:     127.0.0.1:60354 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '6fe40909-e340-49ce-8d67-dfbc117b302d.txt'
-INFO:     127.0.0.1:60354 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên 'df5b322b-92cc-4faa-9939-a55b61274c0b.txt'
-INFO:     127.0.0.1:60354 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên 'f828f3a8-f43a-4a7a-907b-48e533100634.txt'
-INFO:     127.0.0.1:60354 - "POST /upload_file HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [4371]
-WARNING:  WatchFiles detected changes in 'api/main.py'. Reloading...
-INFO:     Started server process [59447]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'api/main.py'. Reloading...
-INFO:     Started server process [59586]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Started server process [59657]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-🧠 Đang tải / khởi tạo embedding model …
-✅ Embedding model sẵn sàng.
-INFO:     127.0.0.1:49456 - "GET /templates HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49456 - "GET /templates HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49518 - "GET /templates HTTP/1.1" 200 OK
-INFO:     127.0.0.1:59144 - "GET /templates HTTP/1.1" 200 OK
-✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên '00615df6-b60c-4a3d-ab96-49377fca8ca7.txt'
-INFO:     127.0.0.1:59152 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '1a2989cd-2c2b-414c-831c-570a96b71872.txt'
-INFO:     127.0.0.1:59152 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '7a5d8e6c-5d0a-4df2-9121-8c3289a39b70.txt'
-INFO:     127.0.0.1:59152 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '52824d58-7442-4aca-85e9-d48a3e149009.txt'
-INFO:     127.0.0.1:59152 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:33852 - "GET /templates HTTP/1.1" 200 OK
-✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '39e6f5c2-87d9-4a46-9a75-95de2a363d0a.txt'
-INFO:     127.0.0.1:33504 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên 'f36f952f-5cb1-48d1-bba9-898b4d8fb1ea.txt'
-INFO:     127.0.0.1:33504 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '40ab9cb2-d486-4094-b55f-493a671b741a.txt'
-INFO:     127.0.0.1:33504 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên 'b64fc3cd-1bab-458b-b92e-61871c1250c2.txt'
-INFO:     127.0.0.1:33504 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58290 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
-🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'loan_assessment_report'
-   Các File ID: ['39e6f5c2-87d9-4a46-9a75-95de2a363d0a', 'f36f952f-5cb1-48d1-bba9-898b4d8fb1ea', '40ab9cb2-d486-4094-b55f-493a671b741a', 'b64fc3cd-1bab-458b-b92e-61871c1250c2']
-🚀 New collection: session-514af486-6859-42d1-97df-ef7a5c750014
-Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:20<01:01, 20.39s/it]Đọc file: 100%|██████████| 4/4 [00:20<00:00,  5.12s/it]
+✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '0022e73d-2764-44f6-b928-eb601c11eece.txt'
+INFO:     127.0.0.1:44600 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên 'f11054fe-a6d5-4381-bc03-dac65ecbae4a.txt'
+INFO:     127.0.0.1:44600 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên 'a79ff832-f7b7-484a-b179-3717e202ba57.txt'
+INFO:     127.0.0.1:44600 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên '8751aeef-d343-4edb-ad63-435345053819.txt'
+INFO:     127.0.0.1:44600 - "POST /upload_file HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44614 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
+🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'template_3'
+   Các File ID: ['0022e73d-2764-44f6-b928-eb601c11eece', 'f11054fe-a6d5-4381-bc03-dac65ecbae4a', 'a79ff832-f7b7-484a-b179-3717e202ba57', '8751aeef-d343-4edb-ad63-435345053819']
+🚀 New collection: session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5
+Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:18<00:55, 18.63s/it]Đọc file:  75%|███████▌  | 3/4 [00:18<00:04,  4.87s/it]Đọc file: 100%|██████████| 4/4 [00:18<00:00,  4.69s/it]
 /root/chatbot/backend/utils/embedding_handler.py:92: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
   qstore = Qdrant(
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-514af486-6859-42d1-97df-ef7a5c750014/points?wait=true "HTTP/1.1 200 OK"
-INFO: HTTP Request: DELETE http://localhost:6333/collections/session-514af486-6859-42d1-97df-ef7a5c750014 "HTTP/1.1 200 OK"
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5/points?wait=true "HTTP/1.1 200 OK"
 ⏳ Embedding & ghi Qdrant …
-✅ Hoàn tất collection session-514af486-6859-42d1-97df-ef7a5c750014
-Các file đã được embedding vào collection: session-514af486-6859-42d1-97df-ef7a5c750014
-📋 Sử dụng template 'loan_assessment_report' với 29 trường cần trích xuất.
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-514af486-6859-42d1-97df-ef7a5c750014' cho template 'loan_assessment_report'...
+✅ Hoàn tất collection session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5
+Các file đã được embedding vào collection: session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5
+📋 Sử dụng template 'template_3' với 29 trường cần trích xuất.
+🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5' cho template 'template_3'...
 
 --- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
     ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': Công ty Cổ phần Bao bì Toàn Cầu Xanh
-    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
     ✅ Đã tìm thấy 'ID trên T24': 10034598
-    ✅ Đã tìm thấy 'Loại khách hàng': Doanh nghiệp FDI
-  - Không tìm thấy 2 trường: Phân khúc, Ngành nghề HĐKD theo ĐKKD
+    ✅ Đã tìm thấy 'Ngành nghề HĐKD theo ĐKKD': 1702 - Sản xuất giấy nhãn, bì nhãn và bao bì từ giấy và bì
+  - Không tìm thấy 3 trường: Giấy ĐKKD/GP đầu tư, Phân khúc, Loại khách hàng
   -> Chia nhỏ lô thất bại...
 
 --- VÒNG LẶP 2/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
-    ✅ Đã tìm thấy 'Phân khúc': Phân nhóm rủi ro (theo ngành): Rủi ro Cao
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
+    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': 0109xxxx88
 
-Phân nhóm ứng xử khách hàng (dựa trên dữ liệu giao dịch): Nhóm 2
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
-  - Không tìm thấy 1 trường: Ngành nghề HĐKD theo ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
+--- VÒNG LẶP 3/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
+    ✅ Đã tìm thấy 'Phân khúc': Doanh nghiệp FDI
+    ✅ Đã tìm thấy 'Loại khách hàng': Công ty Cổ phần
 
 --- VÒNG LẶP 4/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
-    ✅ Đã tìm thấy 'Mục đích báo cáo': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND (Một trăm năm mươi tỷ đồng) và hạn mức LC trị giá 50.000.000.000 VND (Năm mươi tỷ đồng).
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
+    ✅ Đã tìm thấy 'Mục đích báo cáo': Cấp mới
     ✅ Đã tìm thấy 'Kết quả phân luồng': Luồng chuyên sâu
     ✅ Đã tìm thấy 'XHTD': A3
     ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
-    ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
-  - Không tìm thấy 1 trường: Địa chỉ trên ĐKKD
+    ✅ Đã tìm thấy 'Địa chỉ trên ĐKKD': Tầng 15, Tòa nhà Capital Tower, 109 Trần Hưng Đạo, Quận Hoàn Kiếm, Hà Nội.
+  - Không tìm thấy 1 trường: Người đại diện theo Pháp luật
   -> Lô quá nhỏ, không chia nữa.
 
 --- VÒNG LẶP 5/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
-    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': Ông Haruto Suzuki
-    ✅ Đã tìm thấy 'Chức vụ': Tổng Giám đốc
-  - Không tìm thấy 4 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng, Đánh giá về năng lực, uy tín và kinh nghiệm
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 6/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
+    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': ['Haruto Suzuki', 'Kenji Tanaka', 'Trần Thị Mai Lan']
+    ✅ Đã tìm thấy 'Chức vụ': ['Tổng Giám đốc', 'Giám đốc Tài chính', 'Kế toán trưởng']
+    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': Haruto Suzuki là thành viên HĐQT.
+    ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành. Ban lãnh đạo có kinh nghiệm, kế hoạch kinh doanh và tài chính được xây dựng chi tiết bởi đội ngũ chuyên gia từ công ty mẹ, có độ tin cậy cao và thường đạt hoặc vượt chỉ tiêu đề ra.
   - Không tìm thấy 2 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%)
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
+--- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
   - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 8/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
+--- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
   - Không tìm thấy 1 trường: Tỷ lệ vốn góp (%)
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 9/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
-    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': Khách hàng tỏ ra rất thiện chí và mong muốn TCB là đối tác tài chính chiến lược duy nhất tại Việt Nam.
+--- VÒNG LẶP 8/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
+    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Tên khách hàng: Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC). Mã số thuế: 0109xxxx88. ID khách hàng T24: 10034598. Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành. Rủi ro ngành bao bì được đánh giá ở mức Trung bình-Cao do cạnh tranh và biến động giá nguyên liệu đầu vào.
+    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Thông tin pháp lý được cập nhật ngày 02/10/2024 bởi Phòng Pháp chế & Tuân thủ. (Chi tiết cần xem thêm ở PHẦN A: THÔNG TIN PHÁP LÝ)
+    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Cuộc họp gần nhất với Giám đốc Tài chính của khách hàng, ông Kenji Tanaka, diễn ra vào ngày 25/09/2024 để thảo luận về kế hoạch mở rộng nhà máy giai đoạn 2.
+    ✅ Đã tìm thấy 'KYC': KYC completed for all related parties.
+    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND. Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND). Hiện tại khách hàng chưa có sản phẩm tín dụng nào với TCB.
+  - Không tìm thấy 1 trường: Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 9/20 | Đang xử lý lô 5 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
+    ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
+    ✅ Đã tìm thấy 'Định hướng tín dụng': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
+    ✅ Đã tìm thấy 'Offering/ CTKD': Vay vốn lưu động
+  - Không tìm thấy 2 trường: Đánh giá Rủi ro môi trường xã hội, Quy định khác (nếu có)
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 10/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
+  - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 11/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-fc31897d-dd89-4f9a-8c73-091e1ea5f3f5'
+    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu
+
+
+✅ Quá trình trích xuất hoàn tất!
+🔄 Cấu trúc lại dữ liệu cho Template 3...
+INFO:     127.0.0.1:44614 - "POST /process_prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33310 - "POST /clear_rag_session HTTP/1.1" 422 Unprocessable Entity
+✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên '7c7854cd-97ca-4c62-9b29-d815ae322d49.txt'
+INFO:     127.0.0.1:55882 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '0ca17435-a350-4b7c-a40f-3df8bce48215.txt'
+INFO:     127.0.0.1:55882 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '690715e3-6617-4884-afc1-cdc33e2a6b21.txt'
+INFO:     127.0.0.1:55882 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên 'e44a07c9-997e-4bf8-8aba-10d7d0fd5a65.txt'
+INFO:     127.0.0.1:55882 - "POST /upload_file HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38004 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
+INFO: HTTP Request: DELETE http://localhost:6333/collections/session-5d0b2c99-5524-4b27-8018-f19480756bcb "HTTP/1.1 200 OK"
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-5d0b2c99-5524-4b27-8018-f19480756bcb "HTTP/1.1 200 OK"
+🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'template_3'
+   Các File ID: ['7c7854cd-97ca-4c62-9b29-d815ae322d49', '0ca17435-a350-4b7c-a40f-3df8bce48215', '690715e3-6617-4884-afc1-cdc33e2a6b21', 'e44a07c9-997e-4bf8-8aba-10d7d0fd5a65']
+🚀 New collection: session-5d0b2c99-5524-4b27-8018-f19480756bcb
+Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:00<00:01,  1.71it/s]Đọc file:  50%|█████     | 2/4 [00:00<00:00,  3.33it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  5.18it/s]
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-5d0b2c99-5524-4b27-8018-f19480756bcb/points?wait=true "HTTP/1.1 200 OK"
+⏳ Embedding & ghi Qdrant …
+✅ Hoàn tất collection session-5d0b2c99-5524-4b27-8018-f19480756bcb
+Các file đã được embedding vào collection: session-5d0b2c99-5524-4b27-8018-f19480756bcb
+📋 Sử dụng template 'template_3' với 29 trường cần trích xuất.
+🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-5d0b2c99-5524-4b27-8018-f19480756bcb' cho template 'template_3'...
+
+--- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
+    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': CÔNG TY CỔ PHẦN BAO BÌ TOÀN CẦU XANH
+    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
+    ✅ Đã tìm thấy 'ID trên T24': 10034598
+    ✅ Đã tìm thấy 'Ngành nghề HĐKD theo ĐKKD': 1702 - Sản xuất giấy nhăn, bìa nhăn và bao bì từ giấy và bìa.
+  - Không tìm thấy 2 trường: Phân khúc, Loại khách hàng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 2/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
+  - Không tìm thấy 1 trường: Phân khúc
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
+    ✅ Đã tìm thấy 'Loại khách hàng': Công ty cổ phần có vốn đầu tư nước ngoài (100% vốn từ tập đoàn Global Packaging Holdings, Singapore).
+
+--- VÒNG LẶP 4/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
+    ✅ Đã tìm thấy 'Mục đích báo cáo': BÁO CÁO THÔNG TIN DOANH NGHIỆP
+    ✅ Đã tìm thấy 'Kết quả phân luồng': Luồng chuyên sâu
+    ✅ Đã tìm thấy 'XHTD': A3
+    ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
+    ✅ Đã tìm thấy 'Địa chỉ trên ĐKKD': Tầng 15, Tòa nhà Capital Tower, 109 Trần Hưng Đạo, Quận Hoàn Kiếm, Hà Nội.
+    ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
+
+--- VÒNG LẶP 5/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
+    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': ['Ông Haruto Suzuki', 'Ông Kenji Tanaka', 'Bà Trần Thị Mai Lan']
+    ✅ Đã tìm thấy 'Chức vụ': ['Tổng Giám đốc (Ông Haruto Suzuki)', 'Giám đốc Tài chính (Ông Kenji Tanaka)', 'Kế toán trưởng (Bà Trần Thị Mai Lan)']
     ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Kế hoạch kinh doanh và tài chính được xây dựng chi tiết bởi đội ngũ chuyên gia từ công ty mẹ, có độ tin cậy cao và thường đạt hoặc vượt chỉ tiêu đề ra.
+  - Không tìm thấy 3 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
+  - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 7/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
+  - Không tìm thấy 2 trường: Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 8/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
+  - Không tìm thấy 1 trường: Tỷ lệ vốn góp (%)
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 9/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
+    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành. Rủi ro ngành bao bì được đánh giá ở mức Trung bình-Cao do cạnh tranh và biến động giá nguyên liệu đầu vào.
 
 --- VÒNG LẶP 10/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
-    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC), ID khách hàng T24: 10034598. Khách hàng từ 20/04/2019, chất lượng mối quan hệ tốt, tiềm năng cao, chủ động tìm kiếm đối tác ngân hàng chiến lược.
-    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Mã số thuế: 0109xxxx88
-    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Cuộc họp gần nhất với Giám đốc Tài chính của khách hàng, ông Kenji Tanaka, diễn ra vào ngày 25/09/2024.
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
+    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC), mã số thuế 0109xxxx88, ID khách hàng T24: 10034598. Khách hàng từ 2019-04-20, chất lượng mối quan hệ tốt. Giao dịch thường xuyên LC và T/T cho xuất nhập khẩu. Tiềm năng cross-selling.
+    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Tên đầy đủ tiếng Việt: CÔNG TY CỔ PHẦN BAO BÌ TOÀN CẦU XANH
+    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Cuộc họp gần nhất với Giám đốc Tài chính của khách hàng, ông Kenji Tanaka, diễn ra vào ngày 25/09/2024 để thảo luận về kế hoạch mở rộng nhà máy giai đoạn 2.
     ✅ Đã tìm thấy 'KYC': Compliance check: Pass. KYC completed for all related parties.
     ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND. Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND). Hiện tại không có sản phẩm tín dụng nào với TCB.
   - Không tìm thấy 1 trường: Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật
   -> Lô quá nhỏ, không chia nữa.
 
 --- VÒNG LẶP 11/20 | Đang xử lý lô 5 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
     ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
     ✅ Đã tìm thấy 'Định hướng tín dụng': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
     ✅ Đã tìm thấy 'Offering/ CTKD': Tài trợ vốn lưu động, chủ yếu là nhập khẩu giấy cuộn từ Indonesia và Thái Lan.
@@ -144,1085 +201,332 @@ Phân nhóm ứng xử khách hàng (dựa trên dữ liệu giao dịch): Nhóm
   -> Chia nhỏ lô thất bại...
 
 --- VÒNG LẶP 12/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
   - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
   -> Lô quá nhỏ, không chia nữa.
 
 --- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-514af486-6859-42d1-97df-ef7a5c750014'
-    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Khác biệt HĐTD so với chính sách chung: Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
-
-
-✅ Quá trình trích xuất hoàn tất!
-🔄 Cấu trúc lại dữ liệu cho mẫu báo cáo thẩm định...
-❌ Lỗi nghiêm trọng trong quá trình xử lý: list indices must be integers or slices, not str
-🧹 Dọn dẹp collection 'session-514af486-6859-42d1-97df-ef7a5c750014' do có lỗi xảy ra...
-✅ Đã xóa collection 'session-514af486-6859-42d1-97df-ef7a5c750014' do lỗi.
-INFO:     127.0.0.1:58290 - "POST /process_prompt HTTP/1.1" 500 Internal Server Error
-✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên 'd289c854-d3a9-406c-95c9-8d64eefc3010.txt'
-INFO:     127.0.0.1:40530 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '3eefd8a0-7ce3-4393-bcef-45b5b6c6849b.txt'
-INFO:     127.0.0.1:40530 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên 'b40d50a4-6a15-4243-87f7-e221d31e2baf.txt'
-INFO:     127.0.0.1:40530 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '10f561df-5b7e-47e6-a57c-a70960706d38.txt'
-INFO:     127.0.0.1:40530 - "POST /upload_file HTTP/1.1" 200 OK
-INFO: HTTP Request: DELETE http://localhost:6333/collections/session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c "HTTP/1.1 200 OK"
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c "HTTP/1.1 200 OK"
-🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'loan_assessment_report'
-   Các File ID: ['d289c854-d3a9-406c-95c9-8d64eefc3010', '3eefd8a0-7ce3-4393-bcef-45b5b6c6849b', 'b40d50a4-6a15-4243-87f7-e221d31e2baf', '10f561df-5b7e-47e6-a57c-a70960706d38']
-🚀 New collection: session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c
-Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:00<00:02,  1.44it/s]Đọc file:  50%|█████     | 2/4 [00:00<00:00,  2.89it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  6.01it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  4.37it/s]
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c/points?wait=true "HTTP/1.1 200 OK"
-WARNING:  WatchFiles detected changes in 'api/main.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for connections to close. (CTRL+C to force quit)
-INFO: HTTP Request: DELETE http://localhost:6333/collections/session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c "HTTP/1.1 200 OK"
-⏳ Embedding & ghi Qdrant …
-✅ Hoàn tất collection session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c
-Các file đã được embedding vào collection: session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c
-📋 Sử dụng template 'loan_assessment_report' với 29 trường cần trích xuất.
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c' cho template 'loan_assessment_report'...
-
---- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': Công ty Cổ phần Bao bì Toàn Cầu Xanh
-    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': 0109xxxx88
-    ✅ Đã tìm thấy 'ID trên T24': 10034598
-    ✅ Đã tìm thấy 'Loại khách hàng': FDI
-    ✅ Đã tìm thấy 'Ngành nghề HĐKD theo ĐKKD': chuyên cung cấp giải pháp đóng gói toàn diện
-  - Không tìm thấy 1 trường: Phân khúc
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 2/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-    ✅ Đã tìm thấy 'Mục đích báo cáo': Cấp mới
-    ✅ Đã tìm thấy 'Kết quả phân luồng': Luồng chuyên sâu
-    ✅ Đã tìm thấy 'XHTD': A3
-    ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
-    ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
-  - Không tìm thấy 1 trường: Địa chỉ trên ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': Ông Haruto Suzuki
-    ✅ Đã tìm thấy 'Chức vụ': Tổng Giám đốc
-    ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Tập đoàn Global Packaging Holdings (Singapore), một trong những tập đoàn hàng đầu châu Á về giải pháp đóng gói, thành lập năm 1995. Tập đoàn có hơn 40 nhà máy tại 12 quốc gia, phục vụ các khách hàng lớn như Apple, Samsung, P&G.
-  - Không tìm thấy 3 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 4/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-  - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 5/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-  - Không tìm thấy 2 trường: Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-    ✅ Đã tìm thấy 'Tỷ lệ vốn góp (%)': 100% vốn từ tập đoàn Global Packaging Holdings, Singapore
-
---- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': Khách hàng tỏ ra rất thiện chí và mong muốn TCB là đối tác tài chính chiến lược duy nhất tại Việt Nam.
-
---- VÒNG LẶP 8/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Tên khách hàng: Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC). Mã số thuế: 0109xxxx88. ID khách hàng T24: 10034598. Khách hàng từ 2019-04-20. Chất lượng mối quan hệ: Tốt. Lần tương tác cuối cùng: 2024-09-25 (Gặp CFO). Ghi chú: Khách hàng tiềm năng cao. Chủ động tìm kiếm đối tác ngân hàng chiến lược.
-    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Giấy chứng nhận Đăng ký Doanh nghiệp số 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp. Công ty tuân thủ đầy đủ các quy định của pháp luật Việt Nam. Đã được cấp chứng chỉ ISO 9001:2015, ISO 14001:2015 và chứng chỉ FSC về quản lý rừng bền vững. Không có tranh chấp, kiện tụng nào đang diễn ra. Báo cáo kiểm toán 2 năm gần nhất (2022, 2023) bởi PwC có ý kiến chấp nhận toàn phần.
-    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Chủ sở hữu hưởng lợi cuối cùng: Tập đoàn Global Packaging Holdings (Singapore), một trong những tập đoàn hàng đầu châu Á về giải pháp đóng gói, thành lập năm 1995. Ban điều hành tại Việt Nam: Ông Haruto Suzuki, Quốc tịch Nhật Bản. Chức vụ: Tổng Giám đốc. Số hộ chiếu: TRxxxx123. Là thành viên HĐQT.
-    ✅ Đã tìm thấy 'KYC': KYC đã hoàn thành cho tất cả các bên liên quan. KYC của ông Haruto Suzuki đã hoàn thành.
-    ✅ Đã tìm thấy 'Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật': Không có thông tin nào cho thấy khách hàng là người liên quan của TCB theo quy định của pháp luật.
-    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND. Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND). Không có thông tin về dư nợ của người liên quan.
-
---- VÒNG LẶP 9/20 | Đang xử lý lô 5 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-    ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
-    ✅ Đã tìm thấy 'Định hướng tín dụng': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
-    ✅ Đã tìm thấy 'Offering/ CTKD': Tài trợ vốn lưu động, chủ yếu là nhập khẩu giấy cuộn từ Indonesia và Thái Lan.
-  - Không tìm thấy 2 trường: Đánh giá Rủi ro môi trường xã hội, Quy định khác (nếu có)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 10/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-  - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 11/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c'
-    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Khác biệt HĐTD so với chính sách chung: Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
-
-
-✅ Quá trình trích xuất hoàn tất!
-🔄 Cấu trúc lại dữ liệu cho mẫu báo cáo thẩm định...
-❌ Lỗi nghiêm trọng trong quá trình xử lý: list indices must be integers or slices, not str
-🧹 Dọn dẹp collection 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c' do có lỗi xảy ra...
-✅ Đã xóa collection 'session-182d83db-6a46-4c99-82e7-d3b7ecdc4e1c' do lỗi.
-INFO:     127.0.0.1:37492 - "POST /process_prompt HTTP/1.1" 500 Internal Server Error
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [59657]
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Started server process [66735]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [66735]
-INFO:     Started server process [67068]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [67068]
-INFO:     Started server process [67342]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [67342]
-INFO:     Started server process [67414]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [67414]
-INFO:     Started server process [68775]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [68775]
-INFO:     Started server process [68867]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [68867]
-INFO:     Started server process [68939]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [68939]
-INFO:     Started server process [69048]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-🧠 Đang tải / khởi tạo embedding model …
-✅ Embedding model sẵn sàng.
-✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên 'd4f34f6e-6c85-4d53-875c-71aecda201e9.txt'
-INFO:     127.0.0.1:40604 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '9af56e1b-8379-488d-acef-3df09beb6e66.txt'
-INFO:     127.0.0.1:40604 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '89f37f1c-94bd-479c-9f7f-c2677654a700.txt'
-INFO:     127.0.0.1:40604 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên 'fa3cfadd-51cd-4879-a11a-ba2f49023991.txt'
-INFO:     127.0.0.1:40604 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:43092 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
-🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'loan_assessment_report'
-   Các File ID: ['d4f34f6e-6c85-4d53-875c-71aecda201e9', '9af56e1b-8379-488d-acef-3df09beb6e66', '89f37f1c-94bd-479c-9f7f-c2677654a700', 'fa3cfadd-51cd-4879-a11a-ba2f49023991']
-🚀 New collection: session-9a3f7d07-fe41-44a7-9e31-debd85c65571
-Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:07<00:22,  7.56s/it]Đọc file:  50%|█████     | 2/4 [00:08<00:06,  3.45s/it]Đọc file: 100%|██████████| 4/4 [00:08<00:00,  2.04s/it]
-/root/chatbot/backend/utils/embedding_handler.py:92: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
-  qstore = Qdrant(
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-9a3f7d07-fe41-44a7-9e31-debd85c65571/points?wait=true "HTTP/1.1 200 OK"
-⏳ Embedding & ghi Qdrant …
-✅ Hoàn tất collection session-9a3f7d07-fe41-44a7-9e31-debd85c65571
-Các file đã được embedding vào collection: session-9a3f7d07-fe41-44a7-9e31-debd85c65571
-📋 Sử dụng template 'loan_assessment_report' với 29 trường cần trích xuất.
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571' cho template 'loan_assessment_report'...
-
---- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': Công ty Cổ phần Bao bì Toàn Cầu Xanh
-    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': 0109xxxx88
-    ✅ Đã tìm thấy 'ID trên T24': 10034598
-    ✅ Đã tìm thấy 'Loại khách hàng': FDI
-    ✅ Đã tìm thấy 'Ngành nghề HĐKD theo ĐKKD': chuyên cung cấp giải pháp đóng gói toàn diện
-  - Không tìm thấy 1 trường: Phân khúc
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 2/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-    ✅ Đã tìm thấy 'Mục đích báo cáo': Cấp mới
-    ✅ Đã tìm thấy 'Kết quả phân luồng': Luồng chuyên sâu
-    ✅ Đã tìm thấy 'XHTD': A3
-    ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
-    ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
-  - Không tìm thấy 1 trường: Địa chỉ trên ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': Ông Haruto Suzuki
-    ✅ Đã tìm thấy 'Chức vụ': Tổng Giám đốc
-  - Không tìm thấy 4 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng, Đánh giá về năng lực, uy tín và kinh nghiệm
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 4/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-  - Không tìm thấy 2 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 5/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-  - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-    ✅ Đã tìm thấy 'Tỷ lệ vốn góp (%)': 100% vốn từ tập đoàn Global Packaging Holdings, Singapore
-
---- VÒNG LẶP 7/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': A valuable client with strong financial standing and significant transaction volumes. Recommended for prioritized processing.
-    ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Khả năng lập kế hoạch: Kế hoạch kinh doanh và tài chính được xây dựng chi tiết bởi đội ngũ chuyên gia từ công ty mẹ, có độ tin cậy cao và thường đạt hoặc vượt chỉ tiêu đề ra.
-
---- VÒNG LẶP 8/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Tên khách hàng: Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC). Mã số thuế: 0109xxxx88. ID khách hàng T24: 10034598. Khách hàng từ 2019-04-20. Chất lượng mối quan hệ: Tốt. Tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành. Rủi ro ngành bao bì ở mức Trung bình-Cao do cạnh tranh và biến động giá nguyên liệu đầu vào.
-    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Giấy chứng nhận Đăng ký Doanh nghiệp số 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp. Công ty tuân thủ đầy đủ các quy định của pháp luật Việt Nam. Đã được cấp chứng chỉ ISO 9001:2015, ISO 14001:2015 và chứng chỉ FSC về quản lý rừng bền vững. Không có tranh chấp, kiện tụng nào đang diễn ra. Báo cáo kiểm toán 2 năm gần nhất (2022, 2023) bởi PwC có ý kiến chấp nhận toàn phần.
-    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Chủ sở hữu hưởng lợi cuối cùng: Tập đoàn Global Packaging Holdings (Singapore), một trong những tập đoàn hàng đầu châu Á về giải pháp đóng gói, thành lập năm 1995. Ban điều hành tại Việt Nam: Ông Haruto Suzuki, Quốc tịch Nhật Bản. Chức vụ: Tổng Giám đốc. Số hộ chiếu: TRxxxx123. Là thành viên HĐQT.
-    ✅ Đã tìm thấy 'KYC': KYC đã hoàn thành cho tất cả các bên liên quan, bao gồm cả ông Haruto Suzuki.
-    ✅ Đã tìm thấy 'Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật': Không có thông tin nào cho thấy khách hàng hoặc ban lãnh đạo có quan hệ liên quan đến TCB.
-    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND. Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND). Không có thông tin về dư nợ của người liên quan.
-
---- VÒNG LẶP 9/20 | Đang xử lý lô 5 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-    ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
-    ✅ Đã tìm thấy 'Định hướng tín dụng': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
-    ✅ Đã tìm thấy 'Offering/ CTKD': Tài trợ vốn lưu động, chủ yếu là nhập khẩu giấy cuộn từ Indonesia và Thái Lan.
-  - Không tìm thấy 2 trường: Đánh giá Rủi ro môi trường xã hội, Quy định khác (nếu có)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 10/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-  - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 11/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9a3f7d07-fe41-44a7-9e31-debd85c65571'
-    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
-
-
-✅ Quá trình trích xuất hoàn tất!
-🔄 Cấu trúc lại dữ liệu cho mẫu báo cáo thẩm định...
-INFO:     127.0.0.1:43092 - "POST /process_prompt HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [69048]
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Started server process [74530]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Started server process [74717]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [74717]
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Started server process [74855]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-Process SpawnProcess-17:
-Traceback (most recent call last):
-  File "/root/miniconda3/envs/chatbot_env/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
-    self.run()
-  File "/root/miniconda3/envs/chatbot_env/lib/python3.10/multiprocessing/process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
-    target(sockets=sockets)
-  File "/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/uvicorn/server.py", line 65, in run
-    return asyncio.run(self.serve(sockets=sockets))
-  File "/root/miniconda3/envs/chatbot_env/lib/python3.10/asyncio/runners.py", line 44, in run
-    return loop.run_until_complete(main)
-  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-  File "/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/uvicorn/server.py", line 69, in serve
-    await self._serve(sockets)
-  File "/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/uvicorn/server.py", line 76, in _serve
-    config.load()
-  File "/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/uvicorn/config.py", line 434, in load
-    self.loaded_app = import_from_string(self.app)
-  File "/root/miniconda3/envs/chatbot_env/lib/python3.10/site-packages/uvicorn/importer.py", line 19, in import_from_string
-    module = importlib.import_module(module_str)
-  File "/root/miniconda3/envs/chatbot_env/lib/python3.10/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/root/chatbot/backend/api/main.py", line 15, in <module>
-    from utils.extractor import extract_information_from_docs, load_template_schema
-  File "/root/chatbot/backend/utils/extractor.py", line 11
-    """
-IndentationError: unexpected indent
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Started server process [74954]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [74954]
-INFO:     Started server process [75039]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'api/main.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [75039]
-WARNING:  WatchFiles detected changes in 'utils/extractor.py'. Reloading...
-INFO:     Started server process [76679]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-WARNING:  WatchFiles detected changes in 'api/main.py'. Reloading...
-INFO:     Started server process [76836]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Started server process [76915]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-🧠 Đang tải / khởi tạo embedding model …
-✅ Embedding model sẵn sàng.
-✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên 'ece8df93-29cd-4055-9ee5-0de977062e13.txt'
-INFO:     127.0.0.1:47244 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '7e8f664b-8e8f-4932-9228-2d46e5665527.txt'
-INFO:     127.0.0.1:47244 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên 'ba5a4fba-962e-4533-b3d7-d958d97bc6a8.txt'
-INFO:     127.0.0.1:47244 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên 'e063933d-ecda-4578-8e7e-137b2a8d2eb7.txt'
-INFO:     127.0.0.1:47244 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49134 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
-🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'template_3'
-   Các File ID: ['ece8df93-29cd-4055-9ee5-0de977062e13', '7e8f664b-8e8f-4932-9228-2d46e5665527', 'ba5a4fba-962e-4533-b3d7-d958d97bc6a8', 'e063933d-ecda-4578-8e7e-137b2a8d2eb7']
-🚀 New collection: session-ef4b41b9-9f20-4028-bfe3-50329abd05d5
-Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:08<00:25,  8.59s/it]Đọc file: 100%|██████████| 4/4 [00:08<00:00,  2.17s/it]
-/root/chatbot/backend/utils/embedding_handler.py:92: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
-  qstore = Qdrant(
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-ef4b41b9-9f20-4028-bfe3-50329abd05d5/points?wait=true "HTTP/1.1 200 OK"
-⏳ Embedding & ghi Qdrant …
-✅ Hoàn tất collection session-ef4b41b9-9f20-4028-bfe3-50329abd05d5
-Các file đã được embedding vào collection: session-ef4b41b9-9f20-4028-bfe3-50329abd05d5
-📋 Sử dụng template 'template_3' với 29 trường cần trích xuất.
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5' cho template 'template_3'...
-
---- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': Công ty Cổ phần Bao bì Toàn Cầu Xanh
-    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': Giấy chứng nhận Đăng ký Doanh nghiệp số 0109xxxx88, đăng ký lần đầu ngày 15/03/2019
-    ✅ Đã tìm thấy 'ID trên T24': 10034598
-    ✅ Đã tìm thấy 'Loại khách hàng': Doanh nghiệp FDI
-  - Không tìm thấy 2 trường: Phân khúc, Ngành nghề HĐKD theo ĐKKD
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 2/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-    ✅ Đã tìm thấy 'Phân khúc': Phân nhóm rủi ro (theo ngành): Rủi ro Cao
-
-Phân nhóm ứng xử khách hàng (dựa trên dữ liệu giao dịch): Nhóm 2
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-  - Không tìm thấy 1 trường: Ngành nghề HĐKD theo ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 4/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-    ✅ Đã tìm thấy 'Mục đích báo cáo': Đề xuất cấp hạn mức tín dụng
-    ✅ Đã tìm thấy 'Kết quả phân luồng': Luồng chuyên sâu
-    ✅ Đã tìm thấy 'XHTD': A3
-    ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
-    ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
-  - Không tìm thấy 1 trường: Địa chỉ trên ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 5/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': Ông Haruto Suzuki
-    ✅ Đã tìm thấy 'Chức vụ': Tổng Giám đốc
-    ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Tập đoàn Global Packaging Holdings (Singapore), một trong những tập đoàn hàng đầu châu Á về giải pháp đóng gói, thành lập năm 1995. Tập đoàn có hơn 40 nhà máy tại 12 quốc gia, phục vụ các khách hàng lớn như Apple, Samsung, P&G.
-  - Không tìm thấy 3 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-  - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 7/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-  - Không tìm thấy 2 trường: Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 8/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-    ✅ Đã tìm thấy 'Tỷ lệ vốn góp (%)': 100% vốn từ tập đoàn Global Packaging Holdings, Singapore
-
---- VÒNG LẶP 9/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': Khách hàng tỏ ra rất thiện chí và mong muốn TCB là đối tác tài chính chiến lược duy nhất tại Việt Nam.
-
---- VÒNG LẶP 10/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC), ID khách hàng T24: 10034598. Khách hàng từ 20/04/2019, chất lượng mối quan hệ tốt, chủ động tìm kiếm đối tác ngân hàng chiến lược.
-    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Mã số thuế: 0109xxxx88
-    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Cuộc họp gần nhất với Giám đốc Tài chính của khách hàng, ông Kenji Tanaka, diễn ra vào ngày 25/09/2024.
-    ✅ Đã tìm thấy 'KYC': Compliance check: Pass. KYC completed for all related parties.
-    ✅ Đã tìm thấy 'Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật': Không có thông tin.
-    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND. Tổng giá trị cấp tín dụng đề xuất: 200,000 (triệu VND). Hiện tại không có sản phẩm tín dụng nào với TCB.
-
---- VÒNG LẶP 11/20 | Đang xử lý lô 5 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-    ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
-    ✅ Đã tìm thấy 'Định hướng tín dụng': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
-    ✅ Đã tìm thấy 'Offering/ CTKD': Tài trợ vốn lưu động, chủ yếu là nhập khẩu giấy cuộn từ Indonesia và Thái Lan.
-  - Không tìm thấy 2 trường: Đánh giá Rủi ro môi trường xã hội, Quy định khác (nếu có)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 12/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
-  - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-5d0b2c99-5524-4b27-8018-f19480756bcb'
     ✅ Đã tìm thấy 'Quy định khác (nếu có)': Khác biệt HĐTD so với chính sách chung: Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
 
 
 ✅ Quá trình trích xuất hoàn tất!
 🔄 Cấu trúc lại dữ liệu cho Template 3...
-INFO:     127.0.0.1:49134 - "POST /process_prompt HTTP/1.1" 200 OK
-INFO:     127.0.0.1:47290 - "OPTIONS /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-ef4b41b9-9f20-4028-bfe3-50329abd05d5 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'hi'
-🔄 Sử dụng lại collection đã có: session-ef4b41b9-9f20-4028-bfe3-50329abd05d5
-  - Gửi tới RAG Flow với collection 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5': hi
-INFO:     127.0.0.1:47290 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-ef4b41b9-9f20-4028-bfe3-50329abd05d5 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'cho tôi biết địa chỉ của công ty đó'
-🔄 Sử dụng lại collection đã có: session-ef4b41b9-9f20-4028-bfe3-50329abd05d5
-  - Gửi tới RAG Flow với collection 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5': cho tôi biết địa chỉ của công ty đó
-INFO:     127.0.0.1:56378 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO:     127.0.0.1:34844 - "OPTIONS /clear_rag_session HTTP/1.1" 200 OK
-INFO: HTTP Request: DELETE http://localhost:6333/collections/session-ef4b41b9-9f20-4028-bfe3-50329abd05d5 "HTTP/1.1 200 OK"
-🧹 Nhận yêu cầu dọn dẹp RAG collection: session-ef4b41b9-9f20-4028-bfe3-50329abd05d5
-✅ RAG Collection 'session-ef4b41b9-9f20-4028-bfe3-50329abd05d5' đã được xóa thành công.
-INFO:     127.0.0.1:34844 - "POST /clear_rag_session HTTP/1.1" 200 OK
-✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '40c70a7c-db2b-4376-b59c-0e7fae8eec30.txt'
-INFO:     127.0.0.1:35118 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên '73e16bad-adea-4639-8c04-60950a610078.txt'
-INFO:     127.0.0.1:35118 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '227f8f7a-ddf5-4f5b-b621-e5f044ccc627.txt'
-INFO:     127.0.0.1:35118 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '17653afb-69b6-4751-b07c-7c74f7d6d08b.txt'
-INFO:     127.0.0.1:35118 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:41962 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
-INFO: HTTP Request: DELETE http://localhost:6333/collections/session-901fbb57-1398-4247-bf8e-003f358488b3 "HTTP/1.1 200 OK"
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-901fbb57-1398-4247-bf8e-003f358488b3 "HTTP/1.1 200 OK"
+INFO:     127.0.0.1:38004 - "POST /process_prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45912 - "POST /clear_rag_session HTTP/1.1" 422 Unprocessable Entity
+✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên 'bef12b9f-786c-41c9-b8a4-e39576d7c742.txt'
+INFO:     127.0.0.1:44682 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '1d983c01-adca-49b8-8818-a710011b230a.txt'
+INFO:     127.0.0.1:44682 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '596a9d7e-32b9-43b4-b88c-4787243c1e3f.txt'
+INFO:     127.0.0.1:44682 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên 'a15d1925-be65-4087-b2ee-32e237768fbf.txt'
+INFO:     127.0.0.1:44682 - "POST /upload_file HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44690 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
+INFO: HTTP Request: DELETE http://localhost:6333/collections/session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f "HTTP/1.1 200 OK"
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f "HTTP/1.1 200 OK"
 🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'template_3'
-   Các File ID: ['40c70a7c-db2b-4376-b59c-0e7fae8eec30', '73e16bad-adea-4639-8c04-60950a610078', '227f8f7a-ddf5-4f5b-b621-e5f044ccc627', '17653afb-69b6-4751-b07c-7c74f7d6d08b']
-🚀 New collection: session-901fbb57-1398-4247-bf8e-003f358488b3
-Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:00<00:01,  1.83it/s]Đọc file:  50%|█████     | 2/4 [00:00<00:00,  3.17it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  6.40it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  4.86it/s]
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-901fbb57-1398-4247-bf8e-003f358488b3/points?wait=true "HTTP/1.1 200 OK"
+   Các File ID: ['bef12b9f-786c-41c9-b8a4-e39576d7c742', '1d983c01-adca-49b8-8818-a710011b230a', '596a9d7e-32b9-43b4-b88c-4787243c1e3f', 'a15d1925-be65-4087-b2ee-32e237768fbf']
+🚀 New collection: session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f
+Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:00<00:01,  1.68it/s]Đọc file:  75%|███████▌  | 3/4 [00:00<00:00,  4.74it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  5.07it/s]
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f/points?wait=true "HTTP/1.1 200 OK"
 ⏳ Embedding & ghi Qdrant …
-✅ Hoàn tất collection session-901fbb57-1398-4247-bf8e-003f358488b3
-Các file đã được embedding vào collection: session-901fbb57-1398-4247-bf8e-003f358488b3
+✅ Hoàn tất collection session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f
+Các file đã được embedding vào collection: session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f
 📋 Sử dụng template 'template_3' với 29 trường cần trích xuất.
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-901fbb57-1398-4247-bf8e-003f358488b3' cho template 'template_3'...
+🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f' cho template 'template_3'...
 
 --- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
-    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': Công ty Cổ phần Bao bì Toàn Cầu Xanh
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': CÔNG TY CỔ PHẦN BAO BÌ TOÀN CẦU XANH
     ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
     ✅ Đã tìm thấy 'ID trên T24': 10034598
-    ✅ Đã tìm thấy 'Loại khách hàng': Công ty cổ phần có vốn đầu tư nước ngoài (100% vốn từ tập đoàn Global Packaging Holdings, Singapore).
-  - Không tìm thấy 2 trường: Phân khúc, Ngành nghề HĐKD theo ĐKKD
+    ✅ Đã tìm thấy 'Ngành nghề HĐKD theo ĐKKD': 1702 - Sản xuất giấy nhăn, bìa nhăn và bao bì từ giấy và bìa.
+  - Không tìm thấy 2 trường: Phân khúc, Loại khách hàng
   -> Chia nhỏ lô thất bại...
 
 --- VÒNG LẶP 2/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
-    ✅ Đã tìm thấy 'Phân khúc': Luồng chuyên sâu
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+    ✅ Đã tìm thấy 'Phân khúc': Phân nhóm rủi ro (theo ngành): Rủi ro Cao
+
+Phân nhóm ứng xử khách hàng (dựa trên dữ liệu giao dịch): Nhóm 2
 
 --- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
-  - Không tìm thấy 1 trường: Ngành nghề HĐKD theo ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+    ✅ Đã tìm thấy 'Loại khách hàng': Công ty cổ phần có vốn đầu tư nước ngoài (100% vốn từ tập đoàn Global Packaging Holdings, Singapore).
 
 --- VÒNG LẶP 4/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
-    ✅ Đã tìm thấy 'Mục đích báo cáo': Cấp mới
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+    ✅ Đã tìm thấy 'Mục đích báo cáo': BÁO CÁO PHÂN TÍCH TÀI CHÍNH VÀ KẾ HOẠCH KINH DOANH
     ✅ Đã tìm thấy 'Kết quả phân luồng': Luồng chuyên sâu
     ✅ Đã tìm thấy 'XHTD': A3
     ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
+    ✅ Đã tìm thấy 'Địa chỉ trên ĐKKD': Tầng 15, Tòa nhà Capital Tower, 109 Trần Hưng Đạo, Quận Hoàn Kiếm, Hà Nội.
     ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
-  - Không tìm thấy 1 trường: Địa chỉ trên ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
 
 --- VÒNG LẶP 5/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': ['Ông Haruto Suzuki', 'Ông Kenji Tanaka', 'Bà Trần Thị Mai Lan']
+    ✅ Đã tìm thấy 'Chức vụ': ['Tổng Giám đốc (Ông Haruto Suzuki)', 'Giám đốc Tài chính (Ông Kenji Tanaka)', 'Kế toán trưởng (Bà Trần Thị Mai Lan)']
+    ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Kế hoạch kinh doanh và tài chính được xây dựng chi tiết bởi đội ngũ chuyên gia từ công ty mẹ, có độ tin cậy cao và thường đạt hoặc vượt chỉ tiêu đề ra.
+  - Không tìm thấy 3 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+  - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 7/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+  - Không tìm thấy 2 trường: Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 8/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+  - Không tìm thấy 1 trường: Tỷ lệ vốn góp (%)
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 9/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành. Rủi ro ngành bao bì được đánh giá ở mức Trung bình-Cao do cạnh tranh và biến động giá nguyên liệu đầu vào.
+
+--- VÒNG LẶP 10/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC), ID khách hàng T24: 10034598. Khách hàng từ 20/04/2019, chất lượng mối quan hệ tốt. Khách hàng tiềm năng cao, chủ động tìm kiếm đối tác ngân hàng chiến lược. Doanh nghiệp FDI uy tín trong ngành bao bì, tình hình tài chính lành mạnh, tăng trưởng tốt.
+    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Tên đầy đủ tiếng Việt: CÔNG TY CỔ PHẦN BAO BÌ TOÀN CẦU XANH, Mã số thuế: 0109xxxx88
+    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Cuộc họp gần nhất với Giám đốc Tài chính của khách hàng, ông Kenji Tanaka, diễn ra vào ngày 25/09/2024 để thảo luận về kế hoạch mở rộng nhà máy giai đoạn 2. Trưởng phòng QHKH: Lê Minh Tuấn (ID: 5566), Chuyên viên phụ trách: Nguyễn An Khang (ID: 8877)
+    ✅ Đã tìm thấy 'KYC': KYC completed for all related parties.
+    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND. Tổng giá trị cấp tín dụng đề xuất: 200,000 (triệu VND). Hiện tại không có sản phẩm tín dụng nào với TCB.
+  - Không tìm thấy 1 trường: Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 11/20 | Đang xử lý lô 5 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+    ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
+    ✅ Đã tìm thấy 'Định hướng tín dụng': Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành.
+    ✅ Đã tìm thấy 'Offering/ CTKD': Đề xuất cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
+  - Không tìm thấy 2 trường: Đánh giá Rủi ro môi trường xã hội, Quy định khác (nếu có)
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 12/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+  - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-9c4ca535-1ac9-4f49-87ce-e624bb3d886f'
+    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Khác biệt HĐTD so với chính sách chung: Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
+
+
+✅ Quá trình trích xuất hoàn tất!
+🔄 Cấu trúc lại dữ liệu cho Template 3...
+INFO:     127.0.0.1:44690 - "POST /process_prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45468 - "POST /clear_rag_session HTTP/1.1" 422 Unprocessable Entity
+✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '37a9dbd5-7cb2-4640-a81d-993e86de62c5.txt'
+INFO:     127.0.0.1:54652 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên '31adfa73-000f-4573-aae8-99fa763e35d8.txt'
+INFO:     127.0.0.1:54652 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '24835c56-62fa-421b-9316-761b4a6751c8.txt'
+INFO:     127.0.0.1:54652 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '00c4f916-a896-4825-a59e-1c03f205f8a1.txt'
+INFO:     127.0.0.1:54652 - "POST /upload_file HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54652 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
+INFO: HTTP Request: DELETE http://localhost:6333/collections/session-950b6207-3723-4f38-8bd8-9db2414853b8 "HTTP/1.1 200 OK"
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-950b6207-3723-4f38-8bd8-9db2414853b8 "HTTP/1.1 200 OK"
+🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'template_3'
+   Các File ID: ['37a9dbd5-7cb2-4640-a81d-993e86de62c5', '31adfa73-000f-4573-aae8-99fa763e35d8', '24835c56-62fa-421b-9316-761b4a6751c8', '00c4f916-a896-4825-a59e-1c03f205f8a1']
+🚀 New collection: session-950b6207-3723-4f38-8bd8-9db2414853b8
+Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:00<00:01,  1.68it/s]Đọc file:  50%|█████     | 2/4 [00:00<00:00,  3.12it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  6.54it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  4.82it/s]
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-950b6207-3723-4f38-8bd8-9db2414853b8/points?wait=true "HTTP/1.1 200 OK"
+⏳ Embedding & ghi Qdrant …
+✅ Hoàn tất collection session-950b6207-3723-4f38-8bd8-9db2414853b8
+Các file đã được embedding vào collection: session-950b6207-3723-4f38-8bd8-9db2414853b8
+📋 Sử dụng template 'template_3' với 29 trường cần trích xuất.
+🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-950b6207-3723-4f38-8bd8-9db2414853b8' cho template 'template_3'...
+
+--- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-950b6207-3723-4f38-8bd8-9db2414853b8'
+    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': CÔNG TY CỔ PHẦN BAO BÌ TOÀN CẦU XANH
+    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': Giấy chứng nhận Đăng ký Doanh nghiệp số 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
+    ✅ Đã tìm thấy 'Phân khúc': KHDN-LON
+    ✅ Đã tìm thấy 'Loại khách hàng': Doanh nghiệp FDI
+    ✅ Đã tìm thấy 'Ngành nghề HĐKD theo ĐKKD': chuyên cung cấp giải pháp đóng gói toàn diện cho các doanh nghiệp FDI lớn tại các KCN phía Bắc
+  - Không tìm thấy 1 trường: ID trên T24
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 2/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-950b6207-3723-4f38-8bd8-9db2414853b8'
+    ✅ Đã tìm thấy 'Mục đích báo cáo': Cấp mới
+    ✅ Đã tìm thấy 'Kết quả phân luồng': Recommended for prioritized processing.
+    ✅ Đã tìm thấy 'XHTD': 0
+    ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
+    ✅ Đã tìm thấy 'Địa chỉ trên ĐKKD': Tầng 15, Tòa nhà Capital Tower, 109 Trần Hưng Đạo, Quận Hoàn Kiếm, Hà Nội.
+    ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
+
+--- VÒNG LẶP 3/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-950b6207-3723-4f38-8bd8-9db2414853b8'
     ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': Ông Haruto Suzuki
     ✅ Đã tìm thấy 'Chức vụ': Tổng Giám đốc
     ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành.
   - Không tìm thấy 3 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
   -> Chia nhỏ lô thất bại...
 
+--- VÒNG LẶP 4/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-950b6207-3723-4f38-8bd8-9db2414853b8'
+  - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 5/20 | Đang xử lý lô 2 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-950b6207-3723-4f38-8bd8-9db2414853b8'
+  - Không tìm thấy 2 trường: Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
+  -> Chia nhỏ lô thất bại...
+
 --- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-950b6207-3723-4f38-8bd8-9db2414853b8'
+  - Không tìm thấy 1 trường: Tỷ lệ vốn góp (%)
+  -> Lô quá nhỏ, không chia nữa.
+
+--- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-950b6207-3723-4f38-8bd8-9db2414853b8'
+    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': Khách hàng tỏ ra rất thiện chí và mong muốn TCB là đối tác tài chính chiến lược duy nhất tại Việt Nam.
+
+--- VÒNG LẶP 8/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-950b6207-3723-4f38-8bd8-9db2414853b8'
+    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Tên khách hàng: Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC)
+Mã số thuế: 0109xxxx88
+ID khách hàng T24: 10034598
+Đề xuất: Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
+Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND)
+Mục đích thẩm định: Cấp mới
+Loại khoản vay chính: Vay vốn lưu động
+    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Giấy chứng nhận Đăng ký Doanh nghiệp số 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
+Công ty tuân thủ đầy đủ các quy định của pháp luật Việt Nam. Đã được cấp chứng chỉ ISO 9001:2015, ISO 14001:2015 và chứng chỉ FSC về quản lý rừng bền vững. Không có tranh chấp, kiện tụng nào đang diễn ra. Báo cáo kiểm toán 2 năm gần nhất (2022, 2023) bởi PwC có ý kiến chấp nhận toàn phần.
+    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Chủ sở hữu hưởng lợi cuối cùng: Tập đoàn Global Packaging Holdings (Singapore), một trong những tập đoàn hàng đầu châu Á về giải pháp đóng gói, thành lập năm 1995.
+Ban điều hành tại Việt Nam: Ông Haruto Suzuki, Quốc tịch Nhật Bản. Chức vụ: Tổng Giám đốc. Số hộ chiếu: TRxxxx123. Là thành viên HĐQT.
+    ✅ Đã tìm thấy 'KYC': KYC completed for all related parties.
+KYC đã hoàn thành cho Ông Haruto Suzuki.
+    ✅ Đã tìm thấy 'Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật': Không có thông tin nào cho thấy khách hàng hoặc ban lãnh đạo là người liên quan của TCB.
+    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND). Không có thông tin về dư nợ của người liên quan.
+
+--- VÒNG LẶP 9/20 | Đang xử lý lô 5 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-950b6207-3723-4f38-8bd8-9db2414853b8'
+    ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
+    ✅ Đã tìm thấy 'Định hướng tín dụng': Đề xuất cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND. Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND)
+    ✅ Đã tìm thấy 'Offering/ CTKD': Vay vốn lưu động, FX & Trade Finance (LC và T/T)
+    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Khác biệt HĐTD so với chính sách chung: Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
+  - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
+  -> Lô quá nhỏ, không chia nữa.
+
+
+✅ Quá trình trích xuất hoàn tất!
+🔄 Cấu trúc lại dữ liệu cho Template 3...
+INFO:     127.0.0.1:54652 - "POST /process_prompt HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58620 - "POST /clear_rag_session HTTP/1.1" 422 Unprocessable Entity
+✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên 'd2e14a6e-02cd-44e3-8648-2d713cfbf5cd.txt'
+INFO:     127.0.0.1:35160 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '65d4f577-56d3-46c3-bf9c-f95c1761e35b.txt'
+INFO:     127.0.0.1:35160 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '8a8ff79b-afcf-48f3-8764-3fc20f8a8f07.txt'
+INFO:     127.0.0.1:35160 - "POST /upload_file HTTP/1.1" 200 OK
+✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '19d13bc8-373b-4087-b86c-948878a3f2dc.txt'
+INFO:     127.0.0.1:35160 - "POST /upload_file HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35176 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
+INFO: HTTP Request: DELETE http://localhost:6333/collections/session-cc3ebd73-5e53-4a39-8db1-4acc088803c6 "HTTP/1.1 200 OK"
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-cc3ebd73-5e53-4a39-8db1-4acc088803c6 "HTTP/1.1 200 OK"
+🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'template_3'
+   Các File ID: ['d2e14a6e-02cd-44e3-8648-2d713cfbf5cd', '65d4f577-56d3-46c3-bf9c-f95c1761e35b', '8a8ff79b-afcf-48f3-8764-3fc20f8a8f07', '19d13bc8-373b-4087-b86c-948878a3f2dc']
+🚀 New collection: session-cc3ebd73-5e53-4a39-8db1-4acc088803c6
+Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:00<00:02,  1.50it/s]Đọc file:  75%|███████▌  | 3/4 [00:00<00:00,  4.41it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  4.73it/s]
+INFO: HTTP Request: PUT http://localhost:6333/collections/session-cc3ebd73-5e53-4a39-8db1-4acc088803c6/points?wait=true "HTTP/1.1 200 OK"
+⏳ Embedding & ghi Qdrant …
+✅ Hoàn tất collection session-cc3ebd73-5e53-4a39-8db1-4acc088803c6
+Các file đã được embedding vào collection: session-cc3ebd73-5e53-4a39-8db1-4acc088803c6
+📋 Sử dụng template 'template_3' với 29 trường cần trích xuất.
+🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6' cho template 'template_3'...
+
+--- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
+    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': CÔNG TY CỔ PHẦN BAO BÌ TOÀN CẦU XANH
+    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
+    ✅ Đã tìm thấy 'ID trên T24': 10034598
+    ✅ Đã tìm thấy 'Ngành nghề HĐKD theo ĐKKD': 1702 - Sản xuất giấy nhăn, bìa nhăn và bao bì từ giấy và bìa.
+  - Không tìm thấy 2 trường: Phân khúc, Loại khách hàng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 2/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
+    ✅ Đã tìm thấy 'Phân khúc': Công ty đã được cấp chứng chỉ ISO 9001:2015, ISO 14001:2015 và chứng chỉ FSC về quản lý rừng bền vững.
+
+--- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
+    ✅ Đã tìm thấy 'Loại khách hàng': Công ty cổ phần có vốn đầu tư nước ngoài (100% vốn từ tập đoàn Global Packaging Holdings, Singapore).
+
+--- VÒNG LẶP 4/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
+    ✅ Đã tìm thấy 'Mục đích báo cáo': BÁO CÁO THÔNG TIN DOANH NGHIỆP
+    ✅ Đã tìm thấy 'Kết quả phân luồng': Luồng chuyên sâu
+    ✅ Đã tìm thấy 'XHTD': A3
+    ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
+    ✅ Đã tìm thấy 'Địa chỉ trên ĐKKD': Tầng 15, Tòa nhà Capital Tower, 109 Trần Hưng Đạo, Quận Hoàn Kiếm, Hà Nội.
+    ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
+
+--- VÒNG LẶP 5/20 | Đang xử lý lô 6 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
+    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': ['Ông Haruto Suzuki', 'Ông Kenji Tanaka', 'Bà Trần Thị Mai Lan']
+    ✅ Đã tìm thấy 'Chức vụ': ['Tổng Giám đốc', 'Giám đốc Tài chính', 'Kế toán trưởng']
+    ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Kế hoạch kinh doanh và tài chính được xây dựng chi tiết bởi đội ngũ chuyên gia từ công ty mẹ, có độ tin cậy cao và thường đạt hoặc vượt chỉ tiêu đề ra.
+  - Không tìm thấy 3 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
+  -> Chia nhỏ lô thất bại...
+
+--- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
   - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
   -> Lô quá nhỏ, không chia nữa.
 
 --- VÒNG LẶP 7/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
   - Không tìm thấy 2 trường: Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng
   -> Chia nhỏ lô thất bại...
 
 --- VÒNG LẶP 8/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
-    ✅ Đã tìm thấy 'Tỷ lệ vốn góp (%)': 100% vốn từ tập đoàn Global Packaging Holdings, Singapore
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
+  - Không tìm thấy 1 trường: Tỷ lệ vốn góp (%)
+  -> Lô quá nhỏ, không chia nữa.
 
 --- VÒNG LẶP 9/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
-    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành.
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
+  - Không tìm thấy 1 trường: Mức độ ảnh hưởng tới Khách hàng
+  -> Lô quá nhỏ, không chia nữa.
 
 --- VÒNG LẶP 10/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
-    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Tên khách hàng: Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC)
-Mã số thuế: 0109xxxx88
-ID khách hàng T24: 10034598
-    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Giấy chứng nhận Đăng ký Doanh nghiệp số 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
-Vốn điều lệ đăng ký: 450.000.000.000 VND
-Loại hình công ty: Công ty cổ phần có vốn đầu tư nước ngoài (100% vốn từ tập đoàn Global Packaging Holdings, Singapore).
-Tình hình pháp lý chung: Công ty tuân thủ đầy đủ các quy định của pháp luật Việt Nam. Đã được cấp chứng chỉ ISO 9001:2015, ISO 14001:2015 và chứng chỉ FSC về quản lý rừng bền vững. Không có tranh chấp, kiện tụng nào đang diễn ra. Báo cáo kiểm toán 2 năm gần nhất (2022, 2023) bởi PwC có ý kiến chấp nhận toàn phần.
-    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Chủ sở hữu hưởng lợi cuối cùng: Tập đoàn Global Packaging Holdings (Singapore), một trong những tập đoàn hàng đầu châu Á về giải pháp đóng gói, thành lập năm 1995. Tập đoàn có hơn 40 nhà máy tại 12 quốc gia, phục vụ các khách hàng lớn như Apple, Samsung, P&G.
-Ban điều hành tại Việt Nam:
-Ông Haruto Suzuki, Quốc tịch Nhật Bản. Chức vụ: Tổng Giám đốc. Số hộ chiếu: TRxxxx123. Là thành viên HĐQT.
-    ✅ Đã tìm thấy 'KYC': KYC đã hoàn thành cho ông Haruto Suzuki và tất cả các bên liên quan.
-    ✅ Đã tìm thấy 'Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật': Không có thông tin nào cho thấy ông Haruto Suzuki có quan hệ tín dụng cá nhân tại TCB.
-    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất: Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND (Một trăm năm mươi tỷ đồng) và hạn mức LC trị giá 50.000.000.000 VND (Năm mươi tỷ đồng).
-Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND)
-Không có thông tin về dư nợ của người liên quan.
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
+    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC), mã số thuế 0109xxxx88, ID khách hàng T24: 10034598. Khách hàng từ 2019-04-20, chất lượng quan hệ tốt, giao dịch thường xuyên LC và T/T cho xuất nhập khẩu, sử dụng E-banking nhiều, có sử dụng dịch vụ trả lương cho hơn 500 nhân viên. Tiềm năng cross-selling.
+    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Tên đầy đủ tiếng Việt: CÔNG TY CỔ PHẦN BAO BÌ TOÀN CẦU XANH
+    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Cuộc họp gần nhất với Giám đốc Tài chính của khách hàng, ông Kenji Tanaka, diễn ra vào ngày 25/09/2024 để thảo luận về kế hoạch mở rộng nhà máy giai đoạn 2.
+    ✅ Đã tìm thấy 'KYC': Compliance check: Pass. KYC completed for all related parties.
+    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND. Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND). Hiện tại chưa có sản phẩm tín dụng nào với TCB.
+  - Không tìm thấy 1 trường: Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật
+  -> Lô quá nhỏ, không chia nữa.
 
 --- VÒNG LẶP 11/20 | Đang xử lý lô 5 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
-    ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
-    ✅ Đã tìm thấy 'Định hướng tín dụng': Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín. Rủi ro ngành bao bì được đánh giá ở mức Trung bình-Cao do cạnh tranh và biến động giá nguyên liệu đầu vào.
-    ✅ Đã tìm thấy 'Offering/ CTKD': - Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND.
-- Hạn mức LC trị giá 50.000.000.000 VND.
-  - Không tìm thấy 2 trường: Đánh giá Rủi ro môi trường xã hội, Quy định khác (nếu có)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 12/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
-  - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-901fbb57-1398-4247-bf8e-003f358488b3'
-    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Khác biệt HĐTDT so với chính sách chung: Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
-
-
-✅ Quá trình trích xuất hoàn tất!
-🔄 Cấu trúc lại dữ liệu cho Template 3...
-INFO:     127.0.0.1:41962 - "POST /process_prompt HTTP/1.1" 200 OK
-INFO:     127.0.0.1:49282 - "OPTIONS /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-901fbb57-1398-4247-bf8e-003f358488b3 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'hi bro'
-🔄 Sử dụng lại collection đã có: session-901fbb57-1398-4247-bf8e-003f358488b3
-  - Gửi tới RAG Flow với collection 'session-901fbb57-1398-4247-bf8e-003f358488b3': hi bro
-INFO:     127.0.0.1:49282 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-901fbb57-1398-4247-bf8e-003f358488b3 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'cho tôi tên công ty này'
-🔄 Sử dụng lại collection đã có: session-901fbb57-1398-4247-bf8e-003f358488b3
-  - Gửi tới RAG Flow với collection 'session-901fbb57-1398-4247-bf8e-003f358488b3': cho tôi tên công ty này
-INFO:     127.0.0.1:37760 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO:     127.0.0.1:46634 - "OPTIONS /clear_rag_session HTTP/1.1" 200 OK
-INFO: HTTP Request: DELETE http://localhost:6333/collections/session-901fbb57-1398-4247-bf8e-003f358488b3 "HTTP/1.1 200 OK"
-🧹 Nhận yêu cầu dọn dẹp RAG collection: session-901fbb57-1398-4247-bf8e-003f358488b3
-✅ RAG Collection 'session-901fbb57-1398-4247-bf8e-003f358488b3' đã được xóa thành công.
-INFO:     127.0.0.1:46634 - "POST /clear_rag_session HTTP/1.1" 200 OK
-✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên 'a7a4ebeb-2bf3-49eb-8358-60bbba09d7cf.txt'
-INFO:     127.0.0.1:60950 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên 'c1bf2daa-3882-46c0-94af-bc17a349a0f6.txt'
-INFO:     127.0.0.1:60950 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '94baac8c-bd71-4ce7-b89d-19a0605423e5.txt'
-INFO:     127.0.0.1:60950 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '54e49acc-ff22-43b1-b5a6-1c0b290bfcc6.txt'
-INFO:     127.0.0.1:60950 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:35186 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
-INFO: HTTP Request: DELETE http://localhost:6333/collections/session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08 "HTTP/1.1 200 OK"
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08 "HTTP/1.1 200 OK"
-🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'template_3'
-   Các File ID: ['a7a4ebeb-2bf3-49eb-8358-60bbba09d7cf', 'c1bf2daa-3882-46c0-94af-bc17a349a0f6', '94baac8c-bd71-4ce7-b89d-19a0605423e5', '54e49acc-ff22-43b1-b5a6-1c0b290bfcc6']
-🚀 New collection: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:00<00:02,  1.46it/s]Đọc file:  50%|█████     | 2/4 [00:00<00:00,  2.78it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  5.69it/s]Đọc file: 100%|██████████| 4/4 [00:00<00:00,  4.21it/s]
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08/points?wait=true "HTTP/1.1 200 OK"
-⏳ Embedding & ghi Qdrant …
-✅ Hoàn tất collection session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-Các file đã được embedding vào collection: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-📋 Sử dụng template 'template_3' với 29 trường cần trích xuất.
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08' cho template 'template_3'...
-
---- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': Công ty Cổ phần Bao bì Toàn Cầu Xanh
-    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
-    ✅ Đã tìm thấy 'ID trên T24': 10034598
-    ✅ Đã tìm thấy 'Loại khách hàng': Công ty cổ phần có vốn đầu tư nước ngoài (100% vốn từ tập đoàn Global Packaging Holdings, Singapore).
-    ✅ Đã tìm thấy 'Ngành nghề HĐKD theo ĐKKD': chuyên cung cấp giải pháp đóng gói toàn diện cho các doanh nghiệp FDI lớn tại các KCN phía Bắc.
-  - Không tìm thấy 1 trường: Phân khúc
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 2/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-    ✅ Đã tìm thấy 'Mục đích báo cáo': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
-    ✅ Đã tìm thấy 'Kết quả phân luồng': Luồng chuyên sâu
-    ✅ Đã tìm thấy 'XHTD': A3
-    ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
-  - Không tìm thấy 2 trường: Ngày thành lập, Địa chỉ trên ĐKKD
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-    ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
-
---- VÒNG LẶP 4/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-  - Không tìm thấy 1 trường: Địa chỉ trên ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 5/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': Ông Haruto Suzuki
-    ✅ Đã tìm thấy 'Chức vụ': Tổng Giám đốc
-  - Không tìm thấy 4 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng, Đánh giá về năng lực, uy tín và kinh nghiệm
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 6/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-  - Không tìm thấy 2 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-  - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 8/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-    ✅ Đã tìm thấy 'Tỷ lệ vốn góp (%)': 100% vốn từ tập đoàn Global Packaging Holdings, Singapore
-
---- VÒNG LẶP 9/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': A valuable client with strong financial standing and significant transaction volumes. Recommended for prioritized processing.
-    ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Khả năng lập kế hoạch: Kế hoạch kinh doanh và tài chính được xây dựng chi tiết bởi đội ngũ chuyên gia từ công ty mẹ, có độ tin cậy cao và thường đạt hoặc vượt chỉ tiêu đề ra.
-
---- VÒNG LẶP 10/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Tên khách hàng: Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC)
-Mã số thuế: 0109xxxx88
-ID khách hàng T24: 10034598
-Khách hàng từ: 2019-04-20
-Chất lượng mối quan hệ: Tốt
-Giao dịch gần nhất: 2024-09-25 (Gặp CFO)
-Ghi chú: Khách hàng tiềm năng cao. Chủ động tìm kiếm đối tác ngân hàng chiến lược.
-    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Giấy chứng nhận Đăng ký Doanh nghiệp số 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
-Vốn điều lệ đăng ký: 450.000.000.000 VND
-Loại hình công ty: Công ty cổ phần có vốn đầu tư nước ngoài (100% vốn từ tập đoàn Global Packaging Holdings, Singapore).
-Tình hình pháp lý chung: Công ty tuân thủ đầy đủ các quy định của pháp luật Việt Nam. Đã được cấp chứng chỉ ISO 9001:2015, ISO 14001:2015 và chứng chỉ FSC về quản lý rừng bền vững. Không có tranh chấp, kiện tụng nào đang diễn ra. Báo cáo kiểm toán 2 năm gần nhất (2022, 2023) bởi PwC có ý kiến chấp nhận toàn phần.
-    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Chủ sở hữu hưởng lợi cuối cùng: Tập đoàn Global Packaging Holdings (Singapore), một trong những tập đoàn hàng đầu châu Á về giải pháp đóng gói, thành lập năm 1995. Tập đoàn có hơn 40 nhà máy tại 12 quốc gia, phục vụ các khách hàng lớn như Apple, Samsung, P&G.
-Ban điều hành tại Việt Nam:
-Ông Haruto Suzuki, Quốc tịch Nhật Bản. Chức vụ: Tổng Giám đốc. Số hộ chiếu: TRxxxx123. Là thành viên HĐQT.
-    ✅ Đã tìm thấy 'KYC': KYC đã hoàn thành cho tất cả các bên liên quan.
-KYC của ông Haruto Suzuki đã hoàn thành.
-    ✅ Đã tìm thấy 'Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật': Không có thông tin nào cho thấy khách hàng là người liên quan của TCB theo quy định của pháp luật.
-    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất: Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND (Một trăm năm mươi tỷ đồng) và hạn mức LC trị giá 50.000.000.000 VND (Năm mươi tỷ đồng).
-Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND)
-Không có thông tin về dư nợ của người liên quan.
-
---- VÒNG LẶP 11/20 | Đang xử lý lô 5 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-    ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
-    ✅ Đã tìm thấy 'Định hướng tín dụng': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
-    ✅ Đã tìm thấy 'Offering/ CTKD': - Payroll service: Yes, for 500+ employees.
-- E-banking for corporate: Yes, heavy usage.
-- FX & Trade Finance: Yes, frequently uses LC and T/T services for import/export.
-- Other services (investment, insurance...): No. Potential for cross-selling.
-  - Không tìm thấy 2 trường: Đánh giá Rủi ro môi trường xã hội, Quy định khác (nếu có)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 12/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-  - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08'
-    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Khác biệt HĐTD so với chính sách chung: Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
-
-
-✅ Quá trình trích xuất hoàn tất!
-🔄 Cấu trúc lại dữ liệu cho Template 3...
-INFO:     127.0.0.1:35186 - "POST /process_prompt HTTP/1.1" 200 OK
-INFO:     127.0.0.1:44126 - "OPTIONS /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-  - Gửi tới RAG Flow với collection 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08': tên công ty là gì
-INFO:     127.0.0.1:44126 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO:     127.0.0.1:55368 - "OPTIONS /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-  - Gửi tới RAG Flow với collection 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08': tên công ty là gì
-INFO:     127.0.0.1:55368 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-  - Gửi tới RAG Flow với collection 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08': tên công ty là gì
-INFO:     127.0.0.1:52248 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-  - Gửi tới RAG Flow với collection 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08': tên công ty là gì
-INFO:     127.0.0.1:39192 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-  - Gửi tới RAG Flow với collection 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08': tên công ty là gì
-  - Lỗi gọi API RAG: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/129d05dd-3f4d-4a81-b1f2-85e436e4d0a8
-INFO:     127.0.0.1:60788 - "POST /chat_rag HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'config.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [76915]
-INFO:     Started server process [91766]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-🧠 Đang tải / khởi tạo embedding model …
-✅ Embedding model sẵn sàng.
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-  - Gửi tới RAG Flow với collection 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08': tên công ty là gì
-  - Lỗi gọi API RAG: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/129d05dd-3f4d-4a81-b1f2-85e436e4d0a8
-INFO:     127.0.0.1:43986 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO:     127.0.0.1:41322 - "OPTIONS /clear_rag_session HTTP/1.1" 200 OK
-INFO:     127.0.0.1:41326 - "OPTIONS /clear_rag_session HTTP/1.1" 200 OK
-INFO:     127.0.0.1:41330 - "OPTIONS /clear_rag_session HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53278 - "POST /clear_rag_session HTTP/1.1" 422 Unprocessable Entity
-🧹 Nhận yêu cầu dọn dẹp RAG collection: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-✅ RAG Collection 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08' đã được xóa thành công.
-INFO:     127.0.0.1:41330 - "POST /clear_rag_session HTTP/1.1" 200 OK
-🧹 Nhận yêu cầu dọn dẹp RAG collection: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-✅ RAG Collection 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08' đã được xóa thành công.
-INFO:     127.0.0.1:41326 - "POST /clear_rag_session HTTP/1.1" 200 OK
-🧹 Nhận yêu cầu dọn dẹp RAG collection: session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08
-✅ RAG Collection 'session-86b0fa39-67fc-4ec3-bf8b-567640aa9c08' đã được xóa thành công.
-INFO:     127.0.0.1:41322 - "POST /clear_rag_session HTTP/1.1" 200 OK
-✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên '14a7c939-84aa-4ccb-8f24-d504a5762af3.txt'
-INFO:     127.0.0.1:50864 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên '120b3ff2-5d0d-42e5-9e8f-bb0d9a5d89fe.txt'
-INFO:     127.0.0.1:50864 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên 'bda4a93a-515f-4572-a4b3-8990562db1f2.txt'
-INFO:     127.0.0.1:50864 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '753811b9-cd72-4abb-994f-c31b4ff8c0da.txt'
-INFO:     127.0.0.1:50864 - "POST /upload_file HTTP/1.1" 200 OK
-INFO:     127.0.0.1:50864 - "OPTIONS /process_prompt HTTP/1.1" 200 OK
-🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'template_3'
-   Các File ID: ['14a7c939-84aa-4ccb-8f24-d504a5762af3', '120b3ff2-5d0d-42e5-9e8f-bb0d9a5d89fe', 'bda4a93a-515f-4572-a4b3-8990562db1f2', '753811b9-cd72-4abb-994f-c31b4ff8c0da']
-🚀 New collection: session-853c9fb9-531b-4e3a-999e-4a4147cd18c0
-Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:16<00:48, 16.24s/it]Đọc file: 100%|██████████| 4/4 [00:16<00:00,  4.08s/it]
-/root/chatbot/backend/utils/embedding_handler.py:92: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
-  qstore = Qdrant(
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-853c9fb9-531b-4e3a-999e-4a4147cd18c0/points?wait=true "HTTP/1.1 200 OK"
-⏳ Embedding & ghi Qdrant …
-✅ Hoàn tất collection session-853c9fb9-531b-4e3a-999e-4a4147cd18c0
-Các file đã được embedding vào collection: session-853c9fb9-531b-4e3a-999e-4a4147cd18c0
-📋 Sử dụng template 'template_3' với 29 trường cần trích xuất.
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0' cho template 'template_3'...
-
---- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': Công ty Cổ phần Bao bì Toàn Cầu Xanh
-    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
-    ✅ Đã tìm thấy 'ID trên T24': 10034598
-    ✅ Đã tìm thấy 'Loại khách hàng': Doanh nghiệp FDI
-  - Không tìm thấy 2 trường: Phân khúc, Ngành nghề HĐKD theo ĐKKD
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 2/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-    ✅ Đã tìm thấy 'Phân khúc': Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành. Rủi ro ngành bao bì được đánh giá ở mức Trung bình-Cao do cạnh tranh và biến động giá nguyên liệu đầu vào.
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-  - Không tìm thấy 1 trường: Ngành nghề HĐKD theo ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 4/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-    ✅ Đã tìm thấy 'Mục đích báo cáo': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
-    ✅ Đã tìm thấy 'Kết quả phân luồng': Luồng chuyên sâu
-    ✅ Đã tìm thấy 'XHTD': A3
-    ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
-    ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
-  - Không tìm thấy 1 trường: Địa chỉ trên ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 5/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': Ông Haruto Suzuki
-    ✅ Đã tìm thấy 'Chức vụ': Tổng Giám đốc
-  - Không tìm thấy 4 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng, Đánh giá về năng lực, uy tín và kinh nghiệm
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 6/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-  - Không tìm thấy 2 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 7/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-  - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 8/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-    ✅ Đã tìm thấy 'Tỷ lệ vốn góp (%)': 100% vốn từ tập đoàn Global Packaging Holdings, Singapore
-
---- VÒNG LẶP 9/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': Khách hàng tỏ ra rất thiện chí và mong muốn TCB là đối tác tài chính chiến lược duy nhất tại Việt Nam.
-    ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành. Tập đoàn Global Packaging Holdings (Singapore), một trong những tập đoàn hàng đầu châu Á về giải pháp đóng gói, thành lập năm 1995. Tập đoàn có hơn 40 nhà máy tại 12 quốc gia, phục vụ các khách hàng lớn như Apple, Samsung, P&G.
-
---- VÒNG LẶP 10/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Tên khách hàng: Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC)
-Mã số thuế: 0109xxxx88
-ID khách hàng T24: 10034598
-    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Giấy chứng nhận Đăng ký Doanh nghiệp số 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
-Vốn điều lệ đăng ký: 450.000.000.000 VND
-Loại hình công ty: Công ty cổ phần có vốn đầu tư nước ngoài (100% vốn từ tập đoàn Global Packaging Holdings, Singapore).
-Tình hình pháp lý chung: Công ty tuân thủ đầy đủ các quy định của pháp luật Việt Nam. Đã được cấp chứng chỉ ISO 9001:2015, ISO 14001:2015 và chứng chỉ FSC về quản lý rừng bền vững. Không có tranh chấp, kiện tụng nào đang diễn ra. Báo cáo kiểm toán 2 năm gần nhất (2022, 2023) bởi PwC có ý kiến chấp nhận toàn phần.
-    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Chủ sở hữu hưởng lợi cuối cùng: Tập đoàn Global Packaging Holdings (Singapore), một trong những tập đoàn hàng đầu châu Á về giải pháp đóng gói, thành lập năm 1995.
-Ban điều hành tại Việt Nam:
-Ông Haruto Suzuki, Quốc tịch Nhật Bản. Chức vụ: Tổng Giám đốc. Số hộ chiếu: TRxxxx123. Là thành viên HĐQT.
-    ✅ Đã tìm thấy 'KYC': KYC đã hoàn thành cho tất cả các bên liên quan.
-    ✅ Đã tìm thấy 'Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật': Không có quan hệ tín dụng cá nhân tại TCB đối với ông Haruto Suzuki.
-    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất: Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND (Một trăm năm mươi tỷ đồng) và hạn mức LC trị giá 50.000.000.000 VND (Năm mươi tỷ đồng).
-Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND)
-
---- VÒNG LẶP 11/20 | Đang xử lý lô 5 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-    ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
-    ✅ Đã tìm thấy 'Định hướng tín dụng': Khách hàng có tình hình tài chính lành mạnh, tăng trưởng tốt, là doanh nghiệp FDI uy tín trong ngành. Rủi ro ngành bao bì được đánh giá ở mức Trung bình-Cao do cạnh tranh và biến động giá nguyên liệu đầu vào.
-    ✅ Đã tìm thấy 'Offering/ CTKD': Đề xuất cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND. Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND). Mục đích thẩm định: Cấp mới. Loại khoản vay chính: Vay vốn lưu động. Tài sản bảo đảm: Toàn bộ nhà xưởng, máy móc thiết bị tại KCN Yên Phong, Bắc Ninh. Giá trị định giá sơ bộ là 280 tỷ VND. Tỷ lệ BPHĐ trên tổng dư nợ dự kiến đạt 140%.
-  - Không tìm thấy 2 trường: Đánh giá Rủi ro môi trường xã hội, Quy định khác (nếu có)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 12/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-  - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0'
-    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Khác biệt HĐTD so với chính sách chung: Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
-
-
-✅ Quá trình trích xuất hoàn tất!
-🔄 Cấu trúc lại dữ liệu cho Template 3...
-INFO:     127.0.0.1:50864 - "POST /process_prompt HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57630 - "OPTIONS /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-853c9fb9-531b-4e3a-999e-4a4147cd18c0 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-853c9fb9-531b-4e3a-999e-4a4147cd18c0
-  - Gửi tới RAG Flow với collection 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0': tên công ty là gì
-  - Lỗi gọi API RAG: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/129d05dd-3f4d-4a81-b1f2-85e436e4d0a8
-INFO:     127.0.0.1:57630 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-853c9fb9-531b-4e3a-999e-4a4147cd18c0 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-853c9fb9-531b-4e3a-999e-4a4147cd18c0
-  - Gửi tới RAG Flow với collection 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0': tên công ty là gì
-  - Lỗi gọi API RAG: 500 Server Error: Internal Server Error for url: http://localhost:7860/api/v1/run/129d05dd-3f4d-4a81-b1f2-85e436e4d0a8
-INFO:     127.0.0.1:56114 - "POST /chat_rag HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'config.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [91766]
-INFO:     Started server process [93114]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-🧠 Đang tải / khởi tạo embedding model …
-✅ Embedding model sẵn sàng.
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-853c9fb9-531b-4e3a-999e-4a4147cd18c0
-  - Gửi tới RAG Flow với collection 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0': tên công ty là gì
-INFO:     127.0.0.1:51446 - "POST /chat_rag HTTP/1.1" 200 OK
-🧹 Nhận yêu cầu dọn dẹp RAG collection: session-853c9fb9-531b-4e3a-999e-4a4147cd18c0
-✅ RAG Collection 'session-853c9fb9-531b-4e3a-999e-4a4147cd18c0' đã được xóa thành công.
-INFO:     127.0.0.1:36650 - "POST /clear_rag_session HTTP/1.1" 200 OK
-✅ File 'trich_xuat_he_thong_crm.txt' đã được lưu thành công với tên '5e6977ee-5020-46fb-80c3-f0d7f344ee01.txt'
-INFO:     127.0.0.1:36680 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'bao_cao_tai_chinh_va_ke_hoach_kinh_doanh.txt' đã được lưu thành công với tên '37c1e461-3972-406d-8772-147b441309fb.txt'
-INFO:     127.0.0.1:36680 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'ho_so_phap_ly_doanh_nghiep.txt' đã được lưu thành công với tên '56e7edc5-b3a7-4691-ad5a-79f9a1dae5b4.txt'
-INFO:     127.0.0.1:36680 - "POST /upload_file HTTP/1.1" 200 OK
-✅ File 'to_trinh_tin_dung.txt' đã được lưu thành công với tên 'e0a193dc-bdce-4f1a-8b8d-ae8f14fdea42.txt'
-INFO:     127.0.0.1:36680 - "POST /upload_file HTTP/1.1" 200 OK
-🚀 Nhận được yêu cầu xử lý cho 4 file với prompt: 'Trích xuất thông tin theo mẫu Báo cáo thẩm định.' và template: 'template_3'
-   Các File ID: ['5e6977ee-5020-46fb-80c3-f0d7f344ee01', '37c1e461-3972-406d-8772-147b441309fb', '56e7edc5-b3a7-4691-ad5a-79f9a1dae5b4', 'e0a193dc-bdce-4f1a-8b8d-ae8f14fdea42']
-🚀 New collection: session-c51b11d5-02eb-4085-aa05-0a8d76e48575
-Đọc file:   0%|          | 0/4 [00:00<?, ?it/s]Đọc file:  25%|██▌       | 1/4 [00:08<00:25,  8.34s/it]Đọc file:  50%|█████     | 2/4 [00:08<00:07,  3.64s/it]Đọc file: 100%|██████████| 4/4 [00:08<00:00,  2.19s/it]
-/root/chatbot/backend/utils/embedding_handler.py:92: LangChainDeprecationWarning: The class `Qdrant` was deprecated in LangChain 0.1.2 and will be removed in 0.5.0. Use :class:`~QdrantVectorStore` instead.
-  qstore = Qdrant(
-INFO: HTTP Request: PUT http://localhost:6333/collections/session-c51b11d5-02eb-4085-aa05-0a8d76e48575/points?wait=true "HTTP/1.1 200 OK"
-⏳ Embedding & ghi Qdrant …
-✅ Hoàn tất collection session-c51b11d5-02eb-4085-aa05-0a8d76e48575
-Các file đã được embedding vào collection: session-c51b11d5-02eb-4085-aa05-0a8d76e48575
-📋 Sử dụng template 'template_3' với 29 trường cần trích xuất.
-🚀 Bắt đầu quá trình trích xuất thông tin từ collection 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575' cho template 'template_3'...
-
---- VÒNG LẶP 1/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
-    ✅ Đã tìm thấy 'Tên đầy đủ của khách hàng': Công ty Cổ phần Bao bì Toàn Cầu Xanh
-    ✅ Đã tìm thấy 'Giấy ĐKKD/GP đầu tư': 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
-    ✅ Đã tìm thấy 'ID trên T24': 10034598
-    ✅ Đã tìm thấy 'Loại khách hàng': Doanh nghiệp FDI
-    ✅ Đã tìm thấy 'Ngành nghề HĐKD theo ĐKKD': chuyên cung cấp giải pháp đóng gói toàn diện cho các doanh nghiệp FDI lớn tại các KCN phía Bắc
-  - Không tìm thấy 1 trường: Phân khúc
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 2/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
-    ✅ Đã tìm thấy 'Mục đích báo cáo': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
-    ✅ Đã tìm thấy 'Kết quả phân luồng': Luồng chuyên sâu
-    ✅ Đã tìm thấy 'XHTD': A3
-    ✅ Đã tìm thấy 'Ngày thành lập': 15/03/2019
-    ✅ Đã tìm thấy 'Người đại diện theo Pháp luật': Ông Haruto Suzuki
-  - Không tìm thấy 1 trường: Địa chỉ trên ĐKKD
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 3/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
-    ✅ Đã tìm thấy 'Tên thành viên góp vốn/ban lãnh đạo': Ông Haruto Suzuki
-    ✅ Đã tìm thấy 'Chức vụ': Tổng Giám đốc
-  - Không tìm thấy 4 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%), Mức độ ảnh hưởng tới Khách hàng, Đánh giá về năng lực, uy tín và kinh nghiệm
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 4/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
-  - Không tìm thấy 2 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện, Tỷ lệ vốn góp (%)
-  -> Chia nhỏ lô thất bại...
-
---- VÒNG LẶP 5/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
-  - Không tìm thấy 1 trường: Có kinh doanh Ngành nghề kinh doanh có điều kiện
-  -> Lô quá nhỏ, không chia nữa.
-
---- VÒNG LẶP 6/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
-    ✅ Đã tìm thấy 'Tỷ lệ vốn góp (%)': 100% vốn từ tập đoàn Global Packaging Holdings, Singapore
-
---- VÒNG LẶP 7/20 | Đang xử lý lô 2 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
-    ✅ Đã tìm thấy 'Mức độ ảnh hưởng tới Khách hàng': A valuable client with strong financial standing and significant transaction volumes. Recommended for prioritized processing.
-    ✅ Đã tìm thấy 'Đánh giá về năng lực, uy tín và kinh nghiệm': Khả năng lập kế hoạch: Kế hoạch kinh doanh và tài chính được xây dựng chi tiết bởi đội ngũ chuyên gia từ công ty mẹ, có độ tin cậy cao và thường đạt hoặc vượt chỉ tiêu đề ra.
-
---- VÒNG LẶP 8/20 | Đang xử lý lô 6 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
-    ✅ Đã tìm thấy 'Thông tin khách hàng tổng quan': Tên khách hàng: Công ty Cổ phần Bao bì Toàn Cầu Xanh (GLOBAL GREEN PACKAGING JSC)
-Mã số thuế: 0109xxxx88
-ID khách hàng T24: 10034598
-Khách hàng từ: 2019-04-20
-Chất lượng mối quan hệ: Tốt
-Giao dịch gần nhất: 2024-09-25 (Gặp CFO)
-Ghi chú: Khách hàng tiềm năng cao. Chủ động tìm kiếm đối tác ngân hàng chiến lược.
-    ✅ Đã tìm thấy 'Pháp lý/ GPKD có ĐK': Giấy chứng nhận Đăng ký Doanh nghiệp số 0109xxxx88, đăng ký lần đầu ngày 15/03/2019, do Sở Kế hoạch và Đầu tư TP. Hà Nội cấp.
-Công ty tuân thủ đầy đủ các quy định của pháp luật Việt Nam. Đã được cấp chứng chỉ ISO 9001:2015, ISO 14001:2015 và chứng chỉ FSC về quản lý rừng bền vững. Không có tranh chấp, kiện tụng nào đang diễn ra. Báo cáo kiểm toán 2 năm gần nhất (2022, 2023) bởi PwC có ý kiến chấp nhận toàn phần.
-    ✅ Đã tìm thấy 'Chủ doanh nghiệp/Ban lãnh đạo': Chủ sở hữu hưởng lợi cuối cùng: Tập đoàn Global Packaging Holdings (Singapore), một trong những tập đoàn hàng đầu châu Á về giải pháp đóng gói, thành lập năm 1995.
-Ban điều hành tại Việt Nam:
-Ông Haruto Suzuki, Quốc tịch Nhật Bản. Chức vụ: Tổng Giám đốc. Số hộ chiếu: TRxxxx123. Là thành viên HĐQT.
-    ✅ Đã tìm thấy 'KYC': KYC đã hoàn thành cho tất cả các bên liên quan.
-KYC của ông Haruto Suzuki đã hoàn thành.
-    ✅ Đã tìm thấy 'Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật': Không có thông tin nào cho thấy ông Haruto Suzuki có quan hệ tín dụng cá nhân tại TCB.
-    ✅ Đã tìm thấy 'Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật': Đề xuất: Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
-Tổng giá trị cấp tín dụng đề xuất: 200,000 (đơn vị: triệu VND)
-Không có thông tin về dư nợ của người liên quan.
-
---- VÒNG LẶP 9/20 | Đang xử lý lô 5 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
     ✅ Đã tìm thấy 'Lĩnh vực kinh tế và TPK trọng tâm': Ngành bao bì
     ✅ Đã tìm thấy 'Định hướng tín dụng': Cấp mới hạn mức Tín dụng Lưu động trị giá 150.000.000.000 VND và hạn mức LC trị giá 50.000.000.000 VND.
     ✅ Đã tìm thấy 'Offering/ CTKD': Tài trợ vốn lưu động, chủ yếu là nhập khẩu giấy cuộn từ Indonesia và Thái Lan.
   - Không tìm thấy 2 trường: Đánh giá Rủi ro môi trường xã hội, Quy định khác (nếu có)
   -> Chia nhỏ lô thất bại...
 
---- VÒNG LẶP 10/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
+--- VÒNG LẶP 12/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
   - Không tìm thấy 1 trường: Đánh giá Rủi ro môi trường xã hội
   -> Lô quá nhỏ, không chia nữa.
 
---- VÒNG LẶP 11/20 | Đang xử lý lô 1 trường ---
-  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575'
-    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Khác biệt HĐTD so với chính sách chung: Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
+--- VÒNG LẶP 13/20 | Đang xử lý lô 1 trường ---
+  - Đang gửi yêu cầu tới Langflow, ghi đè collection thành: 'session-cc3ebd73-5e53-4a39-8db1-4acc088803c6'
+    ✅ Đã tìm thấy 'Quy định khác (nếu có)': Khác biệt HĐTDT so với chính sách chung: Có (Đề xuất tỷ lệ tài trợ cao hơn cho nguyên vật liệu nhập khẩu)
 
 
 ✅ Quá trình trích xuất hoàn tất!
 🔄 Cấu trúc lại dữ liệu cho Template 3...
-INFO:     127.0.0.1:36680 - "POST /process_prompt HTTP/1.1" 200 OK
-INFO:     127.0.0.1:42894 - "OPTIONS /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-c51b11d5-02eb-4085-aa05-0a8d76e48575 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-c51b11d5-02eb-4085-aa05-0a8d76e48575
-  - Gửi tới RAG Flow với collection 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575': tên công ty là gì
-INFO:     127.0.0.1:42894 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-c51b11d5-02eb-4085-aa05-0a8d76e48575 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-c51b11d5-02eb-4085-aa05-0a8d76e48575
-  - Gửi tới RAG Flow với collection 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575': tên công ty là gì
-  - Lỗi phân tích phản hồi RAG: Expecting value: line 1 column 1 (char 0)
-INFO:     127.0.0.1:55670 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-c51b11d5-02eb-4085-aa05-0a8d76e48575 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'tên công ty là gì'
-🔄 Sử dụng lại collection đã có: session-c51b11d5-02eb-4085-aa05-0a8d76e48575
-  - Gửi tới RAG Flow với collection 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575': tên công ty là gì
-INFO:     127.0.0.1:53698 - "POST /chat_rag HTTP/1.1" 200 OK
-INFO: HTTP Request: GET http://localhost:6333/collections/session-c51b11d5-02eb-4085-aa05-0a8d76e48575 "HTTP/1.1 200 OK"
-🗨️ Nhận được câu hỏi RAG: 'ngoài ông haruto thì trong ban lãnh đạo hay cổ đông còn thành viên nào nữa không'
-🔄 Sử dụng lại collection đã có: session-c51b11d5-02eb-4085-aa05-0a8d76e48575
-  - Gửi tới RAG Flow với collection 'session-c51b11d5-02eb-4085-aa05-0a8d76e48575': ngoài ông haruto thì trong ban lãnh đạo hay cổ đông còn thành viên nào nữa không
-INFO:     127.0.0.1:33342 - "POST /chat_rag HTTP/1.1" 200 OK
-WARNING:  WatchFiles detected changes in 'api/main.py'. Reloading...
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-INFO:     Application shutdown complete.
-INFO:     Finished server process [93114]
+INFO:     127.0.0.1:35176 - "POST /process_prompt HTTP/1.1" 200 OK

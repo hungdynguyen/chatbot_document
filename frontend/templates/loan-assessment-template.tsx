@@ -120,7 +120,7 @@ export function LoanAssessmentTemplate({
   }
   
   return (
-    <div className="p-8 max-w-4xl mx-auto animate-fade-in-up">
+    <div id="document-content" className="p-8 max-w-4xl mx-auto animate-fade-in-up">
       {/* --- HEADER --- */}
       <div className="text-center mb-8 pb-6 border-b border-red-100">
         <EditableField
