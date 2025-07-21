@@ -12,7 +12,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Thư mục gốc của project
-PROJECT_ROOT="/root/chatbot"
+PROJECT_ROOT="$(dirname "$(realpath "$0")")"
 FRONTEND_DIR="$PROJECT_ROOT/frontend"
 BACKEND_DIR="$PROJECT_ROOT/backend"
 
@@ -118,6 +118,7 @@ docker-compose -f frontend/docker-compose.yml down 2>/dev/null
 docker stop qdrant-container 2>/dev/null
 docker rm qdrant-container 2>/dev/null
 
+
 log_success "Đã dọn dẹp các service cũ"
 
 # 4. Khởi động Qdrant
@@ -173,13 +174,17 @@ else
 fi
 
 # 6. Khởi động Backend API (FastAPI) trong môi trường Conda
+# 6. Khởi động Backend API (FastAPI) trong môi trường Conda
 log_info "Khởi động Backend API (FastAPI)..."
 (
     # Chạy trong một subshell để đảm bảo môi trường được kích hoạt đúng cách
-    log_info "Kích hoạt môi trường Conda 'chatbot_env' cho backend..."
-    # Sử dụng '.' thay cho 'source' để tương thích tốt hơn
-    . /root/miniconda3/etc/profile.d/conda.sh
-    conda activate chatbot_env
+    log_info "Kích hoạt môi trường 'venv' cho backend..."
+    if [ -f "$PROJECT_ROOT/venv/bin/activate" ]; then
+        source "$PROJECT_ROOT/venv/bin/activate"
+    else
+        log_error "Không tìm thấy môi trường ảo 'venv' trong thư mục project root"
+        exit 1
+    fi
     
     # Chuyển vào thư mục backend
     cd "$BACKEND_DIR" || exit 1
@@ -189,9 +194,9 @@ log_info "Khởi động Backend API (FastAPI)..."
 )
 
 # Đợi Backend API khởi động với cơ chế kiểm tra lặp lại
-log_info "Đợi Backend API khởi động... (tối đa 60 giây)"
+log_info "Đợi Backend API khởi động... (tối đa 150 giây)"
 ATTEMPTS=0
-MAX_ATTEMPTS=12 # 12 lần * 5 giây = 60 giây
+MAX_ATTEMPTS=30 
 while ! check_port 8000 && [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
     ATTEMPTS=$((ATTEMPTS + 1))
     sleep 5
@@ -210,9 +215,13 @@ fi
 log_info "Khởi động Langflow..."
 (
     # Chạy trong một subshell để đảm bảo môi trường được kích hoạt đúng cách
-    log_info "Kích hoạt môi trường Conda 'chatbot_env' cho Langflow..."
-    . /root/miniconda3/etc/profile.d/conda.sh
-    conda activate chatbot_env
+    log_info "Kích hoạt môi trường 'venv' cho backend..."
+    if [ -f "$PROJECT_ROOT/venv/bin/activate" ]; then
+        source "$PROJECT_ROOT/venv/bin/activate"
+    else
+        log_error "Không tìm thấy môi trường ảo 'venv' trong thư mục project root"
+        exit 1
+    fi
     
     # Chuyển về thư mục project để file log được tạo đúng chỗ
     cd "$PROJECT_ROOT" || exit 1
@@ -222,9 +231,9 @@ log_info "Khởi động Langflow..."
 )
 
 # Đợi Langflow khởi động với cơ chế kiểm tra lặp lại
-log_info "Đợi Langflow khởi động... (tối đa 60 giây)"
+log_info "Đợi Langflow khởi động... (tối đa 150 giây)"
 ATTEMPTS=0
-MAX_ATTEMPTS=12 # 12 lần * 5 giây = 60 giây
+MAX_ATTEMPTS=30 # 12 lần * 5 giây = 60 giây
 while ! check_port 7860 && [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
     ATTEMPTS=$((ATTEMPTS + 1))
     sleep 5

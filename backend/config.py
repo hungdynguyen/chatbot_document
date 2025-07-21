@@ -26,13 +26,13 @@ CHUNK_OVERLAP = 200
 
 # --- CẤU HÌNH LANGFLOW ---
 # Langflow cho trích xuất thông tin
-LANGFLOW_EXTRACTOR_URL = "http://localhost:7860/api/v1/run/70017ce4-caba-479c-a03c-067faebf3c6c"
+LANGFLOW_EXTRACTOR_URL = "http://127.0.0.1:7860/api/v1/run/fb81426e-2615-4cff-9f00-90ea297cbd03"
  
 # Langflow cho chat RAG
-LANGFLOW_RAG_URL = "http://localhost:7860/api/v1/run/129d05dd-3f4d-4a81-b1f2-85e436e4d0a8"
+LANGFLOW_RAG_URL = "http://127.0.0.1:7860/api/v1/run/dd931858-3057-47d8-a28d-12c962bd0539"
 
 HEADERS = {"Content-Type": "application/json; charset=utf-8"}
 
 # Component IDs trong các Langflow flows
-QDRANT_COMPONENT_ID_EXTRACTOR = "QdrantVectorStoreComponent-L0lVV"
-QDRANT_COMPONENT_ID_RAG = "QdrantVectorStoreComponent-eImvl"
+QDRANT_COMPONENT_ID_EXTRACTOR = "QdrantVectorStoreComponent-DZYG7"
+QDRANT_COMPONENT_ID_RAG = "QdrantVectorStoreComponent-C1U3r"

@@ -12,7 +12,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Thư mục gốc của project
-PROJECT_ROOT="/root/chatbot"
+PROJECT_ROOT="$(dirname "$(realpath "$0")")"
 FRONTEND_DIR="$PROJECT_ROOT/frontend"
 
 # Hàm để in log với màu sắc
@@ -70,7 +70,7 @@ cd "$PROJECT_ROOT" || {
 # 1. Dừng Frontend Docker
 log_info "Dừng Frontend Docker containers..."
 cd "$FRONTEND_DIR"
-docker-compose down
+sudo docker-compose down
 if [ $? -eq 0 ]; then
     log_success "Frontend containers đã được dừng"
 else
