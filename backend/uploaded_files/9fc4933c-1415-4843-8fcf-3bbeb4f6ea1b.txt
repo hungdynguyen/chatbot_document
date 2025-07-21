@@ -1,0 +1,36 @@
+BÁO CÁO PHÂN TÍCH TÀI CHÍNH VÀ KẾ HOẠCH KINH DOANH
+Khách hàng: Công ty Cổ phần Bao bì Toàn Cầu Xanh
+Đơn vị tính: triệu VND
+
+A. PHÂN TÍCH KẾT QUẢ KINH DOANH CÁC NĂM GẦN NHẤT
+
+Ghi chú: Dữ liệu được trích xuất từ Báo cáo tài chính đã kiểm toán bởi PwC Việt Nam.
+
+Năm 2023 là một năm tăng trưởng vượt bậc của công ty, với doanh thu tăng 68.3% so với năm 2022 do nhà máy đi vào hoạt động ổn định và ký được các hợp đồng lớn. Lợi nhuận ròng sau thuế tăng mạnh 125.8%, cho thấy hiệu quả quản lý chi phí tốt. Tổng nợ giảm nhẹ cho thấy công ty bắt đầu dùng lợi nhuận để trả bớt các khoản vay đầu tư ban đầu. Vốn chủ sở hữu tăng mạnh do lợi nhuận giữ lại.
+
+BẢNG KẾT QUẢ KINH DOANH TÓM TẮT
+---------------------------------------------------------------------
+| Chỉ tiêu                   | Năm 2022     | Năm 2023     | Tăng trưởng |
+|-----------------------------|---------------|---------------|-------------|
+| 1. Tổng doanh thu           | 1,100,500     | 1,852,100     | 68.3%       |
+| 2. Lợi nhuận gộp            | 165,075       | 315,850       | 91.3%       |
+| 3. Lợi nhuận trước thuế     | 80,300        | 181,300       | 125.8%      |
+| 4. Lợi nhuận ròng sau thuế  | 64,240        | 145,040       | 125.8%      |
+| 5. Tổng nợ phải trả        | 950,000       | 890,500       | -6.3%       |
+| 6. Tổng vốn chủ sở hữu      | 485,760       | 630,800       | 29.9%       |
+---------------------------------------------------------------------
+
+B. KẾ HOẠCH KINH DOANH (THEO HẠN MỨC ĐỀ XUẤT)
+
+Công ty đề xuất hạn mức 150 tỷ VND để tài trợ vốn lưu động, chủ yếu là nhập khẩu giấy cuộn từ Indonesia và Thái Lan. Dưới đây là các chỉ tiêu chính trong kế hoạch kinh doanh 2024.
+
+KẾ HOẠCH NĂM 2024
+---------------------------------
+| Chỉ tiêu                   | Giá trị       |
+|-----------------------------|---------------|
+| Doanh thu hàng năm (dự kiến) | 2,200,000     |
+| Lợi nhuận gộp (dự kiến)     | 400,000       |
+| Lợi nhuận ròng (dự kiến)    | 190,000       |
+---------------------------------
+
+Nhận xét: Kế hoạch đưa ra là khả thi, dựa trên các đơn hàng đã ký và tốc độ tăng trưởng hiện tại.

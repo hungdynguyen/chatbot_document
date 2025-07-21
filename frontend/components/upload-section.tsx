@@ -30,9 +30,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { LoanAssessmentOldPreview } from "./template-previews/LoanAssessmentOldPreview"
-import { LoanAssessmentNewPreview } from "./template-previews/LoanAssessmentNewPreview"
-import { LoanAssessmentReportPreview } from "./template-previews/LoanAssessmentReportPreview"
+import { Template1Preview } from "./template-previews/Template1Preview"
+import { Template2Preview } from "./template-previews/Template2Preview"
+import { Template3Preview } from "./template-previews/Template3Preview"
+import { Template4Preview } from "./template-previews/Template4Preview"
 import { AVAILABLE_TEMPLATES, type Template } from "@/lib/templates"
 
 
@@ -412,9 +413,10 @@ export function UploadSection({
               {/* Template Preview */}
               {showPreview && (
                 <div className="p-4 border rounded-md bg-gray-50">
-                  {selectedTemplate === 'template1' && <LoanAssessmentOldPreview />}
-                  {selectedTemplate === 'template2' && <LoanAssessmentNewPreview />}
-                  {selectedTemplate === 'template3' && <LoanAssessmentReportPreview />}
+                  {selectedTemplate === 'template1' && <Template1Preview />}
+                  {selectedTemplate === 'template2' && <Template2Preview />}
+                  {selectedTemplate === 'template3' && <Template3Preview />}
+                  {selectedTemplate === 'template4' && <Template4Preview />}
                 </div>
               )}
 

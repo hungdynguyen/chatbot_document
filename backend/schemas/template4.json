@@ -25,7 +25,6 @@
     "Nhận xét - Pháp lý/GPKD có ĐK",
     "Nhận xét - Chủ doanh nghiệp/Ban lãnh đạo",
     "Nhận xét - KYC",
-    "URL Mô hình sản xuất kinh doanh",
     "Lĩnh vực kinh doanh",
     "Sản phẩm/Dịch vụ",
     "Tỷ trọng doanh thu năm N-1 (%)",
@@ -36,8 +35,6 @@
     "Mô tả chung sản phẩm",
     "Mô tả lợi thế cạnh tranh",
     "Mô tả năng lực đấu thầu",
-    "URL Biểu đồ tiêu chí nhà thầu",
-    "URL Biểu đồ kết quả trúng thầu",
     "Quy trình vận hành (tóm tắt)",
     "Đầu vào - Mặt hàng",
     "Đầu vào - Chi tiết",
@@ -47,7 +44,6 @@
     "Đầu ra - Phương thức thanh toán",
     "Nhận xét tổng quan hoạt động kinh doanh",
     "Phân tích cung cầu ngành",
-    "URL Biểu đồ ngành",
     "Nhận xét thông tin ngành"
   ],
   "mapping": {
@@ -84,7 +80,6 @@
       }
     },
     "hoatDongKinhDoanh": {
-      "moHinhUrl": "URL Mô hình sản xuất kinh doanh",
       "linhVuc": {
         "linhVuc": "Lĩnh vực kinh doanh",
         "sanPham": "Sản phẩm/Dịch vụ",
@@ -99,9 +94,7 @@
       "moTaSanPham": {
         "sanPham": "Mô tả chung sản phẩm",
         "loiThe": "Mô tả lợi thế cạnh tranh",
-        "nangLucDauThau": "Mô tả năng lực đấu thầu",
-        "bieuDoTieuChiUrl": "URL Biểu đồ tiêu chí nhà thầu",
-        "bieuDoKetQuaUrl": "URL Biểu đồ kết quả trúng thầu"
+        "nangLucDauThau": "Mô tả năng lực đấu thầu"
       },
       "quyTrinhVanHanhText": "Quy trình vận hành (tóm tắt)",
       "dauVao": {
@@ -118,7 +111,6 @@
     },
     "thongTinNganh": {
       "cungCau": "Phân tích cung cầu ngành",
-      "chartUrl": "URL Biểu đồ ngành",
       "nhanXet": "Nhận xét thông tin ngành"
     }
   }

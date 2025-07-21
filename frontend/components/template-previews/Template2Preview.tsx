@@ -13,7 +13,7 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
     </h2>
 );
 
-export function LoanAssessmentNewPreview() {
+export function Template2Preview() {
   return (
     <div className="p-6 bg-white rounded-lg max-w-4xl mx-auto border border-gray-200 font-sans">
         <div className="text-center mb-4">
@@ -28,20 +28,18 @@ export function LoanAssessmentNewPreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4">
             <InfoField label="ID trên T24" value="[T24-ID-001]" />
-            <InfoField label="Mục đích thẩm định" value="[Cấp mới]" />
-            <InfoField label="Cấp nơi" value="[Hội sở]" />
-            <InfoField label="Ngày hoàn thành báo cáo" value="[dd/mm/yyyy]" />
-            <InfoField label="Xếp hạng tín dụng" value="[A3]" />
-            <InfoField label="Ngành" value="[Sản xuất...]" />
-
-            <SectionTitle>1. Thông tin cơ bản</SectionTitle>
-            <InfoField label="Tên đầy đủ của khách hàng" value="[CÔNG TY TNHH ABC PACKAGING]" />
-            <InfoField label="Ngày thành lập" value="[dd/mm/yyyy]" />
-            <InfoField label="Loại hình công ty" value="[Công ty TNHH]" />
+            <InfoField label="Xếp hạng tín dụng" value="[BBB+]" />
+            <InfoField label="Ngành" value="[Bán lẻ]" />
+            <InfoField label="Phân nhóm rủi ro" value="[Thấp]" />
+            <InfoField label="Loại khoản vay" value="[SXKD]" />
+            <InfoField label="Tổng giá trị cấp TD" value="[5,000,000,000 VND]" />
         </div>
-
-        <div className="text-center text-xs text-gray-400 pt-4 mt-4 border-t border-gray-200">
-            <p>Đây là bản xem trước. Báo cáo đầy đủ sẽ được tạo sau khi xử lý tài liệu.</p>
+        
+        {/* Ghi chú */}
+        <div className="mt-6 p-4 bg-green-50 rounded-md border border-green-200">
+          <p className="text-sm text-green-800">
+            📋 <strong>Template2:</strong> Mẫu thẩm định tín dụng mới với cấu trúc chi tiết và phân tích đa chiều.
+          </p>
         </div>
     </div>
   )

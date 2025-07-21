@@ -9,6 +9,7 @@ import { Download, Edit, FileText, ArrowLeft, FileDown } from "lucide-react"
 import { LoanAssessmentTemplate } from "@/templates/loan-assessment-template"
 import { LoanAssessmentTemplateNew } from "@/templates/new_template"
 import { LoanReportTemplate } from "@/templates/loan-assessment-report-template"
+import { FullLoanReportTemplate } from "@/templates/template4"
 import { set } from 'lodash'; // Cần cài đặt lodash
 
 
@@ -76,6 +77,8 @@ export function DocumentEditor({ content, templateId, onExportPDF, onExportWord,
         return <LoanAssessmentTemplateNew {...commonProps} />
       case "template3":
         return <LoanReportTemplate {...commonProps} />
+      case "template4":
+        return <FullLoanReportTemplate {...commonProps} />
       default:
         return <LoanAssessmentTemplate {...commonProps} />
     }

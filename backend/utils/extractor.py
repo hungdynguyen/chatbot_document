@@ -34,14 +34,27 @@ def load_template_schema(template_id: str) -> Dict:
 
 def structure_data_for_loan_assessment_report(flat_data: Dict, mapping: Dict) -> Dict:
     """
-    Chuyển đổi dữ liệu phẳng từ LLM thành cấu trúc JSON lồng nhau cho Template 3 (Báo cáo thẩm định).
+    Chuyển đổi dữ liệu phẳng từ LLM thành cấu trúc JSON lồng nhau cho Template 3&4 (Báo cáo thẩm định).
     """
     structured_data = {
         "thongTinChung": {},
         "thongTinKhachHang": {
             "phapLy": {},
-            "banLanhDao": [{"ten": "", "tyLeVon": "", "chucVu": "", "mucDoAnhHuong": "", "danhGia": ""}],
+            "banLanhDao": {"ten": "", "tyLeVon": "", "chucVu": "", "mucDoAnhHuong": "", "danhGia": ""},
             "nhanXet": {}
+        },
+        "hoatDongKinhDoanh": {
+            "linhVuc": {"linhVuc": "", "sanPham": "", "tyTrongN1": "", "tyTrongN": ""},
+            "tyTrongTheoNhomHang": {"nhomHang": "", "nam2023": "", "nam10T2024": ""},
+            "moTaSanPham": {"sanPham": "", "loiThe": "", "nangLucDauThau": ""},
+            "quyTrinhVanHanhText": "",
+            "dauVao": {"matHang": "", "chiTiet": "", "pttt": ""},
+            "dauRa": {"kenh": "", "tyTrong": "", "pttt": ""},
+            "nhanXetHoatDong": ""
+        },
+        "thongTinNganh": {
+            "cungCau": "",
+            "nhanXet": ""
         },
         "kiemTraQuyDinh": {}
     }
@@ -75,9 +88,6 @@ def structure_data_for_loan_assessment_report(flat_data: Dict, mapping: Dict) ->
                 if category in structured_data and subcategory in structured_data[category]:
                     if isinstance(structured_data[category][subcategory], dict):
                         structured_data[category][subcategory][key] = value
-                    elif isinstance(structured_data[category][subcategory], list) and len(structured_data[category][subcategory]) > 0:
-                        # Handle banLanhDao array
-                        structured_data[category][subcategory][0][key] = value
 
     # Đảm bảo tất cả các key cần thiết đều tồn tại với giá trị mặc định
     for category, fields in mapping.items():
@@ -299,6 +309,10 @@ async def extract_information_from_docs(prompt: str, file_ids: List[str], collec
         return structured_result
     elif template_id == "template3":
         print("🔄 Cấu trúc lại dữ liệu cho Template3...")
+        structured_result = structure_data_for_loan_assessment_report(final_result, mapping)
+        return structured_result
+    elif template_id == "template4":
+        print("🔄 Cấu trúc lại dữ liệu cho Template4...")
         structured_result = structure_data_for_loan_assessment_report(final_result, mapping)
         return structured_result
 

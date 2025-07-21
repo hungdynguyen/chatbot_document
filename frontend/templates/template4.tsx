@@ -190,15 +190,13 @@ export function FullLoanReportTemplate({
           </tr>
         </thead>
         <tbody>
-          {data.thongTinKhachHang.banLanhDao.map((member, index) => (
-            <tr key={index}>
-              <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].ten`, member.ten)}</td>
-              <td style={{textAlign: 'center'}}>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].tyLeVon`, member.tyLeVon)}</td>
-              <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].chucVu`, member.chucVu)}</td>
-              <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].mucDoAnhHuong`, member.mucDoAnhHuong, { multiline: true })}</td>
-              <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].danhGia`, member.danhGia, { multiline: true })}</td>
-            </tr>
-          ))}
+          <tr>
+            <td>{renderEditableField(`thongTinKhachHang.banLanhDao.ten`, data.thongTinKhachHang?.banLanhDao?.ten || '')}</td>
+            <td style={{textAlign: 'center'}}>{renderEditableField(`thongTinKhachHang.banLanhDao.tyLeVon`, data.thongTinKhachHang?.banLanhDao?.tyLeVon || '')}</td>
+            <td>{renderEditableField(`thongTinKhachHang.banLanhDao.chucVu`, data.thongTinKhachHang?.banLanhDao?.chucVu || '')}</td>
+            <td>{renderEditableField(`thongTinKhachHang.banLanhDao.mucDoAnhHuong`, data.thongTinKhachHang?.banLanhDao?.mucDoAnhHuong || '', { multiline: true })}</td>
+            <td>{renderEditableField(`thongTinKhachHang.banLanhDao.danhGia`, data.thongTinKhachHang?.banLanhDao?.danhGia || '', { multiline: true })}</td>
+          </tr>
         </tbody>
       </table>
       
@@ -230,10 +228,6 @@ export function FullLoanReportTemplate({
 
       {/* SECTION: 3. HOẠT ĐỘNG KINH DOANH */}
       <table><tbody><tr><th className="section-title">3. HOẠT ĐỘNG KINH DOANH</th></tr></tbody></table>
-      <b>Mô hình sản xuất kinh doanh</b>
-      <div className='image-container'>
-          <img src={data.hoatDongKinhDoanh.moHinhUrl || "https://i.imgur.com/kPia1yY.png"} alt="Mô hình sản xuất kinh doanh"/>
-      </div>
 
       <table>
         <thead>
@@ -246,14 +240,12 @@ export function FullLoanReportTemplate({
             </tr>
         </thead>
         <tbody>
-            {data.hoatDongKinhDoanh.linhVuc.map((item, index) => (
-                <tr key={index}>
-                    <td>{renderEditableField(`hoatDongKinhDoanh.linhVuc[${index}].linhVuc`, item.linhVuc)}</td>
-                    <td>{renderEditableField(`hoatDongKinhDoanh.linhVuc[${index}].sanPham`, item.sanPham)}</td>
-                    <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.linhVuc[${index}].tyTrongN1`, item.tyTrongN1)}</td>
-                    <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.linhVuc[${index}].tyTrongN`, item.tyTrongN)}</td>
-                </tr>
-            ))}
+            <tr>
+                <td>{renderEditableField(`hoatDongKinhDoanh.linhVuc.linhVuc`, data.hoatDongKinhDoanh?.linhVuc?.linhVuc || '')}</td>
+                <td>{renderEditableField(`hoatDongKinhDoanh.linhVuc.sanPham`, data.hoatDongKinhDoanh?.linhVuc?.sanPham || '')}</td>
+                <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.linhVuc.tyTrongN1`, data.hoatDongKinhDoanh?.linhVuc?.tyTrongN1 || '')}</td>
+                <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.linhVuc.tyTrongN`, data.hoatDongKinhDoanh?.linhVuc?.tyTrongN || '')}</td>
+            </tr>
         </tbody>
       </table>
       
@@ -274,13 +266,11 @@ export function FullLoanReportTemplate({
                             </tr>
                         </thead>
                         <tbody>
-                             {data.hoatDongKinhDoanh.tyTrongTheoNhomHang.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{renderEditableField(`hoatDongKinhDoanh.tyTrongTheoNhomHang[${index}].nhomHang`, item.nhomHang)}</td>
-                                    <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.tyTrongTheoNhomHang[${index}].nam2023`, item.nam2023)}</td>
-                                    <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.tyTrongTheoNhomHang[${index}].nam10T2024`, item.nam10T2024)}</td>
-                                </tr>
-                             ))}
+                             <tr>
+                                <td>{renderEditableField(`hoatDongKinhDoanh.tyTrongTheoNhomHang.nhomHang`, data.hoatDongKinhDoanh?.tyTrongTheoNhomHang?.nhomHang || '')}</td>
+                                <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.tyTrongTheoNhomHang.nam2023`, data.hoatDongKinhDoanh?.tyTrongTheoNhomHang?.nam2023 || '')}</td>
+                                <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.tyTrongTheoNhomHang.nam10T2024`, data.hoatDongKinhDoanh?.tyTrongTheoNhomHang?.nam10T2024 || '')}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </td>
@@ -298,11 +288,6 @@ export function FullLoanReportTemplate({
         </tbody>
       </table>
 
-      <div className="chart-container">
-            <div><img src={data.hoatDongKinhDoanh.moTaSanPham.bieuDoTieuChiUrl || "https://i.imgur.com/qLgD6aC.png"} alt="Biểu đồ tiêu chí"/></div>
-            <div><img src={data.hoatDongKinhDoanh.moTaSanPham.bieuDoKetQuaUrl || "https://i.imgur.com/9z3U3yH.png"} alt="Biểu đồ kết quả trúng thầu"/></div>
-      </div>
-      
       <table>
         <tbody>
             <tr><td className="sub-header">3.2 Quy trình vận hành</td></tr>
@@ -322,13 +307,11 @@ export function FullLoanReportTemplate({
             </tr>
         </thead>
         <tbody>
-            {data.hoatDongKinhDoanh.dauVao.map((item, index) => (
-                <tr key={index}>
-                    <td>{renderEditableField(`hoatDongKinhDoanh.dauVao[${index}].matHang`, item.matHang)}</td>
-                    <td>{renderEditableField(`hoatDongKinhDoanh.dauVao[${index}].chiTiet`, item.chiTiet, {multiline: true})}</td>
-                    <td>{renderEditableField(`hoatDongKinhDoanh.dauVao[${index}].pttt`, item.pttt, {multiline: true})}</td>
-                </tr>
-            ))}
+            <tr>
+                <td>{renderEditableField(`hoatDongKinhDoanh.dauVao.matHang`, data.hoatDongKinhDoanh?.dauVao?.matHang || '')}</td>
+                <td>{renderEditableField(`hoatDongKinhDoanh.dauVao.chiTiet`, data.hoatDongKinhDoanh?.dauVao?.chiTiet || '', {multiline: true})}</td>
+                <td>{renderEditableField(`hoatDongKinhDoanh.dauVao.pttt`, data.hoatDongKinhDoanh?.dauVao?.pttt || '', {multiline: true})}</td>
+            </tr>
         </tbody>
       </table>
 
@@ -342,13 +325,11 @@ export function FullLoanReportTemplate({
             </tr>
         </thead>
         <tbody>
-            {data.hoatDongKinhDoanh.dauRa.map((item, index) => (
-                <tr key={index}>
-                    <td>{renderEditableField(`hoatDongKinhDoanh.dauRa[${index}].kenh`, item.kenh)}</td>
-                    <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.dauRa[${index}].tyTrong`, item.tyTrong)}</td>
-                    <td>{renderEditableField(`hoatDongKinhDoanh.dauRa[${index}].pttt`, item.pttt, {multiline: true})}</td>
-                </tr>
-            ))}
+            <tr>
+                <td>{renderEditableField(`hoatDongKinhDoanh.dauRa.kenh`, data.hoatDongKinhDoanh?.dauRa?.kenh || '')}</td>
+                <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.dauRa.tyTrong`, data.hoatDongKinhDoanh?.dauRa?.tyTrong || '')}</td>
+                <td>{renderEditableField(`hoatDongKinhDoanh.dauRa.pttt`, data.hoatDongKinhDoanh?.dauRa?.pttt || '', {multiline: true})}</td>
+            </tr>
         </tbody>
       </table>
 
@@ -370,11 +351,6 @@ export function FullLoanReportTemplate({
                 <td colSpan={2} style={{whiteSpace: 'pre-wrap', border: 'none', paddingLeft: 0}}>
                     <b>- Cung cầu ngành:</b>
                     {renderEditableField(`thongTinNganh.cungCau`, data.thongTinNganh.cungCau, {multiline: true})}
-                </td>
-            </tr>
-            <tr>
-                <td colSpan={2} style={{border: 'none', padding: '16px 0'}}>
-                    <img src={data.thongTinNganh.chartUrl || 'https://i.imgur.com/kK7Pcyh.png'} alt="Biểu đồ ngành" style={{maxWidth: '70%', margin: 'auto'}}/>
                 </td>
             </tr>
             <tr><td className="sub-header no-border-cell" colSpan={2}>- Biến động các yếu tố chính của ngành:</td></tr>
