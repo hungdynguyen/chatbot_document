@@ -1,6 +1,6 @@
 {
-  "template_id": "template_1",
-  "template_name": "Template 1",
+  "template_id": "template1",
+  "template_name": "Template1",
   "description": "Mẫu thẩm định tín dụng cũ với các trường thông tin cơ bản",
   "fields": [
     "tên đầy đủ của doanh nghiệp",

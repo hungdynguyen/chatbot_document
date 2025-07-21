@@ -1,6 +1,6 @@
 {
-  "template_id": "template_3", 
-  "template_name": "Template 3",
+  "template_id": "template3", 
+  "template_name": "Template3",
   "description": "Mẫu báo cáo thẩm định tín dụng chi tiết với thông tin khách hàng và quy định TCB",
   "fields": [
     "Tên đầy đủ của khách hàng",

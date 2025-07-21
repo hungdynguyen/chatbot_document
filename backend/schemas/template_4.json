@@ -1,0 +1,125 @@
+{
+  "template_id": "template4",
+  "template_name": "Template4",
+  "description": "Mẫu báo cáo thẩm định tín dụng đầy đủ bao gồm thông tin chung, thông tin khách hàng, phân tích chi tiết hoạt động kinh doanh, và thông tin ngành.",
+  "fields": [
+    "Tên đầy đủ của khách hàng",
+    "Giấy ĐKKD/GP đầu tư",
+    "ID trên T24",
+    "Phân khúc",
+    "Loại khách hàng",
+    "Ngành nghề HĐKD theo ĐKKD",
+    "Mục đích báo cáo",
+    "Kết quả phân luồng",
+    "XHTD",
+    "Ngày thành lập",
+    "Địa chỉ trên ĐKKD",
+    "Người đại diện theo Pháp luật",
+    "Có kinh doanh Ngành nghề kinh doanh có điều kiện",
+    "Tên thành viên góp vốn/ban lãnh đạo",
+    "Tỷ lệ vốn góp (%)",
+    "Chức vụ",
+    "Mức độ ảnh hưởng tới Khách hàng",
+    "Đánh giá về năng lực, uy tín và kinh nghiệm",
+    "Nhận xét - Thông tin khách hàng",
+    "Nhận xét - Pháp lý/GPKD có ĐK",
+    "Nhận xét - Chủ doanh nghiệp/Ban lãnh đạo",
+    "Nhận xét - KYC",
+    "URL Mô hình sản xuất kinh doanh",
+    "Lĩnh vực kinh doanh",
+    "Sản phẩm/Dịch vụ",
+    "Tỷ trọng doanh thu năm N-1 (%)",
+    "Tỷ trọng doanh thu năm N (%)",
+    "Nhóm mặt hàng",
+    "Tỷ trọng doanh thu 2023",
+    "Tỷ trọng doanh thu 10T/2024",
+    "Mô tả chung sản phẩm",
+    "Mô tả lợi thế cạnh tranh",
+    "Mô tả năng lực đấu thầu",
+    "URL Biểu đồ tiêu chí nhà thầu",
+    "URL Biểu đồ kết quả trúng thầu",
+    "Quy trình vận hành (tóm tắt)",
+    "Đầu vào - Mặt hàng",
+    "Đầu vào - Chi tiết",
+    "Đầu vào - Phương thức thanh toán",
+    "Đầu ra - Kênh phân phối",
+    "Đầu ra - Tỷ trọng",
+    "Đầu ra - Phương thức thanh toán",
+    "Nhận xét tổng quan hoạt động kinh doanh",
+    "Phân tích cung cầu ngành",
+    "URL Biểu đồ ngành",
+    "Nhận xét thông tin ngành"
+  ],
+  "mapping": {
+    "thongTinChung": {
+      "tenKhachHang": "Tên đầy đủ của khách hàng",
+      "giayPhep": "Giấy ĐKKD/GP đầu tư",
+      "idT24": "ID trên T24",
+      "phanKhuc": "Phân khúc",
+      "loaiKhachHang": "Loại khách hàng",
+      "nganhNghe": "Ngành nghề HĐKD theo ĐKKD",
+      "mucDichBaoCao": "Mục đích báo cáo",
+      "ketQuaPhanLuong": "Kết quả phân luồng",
+      "xhtd": "XHTD"
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "Ngày thành lập",
+        "diaChi": "Địa chỉ trên ĐKKD",
+        "nguoiDaiDien": "Người đại diện theo Pháp luật",
+        "nganhNgheCoDieuKien": "Có kinh doanh Ngành nghề kinh doanh có điều kiện"
+      },
+      "banLanhDao": {
+        "ten": "Tên thành viên góp vốn/ban lãnh đạo",
+        "tyLeVon": "Tỷ lệ vốn góp (%)",
+        "chucVu": "Chức vụ",
+        "mucDoAnhHuong": "Mức độ ảnh hưởng tới Khách hàng",
+        "danhGia": "Đánh giá về năng lực, uy tín và kinh nghiệm"
+      },
+      "nhanXet": {
+        "thongTinChung": "Nhận xét - Thông tin khách hàng",
+        "phapLyGpkd": "Nhận xét - Pháp lý/GPKD có ĐK",
+        "chuDoanhNghiep": "Nhận xét - Chủ doanh nghiệp/Ban lãnh đạo",
+        "kyc": "Nhận xét - KYC"
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "moHinhUrl": "URL Mô hình sản xuất kinh doanh",
+      "linhVuc": {
+        "linhVuc": "Lĩnh vực kinh doanh",
+        "sanPham": "Sản phẩm/Dịch vụ",
+        "tyTrongN1": "Tỷ trọng doanh thu năm N-1 (%)",
+        "tyTrongN": "Tỷ trọng doanh thu năm N (%)"
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "Nhóm mặt hàng",
+        "nam2023": "Tỷ trọng doanh thu 2023",
+        "nam10T2024": "Tỷ trọng doanh thu 10T/2024"
+      },
+      "moTaSanPham": {
+        "sanPham": "Mô tả chung sản phẩm",
+        "loiThe": "Mô tả lợi thế cạnh tranh",
+        "nangLucDauThau": "Mô tả năng lực đấu thầu",
+        "bieuDoTieuChiUrl": "URL Biểu đồ tiêu chí nhà thầu",
+        "bieuDoKetQuaUrl": "URL Biểu đồ kết quả trúng thầu"
+      },
+      "quyTrinhVanHanhText": "Quy trình vận hành (tóm tắt)",
+      "dauVao": {
+        "matHang": "Đầu vào - Mặt hàng",
+        "chiTiet": "Đầu vào - Chi tiết",
+        "pttt": "Đầu vào - Phương thức thanh toán"
+      },
+      "dauRa": {
+        "kenh": "Đầu ra - Kênh phân phối",
+        "tyTrong": "Đầu ra - Tỷ trọng",
+        "pttt": "Đầu ra - Phương thức thanh toán"
+      },
+      "nhanXetHoatDong": "Nhận xét tổng quan hoạt động kinh doanh"
+    },
+    "thongTinNganh": {
+      "cungCau": "Phân tích cung cầu ngành",
+      "chartUrl": "URL Biểu đồ ngành",
+      "nhanXet": "Nhận xét thông tin ngành"
+    }
+  }
+}

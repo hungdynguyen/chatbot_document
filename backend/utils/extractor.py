@@ -26,8 +26,8 @@ def load_template_schema(template_id: str) -> Dict:
             return json.load(f)
     except FileNotFoundError:
         print(f"⚠️ Không tìm thấy schema file cho template '{template_id}'. Sử dụng mặc định.")
-        # Fallback to template_1 if schema not found
-        return load_template_schema("template_1")
+        # Fallback to template1 if schema not found
+        return load_template_schema("template1")
     except Exception as e:
         print(f"❌ Lỗi khi đọc schema '{template_id}': {e}")
         return {"fields": [], "mapping": {}}
@@ -293,12 +293,12 @@ async def extract_information_from_docs(prompt: str, file_ids: List[str], collec
     print("\n\n✅ Quá trình trích xuất hoàn tất!")
     
     # Cấu trúc lại dữ liệu dựa trên template_id
-    if template_id == "template_2":
-        print("🔄 Cấu trúc lại dữ liệu cho Template 2...")
+    if template_id == "template2":
+        print("🔄 Cấu trúc lại dữ liệu cho Template2...")
         structured_result = structure_data_for_new_template(final_result, mapping)
         return structured_result
-    elif template_id == "template_3":
-        print("🔄 Cấu trúc lại dữ liệu cho Template 3...")
+    elif template_id == "template3":
+        print("🔄 Cấu trúc lại dữ liệu cho Template3...")
         structured_result = structure_data_for_loan_assessment_report(final_result, mapping)
         return structured_result
 

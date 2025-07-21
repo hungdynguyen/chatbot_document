@@ -1,6 +1,6 @@
 {
-  "template_id": "template_2",
-  "template_name": "Template 2",
+  "template_id": "template2",
+  "template_name": "Template2",
   "description": "Mẫu thẩm định tín dụng mới với cấu trúc chi tiết",
   "fields": [
     "BBC (Báo cáo bởi)",

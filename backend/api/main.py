@@ -36,7 +36,7 @@ app.add_middleware(
 class ProcessRequest(BaseModel):
     prompt: str
     file_ids: List[str]
-    template_id: str = "template_1" # Thêm template_id, mặc định là template 1
+    template_id: str = "template1" # Thêm template_id, mặc định là template1
 
 class RagRequest(BaseModel):
     question: str
