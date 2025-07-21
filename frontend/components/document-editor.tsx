@@ -70,11 +70,11 @@ export function DocumentEditor({ content, templateId, onExportPDF, onExportWord,
     }
 
     switch (templateId) {
-      case "template_1":
+      case "template1":
         return <LoanAssessmentTemplate {...commonProps} />
-      case "template_2":
+      case "template2":
         return <LoanAssessmentTemplateNew {...commonProps} />
-      case "template_3":
+      case "template3":
         return <LoanReportTemplate {...commonProps} />
       default:
         return <LoanAssessmentTemplate {...commonProps} />

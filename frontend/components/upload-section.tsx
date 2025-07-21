@@ -60,7 +60,7 @@ export function UploadSection({
   const [isDragOver, setIsDragOver] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [showActions, setShowActions] = useState(false)
-  const [selectedTemplate, setSelectedTemplate] = useState("template_1")
+  const [selectedTemplate, setSelectedTemplate] = useState("template1")
   const [showPreview, setShowPreview] = useState(false)
   const [availableTemplates] = useState<Template[]>(AVAILABLE_TEMPLATES)
   const router = useRouter()
@@ -412,9 +412,9 @@ export function UploadSection({
               {/* Template Preview */}
               {showPreview && (
                 <div className="p-4 border rounded-md bg-gray-50">
-                  {selectedTemplate === 'template_1' && <LoanAssessmentOldPreview />}
-                  {selectedTemplate === 'template_2' && <LoanAssessmentNewPreview />}
-                  {selectedTemplate === 'template_3' && <LoanAssessmentReportPreview />}
+                  {selectedTemplate === 'template1' && <LoanAssessmentOldPreview />}
+                  {selectedTemplate === 'template2' && <LoanAssessmentNewPreview />}
+                  {selectedTemplate === 'template3' && <LoanAssessmentReportPreview />}
                 </div>
               )}
 

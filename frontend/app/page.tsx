@@ -11,7 +11,7 @@ export default function Page() {
   const [documentContent, setDocumentContent] = useState<any>(null)
   const [processedFileIds, setProcessedFileIds] = useState<string[]>([])
   const [collectionName, setCollectionName] = useState<string | null>(null)
-  const [selectedTemplate, setSelectedTemplate] = useState<string>("template_1")
+  const [selectedTemplate, setSelectedTemplate] = useState<string>("template1")
 
 
   const handleDocumentGenerated = (content: any, fileIds: string[], templateId: string, collectionName: string) => {
@@ -38,7 +38,7 @@ export default function Page() {
     setDocumentContent(null)
     setProcessedFileIds([])
     setCollectionName(null)
-    setSelectedTemplate("template_1")
+    setSelectedTemplate("template1")
   }
 
   const handleExportPDF = async () => {
