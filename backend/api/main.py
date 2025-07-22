@@ -9,18 +9,21 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 # --- IMPORT CÁC UTILITY ---
-# Giả sử bạn có file config.py để quản lý các hằng số
 from config import UPLOAD_DIRECTORY, origins 
 # Import các hàm xử lý logic
 from utils.extractor import extract_information_from_docs, load_template_schema
 from utils.rag_client import query_rag_flow
 from utils.embedding_handler import embed_files_to_qdrant, qdrant_client 
+from utils.document_parser import DocumentParser 
 
 # -------------------------------------------------------------
 # 1. KHỞI TẠO APP VÀ CẤU HÌNH
 # -------------------------------------------------------------
 app = FastAPI(title="Loan Assessment Backend")
 os.makedirs(UPLOAD_DIRECTORY, exist_ok=True)
+
+# Khởi tạo DocumentParser
+document_parser = DocumentParser()
 
 app.add_middleware(
     CORSMiddleware,
@@ -50,18 +53,32 @@ class RagRequest(BaseModel):
 @app.post("/upload_file")
 async def upload_file(file: UploadFile = File(...)):
     try:
+        # Lưu file
         file_id = str(uuid.uuid4())
         file_extension = Path(file.filename).suffix
         new_filename = f"{file_id}{file_extension}"
         file_path = os.path.join(UPLOAD_DIRECTORY, new_filename)
+        
         contents = await file.read()
         with open(file_path, "wb") as f:
             f.write(contents)
-        print(f"✅ File '{file.filename}' đã được lưu thành công với tên '{new_filename}'")
-        return {"file_id": file_id, "filename": new_filename}
+        
+        # Parse ngay để kiểm tra tính hợp lệ
+        documents = document_parser.parse_file(file_path)
+        
+        print(f"✅ File '{file.filename}' đã được upload và parse thành công")
+        print(f"📄 Tổng số documents: {len(documents)}")
+        
+        return {
+            "file_id": file_id, 
+            "filename": new_filename,
+            "document_count": len(documents),
+            "file_type": file_extension,
+            "parsed_successfully": len(documents) > 0
+        }
     except Exception as e:
-        print(f"❌ Lỗi khi upload file: {e}")
-        raise HTTPException(status_code=500, detail="Không thể upload file")
+        print(f"❌ Lỗi khi upload/parse file: {e}")
+        raise HTTPException(status_code=500, detail=f"Không thể xử lý file: {str(e)}")
 
 
 # -------------------------------------------------------------
