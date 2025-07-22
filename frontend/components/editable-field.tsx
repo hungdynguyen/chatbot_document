@@ -43,7 +43,7 @@ export function EditableField({
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey && !multiline) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault()
       onStopEdit()
     } else if (e.key === "Escape") {

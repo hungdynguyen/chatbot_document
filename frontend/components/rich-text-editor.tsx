@@ -178,7 +178,7 @@ export function RichTextEditor({
   }
 
   const handleInput = useCallback(
-    (e: Event) => {
+    (e: React.FormEvent<HTMLDivElement>) => {
       if (editorRef.current) {
         const content = editorRef.current.innerHTML
         if (content !== lastValueRef.current) {
@@ -210,16 +210,15 @@ export function RichTextEditor({
     }
 
     // Handle Enter key
-    if (e.key === "Enter") {
-      if (!multiline && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault()
         if (editorRef.current) {
           const content = editorRef.current.innerHTML
           onChange(content)
         }
-        onBlur()
+        // Gọi onKeyDown trước để xử lý logic Enter trong EditableField
+        onKeyDown(e)
         return
-      }
     }
 
     // Handle Escape key

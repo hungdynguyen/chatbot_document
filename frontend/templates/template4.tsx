@@ -28,15 +28,18 @@ export function FullLoanReportTemplate({
 
   const renderEditableField = (path: string, value: any, options: { multiline?: boolean, className?: string } = {}) => {
     const { multiline = false, className = "" } = options;
+    
     return (
       <EditableField
-        value={value}
+        value={value || ''}  // Đảm bảo luôn có giá trị string
         fieldId={path}
         onChange={(v: string) => onUpdateField(path, v)}
         displayClassName={`w-full block break-words ${className}`}
         placeholder="Nhập dữ liệu"
         multiline={multiline}
-        {...commonProps}
+        editingField={editingField}
+        onEdit={onEdit}
+        onStopEdit={onStopEdit}
       />
     );
   };
@@ -49,12 +52,33 @@ export function FullLoanReportTemplate({
           width: 100%;
           border-collapse: collapse;
           margin-bottom: 20px;
+          table-layout: auto; /* Cho phép tự động điều chỉnh theo nội dung */
         }
         th, td {
           border: 1px solid #000;
           padding: 6px 8px;
           vertical-align: top;
           text-align: left;
+          word-wrap: break-word;
+          word-break: break-word;
+        }
+        /* Cột nhãn sẽ co lại vừa với nội dung */
+        .label-cell {
+          font-weight: bold;
+          width: 1%;
+          white-space: nowrap;
+          background-color: #f8f9fa;
+        }
+        /* Cột giá trị có thể mở rộng theo nội dung */
+        .value-cell {
+          width: auto;
+          font-weight: normal;
+        }
+        /* Header cells với nền màu xám */
+        .header-cell {
+          background-color: #f2f2f2;
+          font-weight: bold;
+          min-width: 100px;
         }
         th {
           font-weight: bold;
@@ -65,16 +89,6 @@ export function FullLoanReportTemplate({
             padding-left: 0;
             border: none;
             background-color: transparent;
-        }
-        .header-cell {
-            background-color: #f2f2f2; /* Màu nền cho header của bảng con */
-        }
-        .label-cell {
-          font-weight: bold;
-          width: 25%;
-        }
-        .value-cell {
-          font-weight: normal;
         }
         .no-border-cell {
             border: none;
@@ -206,20 +220,20 @@ export function FullLoanReportTemplate({
             <tr>
               <td className="value-cell" style={{ whiteSpace: 'pre-wrap' }}>
                 <b>1. Thông tin khách hàng:</b>
-                <div className='pl-4'>
-                    {renderEditableField('thongTinKhachHang.nhanXet.thongTinChung', data.thongTinKhachHang.nhanXet.thongTinChung, { multiline: true })}
+                <div style={{ paddingLeft: '16px' }}>
+                    {renderEditableField('thongTinKhachHang.nhanXet.thongTinChung', data.thongTinKhachHang.nhanXet.thongTinChung, { multiline: true, className: 'pl-4' })}
                 </div>
                 <b>2. Pháp lý/ GPKD có ĐK</b>
-                <div className='pl-4'>
-                    {renderEditableField('thongTinKhachHang.nhanXet.phapLyGpkd', data.thongTinKhachHang.nhanXet.phapLyGpkd, { multiline: true })}
+                <div style={{ paddingLeft: '16px' }}>
+                    {renderEditableField('thongTinKhachHang.nhanXet.phapLyGpkd', data.thongTinKhachHang.nhanXet.phapLyGpkd, { multiline: true, className: 'pl-4' })}
                 </div>
                 <b>3. Chủ doanh nghiệp/Ban lãnh đạo:</b>
-                <div className='pl-4'>
-                    {renderEditableField('thongTinKhachHang.nhanXet.chuDoanhNghiep', data.thongTinKhachHang.nhanXet.chuDoanhNghiep, { multiline: true })}
+                <div style={{ paddingLeft: '16px' }}>
+                    {renderEditableField('thongTinKhachHang.nhanXet.chuDoanhNghiep', data.thongTinKhachHang.nhanXet.chuDoanhNghiep, { multiline: true, className: 'pl-4' })}
                 </div>
                 <b>4.KYC:</b>
-                <div className='pl-4'>
-                    {renderEditableField('thongTinKhachHang.nhanXet.kyc', data.thongTinKhachHang.nhanXet.kyc, { multiline: true })}
+                <div style={{ paddingLeft: '16px' }}>
+                    {renderEditableField('thongTinKhachHang.nhanXet.kyc', data.thongTinKhachHang.nhanXet.kyc, { multiline: true, className: 'pl-4' })}
                 </div>
               </td>
             </tr>
