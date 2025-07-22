@@ -138,6 +138,8 @@ def create_prompt(fields_list: list) -> str:
         # Prompt cho nhiều trường, định dạng với newline để LLM dễ xử lý hơn
         return f"\n- {fields_as_text_list}\n"
 
+
+
 def is_valid_value(value) -> bool:
     """Kiểm tra xem giá trị trích xuất có hợp lệ hay không."""
     return value is not None and str(value).strip() != ""
