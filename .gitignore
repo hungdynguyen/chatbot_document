@@ -78,7 +78,7 @@ text-embeddings.log
 
 # Uploaded files folder
 backend/uploaded_files/
-
+backend/parsed_output/
 # Qdrant local storage
 qdrant_storage/
 
@@ -94,3 +94,6 @@ qdrant_storage/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# data
+data/
