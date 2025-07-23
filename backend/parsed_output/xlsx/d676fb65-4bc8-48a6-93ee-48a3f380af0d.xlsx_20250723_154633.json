@@ -1,0 +1,12 @@
+[
+    {
+        "page_content": "Bảng dữ liệu từ sheet 'Sheet1':\n\n| Unnamed: 0   | 2023   | Unnamed: 2   |   2022 |\n|:-------------|:-------|:-------------|-------:|\n| nan          | in     | out          |    nan |\n| T1           | 39145  | 20550        |    nan |\n| T2           | 0      | 4497         |    nan |\n| T3           | 141280 | 15279        |    nan |\n| T4           | 37953  | 15610        |    nan |\n| T5           | 52160  | 39256        |    nan |\n| T6           | 85216  | 29500        |    nan |\n| T7           | 0      | 75651        |    nan |\n| T8           | 102191 | 50980        |    nan |\n| T9           | 15977  | 52156        |    nan |\n| T10          | 39895  | 39184        |    nan |\n| T11          | 52185  | 26085        |    nan |\n| T12          | 88848  | 245894       |    nan |",
+        "metadata": {
+            "source": "uploaded_files/d676fb65-4bc8-48a6-93ee-48a3f380af0d.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Sheet1",
+            "table_id": "table_0",
+            "content_type": "markdown_table"
+        }
+    }
+]

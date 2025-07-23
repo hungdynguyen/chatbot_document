@@ -14,7 +14,7 @@ from config import UPLOAD_DIRECTORY, origins
 # Import các hàm xử lý logic
 from utils.extractor import extract_information_from_docs, load_template_schema
 from utils.rag_client import query_rag_flow
-from backend.utils.embedding_handler_dev import embed_files_to_qdrant, qdrant_client 
+from backend.utils.embedding_handler import embed_files_to_qdrant, qdrant_client 
 
 # -------------------------------------------------------------
 # 1. KHỞI TẠO APP VÀ CẤU HÌNH

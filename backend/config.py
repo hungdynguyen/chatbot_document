@@ -25,9 +25,13 @@ CHUNK_SIZE = 1200
 CHUNK_OVERLAP = 200
 
 # --- CẤU HÌNH LANGFLOW ---
+
+LANGFLOW_SKIP_AUTH_AUTO_LOGIN = True
+LANGFLOW_AUTH_TOKEN = None
 # Langflow cho trích xuất thông tin
 LANGFLOW_EXTRACTOR_URL = "http://127.0.0.1:7860/api/v1/run/fb81426e-2615-4cff-9f00-90ea297cbd03"
- 
+
+
 # Langflow cho chat RAG
 LANGFLOW_RAG_URL = "http://127.0.0.1:7860/api/v1/run/dd931858-3057-47d8-a28d-12c962bd0539"
 

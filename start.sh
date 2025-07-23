@@ -123,13 +123,21 @@ log_success "Đã dọn dẹp các service cũ"
 
 # 4. Khởi động Qdrant
 log_info "Khởi động Qdrant Vector Database..."
+# docker run -d \
+#     --name qdrant-container \
+#     --network backend \
+#     -p 6333:6333 \
+#     -p 6334:6334 \
+#     -v "$(pwd)/qdrant_storage:/qdrant/storage:z" \
+#     qdrant/qdrant
+
 docker run -d \
     --name qdrant-container \
     --network backend \
     -p 6333:6333 \
     -p 6334:6334 \
     -v "$(pwd)/qdrant_storage:/qdrant/storage:z" \
-    qdrant/qdrant
+    qdrant/qdrant:v1.7.2
 
 if [ $? -eq 0 ]; then
     log_success "Qdrant đã khởi động thành công trên port 6333"
@@ -196,7 +204,7 @@ log_info "Khởi động Backend API (FastAPI)..."
 # Đợi Backend API khởi động với cơ chế kiểm tra lặp lại
 log_info "Đợi Backend API khởi động... (tối đa 150 giây)"
 ATTEMPTS=0
-MAX_ATTEMPTS=30 
+MAX_ATTEMPTS=60
 while ! check_port 8000 && [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
     ATTEMPTS=$((ATTEMPTS + 1))
     sleep 5
