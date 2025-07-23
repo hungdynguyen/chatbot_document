@@ -38,6 +38,54 @@ export function LoanReportTemplate({
     return <div className="p-8 text-center">Đang tải dữ liệu báo cáo...</div>
   }
 
+  // Transform banLanhDao data if needed
+  const transformedData = { ...data }
+  
+  // Ensure basic structure exists
+  if (!transformedData.thongTinChung) transformedData.thongTinChung = {} as any
+  if (!transformedData.thongTinKhachHang) transformedData.thongTinKhachHang = {} as any
+  if (!transformedData.thongTinKhachHang.phapLy) transformedData.thongTinKhachHang.phapLy = {} as any
+  if (!transformedData.thongTinKhachHang.nhanXet) transformedData.thongTinKhachHang.nhanXet = {} as any
+  if (!transformedData.kiemTraQuyDinh) transformedData.kiemTraQuyDinh = {} as any
+
+  // Transform banLanhDao data from separate arrays to array of objects
+  if (transformedData.thongTinKhachHang.banLanhDao && !Array.isArray(transformedData.thongTinKhachHang.banLanhDao)) {
+    const banLanhDaoData = transformedData.thongTinKhachHang.banLanhDao as any
+    
+    if (typeof banLanhDaoData === 'object' && banLanhDaoData !== null) {
+      // Get arrays for each field
+      const names = Array.isArray(banLanhDaoData.ten) ? banLanhDaoData.ten : 
+                   (typeof banLanhDaoData.ten === 'string' ? [banLanhDaoData.ten] : [])
+      const positions = Array.isArray(banLanhDaoData.chucVu) ? banLanhDaoData.chucVu : 
+                       (typeof banLanhDaoData.chucVu === 'string' ? [banLanhDaoData.chucVu] : [])
+      const tyLeVons = Array.isArray(banLanhDaoData.tyLeVon) ? banLanhDaoData.tyLeVon : 
+                      (typeof banLanhDaoData.tyLeVon === 'string' ? [banLanhDaoData.tyLeVon] : [])
+      const mucDoAnhHuongs = Array.isArray(banLanhDaoData.mucDoAnhHuong) ? banLanhDaoData.mucDoAnhHuong : 
+                            (typeof banLanhDaoData.mucDoAnhHuong === 'string' ? [banLanhDaoData.mucDoAnhHuong] : [])
+      const danhGias = Array.isArray(banLanhDaoData.danhGia) ? banLanhDaoData.danhGia : 
+                      (typeof banLanhDaoData.danhGia === 'string' ? [banLanhDaoData.danhGia] : [])
+      
+      // Create array of objects by combining arrays
+      const maxLength = Math.max(names.length, positions.length, tyLeVons.length, mucDoAnhHuongs.length, danhGias.length, 1)
+      const banLanhDaoArray = []
+      
+      for (let i = 0; i < maxLength; i++) {
+        banLanhDaoArray.push({
+          ten: names[i] || '',
+          chucVu: positions[i] || '',
+          tyLeVon: tyLeVons[i] || '',
+          mucDoAnhHuong: mucDoAnhHuongs[i] || '',
+          danhGia: danhGias[i] || ''
+        })
+      }
+      
+      transformedData.thongTinKhachHang.banLanhDao = banLanhDaoArray
+    }
+  } else if (!transformedData.thongTinKhachHang.banLanhDao) {
+    // Initialize empty array if banLanhDao doesn't exist
+    transformedData.thongTinKhachHang.banLanhDao = []
+  }
+
   const commonProps = { editingField, onEdit, onStopEdit };
 
   const renderEditableField = (path: string, value: any, options: { multiline?: boolean, className?: string } = {}) => {
@@ -102,47 +150,47 @@ export function LoanReportTemplate({
           <tr>
             <td className="label-cell">Tên đầy đủ của khách hàng</td>
             <td colSpan={3} className="value-cell font-bold">
-              {renderEditableField('thongTinChung.tenKhachHang', data.thongTinChung.tenKhachHang, { className: 'font-bold' })}
+              {renderEditableField('thongTinChung.tenKhachHang', transformedData.thongTinChung.tenKhachHang, { className: 'font-bold' })}
             </td>
           </tr>
           <tr>
             <td className="label-cell">Giấy ĐKKD/GP đầu tư</td>
             <td className="value-cell">
-              {renderEditableField('thongTinChung.giayPhep', data.thongTinChung.giayPhep)}
+              {renderEditableField('thongTinChung.giayPhep', transformedData.thongTinChung.giayPhep)}
             </td>
             <td className="label-cell">ID trên T24</td>
             <td className="value-cell">
-              {renderEditableField('thongTinChung.idT24', data.thongTinChung.idT24)}
+              {renderEditableField('thongTinChung.idT24', transformedData.thongTinChung.idT24)}
             </td>
           </tr>
           <tr>
             <td className="label-cell">Phân khúc</td>
             <td className="value-cell">
-              {renderEditableField('thongTinChung.phanKhuc', data.thongTinChung.phanKhuc)}
+              {renderEditableField('thongTinChung.phanKhuc', transformedData.thongTinChung.phanKhuc)}
             </td>
             <td className="label-cell">Loại khách hàng</td>
             <td className="value-cell">
-              {renderEditableField('thongTinChung.loaiKhachHang', data.thongTinChung.loaiKhachHang)}
+              {renderEditableField('thongTinChung.loaiKhachHang', transformedData.thongTinChung.loaiKhachHang)}
             </td>
           </tr>
           <tr>
             <td className="label-cell">Ngành nghề HĐKD theo ĐKKD</td>
             <td className="value-cell">
-              {renderEditableField('thongTinChung.nganhNghe', data.thongTinChung.nganhNghe)}
+              {renderEditableField('thongTinChung.nganhNghe', transformedData.thongTinChung.nganhNghe)}
             </td>
             <td className="label-cell">Mục đích báo cáo</td>
             <td className="value-cell">
-              {renderEditableField('thongTinChung.mucDichBaoCao', data.thongTinChung.mucDichBaoCao, { multiline: true })}
+              {renderEditableField('thongTinChung.mucDichBaoCao', transformedData.thongTinChung.mucDichBaoCao, { multiline: true })}
             </td>
           </tr>
            <tr>
             <td className="label-cell">Kết quả phân luồng</td>
             <td className="value-cell">
-              {renderEditableField('thongTinChung.ketQuaPhanLuong', data.thongTinChung.ketQuaPhanLuong, { className: "text-red-600 font-bold" })}
+              {renderEditableField('thongTinChung.ketQuaPhanLuong', transformedData.thongTinChung.ketQuaPhanLuong, { className: "text-red-600 font-bold" })}
             </td>
             <td className="label-cell font-bold">XHTD</td>
             <td className="value-cell">
-               {renderEditableField('thongTinChung.xhtd', data.thongTinChung.xhtd)}
+               {renderEditableField('thongTinChung.xhtd', transformedData.thongTinChung.xhtd)}
             </td>
           </tr>
         </tbody>
@@ -161,19 +209,19 @@ export function LoanReportTemplate({
           </tr>
           <tr>
             <td className="label-cell">Ngày thành lập</td>
-            <td className="value-cell">{renderEditableField('thongTinKhachHang.phapLy.ngayThanhLap', data.thongTinKhachHang.phapLy.ngayThanhLap)}</td>
+            <td className="value-cell">{renderEditableField('thongTinKhachHang.phapLy.ngayThanhLap', transformedData.thongTinKhachHang.phapLy.ngayThanhLap)}</td>
           </tr>
           <tr>
             <td className="label-cell">Địa chỉ trên ĐKKD</td>
-            <td className="value-cell">{renderEditableField('thongTinKhachHang.phapLy.diaChi', data.thongTinKhachHang.phapLy.diaChi)}</td>
+            <td className="value-cell">{renderEditableField('thongTinKhachHang.phapLy.diaChi', transformedData.thongTinKhachHang.phapLy.diaChi)}</td>
           </tr>
           <tr>
             <td className="label-cell">Người đại diện theo Pháp luật</td>
-            <td className="value-cell">{renderEditableField('thongTinKhachHang.phapLy.nguoiDaiDien', data.thongTinKhachHang.phapLy.nguoiDaiDien)}</td>
+            <td className="value-cell">{renderEditableField('thongTinKhachHang.phapLy.nguoiDaiDien', transformedData.thongTinKhachHang.phapLy.nguoiDaiDien)}</td>
           </tr>
           <tr>
             <td className="label-cell">Có kinh doanh Ngành nghề kinh doanh có điều kiện</td>
-            <td className="value-cell">{renderEditableField('thongTinKhachHang.phapLy.nganhNgheCoDieuKien', data.thongTinKhachHang.phapLy.nganhNgheCoDieuKien)}</td>
+            <td className="value-cell">{renderEditableField('thongTinKhachHang.phapLy.nganhNgheCoDieuKien', transformedData.thongTinKhachHang.phapLy.nganhNgheCoDieuKien)}</td>
           </tr>
         </tbody>
       </table>
@@ -192,7 +240,7 @@ export function LoanReportTemplate({
           </tr>
         </thead>
         <tbody>
-          {data.thongTinKhachHang.banLanhDao.map((member, index) => (
+          {Array.isArray(transformedData.thongTinKhachHang?.banLanhDao) ? transformedData.thongTinKhachHang.banLanhDao.map((member, index) => (
             <tr key={index}>
               <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].ten`, member.ten)}</td>
               <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].tyLeVon`, member.tyLeVon)}</td>
@@ -200,7 +248,11 @@ export function LoanReportTemplate({
               <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].mucDoAnhHuong`, member.mucDoAnhHuong)}</td>
               <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].danhGia`, member.danhGia, { multiline: true })}</td>
             </tr>
-          ))}
+          )) : (
+            <tr>
+              <td colSpan={5} className="text-center text-gray-500">Không có dữ liệu ban lãnh đạo</td>
+            </tr>
+          )}
         </tbody>
       </table>
       
@@ -212,16 +264,16 @@ export function LoanReportTemplate({
             <tr>
               <td className="value-cell" colSpan={2} style={{ whiteSpace: 'pre-wrap' }}>
                 <b>1. Thông tin khách hàng:</b>
-                {renderEditableField('thongTinKhachHang.nhanXet.thongTinChung', data.thongTinKhachHang.nhanXet.thongTinChung, { multiline: true })}
+                {renderEditableField('thongTinKhachHang.nhanXet.thongTinChung', transformedData.thongTinKhachHang.nhanXet.thongTinChung, { multiline: true })}
                 <br/><br/>
                 <b>2. Pháp lý/ GPKD có ĐK</b>
-                {renderEditableField('thongTinKhachHang.nhanXet.phapLyGpkd', data.thongTinKhachHang.nhanXet.phapLyGpkd, { multiline: true })}
+                {renderEditableField('thongTinKhachHang.nhanXet.phapLyGpkd', transformedData.thongTinKhachHang.nhanXet.phapLyGpkd, { multiline: true })}
                 <br/><br/>
                 <b>3. Chủ doanh nghiệp/Ban lãnh đạo:</b>
-                {renderEditableField('thongTinKhachHang.nhanXet.chuDoanhNghiep', data.thongTinKhachHang.nhanXet.chuDoanhNghiep, { multiline: true })}
+                {renderEditableField('thongTinKhachHang.nhanXet.chuDoanhNghiep', transformedData.thongTinKhachHang.nhanXet.chuDoanhNghiep, { multiline: true })}
                 <br/><br/>
                 <b>4. KYC:</b>
-                {renderEditableField('thongTinKhachHang.nhanXet.kyc', data.thongTinKhachHang.nhanXet.kyc, { multiline: true })}
+                {renderEditableField('thongTinKhachHang.nhanXet.kyc', transformedData.thongTinKhachHang.nhanXet.kyc, { multiline: true })}
               </td>
             </tr>
           </tbody>
@@ -238,31 +290,31 @@ export function LoanReportTemplate({
         <tbody>
             <tr>
                 <td className="label-cell">Khách hàng có phải là người liên quan của TCB theo quy định Pháp luật</td>
-                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.nguoiLienQuan', data.kiemTraQuyDinh.nguoiLienQuan)}</td>
+                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.nguoiLienQuan', transformedData.kiemTraQuyDinh.nguoiLienQuan)}</td>
             </tr>
             <tr>
                 <td className="label-cell">Mức dư nợ cấp tín dụng của Khách hàng và NLQ của Khách hàng theo quy định Pháp luật</td>
-                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.mucDuNo', data.kiemTraQuyDinh.mucDuNo, { multiline: true })}</td>
+                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.mucDuNo', transformedData.kiemTraQuyDinh.mucDuNo, { multiline: true })}</td>
             </tr>
             <tr>
                 <td className="label-cell">Lĩnh vực kinh tế và TPK trọng tâm</td>
-                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.linhVucKinhTe', data.kiemTraQuyDinh.linhVucKinhTe, { multiline: true })}</td>
+                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.linhVucKinhTe', transformedData.kiemTraQuyDinh.linhVucKinhTe, { multiline: true })}</td>
             </tr>
             <tr>
                 <td className="label-cell">Định hướng tín dụng</td>
-                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.dinhHuongTinDung', data.kiemTraQuyDinh.dinhHuongTinDung)}</td>
+                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.dinhHuongTinDung', transformedData.kiemTraQuyDinh.dinhHuongTinDung)}</td>
             </tr>
             <tr>
                 <td className="label-cell">Offering/ CTKD</td>
-                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.offering', data.kiemTraQuyDinh.offering, { multiline: true })}</td>
+                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.offering', transformedData.kiemTraQuyDinh.offering, { multiline: true })}</td>
             </tr>
             <tr>
                 <td className="label-cell">Đánh giá Rủi ro môi trường xã hội</td>
-                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.ruiRoMtxh', data.kiemTraQuyDinh.ruiRoMtxh)}</td>
+                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.ruiRoMtxh', transformedData.kiemTraQuyDinh.ruiRoMtxh)}</td>
             </tr>
             <tr>
                 <td className="label-cell">Quy định khác (nếu có)</td>
-                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.quyDinhKhac', data.kiemTraQuyDinh.quyDinhKhac)}</td>
+                <td className="value-cell">{renderEditableField('kiemTraQuyDinh.quyDinhKhac', transformedData.kiemTraQuyDinh.quyDinhKhac)}</td>
             </tr>
         </tbody>
       </table>

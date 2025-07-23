@@ -167,6 +167,39 @@ export function LoanAssessmentTemplateNew({
     return <div className="p-8 text-center">Đang tải dữ liệu báo cáo...</div>
   }
   
+  // Transform data if needed to ensure arrays are properly formatted
+  const transformedData = { ...data }
+  
+  // Ensure basic structure exists
+  if (!transformedData.headerInfo) transformedData.headerInfo = {} as any
+  if (!transformedData.creditInfo) transformedData.creditInfo = {} as any
+  if (!transformedData.businessInfo) transformedData.businessInfo = {} as any
+  if (!transformedData.legalInfo) transformedData.legalInfo = {} as any
+  if (!transformedData.tcbRelationship) transformedData.tcbRelationship = {} as any
+  if (!transformedData.management) transformedData.management = {} as any
+  if (!transformedData.financialStatus) transformedData.financialStatus = {} as any
+  
+  // Ensure hoatDongKinhDoanh is an array
+  if (transformedData.businessInfo.hoatDongKinhDoanh && !Array.isArray(transformedData.businessInfo.hoatDongKinhDoanh)) {
+    transformedData.businessInfo.hoatDongKinhDoanh = []
+  } else if (!transformedData.businessInfo.hoatDongKinhDoanh) {
+    transformedData.businessInfo.hoatDongKinhDoanh = []
+  }
+  
+  // Ensure management members is an array
+  if (transformedData.management.members && !Array.isArray(transformedData.management.members)) {
+    transformedData.management.members = []
+  } else if (!transformedData.management.members) {
+    transformedData.management.members = []
+  }
+  
+  // Ensure financial PnL is an array
+  if (transformedData.financialStatus.pnl && !Array.isArray(transformedData.financialStatus.pnl)) {
+    transformedData.financialStatus.pnl = []
+  } else if (!transformedData.financialStatus.pnl) {
+    transformedData.financialStatus.pnl = []
+  }
+  
   // Helper để giảm lặp code
   const commonProps = { editingField, onEdit, onStopEdit };
 
@@ -178,9 +211,9 @@ export function LoanAssessmentTemplateNew({
           <h1 className="text-xl font-bold text-gray-900">BÁO CÁO THẨM ĐỊNH CHI TIẾT</h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 border-y border-gray-300 py-2 mb-6">
-        <InfoField label="BBC" value={data.headerInfo?.bbc} fieldId="headerInfo.bbc" onChange={(v: string) => onUpdateField("headerInfo.bbc", v)} {...commonProps} />
-        <InfoField label="CBC" value={data.headerInfo?.cbc} fieldId="headerInfo.cbc" onChange={(v: string) => onUpdateField("headerInfo.cbc", v)} {...commonProps} />
-        <InfoField label="ID đề xuất" value={data.headerInfo?.idDeXuat} fieldId="headerInfo.idDeXuat" onChange={(v: string) => onUpdateField("headerInfo.idDeXuat", v)} {...commonProps} />
+        <InfoField label="BBC" value={transformedData.headerInfo?.bbc} fieldId="headerInfo.bbc" onChange={(v: string) => onUpdateField("headerInfo.bbc", v)} {...commonProps} />
+        <InfoField label="CBC" value={transformedData.headerInfo?.cbc} fieldId="headerInfo.cbc" onChange={(v: string) => onUpdateField("headerInfo.cbc", v)} {...commonProps} />
+        <InfoField label="ID đề xuất" value={transformedData.headerInfo?.idDeXuat} fieldId="headerInfo.idDeXuat" onChange={(v: string) => onUpdateField("headerInfo.idDeXuat", v)} {...commonProps} />
       </div>
 
       {/* --- MAIN CONTENT GRID --- */}
@@ -222,7 +255,7 @@ export function LoanAssessmentTemplateNew({
           <SectionTitle>Hoạt động kinh doanh</SectionTitle>
           <ReportTable
             headers={["Lĩnh vực kinh doanh", "Sản phẩm", "Tỷ lệ doanh thu (%)"]}
-            rows={data.businessInfo?.hoatDongKinhDoanh || []}
+            rows={Array.isArray(transformedData.businessInfo?.hoatDongKinhDoanh) ? transformedData.businessInfo.hoatDongKinhDoanh : []}
             fieldPath="businessInfo.hoatDongKinhDoanh"
             onUpdateField={onUpdateField}
             {...commonProps}
@@ -252,7 +285,7 @@ export function LoanAssessmentTemplateNew({
           <SectionTitle>Ban điều hành</SectionTitle>
           <ReportTable
             headers={["Tên", "Giấy tờ tùy thân", "Chức vụ", "Thành viên HĐQT/Chủ sở hữu", "Có quan hệ tín dụng với TCB", "Hoàn thành KYC"]}
-            rows={data.management?.members || []}
+            rows={Array.isArray(transformedData.management?.members) ? transformedData.management.members : []}
             fieldPath="management.members"
             onUpdateField={onUpdateField}
             {...commonProps}
@@ -261,7 +294,7 @@ export function LoanAssessmentTemplateNew({
           <SectionTitle>Tình hình hoạt động kinh doanh - Kết quả kinh doanh (Đơn vị: Triệu VND)</SectionTitle>
           <ReportTable
             headers={["Tiêu chí", "Năm 2022", "Năm 2023", "Tăng trưởng"]}
-            rows={data.financialStatus?.pnl || []}
+            rows={Array.isArray(transformedData.financialStatus?.pnl) ? transformedData.financialStatus.pnl : []}
             fieldPath="financialStatus.pnl"
             onUpdateField={onUpdateField}
             {...commonProps}

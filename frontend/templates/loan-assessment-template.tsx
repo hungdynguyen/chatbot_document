@@ -118,13 +118,35 @@ export function LoanAssessmentTemplate({
   if (!data) {
     return <div className="p-8 text-center">Đang tải...</div>
   }
+
+  // Transform data if needed to ensure arrays are properly formatted
+  const transformedData = { ...data }
+  
+  // Ensure basic structure exists
+  if (!transformedData.borrowerProfile) transformedData.borrowerProfile = {} as any
+  if (!transformedData.loanDetails) transformedData.loanDetails = {} as any
+  if (!transformedData.collateralEvaluation) transformedData.collateralEvaluation = {} as any
+  
+  // Ensure financialHighlights is an array
+  if (transformedData.financialHighlights && !Array.isArray(transformedData.financialHighlights)) {
+    transformedData.financialHighlights = []
+  } else if (!transformedData.financialHighlights) {
+    transformedData.financialHighlights = []
+  }
+  
+  // Ensure financialRatios is an array
+  if (transformedData.financialRatios && !Array.isArray(transformedData.financialRatios)) {
+    transformedData.financialRatios = []
+  } else if (!transformedData.financialRatios) {
+    transformedData.financialRatios = []
+  }
   
   return (
     <div id="document-content" className="p-8 max-w-4xl mx-auto animate-fade-in-up">
       {/* --- HEADER --- */}
       <div className="text-center mb-8 pb-6 border-b border-red-100">
         <EditableField
-          value={data.title}
+          value={transformedData.title}
           onChange={(value) => onUpdateField("title", value)}
           fieldId="title"
           className="text-2xl font-bold text-center border-none focus-visible:ring-0"
@@ -134,14 +156,14 @@ export function LoanAssessmentTemplate({
         />
         <div className="flex justify-center flex-wrap gap-x-8 gap-y-2 text-sm text-gray-600 mb-4">
           <span>
-            Công ty: <strong className="text-red-600">{data.company || "Chưa xác định"}</strong>
+            Công ty: <strong className="text-red-600">{transformedData.company || "Chưa xác định"}</strong>
           </span>
           <span>
-            Số tiền vay: <strong className="text-red-600">{data.loanAmount || "Chưa xác định"}</strong>
+            Số tiền vay: <strong className="text-red-600">{transformedData.loanAmount || "Chưa xác định"}</strong>
           </span>
         </div>
         <Badge variant="outline" className="text-red-600 border-red-200 bg-red-50 transition-all-smooth">
-          {data.reportType}
+          {transformedData.reportType}
         </Badge>
       </div>
 
@@ -149,7 +171,7 @@ export function LoanAssessmentTemplate({
       <section className="mb-8">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">1. Tóm tắt Thẩm định</h2>
         <EditableField
-          value={data.executiveSummary}
+          value={transformedData.executiveSummary}
           onChange={(value) => onUpdateField("executiveSummary", value)}
           fieldId="executiveSummary"
           className="min-h-[120px] text-sm leading-relaxed"
@@ -184,9 +206,11 @@ export function LoanAssessmentTemplate({
       </ReportSection>
 
       <ReportSection icon={<BarChart2 className="h-5 w-5 text-red-500" />} title="Thông tin Tài chính">
-          {data.financialHighlights?.map((item: any, index: number) => (
+          {Array.isArray(transformedData.financialHighlights) ? transformedData.financialHighlights.map((item: any, index: number) => (
              <InfoField key={index} label={item.label} value={item.value} fieldId={`financialHighlights[${index}].value`} onChange={(v: string) => onUpdateField(`financialHighlights[${index}].value`, v)} editingField={editingField} onEdit={onEdit} onStopEdit={onStopEdit} />
-          ))}
+          )) : (
+            <div className="text-gray-500 text-center col-span-2">Không có dữ liệu tài chính</div>
+          )}
       </ReportSection>
 
       <ReportSection icon={<Landmark className="h-5 w-5 text-red-500" />} title="Tài sản Bảo đảm">
@@ -196,15 +220,17 @@ export function LoanAssessmentTemplate({
       </ReportSection>
 
       <ReportSection icon={<ShieldCheck className="h-5 w-5 text-red-500" />} title="Thông tin Tín dụng (CIC)">
-          {data.financialRatios?.map((item: any, index: number) => (
+          {Array.isArray(transformedData.financialRatios) ? transformedData.financialRatios.map((item: any, index: number) => (
              <InfoField key={index} label={item.label} value={item.value} fieldId={`financialRatios[${index}].value`} onChange={(v: string) => onUpdateField(`financialRatios[${index}].value`, v)} editingField={editingField} onEdit={onEdit} onStopEdit={onStopEdit} />
-          ))}
+          )) : (
+            <div className="text-gray-500 text-center col-span-2">Không có dữ liệu tỷ lệ tài chính</div>
+          )}
       </ReportSection>
 
       <section className="mb-8">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">2. Khuyến nghị & Kết luận</h2>
         <EditableField
-          value={data.conclusion}
+          value={transformedData.conclusion}
           onChange={(value) => onUpdateField("conclusion", value)}
           fieldId="conclusion"
           className="min-h-[100px] text-sm leading-relaxed"
