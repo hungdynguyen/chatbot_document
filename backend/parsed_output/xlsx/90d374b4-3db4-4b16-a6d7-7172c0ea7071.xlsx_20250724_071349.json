@@ -1,0 +1,572 @@
+[
+    {
+        "page_content": "Cột1: 2021 | Cột2: 2022",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 0
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tổng tài sản | Cột1: ####### | Cột2: #######",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 1
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tài sản ngắn hạn",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 2
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tiền và tương đương tiền | Cột1: 23006948488 | Cột2: 7638395109",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 3
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tiền mặt | Cột1: 23006948488 | Cột2: 7638395109",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 4
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tương đương tiền | Cột1: - | Cột2: -",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 5
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Đầu tư tài chính ngắn hạn | Cột1: - | Cột2: -",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 6
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Đầu tư nắm giữ đến ngày đáo hạn ngắn hạn | Cột1: - | Cột2: -",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 7
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Khoản phải thu",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 8
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Phải thu khách hàng | Cột1: 351287848419 | Cột2: 494156779982",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 9
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Phải thu ngắn hạn khách hàng | Cột1: 262464417242 | Cột2: 392069877992",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 10
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Trả trước cho người bán ngắn hạn | Cột1: 60412744387 | Cột2: 73476215200",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 11
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Hàng tồn kho | Cột1: ######## | Cột2: ########",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 12
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tài sản khác",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 13
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tài sản ngắn hạn khác | Cột1: 196006582748 | Cột2: 203860296927",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 14
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tài sản dài hạn | Cột1: 978844046483 | Cột2: 981929982815",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 15
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Phải thu dài hạn | Cột1: - | Cột2: -",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 16
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tài sản cố định | Cột1: 215565537213 | Cột2: 191944613465",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 17
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Nguyên giá TSCĐ hữu hình | Cột1: 358982742430 | Cột2: 359017342430",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 18
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Khấu hao lũy kế TSCĐ hữu hình | Cột1: -150220072604 | Cột2: -172403634724",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 19
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tài sản cố định tài chính | Cột1: 6802867387 | Cột2: 5330905759",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 20
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Nguyên giá TSCĐ tài chính | Cột1: 9832519299 | Cột2: 9832519299",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 21
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Khấu hao lũy kế TSCĐ tài chính | Cột1: -3029651912 | Cột2: -4501613540",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 22
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tài sản cố định vô hình | Cột1: - | Cột2: -",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 23
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Nguyên giá TSCĐ vô hình | Cột1: - | Cột2: -",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 24
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Khấu hao lũy kế TSCĐ vô hình | Cột1: - | Cột2: -",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 25
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tài sản dở dang dài hạn | Cột1: 571324586305 | Cột2: 548937304038",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 26
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Đầu tư tài chính dài hạn | Cột1: 16102500000 | Cột2: 16102500000",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 27
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Đầu tư nắm giữ đến ngày đáo hạn dài hạn | Cột1: 76214667711 | Cột2: 96718566890",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 28
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tài sản dài hạn khác | Cột1: 99636755254 | Cột2: 96326998422",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 29
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Nguồn vốn | Cột1: 2021 | Cột2: 2022",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 30
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Nợ phải trả",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 31
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Phải trả người bán ngắn hạn | Cột1: 161864941119 | Cột2: 190993731942",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 32
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Người mua trả tiền trước ngắn hạn | Cột1: 142989395548 | Cột2: 121754486334",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 33
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Vay và nợ thuê tài chính ngắn hạn | Cột1: - | Cột2: -",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 34
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Vay và nợ thuê tài chính dài hạn | Cột1: 152985758636 | Cột2: 120838348384",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 35
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Vốn chủ sở hữu | Cột1: 800000000000 | Cột2: 800000000000",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 36
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Lợi nhuận sau thuế chưa phân phối | Cột1: -8344301267 | Cột2: -4893106365",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 37
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Báo cáo kết quả kinh doanh | Cột1: 2021 | Cột2: 2022",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 38
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Doanh thu thuần về bán hàng và cung cấp dịch vụ | Cột1: 500770390020 | Cột2: 635600139381",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 39
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Giá vốn hàng bán | Cột1: 466486653766 | Cột2: 598221232775",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 40
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Lợi nhuận gộp về bán hàng và cung cấp dịch vụ | Cột1: 34283736254 | Cột2: 37378906606",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 41
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Doanh thu hoạt động tài chính | Cột1: 1738469964 | Cột2: 591562125",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 42
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Chi phí tài chính | Cột1: 12852994507 | Cột2: 13128413008",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 43
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Trong đó: Chi phí lãi vay | Cột1: 12695392681 | Cột2: 13125954980",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 44
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Chi phí bán hàng | Cột1: - | Cột2: -",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 45
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Chi phí quản lý kinh doanh | Cột1: 19834521852 | Cột2: 20409339406",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 46
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Lợi nhuận thuần từ hoạt động kinh doanh | Cột1: 3334689859 | Cột2: 4432716317",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 47
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Thu nhập khác | Cột1: 879232770 | Cột2: 378069595",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 48
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Chi phí khác | Cột1: 598187641 | Cột2: 341418873",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 49
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Lợi nhuận khác | Cột1: 281045129 | Cột2: 36650722",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 50
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Tổng lợi nhuận kế toán trước thuế | Cột1: 3615734988 | Cột2: 4469367039",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 51
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Lợi nhuận sau thuế | Cột1: 2683645510 | Cột2: 3450782751",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 52
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Báo cáo lưu chuyển tiền tệ",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 53
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Dòng tiền thuần từ hoạt động đầu tư | Cột1: 12722309713 | Cột2: -31908797875",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 54
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Dòng tiền thuần từ hoạt động kinh doanh | Cột1: -384882799893 | Cột2: -275268091339",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 55
+        }
+    },
+    {
+        "page_content": "Bảng cân đối kế toán: Dòng tiền thuần từ hoạt động tài chính | Cột1: 346606015400 | Cột2: 291808335835",
+        "metadata": {
+            "source": "uploaded_files/90d374b4-3db4-4b16-a6d7-7172c0ea7071.xlsx",
+            "file_type": "excel",
+            "sheet_name": "Báo cáo tài chính",
+            "table_id": "table_0",
+            "row_index_in_table": 56
+        }
+    }
+]

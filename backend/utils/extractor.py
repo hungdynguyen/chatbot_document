@@ -58,32 +58,26 @@ Nếu không tìm thấy bảng nào phù hợp, trả về một mảng rỗng.
 
 # -- Kho prompt chi tiết cho từng trường riêng lẻ --
 TEMPLATE4_DETAILED_PROMPTS = {
+    
+    '**system_prompt**: Lưu ý không được bịa thông tin, nếu không tìm thấy thông tin thì hãy trả về null.'
     # --- Phần Thông Tin Chung ---
     "Tên đầy đủ của khách hàng": "Trích xuất tên đầy đủ và hợp pháp của công ty khách hàng.",
     "Giấy ĐKKD/GP đầu tư": "Tìm và trích xuất số Giấy chứng nhận Đăng ký kinh doanh (ĐKKD) hoặc Giấy phép đầu tư.",
     "ID trên T24": "Tìm và trích xuất ID của khách hàng trên hệ thống T24.",
-    "Phân khúc": """
-    Dựa vào thông tin trong tài liệu, hãy xác định phân khúc của khách hàng. Các phân khúc có thể là:
-    - Micro: Doanh nghiệp siêu nhỏ.
-    - SME: Doanh nghiệp nhỏ và vừa.
-    - SME+: Doanh nghiệp nhỏ & vừa nâng cao.
-    - MM: Doanh nghiệp trung cấp.
-    - CIB: Doanh nghiệp lớn, tập đoàn.
-    Trả về một trong các giá trị trên.
-    """,
+    "Phân khúc": "Tìm và trích xuất Phân khúc của khách hàng. Phân khúc có thể là một trong những keyword sau: 'MM', 'SME+', 'Micro', 'Small', 'Medium', 'LC', 'PS'. Nếu không có thì trả về null.",
     "Loại khách hàng": "Tìm thông tin về loại khách hàng. Các từ khóa có thể là 'ETC' (Exclusive Trading Company) hoặc 'OTC' (Over-the-counter). Nếu không có, trả về null.",
-    "Ngành nghề HĐKD theo ĐKKD": "Trích xuất các ngành nghề hoạt động kinh doanh chính được ghi trên Giấy ĐKKD.",
+    "Ngành nghề HĐKD theo ĐKKD": "Trích xuất các ngành nghề hoạt động kinh doanh chính được ghi trên Giấy ĐKKD. Nếu không có thông tin hãy suy luận từ tên đầy đủ công ty. VÍ dụ: 'Xây dựng', 'Thương mại', 'Sản xuất'.",
     "Mục đích báo cáo": "Xác định mục đích của báo cáo thẩm định này là gì? Ví dụ: 'Cấp mới hạn mức tín dụng', 'Tái cấp tín dụng',...",
-    "Kết quả phân luồng": "Tìm và trích xuất kết quả phân luồng của khách hàng. Ví dụ: 'Luồng thông thường', 'Luồng chuyên sâu'.",
-    "XHTD": "Trích xuất Xếp hạng tín dụng (XHTD) gần nhất của khách hàng và ngày xếp hạng nếu có. Ví dụ: 'Aa3 (16/04/2024)'.",
+    "Kết quả phân luồng": "Tìm và trích xuất kết quả phân luồng của khách hàng. Ví dụ: 'Luồng chuẩn', 'Luồng thông thường', 'Luồng chuyên sâu'.",
+    "XHTD": "Trích xuất Xếp hạng tín dụng (XHTD) gần nhất của khách hàng. Các giá trị có thể là: 'Aa3', 'Aa2', 'Aa1', 'A3', 'A2', 'A1', 'Baa3', 'Baa2', 'Baa1', 'Ba3', 'Ba2', 'Ba1', 'B3', 'B2', 'B1', 'Caa3', 'Caa2', 'Caa1'. Nếu không có, trả về null.",
 
     # --- Phần Thông Tin Khách Hàng - Pháp Lý ---
     "Ngày thành lập": "Tìm ngày thành lập của công ty. Trả về ngày tháng dưới dạng chuỗi có định dạng DD/MM/YYYY.",
     "Địa chỉ trên ĐKKD": "Trích xuất địa chỉ đầy đủ của công ty được ghi trên Giấy ĐKKD.",
     "Người đại diện theo Pháp luật": "Tìm và trích xuất tên đầy đủ của Người đại diện theo Pháp luật của công ty.",
     "Có kinh doanh Ngành nghề kinh doanh có điều kiện": """
-    Dựa vào danh sách ngành nghề kinh doanh của công ty trong tài liệu, hãy xác định xem công ty có hoạt động trong các ngành nghề kinh doanh có điều kiện theo pháp luật Việt Nam hay không.
-    Một số ví dụ về ngành nghề có điều kiện: kinh doanh bất động sản, dịch vụ tài chính, sản xuất hóa chất, kinh doanh vận tải, giáo dục, y tế...
+    Dựa vào ngành nghề kinh doanh của công ty (có thể suy luận lại từ Ngành nghề HĐKD theo ĐKKD hoặc tên đầy đủ của công ty), hãy xác định xem công ty có hoạt động trong các ngành nghề kinh doanh có điều kiện theo pháp luật Việt Nam hay không.
+    Một số ví dụ về ngành nghề có điều kiện: bất động sản, dịch vụ tài chính, sản xuất hóa chất, kinh doanh vận tải, giáo dục, y tế...
     Trả lời chỉ "Có" hoặc "Không".
     """,
 
@@ -100,7 +94,10 @@ TEMPLATE4_DETAILED_PROMPTS = {
     - Cơ quan cấp.
     - Ngày cấp lần đầu.
     - Thông tin về lần đăng ký thay đổi gần nhất (nếu có).
-    Ví dụ: 'Công ty hoạt động theo Giấy ĐKKD số 0101442420 do Sở KH&ĐT Hà Nội cấp lần đầu ngày 19/01/2004, đăng ký thay đổi lần 8 ngày 12/04/2023.'
+    
+    Ví dụ: '•	Công ty kinh doanh theo giấy ĐKKD số xxx cấp lần đầu ngày xxx do Sở kế hoạch và đầu tư cấp, ĐK thay đổi lần thứ x ngày xxx.
+            •	Giấy chứng nhận đủ ĐK kinh doanh dược cấp ngày xxx
+            •	Giấy chứng nhận thực  hành tốt phân phối thuốc (GDP) cấp ngày xxx'
     """,
     "Nhận xét - Chủ doanh nghiệp/Ban lãnh đạo": """
     Dựa vào số năm hoạt động của công ty và thông tin về ban lãnh đạo, hãy suy luận và đưa ra một nhận xét ngắn gọn (1-2 câu) về kinh nghiệm của họ trong ngành.
@@ -109,8 +106,8 @@ TEMPLATE4_DETAILED_PROMPTS = {
     "Nhận xét - KYC": "Tìm trong tài liệu phần nhận xét KYC (Know Your Customer). Đây thường là nhận xét chủ quan của người đi thẩm định. Nếu không tìm thấy, hãy trả về giá trị null.",
     
     # --- Phần Hoạt Động Kinh Doanh ---
-    "Lĩnh vực kinh doanh": "Xác định lĩnh vực kinh doanh tổng quan của công ty. Ví dụ: 'Xây lắp', 'Thương mại', 'Sản xuất'.",
-    "Sản phẩm/Dịch vụ": "Liệt kê các sản phẩm hoặc dịch vụ cụ thể, chi tiết mà công ty cung cấp.",
+    "Lĩnh vực kinh doanh": "Xác định lĩnh vực kinh doanh tổng quan của công ty. Ví dụ: 'Xây lắp', 'Thương mại', 'Sản xuất', Dịch vu xây lắp, lắp đặt",
+    "Sản phẩm/Dịch vụ": "Liệt kê các sản phẩm hoặc dịch vụ mà công ty cung cấp một cách ngắn gọn. Ví dụ: Nhôm kính, mặt kính, vách kính mặt dựng tại các tòa nhà cao tầng,... ",
     "Tỷ trọng doanh thu năm N-1 (%)": "Tìm tỷ trọng doanh thu theo từng sản phẩm/dịch vụ của năm N-1 (năm trước).",
     "Tỷ trọng doanh thu năm N (%)": "Tìm tỷ trọng doanh thu theo từng sản phẩm/dịch vụ của năm N (năm hiện tại hoặc gần nhất).",
     "Nhóm mặt hàng": "Liệt kê các nhóm mặt hàng kinh doanh chính của công ty.",
