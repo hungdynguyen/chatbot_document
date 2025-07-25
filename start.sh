@@ -198,7 +198,14 @@ log_info "Khởi động Backend API (FastAPI)..."
     cd "$BACKEND_DIR" || exit 1
     
     # Khởi động FastAPI
-    nohup uvicorn api.main:app --reload --host 0.0.0.0 --port 8000 > ../backend.log 2>&1 &
+    export PYTHONPATH="$BACKEND_DIR:$PYTHONPATH"
+    nohup python -m uvicorn api.main:app --reload --host 0.0.0.0 --port 8000 > "$PROJECT_ROOT/backend.log" 2>&1 &
+    BACKEND_PID=$!
+    echo $BACKEND_PID > "$PROJECT_ROOT/backend.pid"
+
+    # Quay lại thư mục gốc
+    cd "$PROJECT_ROOT"
+    # nohup uvicorn api.main:app --reload --host 0.0.0.0 --port 8000 > ../backend.log 2>&1 &
 )
 
 # Đợi Backend API khởi động với cơ chế kiểm tra lặp lại

@@ -3,13 +3,13 @@ import json
 import asyncio
 import os
 from typing import List, Dict
-
+import re
 # Import từ config
 from config import LANGFLOW_EXTRACTOR_URL, HEADERS, QDRANT_COMPONENT_ID_EXTRACTOR
-
+import time
 # (QDRANT_COMPONENT_ID được import từ config) 
 
-MAX_ITERATIONS = 20
+MAX_ITERATIONS = 40
 INITIAL_BATCH_SIZE = 6
 MIN_BATCH_SIZE_TO_SPLIT = 2
 
@@ -18,43 +18,6 @@ SCHEMAS_DIR = os.path.join(os.path.dirname(__file__), "..", "schemas")
 
 
 
-FLEXIBLE_TABLE_PROMPT_LEADERSHIP = """
-**Nhiệm vụ:** Tìm và trích xuất thông tin về ban lãnh đạo, cổ đông, hoặc thành viên góp vốn từ các bảng trong tài liệu.
-
-**Yêu cầu:**
-1.  Tìm bất kỳ bảng nào có chứa thông tin về danh sách cá nhân liên quan đến công ty.
-2.  Các cột trong bảng có thể có tên khác nhau. Nhiệm vụ của bạn là nhận diện và mapping chúng một cách thông minh vào các key chuẩn sau: `ten`, `tyLeVon`, `chucVu`, `cccd`.
-    *   `ten`: Có thể đến từ cột có header là 'Họ tên', 'Tên thành viên góp vốn/ban lãnh đạo', hoặc tương tự.
-    *   `tyLeVon`: Có thể đến từ cột 'Tỷ lệ góp vốn', '% góp vốn', hoặc tương tự.
-    *   `chucVu`: Có thể đến từ cột 'Chức vụ'. Nếu cột này không tồn tại trong bảng, hãy trả về giá trị `null`.
-    *   `cccd`: Có thể đến từ cột 'CCCD/CMND/Hộ chiếu'. Nếu không có, trả về `null`.
-3.  Trích xuất thông tin của TẤT CẢ các thành viên trong bảng.
-4.  Trả về một đối tượng JSON duy nhất có key là "leadership_data" và value là một MẢNG (array) các đối tượng.
-
-**Ví dụ 1 (Bảng có đầy đủ thông tin):**
-Nếu bảng có dạng:
-| Tên thành viên góp vốn/ban lãnh đạo | Tỷ lệ vốn góp (%) | Chức vụ       |
-|------------------------------------|--------------------|---------------|
-| Đào Công Duy                       | 90%                | Tổng giám đốc |
-Kết quả phải là:
-{ "leadership_data": [{ "ten": "Đào Công Duy", "tyLeVon": "90%", "chucVu": "Tổng giám đốc", "cccd": null }] }
-
-**Ví dụ 2 (Bảng thiếu thông tin 'Chức vụ'):**
-Nếu bảng có dạng:
-| Họ tên         | CCCD/CMND/Hộ chiếu | Tỷ lệ góp vốn |
-|----------------|--------------------|----------------|
-| Đào Công Duy   | 034067001074       | 90%            |
-| Thái Thị Kim Dung | 040174000053       | 8%             |
-Kết quả phải là:
-{
-  "leadership_data": [
-    { "ten": "Đào Công Duy", "tyLeVon": "90%", "chucVu": null, "cccd": "034067001074" },
-    { "ten": "Thái Thị Kim Dung", "tyLeVon": "8%", "chucVu": null, "cccd": "040174000053" }
-  ]
-}
-
-Nếu không tìm thấy bảng nào phù hợp, trả về một mảng rỗng.
-"""
 
 # -- Kho prompt chi tiết cho từng trường riêng lẻ --
 TEMPLATE4_DETAILED_PROMPTS = {
@@ -105,6 +68,14 @@ TEMPLATE4_DETAILED_PROMPTS = {
     """,
     "Nhận xét - KYC": "Tìm trong tài liệu phần nhận xét KYC (Know Your Customer). Đây thường là nhận xét chủ quan của người đi thẩm định. Nếu không tìm thấy, hãy trả về giá trị null.",
     
+    
+    # --- Phần ban lãnh đạo ---
+    "Tên đầy đủ": "Trích xuất tên đầy đủ của thành viên ban lãnh đạo.",
+    "Chức vụ": "Trích xuất chức vụ của thành viên ban lãnh đạo trong công ty. Ví dụ: 'Giám đốc', 'Phó giám đốc', 'Kế toán trưởng', 'Trưởng phòng kinh doanh'.",
+    "Tỷ lệ sở hữu (%)": "Trích xuất tỷ lệ sở hữu cổ phần của thành viên ban lãnh đạo trong công ty. Ví dụ: '20%', '15%'.",
+    "Mức độ ảnh hưởng": "Trích xuất mức độ ảnh hưởng của thành viên ban lãnh đạo đối với hoạt động của công ty. Ví dụ: 'Cao', 'Trung bình', 'Thấp'.",
+    "Đánh giá": "Trích xuất đánh giá về thành viên ban lãnh đạo. Đây có thể là đánh giá về năng lực, kinh nghiệm hoặc đóng góp của họ cho công ty. Ví dụ: 'Có kinh nghiệm dày dạn trong ngành xây dựng', 'Đã từng quản lý nhiều dự án lớn'.",
+    
     # --- Phần Hoạt Động Kinh Doanh ---
     "Lĩnh vực kinh doanh": "Xác định lĩnh vực kinh doanh tổng quan của công ty. Ví dụ: 'Xây lắp', 'Thương mại', 'Sản xuất', Dịch vu xây lắp, lắp đặt",
     "Sản phẩm/Dịch vụ": "Liệt kê các sản phẩm hoặc dịch vụ mà công ty cung cấp một cách ngắn gọn. Ví dụ: Nhôm kính, mặt kính, vách kính mặt dựng tại các tòa nhà cao tầng,... ",
@@ -148,6 +119,8 @@ def load_template_schema(template_id: str) -> Dict:
     except Exception as e:
         print(f"❌ Lỗi khi đọc schema '{template_id}': {e}")
         return {"fields": [], "mapping": {}}
+
+
 
 def structure_data_for_loan_assessment_report(flat_data: Dict, mapping: Dict) -> Dict:
     """
@@ -268,13 +241,109 @@ def create_prompt(fields_list: list) -> str:
         # Prompt cho nhiều trường, định dạng với newline để LLM dễ xử lý hơn
         return f"\n- {fields_as_text_list}\n"
 
-
-
 def is_valid_value(value) -> bool:
     """Kiểm tra xem giá trị trích xuất có hợp lệ hay không."""
     return value is not None and str(value).strip() != ""
 
-# --- HÀM QUERY LANGFLOW ĐÃ NÂNG CẤP HOÀN CHỈNH ---
+# # --- HÀM QUERY LANGFLOW ĐÃ NÂNG CẤP HOÀN CHỈNH ---
+# def _extract_and_parse_json(text: str) -> dict:
+#     """
+#     Hàm trợ giúp, nhận một chuỗi và cố gắng trích xuất, phân tích cú pháp JSON.
+#     """
+#     if not isinstance(text, str):
+#         return {}
+
+#     # Ưu tiên 1: Tìm JSON bên trong khối mã ```json ... ``` (cách LLM thường trả về)
+#     match = re.search(r"```json\s*(\{.*?\})\s*```", text, re.DOTALL)
+#     if match:
+#         json_str = match.group(1)
+#     else:
+#         # Ưu tiên 2: Nếu không có khối mã, tìm chuỗi lớn nhất bắt đầu bằng { và kết thúc bằng }
+#         start = text.find('{')
+#         end = text.rfind('}')
+#         if start != -1 and end > start:
+#             json_str = text[start : end + 1]
+#         else:
+#             print("  - Lỗi: Không tìm thấy đối tượng JSON nào trong phản hồi của LLM.")
+#             print(f"  - Phản hồi nhận được: {text[:500]}...")
+#             return {}
+
+#     # Bây giờ, cố gắng phân tích chuỗi JSON đã tìm thấy
+#     try:
+#         # Hàm loads chuẩn
+#         return json.loads(json_str)
+#     except json.JSONDecodeError:
+#         # Nếu thất bại, hãy thử sửa các lỗi phổ biến (như dấu phẩy thừa)
+#         print(f"  - Cảnh báo: JSON không hợp lệ, đang cố gắng sửa chữa...")
+#         # Loại bỏ các dấu phẩy thừa trước dấu } hoặc ]
+#         json_str_fixed = re.sub(r",\s*([}\]])", r"\1", json_str)
+#         try:
+#             return json.loads(json_str_fixed)
+#         except json.JSONDecodeError as e:
+#             print(f"  - Lỗi: Không thể sửa chữa và phân tích JSON.")
+#             print(f"  - Lỗi chi tiết: {e}")
+#             print(f"  - Chuỗi JSON bị lỗi: {json_str_fixed[:500]}...")
+#             return {}
+
+# def query_langflow_for_json(question_prompt: str, collection_name: str) -> dict:
+#     """
+#     Gửi yêu cầu đến Langflow và trích xuất JSON một cách mạnh mẽ.
+#     """
+#     if not question_prompt:
+#         return {}
+
+#     payload = {
+#         "input_value": question_prompt,
+#         "output_type": "chat",
+#         "input_type": "chat",
+#         "tweaks": {
+#             QDRANT_COMPONENT_ID_EXTRACTOR: {
+#                 "collection_name": collection_name
+#             }
+#         }
+#     }
+    
+#     print(f"  - Đang gửi yêu cầu tới Langflow cho collection: '{collection_name}'")
+    
+#     # Hàm để thực hiện yêu cầu và xử lý phản hồi
+#     def execute_request():
+#         response = requests.post(LANGFLOW_EXTRACTOR_URL, json=payload, headers=HEADERS, timeout=120)
+#         response.raise_for_status()
+#         langflow_data = response.json()
+#         llm_response_text = langflow_data['outputs']['outputs']['results']['message']['text']
+#         return _extract_and_parse_json(llm_response_text)
+
+#     try:
+#         # Lần thử đầu tiên
+#         return execute_request()
+    
+#     except requests.exceptions.HTTPError as e:
+#         # Chỉ thử lại nếu là lỗi server (500)
+#         if e.response.status_code == 500:
+#             print(f"  - Lỗi 500 từ server Langflow. Thử lại sau 5 giây...")
+#             time.sleep(5)
+#             try:
+#                 # Lần thử lại
+#                 return execute_request()
+#             except Exception as retry_e:
+#                 print(f"  - Thử lại thất bại: {retry_e}")
+#         else:
+#             print(f"  - Lỗi HTTP từ Langflow: {e}")
+            
+#     except requests.exceptions.RequestException as e:
+#         print(f"  - Lỗi kết nối tới Langflow: {e}")
+        
+#     except (KeyError, IndexError, json.JSONDecodeError) as e:
+#         print(f"  - Lỗi: Cấu trúc phản hồi từ Langflow không như mong đợi hoặc JSON không hợp lệ. Lỗi: {e}")
+        
+#     except Exception as e:
+#         print(f"  - Lỗi không xác định khi query Langflow: {e}")
+
+#     # Trả về dictionary rỗng nếu tất cả các lần thử đều thất bại
+#     return {}
+
+
+
 def query_langflow_for_json(question_prompt: str, collection_name: str) -> dict:
     """
     Gửi yêu cầu đến Langflow, SỬ DỤNG TWEAKS để chỉ định collection_name động.
@@ -313,7 +382,9 @@ def query_langflow_for_json(question_prompt: str, collection_name: str) -> dict:
             try:
                 return json.loads(json_str)
             except json.JSONDecodeError:
-                print(f"  - Lỗi: Chuỗi JSON không hợp lệ: {json_str}")
+                with open("debug_invalid_json.txt", "w", encoding="utf-8") as f:
+                    f.write(json_str)
+                print(f"  - Lỗi: Chuỗi JSON không hợp lệ, đã lưu vào debug_invalid_json.txt")
                 return {}
         else:
             print("  - Lỗi: Không tìm thấy đối tượng JSON hợp lệ trong phản hồi của LLM.")
@@ -329,7 +400,6 @@ def query_langflow_for_json(question_prompt: str, collection_name: str) -> dict:
     except Exception as e:
         print(f"  - Lỗi không xác định khi query Langflow: {e}")
         return {}
-
 
 def structure_data_for_new_template(flat_data: Dict, mapping: Dict) -> Dict:
     """
@@ -370,7 +440,10 @@ def structure_data_for_new_template(flat_data: Dict, mapping: Dict) -> Dict:
     return structured_data
 
 
+
+
 # --- 3. LOGIC TRÍCH XUẤT CHÍNH (ĐÃ NÂNG CẤP HOÀN CHỈNH) ---
+
 
 # async def extract_information_from_docs(prompt: str, file_ids: List[str], collection_name: str, template_id: str) -> Dict:
 #     """
@@ -462,79 +535,38 @@ async def extract_information_from_docs(prompt: str, file_ids: List[str], collec
     prompt_dictionary = {}
     if template_id == 'template4':
         prompt_dictionary = TEMPLATE4_DETAILED_PROMPTS
-    # (Bạn có thể thêm các bộ prompt cho template khác ở đây)
-    
-    # --- GIAI ĐOẠN 1: TRÍCH XUẤT CÁC TRƯỜNG ĐƠN GIẢN (BATCH) ---
-    print("🚀 Bắt đầu Giai đoạn 1: Trích xuất theo lô các trường đơn giản...")
-    
-    # Lọc ra các trường đơn giản: không có trong kho prompt chi tiết và không thuộc bảng
-    simple_fields = [
-        f for f in fields_to_extract 
-        if f not in prompt_dictionary 
-        and f not in ["Tên thành viên góp vốn/ban lãnh đạo", "Tỷ lệ vốn góp (%)", "Chức vụ"]
-    ]
-    
-    work_queue = [
-        simple_fields[i:i + INITIAL_BATCH_SIZE]
-        for i in range(0, len(simple_fields), INITIAL_BATCH_SIZE)
-    ]
-    # ... (Giữ nguyên logic lặp và query của bạn cho Giai đoạn 1) ...
-    current_iteration = 0
-    while work_queue and current_iteration < MAX_ITERATIONS:
-        # (Code Giai đoạn 1 của bạn ở đây...)
-        current_iteration += 1
-        current_batch = work_queue.pop(0)
-        
-        print(f"\n--- Lô {current_iteration} | Đang xử lý {len(current_batch)} trường ---")
-        batch_prompt = create_prompt(current_batch)
-        
-        loop = asyncio.get_event_loop()
-        response_json = await loop.run_in_executor(None, query_langflow_for_json, batch_prompt, collection_name)
-
-        if response_json:
-            for field in current_batch:
-                if field in response_json and is_valid_value(response_json[field]):
-                    final_result[field] = response_json[field]
-                    print(f"    ✅ (GĐ1) Đã tìm thấy: '{field}'")
-
-
-    # --- GIAI ĐOẠN 2: TRÍCH XUẤT DỮ LIỆU BẢNG (NẾU CÓ) ---
-    if template_id == 'template4':
-        print("\n🚀 Bắt đầu Giai đoạn 2: Trích xuất thông tin dạng bảng (Linh hoạt)...")
-        
-        # Chúng ta không cần lọc file nữa, vì prompt này đủ thông minh để tìm đúng bảng
-        # trong toàn bộ ngữ cảnh được cung cấp.
-        
-        loop = asyncio.get_event_loop()
-        # SỬ DỤNG PROMPT MỚI
-        table_response_json = await loop.run_in_executor(None, query_langflow_for_json, FLEXIBLE_TABLE_PROMPT_LEADERSHIP, collection_name)
-
-        # Xử lý kết quả trả về từ prompt mới
-        if table_response_json and "leadership_data" in table_response_json:
-            members_data = table_response_json["leadership_data"]
-            if isinstance(members_data, list) and members_data:
-                print(f"    ✅ (GĐ2) Tìm thấy {len(members_data)} thành viên.")
-                
-                # Unpack dữ liệu từ mảng đối tượng vào các key phẳng của final_result
-                # Chúng ta sẽ giữ lại cấu trúc mảng để tiện xử lý ở frontend
-                final_result["thong_tin_ban_lanh_dao_day_du"] = members_data
-
-                # Để tương thích với logic cũ, bạn cũng có thể tạo các danh sách riêng lẻ
-                final_result["Tên thành viên góp vốn/ban lãnh đạo"] = [m.get("ten") for m in members_data]
-                final_result["Tỷ lệ vốn góp (%)"] = [m.get("tyLeVon") for m in members_data]
-                final_result["Chức vụ"] = [m.get("chucVu") for m in members_data]
-                # Thêm trường mới nếu cần
-                final_result["CCCD/CMND/Hộ chiếu"] = [m.get("cccd") for m in members_data]
-
-            else:
-                print("    ❌ (GĐ2) Không tìm thấy dữ liệu ban lãnh đạo.")
-    
-    # --- GIAI ĐOẠN 3: TRÍCH XUẤT CÁC TRƯỜNG CHI TIẾT/SUY LUẬN ---
-    print("\n🚀 Bắt đầu Giai đoạn 3: Trích xuất các trường chi tiết và suy luận...")
     detailed_fields_to_run = [f for f in fields_to_extract if f in prompt_dictionary]
+    simple_fields = [f for f in fields_to_extract if f not in detailed_fields_to_run]
+    # --- GIAI ĐOẠN 1: TRÍCH XUẤT CÁC TRƯỜNG ĐƠN GIẢN (BATCH) ---
+    if simple_fields:
+        print("🚀 Bắt đầu Giai đoạn 1: Trích xuất theo lô các trường đơn giản...")
+        work_queue = [
+            simple_fields[i:i + INITIAL_BATCH_SIZE]
+            for i in range(0, len(simple_fields), INITIAL_BATCH_SIZE)
+        ]
+        current_iteration = 0
+        while work_queue and current_iteration < MAX_ITERATIONS:
+            current_iteration += 1
+            current_batch = work_queue.pop(0)
+            
+            print(f"\n--- Lô {current_iteration} | Đang xử lý {len(current_batch)} trường ---")
+            batch_prompt = create_prompt(current_batch)
+            
+            loop = asyncio.get_event_loop()
+            response_json = await loop.run_in_executor(None, query_langflow_for_json, batch_prompt, collection_name)
+
+            if response_json:
+                for field in current_batch:
+                    if field in response_json and is_valid_value(response_json[field]):
+                        final_result[field] = response_json[field]
+                        print(f"    ✅ (GĐ1) Đã tìm thấy: '{field}'")
+
+    
+    # --- GIAI ĐOẠN 2: TRÍCH XUẤT CÁC TRƯỜNG CHI TIẾT/SUY LUẬN ---
+    print("\n🚀 Bắt đầu Giai đoạn 2: Trích xuất các trường chi tiết và suy luận...")
 
     for field in detailed_fields_to_run:
-        # Chạy ngay cả khi đã tìm thấy ở Giai đoạn 1, vì GĐ3 có prompt chất lượng hơn
+        # Chạy ngay cả khi đã tìm thấy ở Giai đoạn 1, vì GĐ2 có prompt chất lượng hơn
         print(f"  -> Đang xử lý chi tiết trường: '{field}'")
         prompt_template = prompt_dictionary[field]
         
@@ -546,14 +578,14 @@ async def extract_information_from_docs(prompt: str, file_ids: List[str], collec
 
         if response_json and field in response_json and is_valid_value(response_json[field]):
             final_result[field] = response_json[field] # Ghi đè kết quả từ GĐ1 nếu có
-            print(f"    ✅ (GĐ3) Đã tìm thấy: '{field}'")
+            print(f"    ✅ (GĐ2) Đã tìm thấy: '{field}'")
         else:
-            # Nếu GĐ3 không tìm thấy, nhưng GĐ1 đã tìm thấy, thì giữ lại kết quả GĐ1
+            # Nếu GĐ2 không tìm thấy, nhưng GĐ1 đã tìm thấy, thì giữ lại kết quả GĐ1
             if field not in final_result:
-                 print(f"    ❌ (GĐ3) Không tìm thấy: '{field}'")
+                 print(f"    ❌ (GĐ2) Không tìm thấy: '{field}'")
                  final_result[field] = None # Ghi nhận là không tìm thấy
             else:
-                 print(f"    ℹ️ (GĐ3) Không tìm thấy, giữ lại kết quả từ GĐ1 cho trường: '{field}'")
+                 print(f"    ℹ️ (GĐ2) Không tìm thấy, giữ lại kết quả từ GĐ1 cho trường: '{field}'")
 
         await asyncio.sleep(0.5) 
 

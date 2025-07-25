@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import List, Optional
 from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import UnstructuredLoader
+from langchain_unstructured import UnstructuredLoader
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='unstructured')
 
@@ -25,7 +25,7 @@ class DocumentParser:
     - Text (.txt)
     """
     
-    def __init__(self, chunk_size: int = 1000, chunk_overlap: int = 200):
+    def __init__(self, chunk_size: int = 1000, chunk_overlap: int = 200, fallback_threshold: int = 5):
         """
         Initialize the document parser with configurable chunking parameters.
         
@@ -38,8 +38,8 @@ class DocumentParser:
             chunk_overlap=chunk_overlap,
             length_function=len,
         )
+        self.fallback_threshold = fallback_threshold  # Threshold for fallback logic
     
-    # Thay thế hàm parse_file cũ bằng hàm này
 
     def parse_file(self, file_path: str) -> List[Document]:
         """
@@ -67,7 +67,10 @@ class DocumentParser:
         if not specialized_documents:
             print(f"⚠️ Parser chuyên biệt cho file '{file_path.name}' không trích xuất được document nào.")
             return self._parse_with_unstructured_fallback(file_path)
-        
+        if 0 < len(specialized_documents) < self.fallback_threshold:
+            print(f"⚠️ Số lượng document trích xuất được từ file '{file_path.name}' dưới ngưỡng tối thiểu.")
+            fallback_docs = self._parse_with_unstructured_fallback(file_path)
+            return specialized_documents + fallback_docs
         print(f"✅ Parser chuyên biệt cho file '{file_path.name}' đã hoạt động thành công.")
         return specialized_documents
     
@@ -231,65 +234,55 @@ class DocumentParser:
             return []
     
     def parse_excel(self, file_path: Path) -> List[Document]:
-        """
-        Parse Excel file một cách tối ưu, biến mỗi hàng của mỗi bảng thành một Document riêng biệt
-        với metadata chi tiết.
-        """
         documents = []
-        
         try:
-            # Sử dụng ExcelFile để có thể truy cập các sheet hiệu quả
             excel_file = pd.ExcelFile(file_path)
-            
             for sheet_name in excel_file.sheet_names:
                 df = pd.read_excel(excel_file, sheet_name=sheet_name)
-                
-                # --- Xử lý cho sheet rỗng ---
                 if df.empty:
                     continue
-                    
-                # --- Logic để xác định các bảng riêng biệt trong một sheet ---
+                
+                # --- Logic tìm bảng của bạn vẫn giữ nguyên ---
                 df['is_empty'] = df.isnull().all(axis=1)
                 df['table_id'] = df['is_empty'].cumsum()
-                
                 tables = df.groupby('table_id')
                 
                 for table_id, table_df in tables:
-                    # Bỏ các dòng trống đã dùng làm dấu phân cách
                     table_df = table_df.dropna(how='all').reset_index(drop=True)
                     table_df = table_df.drop(columns=['is_empty', 'table_id'], errors='ignore')
-
                     if table_df.empty:
                         continue
                     
-                    headers = table_df.columns.tolist()
+                    # --- BẮT ĐẦU CẢI TIẾN ---
 
+                    # Cải tiến 1: Tạo một Document cho TOÀN BỘ bảng dưới dạng Markdown
+                    # Điều này giữ lại ngữ cảnh so sánh giữa các hàng.
+                    markdown_text = table_df.to_markdown(index=False)
+                    table_content = f"Bảng dữ liệu từ sheet '{sheet_name}':\n\n{markdown_text}"
+                    table_metadata = {
+                        "source": str(file_path), "file_type": "excel", "sheet_name": sheet_name,
+                        "table_id": f"table_{table_id}", "content_type": "full_table_markdown"
+                    }
+                    documents.append(Document(page_content=table_content, metadata=table_metadata))
+
+                    # Cải tiến 2: Vẫn giữ lại việc parse từng hàng để truy xuất chi tiết
+                    headers = table_df.columns.tolist()
                     for index, row in table_df.iterrows():
-                        row_texts = [
-                            f"{str(col_name).strip()}: {str(row[col_name]).strip()}"
-                            for col_name in headers if pd.notna(row[col_name])
-                        ]
+                        row_texts = [f"{str(h).strip()}: {str(row[h]).strip()}" for h in headers if pd.notna(row[h])]
+                        if not row_texts: continue
                         
-                        if not row_texts:
-                            continue
-                            
-                        page_content = " | ".join(row_texts)
-                        
-                        metadata = {
-                            "source": str(file_path),
-                            "file_type": "excel",
-                            "sheet_name": sheet_name,
-                            "table_id": f"table_{table_id}",
-                            "row_index_in_table": index
+                        row_content = " | ".join(row_texts)
+                        row_metadata = {
+                            "source": str(file_path), "file_type": "excel", "sheet_name": sheet_name,
+                            "table_id": f"table_{table_id}", "row_index_in_table": index,
+                            "content_type": "table_row"
                         }
-                        
-                        documents.append(Document(
-                            page_content=page_content,
-                            metadata=metadata
-                        ))
+                        documents.append(Document(page_content=row_content, metadata=row_metadata))
+                    
+                    # --- KẾT THÚC CẢI TIẾN ---
 
         except Exception as e:
-            print(f"Error parsing Excel file (optimized) {file_path}: {e}")
+            print(f"Error parsing Excel file (hybrid) {file_path}: {e}")
                 
         return documents
     
@@ -406,46 +399,78 @@ class DocumentParser:
 
         return documents
     
+    
+    
     def parse_word(self, file_path: Path) -> List[Document]:
         """
-        Optimized Word parser: extracts tables row-by-row and text paragraph-by-paragraph.
+        Hybrid Word parser: extracts paragraphs, full tables as Markdown, and individual table rows.
+        This approach provides both contextual (full table) and specific (single row) data for the AI.
         """
         documents = []
         try:
             doc = docx.Document(file_path)
 
-            # 1. Extract tables first
+            # --- 1. Process tables using the hybrid strategy ---
             for table_idx, table in enumerate(doc.tables):
-                if not table.rows:
+                # First, read all table data into a list of lists to be reused.
+                # This is more efficient than iterating through the table multiple times.
+                table_data = []
+                for row in table.rows:
+                    # Skip fully empty rows to avoid noise
+                    if not any(cell.text.strip() for cell in row.cells):
+                        continue
+                    table_data.append([cell.text.strip() for cell in row.cells])
+                
+                # If the table has no meaningful data, skip it
+                if not table_data:
                     continue
-                
-                # Assume the first row is the header
-                headers = [cell.text.strip() for cell in table.rows[0].cells]
-                
-                # Iterate over data rows
-                for row_idx, row in enumerate(table.rows[1:], start=1):
+
+                # --- Strategy A: Create one Document for the ENTIRE table as Markdown ---
+                # This preserves the overall context of the table for comparison/summary tasks.
+                try:
+                    headers = table_data[0]
+                    markdown_table = "| " + " | ".join(str(h) for h in headers) + " |\n"
+                    markdown_table += "| " + " | ".join(['---'] * len(headers)) + " |\n"
+                    for row_cells in table_data[1:]:
+                        # Pad the row to match header length, preventing errors
+                        padded_row = row_cells + [''] * (len(headers) - len(row_cells))
+                        markdown_table += "| " + " | ".join(str(cell) for cell in padded_row) + " |\n"
+
+                    markdown_metadata = {
+                        "source": str(file_path),
+                        "file_type": "word",
+                        "content_type": "full_table_markdown", # Descriptive type
+                        "table_id": table_idx
+                    }
+                    documents.append(Document(page_content=markdown_table, metadata=markdown_metadata))
+                except IndexError as e:
+                    print(f"    - Warning: Could not process table {table_idx} as Markdown in {file_path.name}: {e}")
+
+
+                # --- Strategy B: Create a Document for EACH ROW in the table ---
+                # This is excellent for precise, specific data retrieval.
+                headers = table_data[0]
+                for row_idx, row_cells in enumerate(table_data[1:], start=1):
                     row_texts = []
-                    for i, cell in enumerate(row.cells):
-                        cell_text = cell.text.strip()
+                    for i, cell_text in enumerate(row_cells):
                         if cell_text:
-                            # Use header if available, otherwise use column index
+                            # Use header if available, otherwise use a generic column name
                             header = headers[i] if i < len(headers) else f"col_{i}"
                             row_texts.append(f"{header}: {cell_text}")
                     
                     if not row_texts: continue
 
-                    page_content = " | ".join(row_texts)
-                    metadata = {
+                    row_metadata = {
                         "source": str(file_path),
                         "file_type": "word",
-                        "content_type": "table_row",
+                        "content_type": "table_row", # Descriptive type
                         "table_id": table_idx,
                         "row_index_in_table": row_idx
                     }
-                    documents.append(Document(page_content=page_content, metadata=metadata))
-            
-            # 2. Extract and chunk paragraph text
-            # The doc.paragraphs object intelligently excludes text within tables.
+                    documents.append(Document(page_content=" | ".join(row_texts), metadata=row_metadata))
+
+            # --- 2. Extract and chunk paragraph text (as before) ---
+            # The doc.paragraphs object intelligently excludes text that is inside tables.
             full_text = "\n\n".join(
                 para.text.strip() for para in doc.paragraphs if para.text.strip()
             )
@@ -461,9 +486,68 @@ class DocumentParser:
                     documents.append(Document(page_content=chunk, metadata=metadata))
 
         except Exception as e:
-            print(f"Error parsing Word file (optimized) {file_path}: {e}")
+            print(f"Error parsing Word file (hybrid) {file_path}: {e}")
 
         return documents
+    
+    # def parse_word(self, file_path: Path) -> List[Document]:
+    #     """
+    #     Optimized Word parser: extracts tables row-by-row and text paragraph-by-paragraph.
+    #     """
+    #     documents = []
+    #     try:
+    #         doc = docx.Document(file_path)
+
+    #         # 1. Extract tables first
+    #         for table_idx, table in enumerate(doc.tables):
+    #             if not table.rows:
+    #                 continue
+                
+    #             # Assume the first row is the header
+    #             headers = [cell.text.strip() for cell in table.rows[0].cells]
+                
+    #             # Iterate over data rows
+    #             for row_idx, row in enumerate(table.rows[1:], start=1):
+    #                 row_texts = []
+    #                 for i, cell in enumerate(row.cells):
+    #                     cell_text = cell.text.strip()
+    #                     if cell_text:
+    #                         # Use header if available, otherwise use column index
+    #                         header = headers[i] if i < len(headers) else f"col_{i}"
+    #                         row_texts.append(f"{header}: {cell_text}")
+                    
+    #                 if not row_texts: continue
+
+    #                 page_content = " | ".join(row_texts)
+    #                 metadata = {
+    #                     "source": str(file_path),
+    #                     "file_type": "word",
+    #                     "content_type": "table_row",
+    #                     "table_id": table_idx,
+    #                     "row_index_in_table": row_idx
+    #                 }
+    #                 documents.append(Document(page_content=page_content, metadata=metadata))
+            
+    #         # 2. Extract and chunk paragraph text
+    #         # The doc.paragraphs object intelligently excludes text within tables.
+    #         full_text = "\n\n".join(
+    #             para.text.strip() for para in doc.paragraphs if para.text.strip()
+    #         )
+            
+    #         if full_text:
+    #             text_chunks = self.text_splitter.split_text(full_text)
+    #             for chunk in text_chunks:
+    #                 metadata = {
+    #                     "source": str(file_path),
+    #                     "file_type": "word",
+    #                     "content_type": "paragraph"
+    #                 }
+    #                 documents.append(Document(page_content=chunk, metadata=metadata))
+
+    #     except Exception as e:
+    #         print(f"Error parsing Word file (optimized) {file_path}: {e}")
+
+    #     return documents
     
     
     
