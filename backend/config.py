@@ -21,8 +21,8 @@ EMBEDDING_MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12
 EMBEDDING_DEVICE = "cpu" # Đổi thành "cuda" nếu có GPU
 
 # Cấu hình chia nhỏ văn bản
-CHUNK_SIZE = 1200
-CHUNK_OVERLAP = 200
+CHUNK_SIZE = 800
+CHUNK_OVERLAP = 50
 
 # --- CẤU HÌNH LANGFLOW ---
 
