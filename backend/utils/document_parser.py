@@ -279,7 +279,7 @@ class DocumentParser:
                         }
                         documents.append(Document(page_content=row_content, metadata=row_metadata))
 
-                # Add UnstructuredLoader
+            # Add UnstructuredLoader
                 
             loader = UnstructuredLoader(str(file_path))
             unstructured_docs = loader.load()
@@ -496,9 +496,25 @@ class DocumentParser:
                         "content_type": "paragraph"
                     }
                     documents.append(Document(page_content=chunk, metadata=metadata))
+                    
+              # Add UnstructuredLoader 
+            loader = UnstructuredLoader(str(file_path))
+            unstructured_docs = loader.load()
+            # Thêm metadata để phân biệt
+            for doc in unstructured_docs:
+                doc.metadata.update({
+                    "source": str(file_path),
+                    "file_type": "excel",
+                    "content_type": "unstructured_chunk",
+                    "parser_method": "unstructured"
+                })
+            documents.extend(unstructured_docs)
+            
 
         except Exception as e:
             print(f"Error parsing Word file (hybrid) {file_path}: {e}")
+            
+          
 
         return documents
     

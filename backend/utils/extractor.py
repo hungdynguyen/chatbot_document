@@ -39,9 +39,7 @@ TEMPLATE4_DETAILED_PROMPTS = {
     "Địa chỉ trên ĐKKD": "Trích xuất địa chỉ đầy đủ của công ty được ghi trên Giấy ĐKKD.",
     "Người đại diện theo Pháp luật": "Tìm và trích xuất tên đầy đủ của Người đại diện theo Pháp luật của công ty.",
     "Có kinh doanh Ngành nghề kinh doanh có điều kiện": """
-    Dựa vào ngành nghề kinh doanh của công ty (có thể suy luận lại từ Ngành nghề HĐKD theo ĐKKD hoặc tên đầy đủ của công ty), hãy xác định xem công ty có hoạt động trong các ngành nghề kinh doanh có điều kiện theo pháp luật Việt Nam hay không.
-    Một số ví dụ về ngành nghề có điều kiện: bất động sản, dịch vụ tài chính, sản xuất hóa chất, kinh doanh vận tải, giáo dục, y tế...
-    Trả lời chỉ "Có" hoặc "Không".
+    Dựa vào tên đầy đủ hoặc ngành nghề kinh doanh theo ĐKKD của công ty, xác định xem công ty có hoạt động trong ngành nghề kinh doanh có điều kiện theo pháp luật Việt Nam không (ví dụ: bất động sản, tài chính, hóa chất, vận tải, giáo dục, y tế...). Trả lời "Có" hoặc "Không"
     """,
 
     # --- Phần Thông Tin Khách Hàng - Nhận Xét (SUY LUẬN & TÓM TẮT) ---
@@ -374,7 +372,7 @@ async def extract_information_from_docs(prompt: str, file_ids: List[str], collec
             print(f"    ❌ Không tìm thấy: '{field}'")
             final_result[field] = None
 
-        await asyncio.sleep(0.5)
+        await asyncio.sleep(2)
 
     print("\n\n✅ Quá trình trích xuất hoàn tất!")
 
