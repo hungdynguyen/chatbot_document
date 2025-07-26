@@ -1,0 +1,50 @@
+# FastAPI and web framework dependencies
+fastapi
+uvicorn
+pydantic
+
+# LangChain ecosystem
+langchain
+langchain-community
+langchain-huggingface
+langchain-qdrant
+langchain-unstructured
+
+# Vector database
+qdrant-client
+
+# Document processing
+pandas
+python-docx
+PyMuPDF
+pdfplumber
+pytesseract
+pdf2image
+pillow
+unstructured
+
+# Machine Learning and embeddings
+transformers
+torch
+sentence-transformers
+
+# HTTP requests
+requests
+
+# Progress bars
+tqdm
+
+# Async support
+asyncio-extras
+
+# Development and testing
+pytest
+pytest-asyncio
+
+# Optional: For Jupyter notebooks
+jupyter
+ipython
+
+# Optional: For better performance
+accelerate
+optimum
