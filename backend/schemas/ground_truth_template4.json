@@ -1,0 +1,78 @@
+{
+  "thongTinChung": {
+    "tenKhachHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+    "giayPhep": "0101442420",
+    "idT24": "22079986",
+    "phanKhuc": "MM",
+    "loaiKhachHang": null,
+    "nganhNghe": null,
+    "mucDichBaoCao": null,
+    "ketQuaPhanLuong": null,
+    "xhtd": "Aa3"
+  },
+  "thongTinKhachHang": {
+    "phapLy": {
+      "ngayThanhLap": "19/01/2004",
+      "diaChi": "Lô CN4 – 2.1, KCN Thạch Thất, thị trấn Quốc Oai, huyện Quốc Oai, thành phố Hà Nội",
+      "nguoiDaiDien": "ĐÀO CÔNG DUY",
+      "nganhNgheCoDieuKien": "Có"
+    },
+    "banLanhDao": [
+      {
+        "ten": "Đào Công Duy",
+        "tyLeVon": "90%",
+        "chucVu": "Tổng giám đốc",
+        "mucDoAnhHuong": null,
+        "danhGia": null
+      },
+      {
+        "ten": "Thái Thị Kim Dung",
+        "tyLeVon": "8%",
+        "chucVu": "Phụ trách tài chính",
+        "mucDoAnhHuong": null,
+        "danhGia": null
+      },
+      {
+        "ten": "Đào Công Dũng",
+        "tyLeVon": "2%",
+        "chucVu": "Phụ trách kỹ thuật",
+        "mucDoAnhHuong": null,
+        "danhGia": null
+      }
+    ]
+  },
+  "hoatDongKinhDoanh": {
+    "linhVuc": {
+      "linhVuc": "Dịch vụ xây lắp, lắp đặt",
+      "sanPham": "Hệ thống mặt dựng kính, tấm ốp Alu, Hê thống cửa kính, cửa sổ, lam chắn nắng, cầu thang kính",
+      "tyTrongN1": null,
+      "tyTrongN": null
+    },
+    "tyTrongTheoNhomHang": {
+      "nhomHang": null,
+      "nam2023": null,
+      "nam10T2024": null
+    },
+    "moTaSanPham": {
+      "sanPham": null,
+      "loiThe": null,
+      "nangLucDauThau": null
+    },
+    "quyTrinhVanHanhText": null,
+    "dauVao": {
+      "matHang": "Nhôm thanh, phôi kính",
+      "chiTiet": "Nhôm thanh kích thước nhỏ nhập khẩu trong nước, kích thước lớn nhập khẩu từ Trung Quốc. Kính không màu nhập trong nước, kính có màu nhập khẩu.",
+      "pttt": null
+    },
+    "dauRa": {
+      "kenh": null,
+      "tyTrong": null,
+      "pttt": null
+    },
+    "nhanXetHoatDong": null
+  },
+  "thongTinNganh": {
+    "cungCau": null,
+    "nhanXet": null
+  }
+}
