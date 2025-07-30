@@ -61,6 +61,46 @@ kill_port() {
     fi
 }
 
+
+echo ""
+echo "🔧 FORCE CPU MODE FOR COMPATIBILITY:"
+export CUDA_VISIBLE_DEVICES=""
+export TORCH_USE_CUDA_DSA=1
+export CUDA_LAUNCH_BLOCKING=1
+log_success "Đã force CPU mode để tránh lỗi CUDA incompatibility"
+
+
+echo ""
+echo "🧹 CLEANUP & SETUP FOLDERS:"
+log_info "Đang xóa và tạo mới các folder output..."
+
+# Tạo timestamp cho session này
+CURRENT_TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+SESSION_ID="session_${CURRENT_TIMESTAMP}_$(openssl rand -hex 4)"
+
+# Xóa các folder output cũ
+cd "$PROJECT_ROOT"
+if [ -d "backend/parsed_output" ]; then
+    rm -rf backend/parsed_output
+    log_success "Đã xóa parsed_output cũ"
+fi
+
+if [ -d "backend/context" ]; then
+    rm -rf backend/context  
+    log_success "Đã xóa context cũ"
+fi
+
+# Xóa toàn bộ evaluation_results (không backup)
+if [ -d "backend/evaluation_results" ]; then
+    rm -rf backend/evaluation_results
+    log_success "Đã xóa toàn bộ evaluation results cũ"
+fi
+
+# Tạo lại folder structure
+mkdir -p backend/parsed_output/{docx,pdf,xlsx,txt}
+mkdir -p backend/context
+mkdir -p backend/evaluation_results/auto_reports
+
 # Hàm kiểm tra Docker có đang chạy không
 check_docker() {
     if ! docker info >/dev/null 2>&1; then
@@ -199,7 +239,7 @@ log_info "Khởi động Backend API (FastAPI)..."
     
     # Khởi động FastAPI
     export PYTHONPATH="$BACKEND_DIR:$PYTHONPATH"
-    nohup python -m uvicorn api.main:app --reload --host 0.0.0.0 --port 8000 > "$PROJECT_ROOT/backend.log" 2>&1 &
+    nohup python -m uvicorn api.main:app --reload --host 0.0.0.0 --port 8000 --loop asyncio > "$PROJECT_ROOT/backend.log" 2>&1 &
     BACKEND_PID=$!
     echo $BACKEND_PID > "$PROJECT_ROOT/backend.pid"
 
@@ -292,7 +332,11 @@ else
     exit 1
 fi
 
-# 9. Hiển thị thông tin tổng kết
+
+
+log_success "Đã tạo lại folder structure mới"
+
+
 echo "========================================================================="
 echo "                          KHỞI ĐỘNG HOÀN TẤT                           "
 echo "========================================================================="

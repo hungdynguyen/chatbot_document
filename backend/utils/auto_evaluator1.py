@@ -61,7 +61,7 @@ class AutoEvaluator:
         
         # Ground truth paths
         self.ground_truth_paths = {
-            "template4": r"/root/chatbot/backend/schemas/ground_truth_template4.json"
+            "template4": r"/home/locmt/Techcombank_/chatbot_document/backend/schemas/template4.json"
         }
     
     def load_ground_truth(self, template_id: str) -> Optional[Dict]:

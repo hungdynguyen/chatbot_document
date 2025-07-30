@@ -348,8 +348,8 @@ class DocumentParser:
     
     def parse_pdf(self, file_path: Path) -> List[Document]:
         """
-        Optimized PDF parser: extracts tables row-by-row and text paragraph-by-paragraph.
-        Includes OCR fallback.
+        Robust PDF parser: extracts tables and text with improved error handling for empty
+        or malformed tables, and includes a more efficient OCR fallback mechanism.
         """
         documents = []
         
@@ -357,27 +357,39 @@ class DocumentParser:
         try:
             with pdfplumber.open(file_path) as pdf:
                 for page_num, page in enumerate(pdf.pages, start=1):
-                    # 1. Extract tables first
+                    # 1. Extract tables with robust checks
                     tables = page.extract_tables()
-                    for table_idx, table in enumerate(tables):
-                        # Giả định hàng đầu tiên là header
-                        headers = [h.strip() if h else f"col_{i}" for i, h in enumerate(table[0])]
-                        for row_idx, row in enumerate(table[1:], start=1):
-                            row_texts = [
-                                f"{headers[i]}: {str(cell).strip()}"
-                                for i, cell in enumerate(row) if cell and str(cell).strip()
-                            ]
-                            if not row_texts: continue
-                            
-                            page_content = " | ".join(row_texts)
-                            metadata = {
-                                "source": str(file_path), "file_type": "pdf", "page_num": page_num,
-                                "content_type": "table_row", "table_id": table_idx, 
-                                "row_index_in_table": row_idx, "extraction_method": "text"
-                            }
-                            documents.append(Document(page_content=page_content, metadata=metadata))
+                    
+                    # KIỂM TRA QUAN TRỌNG: Bỏ qua nếu không có bảng nào
+                    if tables:
+                        for table_idx, table in enumerate(tables):
+                            # KIỂM TRA QUAN TRỌNG: Bỏ qua nếu bảng trống hoặc không có hàng
+                            if not table or not table[0]:
+                                continue
 
-                    # 2. Extract text and chunk it
+                            headers = [h.strip() if h else f"col_{i}" for i, h in enumerate(table[0])]
+                            
+                            # Bỏ qua hàng tiêu đề, chỉ lặp qua các hàng dữ liệu
+                            for row_idx, row in enumerate(table[1:], start=1):
+                                row_texts = []
+                                for i, cell in enumerate(row):
+                                    # Chỉ xử lý nếu ô có nội dung
+                                    if cell and str(cell).strip():
+                                        # KIỂM TRA QUAN TRỌNG: Xử lý bảng không đồng nhất
+                                        header = headers[i] if i < len(headers) else f"col_{i}"
+                                        row_texts.append(f"{header}: {str(cell).strip()}")
+                                
+                                if not row_texts: continue
+                                
+                                page_content = " | ".join(row_texts)
+                                metadata = {
+                                    "source": str(file_path), "file_type": "pdf", "page_num": page_num,
+                                    "content_type": "table_row", "table_id": table_idx, 
+                                    "row_index_in_table": row_idx, "extraction_method": "text"
+                                }
+                                documents.append(Document(page_content=page_content, metadata=metadata))
+
+                    # 2. Extract text and chunk it (giữ nguyên logic này vì đã tốt)
                     page_text = page.extract_text()
                     if page_text and page_text.strip():
                         text_chunks = self.text_splitter.split_text(page_text)
@@ -391,12 +403,16 @@ class DocumentParser:
         except Exception as e:
             print(f"Error during direct PDF parsing for {file_path}: {e}")
 
-        # --- Method 2: OCR Fallback if direct extraction yields little content ---
-        if not documents or len("".join(d.page_content for d in documents)) < 100:
-            print(f"PDF {file_path} has little text, trying OCR...")
+        # --- Method 2: OCR Fallback with improved efficiency ---
+        # CẢI TIẾN: Dùng sum() để hiệu quả hơn về bộ nhớ
+        total_text_length = sum(len(d.page_content) for d in documents)
+        if not documents or total_text_length < 100:
+            print(f"PDF {file_path.name} has little text ({total_text_length} chars), trying OCR fallback...")
             try:
+                # KIỂM TRA MÔI TRƯỜNG: Đảm bảo poppler đã được cài đặt
                 images = convert_from_path(file_path, dpi=300)
                 for page_num, image in enumerate(images, start=1):
+                    # KIỂM TRA MÔI TRƯỜNG: Đảm bảo tesseract và language packs đã được cài đặt
                     ocr_text = pytesseract.image_to_string(image, lang='vie+eng')
                     if ocr_text and ocr_text.strip():
                         text_chunks = self.text_splitter.split_text(ocr_text)
@@ -408,6 +424,7 @@ class DocumentParser:
                             documents.append(Document(page_content=chunk, metadata=metadata))
             except Exception as e:
                 print(f"Error during OCR PDF parsing for {file_path}: {e}")
+                print("  -> Gợi ý: Hãy đảm bảo bạn đã cài đặt Poppler và Tesseract OCR (với gói ngôn ngữ tiếng Việt).")
 
         return documents
     
@@ -518,131 +535,6 @@ class DocumentParser:
 
         return documents
     
-<<<<<<< HEAD
-    # def parse_word(self, file_path: Path) -> List[Document]:
-    #     """
-    #     Optimized Word parser: extracts tables row-by-row and text paragraph-by-paragraph.
-    #     """
-    #     documents = []
-    #     try:
-    #         doc = docx.Document(file_path)
-
-    #         # 1. Extract tables first
-    #         for table_idx, table in enumerate(doc.tables):
-    #             if not table.rows:
-    #                 continue
-                
-    #             # Assume the first row is the header
-    #             headers = [cell.text.strip() for cell in table.rows[0].cells]
-                
-    #             # Iterate over data rows
-    #             for row_idx, row in enumerate(table.rows[1:], start=1):
-    #                 row_texts = []
-    #                 for i, cell in enumerate(row.cells):
-    #                     cell_text = cell.text.strip()
-    #                     if cell_text:
-    #                         # Use header if available, otherwise use column index
-    #                         header = headers[i] if i < len(headers) else f"col_{i}"
-    #                         row_texts.append(f"{header}: {cell_text}")
-                    
-    #                 if not row_texts: continue
-
-    #                 page_content = " | ".join(row_texts)
-    #                 metadata = {
-    #                     "source": str(file_path),
-    #                     "file_type": "word",
-    #                     "content_type": "table_row",
-    #                     "table_id": table_idx,
-    #                     "row_index_in_table": row_idx
-    #                 }
-    #                 documents.append(Document(page_content=page_content, metadata=metadata))
-            
-    #         # 2. Extract and chunk paragraph text
-    #         # The doc.paragraphs object intelligently excludes text within tables.
-    #         full_text = "\n\n".join(
-    #             para.text.strip() for para in doc.paragraphs if para.text.strip()
-    #         )
-            
-    #         if full_text:
-    #             text_chunks = self.text_splitter.split_text(full_text)
-    #             for chunk in text_chunks:
-    #                 metadata = {
-    #                     "source": str(file_path),
-    #                     "file_type": "word",
-    #                     "content_type": "paragraph"
-    #                 }
-    #                 documents.append(Document(page_content=chunk, metadata=metadata))
-
-    #     except Exception as e:
-    #         print(f"Error parsing Word file (optimized) {file_path}: {e}")
-
-    #     return documents
-    
-    
-    
-    # def parse_word(self, file_path: Path) -> List[Document]:
-    #     """
-    #     Optimized Word parser: converts tables to Markdown and extracts paragraphs.
-    #     """
-    #     documents = []
-    #     try:
-    #         doc = docx.Document(file_path)
-
-    #         # 1. Extract tables as single Markdown chunks
-    #         for table_idx, table in enumerate(doc.tables):
-    #             # Read table data into a list of lists
-    #             table_data = []
-    #             for row in table.rows:
-    #                 # Bỏ qua các hàng trống hoàn toàn
-    #                 if not any(cell.text.strip() for cell in row.cells):
-    #                     continue
-    #                 table_data.append([cell.text.strip() for cell in row.cells])
-                
-    #             if not table_data:
-    #                 continue
-                
-    #             # Convert the list of lists to a Markdown table string
-    #             # Header
-    #             markdown_table = "| " + " | ".join(str(header) for header in table_data[0]) + " |\n"
-    #             # Separator
-    #             markdown_table += "| " + " | ".join(['---'] * len(table_data[0])) + " |\n"
-    #             # Body
-    #             for row in table_data[1:]:
-    #                 markdown_table += "| " + " | ".join(str(cell) for cell in row) + " |\n"
-
-    #             page_content = markdown_table
-    #             metadata = {
-    #                 "source": str(file_path),
-    #                 "basename": file_path.name,
-    #                 "file_type": "word",
-    #                 "content_type": "markdown_table",
-    #                 "table_id": table_idx,
-    #             }
-    #             documents.append(Document(page_content=page_content, metadata=metadata))
-            
-    #         # 2. Extract and chunk paragraph text
-    #         # The doc.paragraphs object intelligently excludes text within tables.
-    #         full_text = "\n\n".join(
-    #             para.text.strip() for para in doc.paragraphs if para.text.strip()
-    #         )
-            
-    #         if full_text:
-    #             text_chunks = self.text_splitter.split_text(full_text)
-    #             for chunk in text_chunks:
-    #                 metadata = {
-    #                     "source": str(file_path),
-    #                     "basename": file_path.name,
-    #                     "file_type": "word",
-    #                     "content_type": "paragraph"
-    #                 }
-    #                 documents.append(Document(page_content=chunk, metadata=metadata))
-
-    #     except Exception as e:
-    #         print(f"Error parsing Word file (upgraded markdown version) {file_path}: {e}")
-
-    #     return documents
-=======
->>>>>>> 7f9393a (add ragas auto evaluation)
     
     def parse_text(self, file_path: Path) -> List[Document]:
         """
@@ -682,28 +574,3 @@ class DocumentParser:
         
         return documents
 
-<<<<<<< HEAD
-
-# Example usage
-if __name__ == "__main__":
-    # Initialize parser
-    parser = DocumentParser()
-    
-    # Example 1: Parse a single file
-    # file_path = "/path/to/document.pdf"
-    # documents = parser.parse_file(file_path)
-    # print(f"Parsed {len(documents)} documents from {file_path}")
-    
-    # Example 2: Parse all supported files in a directory
-    data_dir = "/mnt/d/Techcombank_/chatbot_document/data/data_real"
-    output_dir = "/mnt/d/Techcombank_/chatbot_document/data/output"
-    results = parser.parse_directory(data_dir, output_dir)
-    
-    print("\nParsing Summary:")
-    print(f"Excel documents: {results['excel']}")
-    print(f"PDF documents: {results['pdf']}")
-    print(f"Word documents: {results['word']}")
-    print(f"Text documents: {results['text']}")
-    print(f"Total documents: {sum(results.values())}")
-=======
->>>>>>> 7f9393a (add ragas auto evaluation)
