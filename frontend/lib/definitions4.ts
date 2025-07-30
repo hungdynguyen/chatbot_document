@@ -17,13 +17,13 @@ export interface ReportData {
       nguoiDaiDien: string;
       nganhNgheCoDieuKien: string;
     };
-    banLanhDao: {
+    banLanhDao: Array<{
       ten: string;
-      tyLeVon: number;
+      tyLeVon: string;
       chucVu: string;
       mucDoAnhHuong: string;
       danhGia: string;
-    };
+    }>;
     nhanXet: {
       thongTinChung: string;
       phapLyGpkd: string;
@@ -49,20 +49,25 @@ export interface ReportData {
       nangLucDauThau: string;
     };
     quyTrinhVanHanhText: string;
-    dauVao: {
+    dauVao: Array<{
       matHang: string;
       chiTiet: string;
       pttt: string;
-    };
-    dauRa: {
+    }>;
+    dauRa: Array<{
       kenh: string;
       tyTrong: string;
       pttt: string;
+    }>;
+    nhanXetHoatDong: {
+      [key: string]: string;
     };
-    nhanXetHoatDong: string;
   };
   thongTinNganh: {
     cungCau: string;
     nhanXet: string;
+  };
+  kiemTraQuyDinh: {
+    [key: string]: any;
   };
 }

@@ -220,7 +220,9 @@ export function UploadSection({
         body: JSON.stringify({
           prompt: prompt.trim(),
           file_ids: uploadedFileIds,
-          template_id: selectedTemplate, // Gửi template_id cho backend
+          template_id: selectedTemplate, 
+          enable_auto_evaluation: true,
+          run_full_metrics: true,
         }),
       })
 
