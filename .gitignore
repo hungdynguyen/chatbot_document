@@ -376,3 +376,4 @@ frontend/.turbo/
 # package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
+backend/api/__pycache__/

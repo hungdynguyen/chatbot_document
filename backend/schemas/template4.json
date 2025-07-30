@@ -16,11 +16,11 @@
     "Địa chỉ trên ĐKKD",
     "Người đại diện theo Pháp luật",
     "Có kinh doanh Ngành nghề kinh doanh có điều kiện",
-    "Tên thành viên góp vốn/ban lãnh đạo",
-    "Tỷ lệ vốn góp (%)",
-    "Chức vụ",
-    "Mức độ ảnh hưởng tới Khách hàng",
-    "Đánh giá về năng lực, uy tín và kinh nghiệm",
+    
+    "thong_tin_ban_lanh_dao_day_du",
+    "thong_tin_dau_vao_day_du",
+    "thong_tin_dau_ra_day_du",
+
     "Nhận xét - Thông tin khách hàng",
     "Nhận xét - Pháp lý/GPKD có ĐK",
     "Nhận xét - Chủ doanh nghiệp/Ban lãnh đạo",
@@ -66,11 +66,7 @@
         "nganhNgheCoDieuKien": "Có kinh doanh Ngành nghề kinh doanh có điều kiện"
       },
       "banLanhDao": {
-        "ten": "Tên thành viên góp vốn/ban lãnh đạo",
-        "tyLeVon": "Tỷ lệ vốn góp (%)",
-        "chucVu": "Chức vụ",
-        "mucDoAnhHuong": "Mức độ ảnh hưởng tới Khách hàng",
-        "danhGia": "Đánh giá về năng lực, uy tín và kinh nghiệm"
+        "thong_tin_ban_lanh_dao_day_du": "Thông tin ban lãnh đạo đầy đủ (bảng)"
       },
       "nhanXet": {
         "thongTinChung": "Nhận xét - Thông tin khách hàng",
@@ -100,12 +96,14 @@
       "dauVao": {
         "matHang": "Đầu vào - Mặt hàng",
         "chiTiet": "Đầu vào - Chi tiết",
-        "pttt": "Đầu vào - Phương thức thanh toán"
+        "pttt": "Đầu vào - Phương thức thanh toán",
+        "thong_tin_dau_vao_day_du": "Thông tin đầu vào đầy đủ (bảng)"
       },
       "dauRa": {
         "kenh": "Đầu ra - Kênh phân phối",
         "tyTrong": "Đầu ra - Tỷ trọng",
-        "pttt": "Đầu ra - Phương thức thanh toán"
+        "pttt": "Đầu ra - Phương thức thanh toán",
+        "thong_tin_dau_ra_day_du": "Thông tin đầu ra đầy đủ (bảng)"
       },
       "nhanXetHoatDong": "Nhận xét tổng quan hoạt động kinh doanh"
     },
