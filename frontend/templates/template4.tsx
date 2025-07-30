@@ -190,13 +190,21 @@ export function FullLoanReportTemplate({
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{renderEditableField(`thongTinKhachHang.banLanhDao.ten`, data.thongTinKhachHang?.banLanhDao?.ten || '')}</td>
-            <td style={{textAlign: 'center'}}>{renderEditableField(`thongTinKhachHang.banLanhDao.tyLeVon`, data.thongTinKhachHang?.banLanhDao?.tyLeVon || '')}</td>
-            <td>{renderEditableField(`thongTinKhachHang.banLanhDao.chucVu`, data.thongTinKhachHang?.banLanhDao?.chucVu || '')}</td>
-            <td>{renderEditableField(`thongTinKhachHang.banLanhDao.mucDoAnhHuong`, data.thongTinKhachHang?.banLanhDao?.mucDoAnhHuong || '', { multiline: true })}</td>
-            <td>{renderEditableField(`thongTinKhachHang.banLanhDao.danhGia`, data.thongTinKhachHang?.banLanhDao?.danhGia || '', { multiline: true })}</td>
-          </tr>
+          {data.thongTinKhachHang?.banLanhDao && data.thongTinKhachHang.banLanhDao.length > 0 ? (
+            data.thongTinKhachHang.banLanhDao.map((member, index) => (
+              <tr key={index}>
+                <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].ten`, member.ten || '')}</td>
+                <td style={{textAlign: 'center'}}>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].tyLeVon`, member.tyLeVon || '')}</td>
+                <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].chucVu`, member.chucVu || '')}</td>
+                <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].mucDoAnhHuong`, member.mucDoAnhHuong || '', { multiline: true })}</td>
+                <td>{renderEditableField(`thongTinKhachHang.banLanhDao[${index}].danhGia`, member.danhGia || '', { multiline: true })}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={5} className="text-center text-gray-500">Chưa có thông tin ban lãnh đạo</td>
+            </tr>
+          )}
         </tbody>
       </table>
       
@@ -307,11 +315,19 @@ export function FullLoanReportTemplate({
             </tr>
         </thead>
         <tbody>
+          {data.hoatDongKinhDoanh?.dauVao && data.hoatDongKinhDoanh.dauVao.length > 0 ? (
+            data.hoatDongKinhDoanh.dauVao.map((item, index) => (
+              <tr key={index}>
+                <td>{renderEditableField(`hoatDongKinhDoanh.dauVao[${index}].matHang`, item.matHang || '')}</td>
+                <td>{renderEditableField(`hoatDongKinhDoanh.dauVao[${index}].chiTiet`, item.chiTiet || '', {multiline: true})}</td>
+                <td>{renderEditableField(`hoatDongKinhDoanh.dauVao[${index}].pttt`, item.pttt || '', {multiline: true})}</td>
+              </tr>
+            ))
+          ) : (
             <tr>
-                <td>{renderEditableField(`hoatDongKinhDoanh.dauVao.matHang`, data.hoatDongKinhDoanh?.dauVao?.matHang || '')}</td>
-                <td>{renderEditableField(`hoatDongKinhDoanh.dauVao.chiTiet`, data.hoatDongKinhDoanh?.dauVao?.chiTiet || '', {multiline: true})}</td>
-                <td>{renderEditableField(`hoatDongKinhDoanh.dauVao.pttt`, data.hoatDongKinhDoanh?.dauVao?.pttt || '', {multiline: true})}</td>
+              <td colSpan={3} className="text-center text-gray-500">Chưa có thông tin đầu vào</td>
             </tr>
+          )}
         </tbody>
       </table>
 
@@ -325,11 +341,19 @@ export function FullLoanReportTemplate({
             </tr>
         </thead>
         <tbody>
+          {data.hoatDongKinhDoanh?.dauRa && data.hoatDongKinhDoanh.dauRa.length > 0 ? (
+            data.hoatDongKinhDoanh.dauRa.map((item, index) => (
+              <tr key={index}>
+                <td>{renderEditableField(`hoatDongKinhDoanh.dauRa[${index}].kenh`, item.kenh || '')}</td>
+                <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.dauRa[${index}].tyTrong`, item.tyTrong || '')}</td>
+                <td>{renderEditableField(`hoatDongKinhDoanh.dauRa[${index}].pttt`, item.pttt || '', {multiline: true})}</td>
+              </tr>
+            ))
+          ) : (
             <tr>
-                <td>{renderEditableField(`hoatDongKinhDoanh.dauRa.kenh`, data.hoatDongKinhDoanh?.dauRa?.kenh || '')}</td>
-                <td style={{textAlign: 'center'}}>{renderEditableField(`hoatDongKinhDoanh.dauRa.tyTrong`, data.hoatDongKinhDoanh?.dauRa?.tyTrong || '')}</td>
-                <td>{renderEditableField(`hoatDongKinhDoanh.dauRa.pttt`, data.hoatDongKinhDoanh?.dauRa?.pttt || '', {multiline: true})}</td>
+              <td colSpan={3} className="text-center text-gray-500">Chưa có thông tin đầu ra</td>
             </tr>
+          )}
         </tbody>
       </table>
 
@@ -337,7 +361,19 @@ export function FullLoanReportTemplate({
           <tbody>
             <tr><td className="sub-header">3.5 Nhận xét</td></tr>
             <tr>
-                <td>{renderEditableField('hoatDongKinhDoanh.nhanXetHoatDong', data.hoatDongKinhDoanh.nhanXetHoatDong, {multiline: true})}</td>
+                <td>
+                  {data.hoatDongKinhDoanh.nhanXetHoatDong && typeof data.hoatDongKinhDoanh.nhanXetHoatDong === 'object' ? (
+                    <div>
+                      {Object.entries(data.hoatDongKinhDoanh.nhanXetHoatDong).map(([key, value]) => (
+                        <div key={key} style={{marginBottom: '8px'}}>
+                          <strong>{key}:</strong> {renderEditableField(`hoatDongKinhDoanh.nhanXetHoatDong.${key}`, value, {multiline: true})}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    renderEditableField('hoatDongKinhDoanh.nhanXetHoatDong', data.hoatDongKinhDoanh.nhanXetHoatDong, {multiline: true})
+                  )}
+                </td>
             </tr>
           </tbody>
       </table>
@@ -363,6 +399,21 @@ export function FullLoanReportTemplate({
             </tr>
         </tbody>
       </table>
+
+      {/* SECTION: 5. KIỂM TRA QUY ĐỊNH */}
+      {data.kiemTraQuyDinh && Object.keys(data.kiemTraQuyDinh).length > 0 && (
+        <table>
+          <tbody>
+            <tr><th className="section-title" colSpan={2}>5. KIỂM TRA QUY ĐỊNH</th></tr>
+            {Object.entries(data.kiemTraQuyDinh).map(([key, value]) => (
+              <tr key={key}>
+                <td style={{fontWeight: 'bold', width: '30%'}}>{key}</td>
+                <td>{renderEditableField(`kiemTraQuyDinh.${key}`, value, {multiline: true})}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
     </div>
   )
