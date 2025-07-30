@@ -25,7 +25,7 @@ class DocumentParser:
     - Text (.txt)
     """
     
-    def __init__(self, chunk_size: int = 800, chunk_overlap: int = 50, fallback_threshold: int = 5):
+    def __init__(self, chunk_size: int = 1000, chunk_overlap: int = 200, fallback_threshold: int = 5):
         """
         Initialize the document parser with configurable chunking parameters.
         
@@ -278,24 +278,12 @@ class DocumentParser:
                             "content_type": "table_row"
                         }
                         documents.append(Document(page_content=row_content, metadata=row_metadata))
+                    
+                    # --- KẾT THÚC CẢI TIẾN ---
 
-            # Add UnstructuredLoader
-                
-            loader = UnstructuredLoader(str(file_path))
-            unstructured_docs = loader.load()
-            # Thêm metadata để phân biệt
-            for doc in unstructured_docs:
-                doc.metadata.update({
-                    "source": str(file_path),
-                    "file_type": "excel",
-                    "content_type": "unstructured_chunk",
-                    "parser_method": "unstructured"
-                })
-            documents.extend(unstructured_docs)
-
-        
         except Exception as e:
-            print(f"Error parsing Excel file with UnstructuredLoader {file_path}: {e}")
+            print(f"Error parsing Excel file (hybrid) {file_path}: {e}")
+                
         return documents
     
     def parse_pdf(self, file_path: Path) -> List[Document]:
@@ -448,28 +436,11 @@ class DocumentParser:
                         "content_type": "paragraph"
                     }
                     documents.append(Document(page_content=chunk, metadata=metadata))
-                    
-              # Add UnstructuredLoader 
-            loader = UnstructuredLoader(str(file_path))
-            unstructured_docs = loader.load()
-            # Thêm metadata để phân biệt
-            for doc in unstructured_docs:
-                doc.metadata.update({
-                    "source": str(file_path),
-                    "file_type": "excel",
-                    "content_type": "unstructured_chunk",
-                    "parser_method": "unstructured"
-                })
-            documents.extend(unstructured_docs)
-            
 
         except Exception as e:
             print(f"Error parsing Word file (hybrid) {file_path}: {e}")
-            
-          
 
         return documents
-    
     
     def parse_text(self, file_path: Path) -> List[Document]:
         """
@@ -508,4 +479,5 @@ class DocumentParser:
                 documents.append(Document(page_content=chunk, metadata=metadata))
         
         return documents
+
 

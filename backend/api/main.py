@@ -1,5 +1,8 @@
 import os
 import uuid
+import json
+import time
+from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Optional
 
@@ -15,6 +18,8 @@ from utils.extractor import extract_information_from_docs, load_template_schema
 from utils.rag_client import query_rag_flow
 from utils.embedding_handler import embed_files_to_qdrant, qdrant_client 
 from utils.document_parser import DocumentParser 
+from utils.auto_evaluator import auto_evaluator
+import shutil 
 
 # -------------------------------------------------------------
 # 1. KHỞI TẠO APP VÀ CẤU HÌNH
@@ -40,12 +45,19 @@ class ProcessRequest(BaseModel):
     prompt: str
     file_ids: List[str]
     template_id: str = "template1" # Thêm template_id, mặc định là template1
+    enable_auto_evaluation: bool = False  # Thêm flag để bật/tắt auto evaluation
+    run_full_metrics: bool = True  # Chạy toàn bộ metrics (faithfulness, answer_relevancy, context_precision, context_recall)
 
 class RagRequest(BaseModel):
     question: str
     file_ids: List[str]
     collection_name: Optional[str] = None
     chat_history: List[Dict[str, str]] = Field(default_factory=list)
+
+class FullEvaluationRequest(BaseModel):
+    template_id: str = "template4"
+    max_ragas_samples: int = 10  # Giới hạn số mẫu Ragas để tránh timeout
+    run_full_metrics: bool = True  # Chạy toàn bộ metrics
 
 # -------------------------------------------------------------
 # 3. ENDPOINT UPLOAD 
@@ -88,6 +100,7 @@ async def upload_file(file: UploadFile = File(...)):
 async def process_prompt(request: ProcessRequest):
     """
     Nhận prompt, file_ids và template_id, thực hiện embedding và trích xuất thông tin.
+    Tự động chạy evaluation nếu enable_auto_evaluation=True.
     """
     num_files = len(request.file_ids)
     if num_files == 0:
@@ -95,8 +108,11 @@ async def process_prompt(request: ProcessRequest):
 
     print(f"🚀 Nhận được yêu cầu xử lý cho {num_files} file với prompt: '{request.prompt}' và template: '{request.template_id}'")
     print(f"   Các File ID: {request.file_ids}")
+    print(f"   Auto Evaluation: {'Bật' if request.enable_auto_evaluation else 'Tắt'}")
 
     collection_name = None
+    start_time = time.time()
+    
     try:
         # --- BƯỚC 1: EMBEDDING CÁC FILE VỪA UPLOAD ---
         # Hàm này sẽ tạo một collection mới và trả về tên của nó
@@ -111,14 +127,40 @@ async def process_prompt(request: ProcessRequest):
             template_id=request.template_id
         )
 
+        # Tính latency
+        end_time = time.time()
+        latency = end_time - start_time
+
+        # --- BƯỚC 3: AUTO EVALUATION (NẾU ĐƯỢC BẬT) ---
+        evaluation_result = None
+        if request.enable_auto_evaluation:
+            print(f"\n🎯 Bắt đầu auto-evaluation với full metrics: {request.run_full_metrics}...")
+            evaluation_result = auto_evaluator.auto_evaluate(
+                extracted_data=extracted_data,
+                template_id=request.template_id,
+                collection_name=collection_name,
+                file_ids=request.file_ids,
+                latency=latency,
+                run_full_metrics=request.run_full_metrics
+            )
+
         # Trả về kết quả, bao gồm cả collection_name để client có thể dùng cho chat
-        return {
+        response_data = {
             "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
             "extracted_data": extracted_data,
             "prompt": request.prompt,
             "file_ids": request.file_ids,
             "collection_name": collection_name,
+            "processing_time": latency
         }
+        
+        # Thêm kết quả evaluation nếu có
+        if evaluation_result:
+            response_data["auto_evaluation"] = evaluation_result
+            print(f"✅ Kết quả auto-evaluation đã được thêm vào response")
+        
+        return response_data
+        
     except Exception as e:
         print(f"❌ Lỗi nghiêm trọng trong quá trình xử lý: {e}")
         # Nếu có lỗi, và đã tạo collection, hãy xóa nó đi
@@ -258,7 +300,154 @@ async def get_templates():
 
 
 # -------------------------------------------------------------
-# 8. ĐIỂM BẮT ĐẦU
+# 8. ENDPOINT MỚI: FULL EVALUATION
+# -------------------------------------------------------------
+@app.post("/run_full_evaluation")
+async def run_full_evaluation(request: FullEvaluationRequest):
+    """
+    Chạy full evaluation tương tự run_evaluation.py nhưng tích hợp vào backend.
+    """
+    print(f"🎯 Nhận yêu cầu chạy full evaluation cho template: {request.template_id}")
+    
+    # Cấu hình files cho test (có thể config từ ngoài)
+    test_files = [
+        "call-rp.xlsx",
+        "DN HMTD CAG 2024 (1).docx",
+        "DKKD lan 8 ngay 12.04.2023.pdf" 
+    ]
+    
+    docs_directory = "data/data_real"
+    
+    try:
+        # Load ground truth
+        ground_truth_json = auto_evaluator.load_ground_truth(request.template_id)
+        if not ground_truth_json:
+            raise HTTPException(status_code=400, detail=f"Không tìm thấy ground truth cho template: {request.template_id}")
+        
+        # Upload test files
+        print("📤 Upload các file test...")
+        file_id_map = {}
+        for filename in test_files:
+            filepath = os.path.join(docs_directory, filename)
+            if os.path.exists(filepath):
+                # Simulate file upload để có file_id
+                file_id = str(uuid.uuid4())
+                file_extension = Path(filename).suffix
+                new_filename = f"{file_id}{file_extension}"
+                new_file_path = os.path.join(UPLOAD_DIRECTORY, new_filename)
+                
+                # Copy file to upload directory
+                shutil.copy2(filepath, new_file_path)
+                file_id_map[filename] = file_id
+                print(f"   ✅ {filename} -> {file_id}")
+            else:
+                print(f"   ⚠️ File không tìm thấy: {filepath}")
+        
+        if not file_id_map:
+            raise HTTPException(status_code=400, detail="Không tìm thấy file test nào!")
+        
+        # Chạy extraction với auto evaluation
+        extraction_request = ProcessRequest(
+            prompt="Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+            file_ids=list(file_id_map.values()),
+            template_id=request.template_id,
+            enable_auto_evaluation=True,
+            run_full_metrics=request.run_full_metrics
+        )
+        
+        result = await process_prompt(extraction_request)
+        
+        # Nếu có auto evaluation, trả về kết quả chi tiết
+        if "auto_evaluation" in result:
+            evaluation_data = result["auto_evaluation"]
+            
+            metrics = {
+                "processing_time": evaluation_data["latency"],
+                "exact_match": evaluation_data["exact_match"],
+                "semantic_similarity": evaluation_data["semantic_similarity"],
+                "factual_correctness": evaluation_data["factual_correctness"],
+                "jaccard_similarity": evaluation_data["jaccard_similarity"],
+                "sequence_matcher": evaluation_data["sequence_matcher"],
+                "levenshtein_ratio": evaluation_data["levenshtein_ratio"],
+                "bleu_score": evaluation_data["bleu_score"],
+                "rouge_1_f": evaluation_data["rouge_1_f"],
+                "rouge_2_f": evaluation_data["rouge_2_f"],
+                "rouge_l_f": evaluation_data["rouge_l_f"],
+                "faithfulness": evaluation_data["faithfulness"],
+                "answer_relevancy": evaluation_data["answer_relevancy"],
+                "hallucination_rate": evaluation_data["hallucination_rate"]
+            }
+            
+            # Thêm metrics bổ sung nếu chạy full
+            if request.run_full_metrics and "context_precision" in evaluation_data:
+                metrics.update({
+                    "context_precision": evaluation_data["context_precision"],
+                    "context_recall": evaluation_data["context_recall"]
+                })
+            
+            return {
+                "status": "success",
+                "template_id": request.template_id,
+                "test_files": list(file_id_map.keys()),
+                "collection_name": result["collection_name"],
+                "evaluation_metrics": metrics,
+                "report_path": evaluation_data.get("report_path"),
+                "evaluated_at": evaluation_data["evaluated_at"],
+                "metrics_used": evaluation_data.get("metrics_used", "full"),
+                "extracted_data": result["extracted_data"]
+            }
+        else:
+            return {
+                "status": "extraction_only",
+                "message": "Trích xuất hoàn tất nhưng không có evaluation (thiếu ground truth)",
+                "extracted_data": result["extracted_data"]
+            }
+            
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"❌ Lỗi trong full evaluation: {e}")
+        raise HTTPException(status_code=500, detail=f"Lỗi full evaluation: {e}")
+
+
+# -------------------------------------------------------------
+# 9. ENDPOINT: LẤY LỊCH SỬ AUTO EVALUATION
+# -------------------------------------------------------------
+@app.get("/evaluation_history")
+async def get_evaluation_history():
+    """
+    Lấy danh sách các báo cáo auto evaluation đã tạo.
+    """
+    try:
+        reports_dir = auto_evaluator.reports_dir
+        if not os.path.exists(reports_dir):
+            return {"reports": []}
+        
+        reports = []
+        for filename in os.listdir(reports_dir):
+            if filename.endswith('.xlsx') and filename.startswith('auto_eval_'):
+                filepath = os.path.join(reports_dir, filename)
+                stat = os.stat(filepath)
+                reports.append({
+                    "filename": filename,
+                    "filepath": filepath,
+                    "size": stat.st_size,
+                    "created_at": datetime.fromtimestamp(stat.st_ctime).isoformat(),
+                    "modified_at": datetime.fromtimestamp(stat.st_mtime).isoformat()
+                })
+        
+        # Sắp xếp theo thời gian tạo mới nhất
+        reports.sort(key=lambda x: x["created_at"], reverse=True)
+        
+        return {"reports": reports, "total_count": len(reports)}
+        
+    except Exception as e:
+        print(f"❌ Lỗi khi lấy lịch sử evaluation: {e}")
+        raise HTTPException(status_code=500, detail=f"Lỗi khi lấy lịch sử evaluation: {e}")
+
+
+# -------------------------------------------------------------
+# 10. ĐIỂM BẮT ĐẦU
 # -------------------------------------------------------------
 if __name__ == "__main__":
     # Bạn cần file config.py có định nghĩa biến 'origins'
