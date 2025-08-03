@@ -326,7 +326,7 @@ class AutoEvaluator:
             print(f"Lỗi khi truy xuất ngữ cảnh từ Qdrant: {e}")
             return []
     
-    def run_ragas_evaluation(self, ragas_dataset: Dataset, max_samples: int = 5, run_full_metrics: bool = True) -> Dict:
+    def run_ragas_evaluation(self, ragas_dataset: Dataset, max_samples: int = 5, run_full_metrics: bool = False) -> Dict:
         """
         Chạy đánh giá Ragas với giới hạn số lượng mẫu.
         
@@ -458,7 +458,7 @@ class AutoEvaluator:
     
     def save_auto_evaluation_results(self, all_metrics: Dict, latency: float, ragas_scores: Dict, 
                                     extracted_json: Dict, ground_truth_json: Dict, 
-                                    template_id: str, file_ids: List[str], run_full_metrics: bool = True) -> str:
+                                    template_id: str, file_ids: List[str], run_full_metrics: bool = False) -> str:
         """Lưu kết quả auto evaluation với tất cả metrics."""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"auto_eval_{template_id}_{timestamp}.xlsx"
@@ -576,7 +576,7 @@ class AutoEvaluator:
             return ""
     
     def auto_evaluate(self, extracted_data: Dict, template_id: str, collection_name: str, 
-                     file_ids: List[str], latency: float, run_full_metrics: bool = True) -> Optional[Dict]:
+                     file_ids: List[str], latency: float, run_full_metrics: bool = False) -> Optional[Dict]:
         """
         Hàm chính để auto-evaluate kết quả trích xuất với tất cả metrics mới.
         

@@ -21,8 +21,8 @@ from config import (
     EMBEDDING_DEVICE,         # = "cpu" | "cuda"
     CHUNK_SIZE, CHUNK_OVERLAP
 )
-from .document_parser import DocumentParser
-
+# from .document_parser import DocumentParser
+from .document_parser2_llm_markdown import DocumentParser
 # 0️⃣  Khởi tạo model 1 lần
 print("🧠 Đang tải / khởi tạo embedding model …")
 try:

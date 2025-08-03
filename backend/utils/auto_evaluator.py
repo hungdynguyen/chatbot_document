@@ -31,32 +31,72 @@ from ragas.metrics import (
 
 
 # Lớp Wrapper để thêm độ trễ giữa các lần gọi API
+# class RateLimitedLLM:
+#     """
+#     Một lớp vỏ (wrapper) bao quanh một đối tượng BaseChatModel của LangChain
+#     để thêm một khoảng thời gian chờ cố định trước mỗi lần gọi API,
+#     giúp tránh lỗi rate limit.
+#     """
+#     def __init__(self, llm: BaseChatModel, delay_seconds: float = 1.0):
+#         self._llm = llm
+#         self._delay = delay_seconds
+#         print(f"✅ RateLimiter được kích hoạt cho LLM với độ trễ {self._delay} giây/request.")
+
+#     async def ainvoke(self, *args, **kwargs) -> ChatResult:
+#         """Thực hiện sleep rồi gọi ainvoke của LLM gốc."""
+#         await asyncio.sleep(self._delay)
+#         return await self._llm.ainvoke(*args, **kwargs)
+
+#     def invoke(self, *args, **kwargs) -> ChatResult:
+#         """Thực hiện sleep rồi gọi invoke của LLM gốc."""
+#         time.sleep(self._delay)
+#         return self._llm.invoke(*args, **kwargs)
+
+#     def __getattr__(self, name: str) -> Any:
+#         """Chuyển tiếp tất cả các truy cập thuộc tính khác đến LLM gốc."""
+#         return getattr(self._llm, name)
+
 class RateLimitedLLM:
-    """
-    Một lớp vỏ (wrapper) bao quanh một đối tượng BaseChatModel của LangChain
-    để thêm một khoảng thời gian chờ cố định trước mỗi lần gọi API,
-    giúp tránh lỗi rate limit.
-    """
     def __init__(self, llm: BaseChatModel, delay_seconds: float = 1.0):
         self._llm = llm
-        self._delay = delay_seconds
-        print(f"✅ RateLimiter được kích hoạt cho LLM với độ trễ {self._delay} giây/request.")
-
-    async def ainvoke(self, *args, **kwargs) -> ChatResult:
-        """Thực hiện sleep rồi gọi ainvoke của LLM gốc."""
-        await asyncio.sleep(self._delay)
-        return await self._llm.ainvoke(*args, **kwargs)
-
-    def invoke(self, *args, **kwargs) -> ChatResult:
-        """Thực hiện sleep rồi gọi invoke của LLM gốc."""
-        time.sleep(self._delay)
-        return self._llm.invoke(*args, **kwargs)
-
-    def __getattr__(self, name: str) -> Any:
-        """Chuyển tiếp tất cả các truy cập thuộc tính khác đến LLM gốc."""
+        self.delay_seconds = delay_seconds
+        self.last_call_time = 0
+    
+    async def agenerate(self, *args, **kwargs):
+        await self._apply_rate_limit()
+        return await self._llm.agenerate(*args, **kwargs)
+    
+    def generate(self, *args, **kwargs):
+        self._apply_rate_limit_sync()
+        return self._llm.generate(*args, **kwargs)
+    
+    def _apply_rate_limit_sync(self):
+        import time
+        current_time = time.time()
+        time_since_last_call = current_time - self.last_call_time
+        if time_since_last_call < self.delay_seconds:
+            time.sleep(self.delay_seconds - time_since_last_call)
+        self.last_call_time = time.time()
+    
+    async def _apply_rate_limit(self):
+        import time
+        current_time = time.time()
+        time_since_last_call = current_time - self.last_call_time
+        if time_since_last_call < self.delay_seconds:
+            await asyncio.sleep(self.delay_seconds - time_since_last_call)
+        self.last_call_time = time.time()
+    
+    def set_run_config(self, *args, **kwargs):
+        """Handle set_run_config calls from Ragas"""
+        if hasattr(self._llm, 'set_run_config'):
+            return self._llm.set_run_config(*args, **kwargs)
+        # If the underlying LLM doesn't have this method, just ignore it
+        pass
+    
+    def __getattr__(self, name):
+        # Proxy all other attributes to the underlying LLM
         return getattr(self._llm, name)
-
-
+    
 class AutoEvaluator:
     """
     Class Auto-evaluation được thiết kế lại để tự động đánh giá kết quả,
@@ -77,7 +117,7 @@ class AutoEvaluator:
         
         # Khởi tạo LLM gốc
         gemini_llm_base = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash-latest",
+            model="gemini-2.0-flash",
             google_api_key=self.google_api_key,
             temperature=0
         )
@@ -110,61 +150,135 @@ class AutoEvaluator:
         except Exception as e:
             print(f"❌ Lỗi khi tải ground truth: {e}")
             return None
-
     def generate_ragas_dataset(self, ground_truth_json: Dict, extracted_json: Dict, collection_name: str) -> Dataset:
         """
         Tạo dataset cho Ragas từ ground truth và kết quả trích xuất.
-        Mỗi hàng trong dataset tương ứng với một trường thông tin cần đánh giá.
         """
         print("🔄 Generating Ragas dataset...")
-        ragas_data = {"question": [], "answer": [], "contexts": [], "reference": []}
+        ragas_data = {"question": [], "answer": [], "contexts": [], "ground_truth": []}
 
         def flatten_and_build(gt_node, ext_node, path=""):
-            if not isinstance(gt_node, dict):
-                return
-
-            for key, gt_value in gt_node.items():
+            for key, value in gt_node.items():
                 current_path = f"{path}.{key}" if path else key
-                ext_value = ext_node.get(key) if isinstance(ext_node, dict) else None
-
-                if isinstance(gt_value, dict):
-                    flatten_and_build(gt_value, ext_value, current_path)
-                elif gt_value is not None and str(gt_value).strip() != "":
-                    question = f"Trích xuất thông tin cho trường '{current_path}'."
-                    ground_truth_answer = json.dumps(gt_value, ensure_ascii=False) if isinstance(gt_value, list) else str(gt_value)
-                    extracted_answer = json.dumps(ext_value, ensure_ascii=False) if isinstance(ext_value, list) else str(ext_value if ext_value is not None else "")
+                
+                if isinstance(value, dict):
+                    if current_path in ext_node and isinstance(ext_node[current_path], dict):
+                        flatten_and_build(value, ext_node[current_path], current_path)
+                elif value is not None and str(value).strip():
+                    # Tạo câu hỏi và câu trả lời
+                    question = f"Thông tin về '{current_path}' là gì?"
+                    ground_truth_answer = str(value)
                     
-                    if extracted_answer.strip() and extracted_answer != '""' and extracted_answer != '[]':
-                        contexts = self.retrieve_contexts(question, collection_name)
-                        if contexts:
-                            ragas_data["question"].append(question)
-                            ragas_data["answer"].append(extracted_answer)
-                            ragas_data["contexts"].append(contexts)
-                            ragas_data["reference"].append(ground_truth_answer)
+                    # Lấy extracted answer
+                    extracted_answer = ext_node.get(current_path, "Không có thông tin")
+                    if isinstance(extracted_answer, (dict, list)):
+                        extracted_answer = json.dumps(extracted_answer, ensure_ascii=False)
+                    else:
+                        extracted_answer = str(extracted_answer) if extracted_answer else "Không có thông tin"
+                    
+                    # Lấy contexts
+                    contexts = self.retrieve_contexts(question, collection_name)
+                    
+                    if contexts and len(contexts) > 0:
+                        ragas_data["question"].append(question)
+                        ragas_data["answer"].append(extracted_answer)
+                        ragas_data["contexts"].append(contexts)  # Đảm bảo contexts là list of strings
+                        ragas_data["ground_truth"].append(ground_truth_answer)
 
         flatten_and_build(ground_truth_json, extracted_json)
-
+        
         if not ragas_data["question"]:
-            print("⚠️ Không thể tạo Ragas dataset. Có thể do không trích xuất được trường nào hoặc không tìm thấy context.")
-            return Dataset.from_dict({"question": [], "answer": [], "contexts": [], "reference": []})
+            print("⚠️ Không thể tạo Ragas dataset.")
+            return Dataset.from_dict({"question": [], "answer": [], "contexts": [], "ground_truth": []})
 
         dataset = Dataset.from_dict(ragas_data)
         print(f"📊 Đã tạo Ragas dataset với {len(dataset)} mẫu.")
         return dataset
-
+    
     def retrieve_contexts(self, question: str, collection_name: str) -> List[str]:
         """Truy xuất ngữ cảnh từ Qdrant."""
         try:
-            query_vector = self.embedding_model.embed_query(question)
-            hits = self.qdrant_client.search(
+            # Tạo embedding cho câu hỏi
+            query_embedding = self.embedding_model.embed_query(question)
+            
+            # Search trong Qdrant
+            search_result = self.qdrant_client.search(
                 collection_name=collection_name,
-                query_vector=query_vector,
-                limit=5
+                query_vector=query_embedding,
+                limit=3,
+                with_payload=True
             )
-            return [hit.payload.get("page_content", "") for hit in hits if hit.payload.get("page_content")]
+            
+            # Trích xuất contexts dưới dạng list of strings
+            contexts = []
+            for hit in search_result:
+                if hit.payload and 'page_content' in hit.payload:
+                    content = hit.payload['page_content']
+                    # Đảm bảo content là string
+                    if isinstance(content, str):
+                        contexts.append(content)
+                    else:
+                        contexts.append(str(content))
+            
+            return contexts
+            
         except Exception as e:
-            print(f"❌ Lỗi khi truy xuất ngữ cảnh từ Qdrant: {e}")
+            print(f"❌ Lỗi khi retrieve contexts: {e}")
             return []
+    # def generate_ragas_dataset(self, ground_truth_json: Dict, extracted_json: Dict, collection_name: str) -> Dataset:
+    #     """
+    #     Tạo dataset cho Ragas từ ground truth và kết quả trích xuất.
+    #     Mỗi hàng trong dataset tương ứng với một trường thông tin cần đánh giá.
+    #     """
+    #     print("🔄 Generating Ragas dataset...")
+    #     ragas_data = {"question": [], "answer": [], "contexts": [], "reference": []}
+
+    #     def flatten_and_build(gt_node, ext_node, path=""):
+    #         if not isinstance(gt_node, dict):
+    #             return
+
+    #         for key, gt_value in gt_node.items():
+    #             current_path = f"{path}.{key}" if path else key
+    #             ext_value = ext_node.get(key) if isinstance(ext_node, dict) else None
+
+    #             if isinstance(gt_value, dict):
+    #                 flatten_and_build(gt_value, ext_value, current_path)
+    #             elif gt_value is not None and str(gt_value).strip() != "":
+    #                 question = f"Trích xuất thông tin cho trường '{current_path}'."
+    #                 ground_truth_answer = json.dumps(gt_value, ensure_ascii=False) if isinstance(gt_value, list) else str(gt_value)
+    #                 extracted_answer = json.dumps(ext_value, ensure_ascii=False) if isinstance(ext_value, list) else str(ext_value if ext_value is not None else "")
+                    
+    #                 if extracted_answer.strip() and extracted_answer != '""' and extracted_answer != '[]':
+    #                     contexts = self.retrieve_contexts(question, collection_name)
+    #                     if contexts:
+    #                         ragas_data["question"].append(question)
+    #                         ragas_data["answer"].append(extracted_answer)
+    #                         ragas_data["contexts"].append(contexts)
+    #                         ragas_data["reference"].append(ground_truth_answer)
+
+    #     flatten_and_build(ground_truth_json, extracted_json)
+
+    #     if not ragas_data["question"]:
+    #         print("⚠️ Không thể tạo Ragas dataset. Có thể do không trích xuất được trường nào hoặc không tìm thấy context.")
+    #         return Dataset.from_dict({"question": [], "answer": [], "contexts": [], "reference": []})
+
+    #     dataset = Dataset.from_dict(ragas_data)
+    #     print(f"📊 Đã tạo Ragas dataset với {len(dataset)} mẫu.")
+    #     return dataset
+
+    # def retrieve_contexts(self, question: str, collection_name: str) -> List[str]:
+    #     """Truy xuất ngữ cảnh từ Qdrant."""
+    #     try:
+    #         query_vector = self.embedding_model.embed_query(question)
+    #         hits = self.qdrant_client.search(
+    #             collection_name=collection_name,
+    #             query_vector=query_vector,
+    #             limit=5
+    #         )
+    #         return [hit.payload.get("page_content", "") for hit in hits if hit.payload.get("page_content")]
+    #     except Exception as e:
+    #         print(f"❌ Lỗi khi truy xuất ngữ cảnh từ Qdrant: {e}")
+    #         return []
 
     def save_evaluation_report(self, scores: Dict, latency: float, template_id: str, file_ids: List[str], dataset_size: int) -> str:
         """Lưu báo cáo đánh giá toàn diện vào file Excel."""
@@ -225,9 +339,9 @@ class AutoEvaluator:
         except Exception as e:
             print(f"❌ Lỗi khi lưu báo cáo: {e}")
             return ""
-
+        
     def auto_evaluate(self, extracted_data: Dict, template_id: str, collection_name: str,
-                     file_ids: List[str], latency: float, run_full_metrics: bool = True) -> Optional[Dict]:
+                 file_ids: List[str], latency: float, run_full_metrics: bool = False) -> Optional[Dict]:
         """
         Hàm chính để auto-evaluate kết quả trích xuất bằng Ragas.
         """
@@ -240,52 +354,64 @@ class AutoEvaluator:
             return None
 
         try:
-            # 2. Tạo dataset cho Ragas
+            # 2. Tạo dataset cho Ragas với format đúng
             dataset = self.generate_ragas_dataset(ground_truth_json, extracted_data, collection_name)
             if len(dataset) == 0:
                 print("⚠️ Dataset rỗng, không thể thực hiện đánh giá.")
                 return None
             
-            # 3. Định nghĩa các metrics sẽ sử dụng
-            extraction_metrics = [
-                answer_correctness,
-                ExactMatch(),
-                BleuScore(),
-                RougeScore(rouge_type="rougeL")
-            ]
+            # Debug dataset format
+            sample = dataset[0]
+            print(f"🔍 Dataset sample check:")
+            print(f"   - Question type: {type(sample['question'])}")
+            print(f"   - Answer type: {type(sample['answer'])}")  
+            print(f"   - Contexts type: {type(sample['contexts'])}, length: {len(sample['contexts'])}")
+            print(f"   - Ground truth type: {type(sample['ground_truth'])}")
+            
+            # 3. Định nghĩa metrics với cấu hình đúng
             rag_metrics = [faithfulness, answer_relevancy]
             if run_full_metrics:
                 rag_metrics.extend([context_precision, context_recall])
+                
+            extraction_metrics = [
+                answer_correctness,
+                ExactMatch(),
+                BleuScore(), 
+                RougeScore(rouge_type="rougeL")
+            ]
+            
             all_metrics = rag_metrics + extraction_metrics
             
-            # 4. Chạy đánh giá - Ragas sẽ tự động sử dụng LLM đã được bọc rate-limit
+            # 4. Chạy evaluation với error handling tốt hơn
             print(f"🚀 Chạy đánh giá Ragas với {len(all_metrics)} metrics trên {len(dataset)} mẫu...")
-            # Ước tính thời gian chạy
-            llm_calls_approx = len(dataset) * sum(1 for m in all_metrics if hasattr(m, 'llm'))
-            estimated_time = llm_calls_approx * self.api_call_delay_seconds
-            print(f"   ... Ước tính có ~{llm_calls_approx} lệnh gọi LLM. Thời gian chờ dự kiến: ~{estimated_time:.0f} giây.")
-
+            
             result = evaluate(
                 dataset,
                 metrics=all_metrics,
-                llm=self.gemini_llm, # <-- Truyền vào đối tượng LLM đã được bọc
+                llm=self.gemini_llm,
                 embeddings=self.embedding_model,
-                raise_exceptions=False
+                raise_exceptions=False  # Để tránh crash
             )
+            
             print("✅ Đánh giá Ragas hoàn tất.")
             
-            # 5. Xử lý và tổng hợp kết quả
+            # 5. Xử lý kết quả
             df = result.to_pandas()
             scores = {}
+            
             for metric in all_metrics:
                 metric_name = metric.name
                 if metric_name in df.columns:
-                    mean_score = df[metric_name].dropna().mean()
-                    scores[metric_name] = float(mean_score) if pd.notna(mean_score) else 0.0
+                    values = df[metric_name].dropna()
+                    if len(values) > 0:
+                        mean_score = float(values.mean())
+                        scores[metric_name] = mean_score
+                    else:
+                        scores[metric_name] = 0.0
                 else:
                     scores[metric_name] = 0.0
 
-            # 6. Lưu báo cáo
+            # 6. Lưu báo cáo và trả về kết quả
             report_path = self.save_evaluation_report(
                 scores=scores,
                 latency=latency,
@@ -294,22 +420,14 @@ class AutoEvaluator:
                 dataset_size=len(dataset)
             )
             
-            # 7. Chuẩn bị kết quả cuối cùng để trả về
             final_result = {
                 **scores,
                 "hallucination_rate": 1.0 - scores.get('faithfulness', 0),
                 "latency": latency,
                 "report_path": report_path,
                 "evaluated_at": datetime.now().isoformat(),
-                "metrics_used": "full" if run_full_metrics else "basic+extraction",
                 "dataset_size": len(dataset)
             }
-            
-            print("\n--- KẾT QUẢ ĐÁNH GIÁ TỔNG QUAN ---")
-            for key, value in final_result.items():
-                if isinstance(value, float):
-                    print(f"   - {key:<20}: {value:.4f}")
-            print("-------------------------------------\n")
             
             return final_result
 
@@ -318,6 +436,99 @@ class AutoEvaluator:
             print(f"❌ Lỗi nghiêm trọng trong quá trình auto-evaluation: {e}")
             print(f"🔍 Traceback: {traceback.format_exc()}")
             return None
+
+    # def auto_evaluate(self, extracted_data: Dict, template_id: str, collection_name: str,
+    #                  file_ids: List[str], latency: float, run_full_metrics: bool = True) -> Optional[Dict]:
+    #     """
+    #     Hàm chính để auto-evaluate kết quả trích xuất bằng Ragas.
+    #     """
+    #     print(f"🎯 Bắt đầu auto-evaluation toàn diện cho template: {template_id}...")
+
+    #     # 1. Tải ground truth
+    #     ground_truth_json = self.load_ground_truth(template_id)
+    #     if not ground_truth_json:
+    #         print(f"⚠️ Bỏ qua auto-evaluation: không có ground truth cho {template_id}")
+    #         return None
+
+    #     try:
+    #         # 2. Tạo dataset cho Ragas
+    #         dataset = self.generate_ragas_dataset(ground_truth_json, extracted_data, collection_name)
+    #         if len(dataset) == 0:
+    #             print("⚠️ Dataset rỗng, không thể thực hiện đánh giá.")
+    #             return None
+            
+    #         # 3. Định nghĩa các metrics sẽ sử dụng
+    #         extraction_metrics = [
+    #             answer_correctness,
+    #             ExactMatch(),
+    #             BleuScore(),
+    #             RougeScore(rouge_type="rougeL")
+    #         ]
+    #         rag_metrics = [faithfulness, answer_relevancy]
+    #         if run_full_metrics:
+    #             rag_metrics.extend([context_precision, context_recall])
+    #         all_metrics = rag_metrics + extraction_metrics
+            
+    #         # 4. Chạy đánh giá - Ragas sẽ tự động sử dụng LLM đã được bọc rate-limit
+    #         print(f"🚀 Chạy đánh giá Ragas với {len(all_metrics)} metrics trên {len(dataset)} mẫu...")
+    #         # Ước tính thời gian chạy
+    #         llm_calls_approx = len(dataset) * sum(1 for m in all_metrics if hasattr(m, 'llm'))
+    #         estimated_time = llm_calls_approx * self.api_call_delay_seconds
+    #         print(f"   ... Ước tính có ~{llm_calls_approx} lệnh gọi LLM. Thời gian chờ dự kiến: ~{estimated_time:.0f} giây.")
+
+    #         result = evaluate(
+    #             dataset,
+    #             metrics=all_metrics,
+    #             llm=self.gemini_llm, # <-- Truyền vào đối tượng LLM đã được bọc
+    #             embeddings=self.embedding_model,
+    #             raise_exceptions=False
+    #         )
+    #         print("✅ Đánh giá Ragas hoàn tất.")
+            
+    #         # 5. Xử lý và tổng hợp kết quả
+    #         df = result.to_pandas()
+    #         scores = {}
+    #         for metric in all_metrics:
+    #             metric_name = metric.name
+    #             if metric_name in df.columns:
+    #                 mean_score = df[metric_name].dropna().mean()
+    #                 scores[metric_name] = float(mean_score) if pd.notna(mean_score) else 0.0
+    #             else:
+    #                 scores[metric_name] = 0.0
+
+    #         # 6. Lưu báo cáo
+    #         report_path = self.save_evaluation_report(
+    #             scores=scores,
+    #             latency=latency,
+    #             template_id=template_id,
+    #             file_ids=file_ids,
+    #             dataset_size=len(dataset)
+    #         )
+            
+    #         # 7. Chuẩn bị kết quả cuối cùng để trả về
+    #         final_result = {
+    #             **scores,
+    #             "hallucination_rate": 1.0 - scores.get('faithfulness', 0),
+    #             "latency": latency,
+    #             "report_path": report_path,
+    #             "evaluated_at": datetime.now().isoformat(),
+    #             "metrics_used": "full" if run_full_metrics else "basic+extraction",
+    #             "dataset_size": len(dataset)
+    #         }
+            
+    #         print("\n--- KẾT QUẢ ĐÁNH GIÁ TỔNG QUAN ---")
+    #         for key, value in final_result.items():
+    #             if isinstance(value, float):
+    #                 print(f"   - {key:<20}: {value:.4f}")
+    #         print("-------------------------------------\n")
+            
+    #         return final_result
+
+    #     except Exception as e:
+    #         import traceback
+    #         print(f"❌ Lỗi nghiêm trọng trong quá trình auto-evaluation: {e}")
+    #         print(f"🔍 Traceback: {traceback.format_exc()}")
+    #         return None
 
 # Singleton instance
 auto_evaluator = AutoEvaluator()
