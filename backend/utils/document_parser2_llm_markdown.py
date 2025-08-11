@@ -35,9 +35,15 @@ class DocumentParser:
         
         # Rate limiting settings
         self.last_api_call = 0
-        self.min_delay_between_calls = 4.0
-        self.max_retries = 3
-        self.base_retry_delay = 5.0
+        self.min_delay_between_calls = 10.0  # Tăng từ 5 lên 10 giây
+        self.max_retries = 5  # Tăng số lần thử lại
+        self.base_retry_delay = 15.0  # Tăng thời gian chờ cơ bản
+        self.exponential_backoff = True  # Thêm backoff theo cấp số nhân
+        
+        # Thêm giới hạn số lượng request mỗi phút
+        self.max_requests_per_minute = 30
+        self.request_count = 0
+        self.minute_window_start = time.time()
         
         # API Setup
         if not GOOGLE_API_KEY:
@@ -51,7 +57,7 @@ class DocumentParser:
         except Exception as e:
             print(f"⚠️ Fallback to gemini-1.5-flash: {e}")
             self.llm_client = genai.GenerativeModel('gemini-1.5-flash')
-        
+
         # Supported file types cho direct processing
         self.supported_direct_types = {".pdf", ".txt", ".png", ".jpg", ".jpeg", ".gif", ".webp"}
         self.convertible_types = {".docx", ".doc", ".xlsx", ".xls"}
@@ -275,16 +281,32 @@ class DocumentParser:
         except Exception as e:
             print(f"❌ XLSX extraction failed: {e}")
             raise
-
+    
     def _apply_rate_limit(self):
-        """Apply rate limiting to avoid quota exceeded errors."""
+        """Enhanced rate limiting with multiple strategies."""
         current_time = time.time()
-        time_since_last_call = current_time - self.last_api_call
         
+        # 1. Basic delay between calls
+        time_since_last_call = current_time - self.last_api_call
         if time_since_last_call < self.min_delay_between_calls:
             delay = self.min_delay_between_calls - time_since_last_call
-            print(f"⏳ Rate limiting: Đợi {delay:.1f} giây...")
+            print(f"⏳ Basic rate limiting: Waiting {delay:.1f} seconds...")
             time.sleep(delay)
+        
+        # 2. Requests per minute limit
+        if current_time - self.minute_window_start > 60:
+            # Reset counter if we're in a new minute window
+            self.request_count = 0
+            self.minute_window_start = current_time
+        else:
+            self.request_count += 1
+        
+        if self.request_count >= self.max_requests_per_minute:
+            time_remaining = 60 - (current_time - self.minute_window_start)
+            print(f"⏳ Minute limit reached. Waiting {time_remaining:.1f} seconds...")
+            time.sleep(time_remaining)
+            self.request_count = 0
+            self.minute_window_start = time.time()
         
         self.last_api_call = time.time()
 
@@ -339,17 +361,34 @@ class DocumentParser:
                     self._apply_rate_limit()
                     
                     prompt = """
-Phân tích file được cung cấp và chuyển đổi TOÀN BỘ nội dung thành Markdown.
+                    <TASK_DEFINITION>
+                    You are an automated data processing engine. Your sole task is to analyze the provided file and convert its entire content into a single, clean, and well-structured Markdown string. The output must be a perfect representation of the original data, suitable for machine parsing later.
 
-YÊU CẦU:
-1. Bảo toàn 100% nội dung: văn bản, số liệu, bảng
-2. Chuyển bảng thành định dạng Markdown table
-3. Giữ nguyên cấu trúc: tiêu đề, danh sách
-4. Không tóm tắt, không thêm comment
-5. Chỉ trả về Markdown content
+                    Follow these critical instructions precisely:
 
-Trả về nội dung Markdown:
-"""
+                    1.  **Analyze Layout:** First, analyze the visual layout of the document. Identify key-value pairs (e.g., a label in one cell and its value in another, potentially non-adjacent cell) and structured tables.
+                    2.  **Convert Key-Value Pairs:** Represent all identified key-value pairs clearly.
+                    3.  **Convert Tables:** Convert all structured tables into standard Markdown table format.
+                    4.  **Preserve Content:** All text and numerical data must be preserved exactly as it appears in the original file.
+                    5.  **No Extra Content:** Do not add any summaries, explanations, comments, or any text that is not present in the original document.
+                    6.  **Strict Output Format:** Your entire output must be ONLY the Markdown content. Do not wrap it in ```markdown ... ``` or any other formatting.
+                    </TASK_DEFINITION>
+
+                    <OUTPUT_EXAMPLE>
+                    ### A. THÔNG TIN CHUNG
+                    - **Ngày thực hiện:** 4/16/2024
+                    - **CusID:** 22079986
+                    - **Tên Khách hàng:** CÔNG TY CỔ PHẦN MẶT DỰNG CAG
+                    - **Phân khúc:** MM
+                    - **Subsegment:** Dịch vụ Xây lắp, lắp đặt
+                    - **XHTD:** Aa3
+                    - **BBC:** (Trống)
+                    - **DDA:** Vùng
+                    </OUTPUT_EXAMPLE>
+
+                    Analyze the provided file. Think step-by-step to ensure all data is captured accurately, then generate the final Markdown output.
+                    """
+
 
                     response = self.llm_client.generate_content([uploaded_file, prompt])
                     print(f"✅ LLM đã parse thành công file: {original_path.name}")
@@ -411,24 +450,25 @@ Trả về nội dung Markdown:
         if not full_markdown_content or not full_markdown_content.strip():
             print(f"⚠️ LLM không trả về nội dung nào cho file {file_path.name}. Trả về danh sách rỗng.")
             return []
-            
-        # Chunking
-        print(f"🔪 Bắt đầu chunking nội dung Markdown (độ dài: {len(full_markdown_content)} chars)...")
         
-        chunks = self.text_splitter.create_documents([full_markdown_content])
+        return full_markdown_content
+        #Split chunks
+        # print(f"🔪 Bắt đầu chunking nội dung Markdown (độ dài: {len(full_markdown_content)} chars)...")
         
-        # Add metadata
-        for chunk in chunks:
-            chunk.metadata = {
-                "source": str(file_path),
-                "basename": file_path.name,
-                "file_type": file_path.suffix.lower(),
-                "content_type": "llm_parsed_markdown_chunk",
-                "parser_method": "gemini_enhanced"
-            }
-            
-        print(f"✅ Hoàn tất! Tạo ra {len(chunks)} documents từ file {file_path.name}.")
-        return chunks
+        # chunks = self.text_splitter.create_documents([full_markdown_content])
+        
+        # # Gắn metadata
+        # for chunk in chunks:
+        #     chunk.metadata = {
+        #         "source": file_path.name, # Chỉ lưu tên file cho gọn
+        #         "original_path": str(file_path),
+        #         "file_type": file_path.suffix.lower(),
+        #         "content_type": "llm_parsed_markdown_chunk",
+        #         "parser_method": "gemini_enhanced"
+        #     }
+        
+        # print(f"✅ Hoàn tất! Tạo ra {len(chunks)} documents từ file {file_path.name}.")
+        # return chunks
 
     def convert_file_to_pdf(self, file_path: str, output_pdf_path: Optional[str] = None) -> Optional[str]:
         """
@@ -456,8 +496,10 @@ Trả về nội dung Markdown:
             
             if file_extension in ['.docx', '.doc']:
                 converted_path = self._convert_word_to_pdf_enhanced(file_path)
+                print(f"Nội dung của file PDF là : {converted_path}")
             elif file_extension in ['.xlsx', '.xls']:
                 converted_path = self._convert_excel_to_pdf_enhanced(file_path)
+                print(f"Nội dung của file PDF là : {converted_path}")
             else:
                 return None
             
@@ -470,3 +512,84 @@ Trả về nội dung Markdown:
         except Exception as e:
             print(f"❌ Conversion failed: {e}")
             return None
+        
+if __name__ == "__main__":
+    parser = DocumentParser()
+    parse_folder = Path('/home/locmt/Techcombank_/chatbot_document/data/data_real_new')
+    
+    # Danh sách để chứa tất cả các chuỗi markdown từ các file
+    combined_data = [] 
+    
+    files_to_parse = list(parse_folder.glob('*'))
+
+    # Lặp qua từng file để parse
+    for file_path in files_to_parse:
+        if file_path.is_dir():
+            continue
+
+        print(f"\n{'='*20} PROCESSING FILE: {file_path.name} {'='*20}")
+        
+        # Parse file và nhận về một chuỗi Markdown
+        markdown_string = parser.parse_file(str(file_path))
+        
+        if markdown_string:
+            print(f"✅ Nhận được chuỗi Markdown từ: {file_path.name}")
+            combined_data.append(markdown_string)
+        else:
+            print(f"❌ Parse thất bại hoặc không có nội dung: {file_path.name}")
+
+    print(f"\n{'='*20} SUMMARY {'='*20}")
+    print(f"📄 Đã parse xong {len(combined_data)} file.")
+    
+    # Gộp tất cả các chuỗi lại và lưu ra file duy nhất (giống hệt notebook)
+    output_dir = Path('output_parsing')
+    output_dir.mkdir(exist_ok=True)
+    output_md_path = output_dir / 'parsed_output.md'
+
+    with open(output_md_path, 'w', encoding='utf-8') as f:
+        # Nối tất cả các markdown lại bằng hai dấu xuống dòng
+        f.write('\n\n'.join(combined_data))
+        
+    print(f"✅ Đã gộp và lưu tất cả nội dung vào file: {output_md_path}")        
+# if __name__ == "__main__":
+#     parser = DocumentParser()
+#     parse_folder = Path('/home/locmt/Techcombank_/chatbot_document/data/data_real_new')
+    
+#     all_parsed_chunks = []  # Danh sách để chứa tất cả các chunk từ tất cả các file
+    
+#     files_to_parse = list(parse_folder.glob('*'))
+
+#     # Lặp qua từng file để parse
+#     for file_path in files_to_parse:
+#         if file_path.is_dir():
+#             continue
+
+#         print(f"\n{'='*20} PROCESSING FILE: {file_path.name} {'='*20}")
+        
+#         # Parse file và nhận về một DANH SÁCH CÁC CHUNK
+#         document_chunks = parser.parse_file(str(file_path))
+        
+#         if document_chunks:
+#             print(f"✅ Parse thành công: {file_path.name}, tạo ra {len(document_chunks)} chunks.")
+#             all_parsed_chunks.extend(document_chunks)
+#         else:
+#             print(f"❌ Parse thất bại hoặc không có nội dung: {file_path.name}")
+
+#     print(f"\n{'='*20} SUMMARY {'='*20}")
+#     print(f"📄 Đã parse xong toàn bộ thư mục. Tổng cộng có {len(all_parsed_chunks)} chunks.")
+    
+#     # Lưu kết quả ra một file JSON duy nhất chứa tất cả các chunk
+#     output_dir = Path('output_parsing')
+#     output_dir.mkdir(exist_ok=True)
+#     output_json_path = output_dir / 'all_chunks.json'
+
+#     # Chuyển đổi Document objects thành dict để có thể serialize
+#     chunks_as_dicts = [
+#         {"page_content": doc.page_content, "metadata": doc.metadata} 
+#         for doc in all_parsed_chunks
+#     ]
+
+#     with open(output_json_path, 'w', encoding='utf-8') as f:
+#         json.dump(chunks_as_dicts, f, indent=2, ensure_ascii=False)
+        
+#     print(f"✅ Đã lưu tất cả các chunk vào file JSON: {output_json_path}")

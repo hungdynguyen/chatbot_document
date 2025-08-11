@@ -9,7 +9,8 @@ import uuid
 from datetime import datetime
 # Import từ config
 from config import LANGFLOW_EXTRACTOR_URL, HEADERS, QDRANT_COMPONENT_ID_EXTRACTOR
-from .extraction_tools import StructuredExtractionTool
+# (QDRANT_COMPONENT_ID được import từ config) 
+
 MAX_ITERATIONS = 100  # Tăng lên vì sẽ xử lý từng field riêng lẻ
 # Giới hạn số từ cho prompt đầu vào của embedding model - giảm xuống mức an toàn
 MAX_PROMPT_WORDS = 80  # Giảm từ 128 xuống 80 để đảm bảo an toàn với model embedding
@@ -342,78 +343,211 @@ def is_valid_value(value) -> bool:
         return False
     return True
 
+def query_langflow_for_json_with_context(question_prompt: str, collection_name: str) -> Tuple[dict, str]:
+    """
+    Gửi yêu cầu đến Langflow và trả về cả kết quả và context thực.
+    Returns: (result_dict, documents_context)
+    """
+    if not question_prompt:
+        return {}, ""
 
-async def query_langgraph_extraction_tool(prompt: str, file_ids: List[str], collection_name: str, template_id: str) -> dict:
+    # --- KIỂM TRA ĐỘ DÀI PROMPT ---
+    word_count = len(question_prompt.split())
+    if word_count > MAX_PROMPT_WORDS:
+        print(f"  ⚠️ Prompt có {word_count} từ, cắt xuống {MAX_PROMPT_WORDS} từ")
+        truncated_prompt = truncate_text_by_words(question_prompt, MAX_PROMPT_WORDS)
+    else:
+        truncated_prompt = question_prompt
+    
+    # Double-check sau khi cắt ngắn
+    final_word_count = len(truncated_prompt.split())
+    if final_word_count > MAX_PROMPT_WORDS:
+        # Cắt cứng nếu vẫn quá dài
+        words = truncated_prompt.split()
+        truncated_prompt = " ".join(words[:MAX_PROMPT_WORDS])
+        print(f"  - 🔪 Cắt cứng xuống {MAX_PROMPT_WORDS} từ để đảm bảo an toàn tuyệt đối")
+    
+    payload = {
+        "input_value": truncated_prompt,  # Sử dụng prompt đã được kiểm tra an toàn
+        "output_type": "chat",
+        "input_type": "chat",
+        "tweaks": {
+            QDRANT_COMPONENT_ID_EXTRACTOR: {
+                "collection_name": collection_name
+            }
+        }
+    }
+    
+    print(f"  - 📤 Gửi request (collection: '{collection_name}', độ dài cuối: {len(truncated_prompt.split())} từ)")
+
+    try:
+        response = requests.post(LANGFLOW_EXTRACTOR_URL, json=payload, headers=HEADERS, timeout=120)
+        print(f"  - 🔍 Response status: {response.status_code}")
+        
+        if response.status_code != 200:
+            print(f"  - ❌ Response error: {response.text}")
+            return {}, f"HTTP Error {response.status_code}: {response.text}"
+            
+        response.raise_for_status()
+        
+        langflow_data = response.json()
+        print(f"  - 🔍 Langflow response có {len(langflow_data['outputs'][0]['outputs'])} outputs")
+        
+        # Lấy kết quả từ LLM (output đầu tiên)
+        llm_response_text = langflow_data['outputs'][0]['outputs'][0]['results']['message']['text']
+        print(f"  - 🔍 LLM response text length: {len(llm_response_text)}")
+        print(f"  - 🔍 LLM response preview: {llm_response_text[:200]}...")
+        
+        # Lấy context thực từ ParserComponent (output thứ hai nếu có)
+        documents_context = ""
+        if len(langflow_data['outputs'][0]['outputs']) > 1:
+            try:
+                context_output = langflow_data['outputs'][0]['outputs'][1]
+                if 'artifacts' in context_output and 'message' in context_output['artifacts']:
+                    context_message = context_output['artifacts']['message']
+                    
+                    # Context có thể là string hoặc object
+                    if isinstance(context_message, str):
+                        documents_context = context_message
+                    elif isinstance(context_message, dict):
+                        documents_context = str(context_message)
+                    
+                    print(f"  - ✅ Lấy context thực từ Langflow: {len(documents_context)} chars")
+                else:
+                    print(f"  - ⚠️ Context output không có artifacts.message")
+                    
+            except Exception as e:
+                print(f"  - ⚠️ Lỗi khi trích xuất context từ Langflow: {e}")
+                documents_context = f"Lỗi trích xuất context: {str(e)}"
+        else:
+            print(f"  - ⚠️ Chỉ có 1 output, không có context riêng")
+            documents_context = "Không có context output từ Langflow"
+        
+        # Tìm kiếm JSON linh hoạt hơn (tìm cả object `{...}` và array `[...]`)
+        start_brace = llm_response_text.find('{')
+        start_bracket = llm_response_text.find('[')
+        
+        # Xác định vị trí bắt đầu của JSON (ưu tiên array cho trường hợp bảng)
+        if start_bracket != -1 and (start_brace == -1 or start_bracket < start_brace):
+            start = start_bracket
+            end = llm_response_text.rfind(']')
+        elif start_brace != -1:
+            start = start_brace
+            end = llm_response_text.rfind('}')
+        else:
+            start, end = -1, -1
+
+        if start != -1 and end != -1:
+            json_str = llm_response_text[start : end + 1]
+            try:
+                result = json.loads(json_str)
+                print(f"  - ✅ Thành công parse JSON response")
+                return result, documents_context
+            except json.JSONDecodeError:
+                print(f"  - ❌ Lỗi parse JSON: {json_str[:100]}...")
+                return {}, documents_context
+        else:
+            print("  - ❌ Không tìm thấy JSON/Array hợp lệ trong response")
+            return {}, documents_context
+            
+    except requests.exceptions.RequestException as e:
+        print(f"  - ❌ Lỗi kết nối tới Langflow: {e}")
+        return {}, ""
+    except (KeyError, IndexError) as e:
+        print(f"  - ❌ Lỗi cấu trúc response: {e}")
+        return {}, ""
+    except Exception as e:
+        print(f"  - ❌ Lỗi không xác định: {e}")
+        return {}, ""
+
+def query_langflow_for_json(question_prompt: str, collection_name: str) -> dict:
     """
-    Gọi tool extraction của LangGraph agent thay cho gọi API Langflow.
+    Gửi yêu cầu đến Langflow, tự động cắt ngắn prompt nếu cần thiết.
+    Đã được tối ưu để tránh lỗi embedding.
     """
-    tool = StructuredExtractionTool()
-    # _arun nhận các tham số: prompt, file_ids, collection_name, template_id
-    result = await tool._arun(prompt, file_ids, collection_name, template_id)
-    # result là dict, có thể chứa 'extracted_data'
-    return result.get("extracted_data", {})
+    result, _ = query_langflow_for_json_with_context(question_prompt, collection_name)
+    return result
+
+# Bỏ hàm structure_data_for_new_template vì không liên quan đến template4
+
+
 
 async def extract_information_from_docs(prompt: str, file_ids: List[str], collection_name: str, template_id: str) -> Dict:
     """
     Trích xuất thông tin từ tài liệu với logic mới:
-    - Mỗi trường (không phải bảng) = 1 prompt = 1 tool call LangGraph agent
+    - Mỗi trường (không phải bảng) = 1 prompt = 1 API call
     - Xử lý bảng riêng để lấy cấu trúc nhiều dòng
     - Có timeout để tránh bị limit API
     """
+    # Tạo session context cho lần chạy này
     session_id, session_dir = create_context_session()
     print(f"🆔 Session ID: {session_id}")
     print(f"📁 Context folder: {session_dir}")
-
+    
     schema = load_template_schema(template_id)
     fields_to_extract = schema.get("fields", [])
     mapping = schema.get("mapping", {})
     final_result = {}
-
+    
+    # Tracking variables for session summary
     success_count = 0
     error_count = 0
 
     prompt_dictionary = {}
     if template_id == 'template4':
         prompt_dictionary = TEMPLATE4_DETAILED_PROMPTS
+        # Lấy danh sách các trường bảng cần xử lý cho template này
         table_fields_to_run = [f for f in TABLE_FIELDS_TEMPLATE4 if f in fields_to_extract]
     else:
         table_fields_to_run = []
 
+    # Phân loại các trường: bảng và không phải bảng
     non_table_fields = [f for f in fields_to_extract if f not in table_fields_to_run]
+    
     total_fields = len(non_table_fields) + len(table_fields_to_run)
     print(f"🚀 Bắt đầu trích xuất cho {total_fields} trường:")
     print(f"   - {len(non_table_fields)} trường đơn lẻ")
     print(f"   - {len(table_fields_to_run)} trường bảng")
-
+    
     current_field_count = 0
-
-    # --- XỬ LÝ CÁC TRƯỜNG ĐƠN LẺ ---
+    
+    # --- XỬ LÝ CÁC TRƯỜNG ĐƠN LẺ (MỖI TRƯỜNG = 1 API CALL) ---
     if non_table_fields:
-        print("\n📝 Bắt đầu xử lý các trường đơn lẻ...")
+        print("\n� Bắt đầu xử lý các trường đơn lẻ...")
+        
         for field in non_table_fields:
             current_field_count += 1
             print(f"\n--- [{current_field_count}/{total_fields}] Xử lý trường: '{field}' ---")
+            
+            # Tạo prompt cho trường này
             if field in prompt_dictionary:
+                # Có prompt chi tiết
                 prompt_template = prompt_dictionary[field]
                 final_prompt = f"{prompt_template}. Trả về JSON với key='{field}'"
             else:
+                # Prompt đơn giản
                 final_prompt = f"Trích xuất thông tin: {field}"
-
+            
+            # Kiểm tra và cắt ngắn prompt nếu cần
             if len(final_prompt.split()) > MAX_PROMPT_WORDS:
                 final_prompt = f"Tìm: {field}"
                 print(f"  - ⚠️ Prompt đã được rút gọn do giới hạn độ dài")
-
-            response_json = await query_langgraph_extraction_tool(final_prompt, file_ids, collection_name, template_id)
-            documents_context = ""  # Nếu muốn lưu context thực, cần sửa tool trả về context
-
+            
+            # Gửi request với context
+            loop = asyncio.get_event_loop()
+            response_json, documents_context = await loop.run_in_executor(None, query_langflow_for_json_with_context, final_prompt, collection_name)
+            
+            # Lưu context cho trường này
             save_field_context(session_dir, field, final_prompt, documents_context, str(response_json))
-
+            
+            # Xử lý kết quả
             if response_json:
                 if field in response_json and is_valid_value(response_json[field]):
                     final_result[field] = response_json[field]
                     success_count += 1
                     print(f"  ✅ Đã tìm thấy: '{field}'")
                 elif len(response_json) == 1:
+                    # Nếu chỉ có 1 key trong response, lấy value đó
                     key, value = next(iter(response_json.items()))
                     if is_valid_value(value):
                         final_result[field] = value
@@ -431,25 +565,30 @@ async def extract_information_from_docs(prompt: str, file_ids: List[str], collec
                 final_result[field] = None
                 error_count += 1
                 print(f"  ❌ Không có response hợp lệ: '{field}'")
-
-            if current_field_count < len(non_table_fields):
+            
+            # Delay giữa các field để tránh limit API
+            if current_field_count < len(non_table_fields):  # Không delay ở field cuối
                 print(f"  ⏱️ Chờ {FIELD_PROCESSING_DELAY}s trước khi xử lý field tiếp theo...")
                 await asyncio.sleep(FIELD_PROCESSING_DELAY)
 
-    # --- XỬ LÝ CÁC TRƯỜNG BẢNG ---
+    # --- XỬ LÝ CÁC TRƯỜNG BẢNG (CẤU TRÚC NHIỀU DÒNG) ---
     if table_fields_to_run:
-        print(f"\n📊 Bắt đầu xử lý các trường bảng...")
+        print(f"\n� Bắt đầu xử lý các trường bảng...")
+        
         for field in table_fields_to_run:
             current_field_count += 1
             print(f"\n--- [{current_field_count}/{total_fields}] Xử lý bảng: '{field}' ---")
+            
             prompt_template = prompt_dictionary.get(field)
             if not prompt_template:
                 print(f"  ❌ Lỗi: Không tìm thấy prompt chuyên dụng cho bảng '{field}'. Bỏ qua.")
                 final_result[field] = []
                 continue
 
+            # Kiểm tra và cắt ngắn prompt cho bảng nếu cần
             if len(prompt_template.split()) > MAX_PROMPT_WORDS:
                 print(f"  - ⚠️ Prompt bảng quá dài ({len(prompt_template.split())} từ), sử dụng prompt đơn giản...")
+                # Prompt backup dựa theo loại bảng
                 if "ban_lanh_dao" in field:
                     final_prompt = "Tìm ban lãnh đạo. JSON array: ten, chucVu, tyLeVon, mucDoAnhHuong, danhGia"
                 elif "dau_vao" in field:
@@ -460,7 +599,8 @@ async def extract_information_from_docs(prompt: str, file_ids: List[str], collec
                     final_prompt = "Tìm thông tin bảng. Trả về JSON array"
             else:
                 final_prompt = prompt_template
-
+            
+            # Double-check độ dài
             if len(final_prompt.split()) > MAX_PROMPT_WORDS:
                 if "ban_lanh_dao" in field:
                     final_prompt = "Trích xuất thông tin ban lãnh đạo dạng JSON array"
@@ -471,33 +611,40 @@ async def extract_information_from_docs(prompt: str, file_ids: List[str], collec
                 else:
                     final_prompt = "Trích xuất thông tin bảng dạng JSON array"
                 print(f"  - 🔄 Sử dụng prompt rất đơn giản do giới hạn độ dài")
+            
+            # Gửi request cho bảng với context
+            loop = asyncio.get_event_loop()
+            response_json, documents_context = await loop.run_in_executor(None, query_langflow_for_json_with_context, final_prompt, collection_name)
 
-            response_json = await query_langgraph_extraction_tool(final_prompt, file_ids, collection_name, template_id)
-            documents_context = ""
+            # Lưu context cho trường bảng này
             save_field_context(session_dir, field, final_prompt, documents_context, str(response_json))
 
+            # Xử lý response cho bảng
             extracted_data = None
             if isinstance(response_json, dict) and field in response_json:
                 extracted_data = response_json[field]
             elif isinstance(response_json, list):
                 extracted_data = response_json
             elif isinstance(response_json, dict) and len(response_json) == 1:
+                # Nếu chỉ có 1 key, lấy value đó
                 key, value = next(iter(response_json.items()))
                 if isinstance(value, list):
                     extracted_data = value
-
+            
             if extracted_data and isinstance(extracted_data, list) and len(extracted_data) > 0:
                 final_result[field] = extracted_data
                 success_count += 1
                 print(f"  ✅ Đã tìm thấy bảng '{field}' với {len(extracted_data)} dòng")
+                # In preview dòng đầu tiên
                 if extracted_data[0]:
                     print(f"      Preview dòng đầu: {str(extracted_data[0])[:100]}...")
             else:
                 final_result[field] = []
                 error_count += 1
                 print(f"  ❌ Không tìm thấy dữ liệu bảng hợp lệ cho '{field}'")
-
-            if current_field_count < total_fields:
+            
+            # Delay sau khi xử lý bảng (lâu hơn vì bảng phức tạp)
+            if current_field_count < total_fields:  # Không delay ở field cuối
                 print(f"  ⏱️ Chờ {TABLE_PROCESSING_DELAY}s sau khi xử lý bảng...")
                 await asyncio.sleep(TABLE_PROCESSING_DELAY)
 
@@ -505,13 +652,17 @@ async def extract_information_from_docs(prompt: str, file_ids: List[str], collec
     print(f"   - Thành công: {success_count} trường")
     print(f"   - Lỗi: {error_count} trường")
     print(f"   - Tỷ lệ thành công: {(success_count/total_fields*100):.1f}%")
-
+    
+    # Lưu session summary
     save_session_summary(session_dir, session_id, total_fields, success_count, error_count)
 
+    # === LOG CHI TIẾT KẾT QUẢ TRÍCH XUẤT ===
     print(f"\n📋 CHI TIẾT KẾT QUẢ TRÍCH XUẤT:")
     print("=" * 80)
+    
     successful_fields = []
     failed_fields = []
+    
     for field, value in final_result.items():
         if value is not None and value != []:
             successful_fields.append(field)
@@ -524,27 +675,33 @@ async def extract_information_from_docs(prompt: str, file_ids: List[str], collec
         else:
             failed_fields.append(field)
             print(f"❌ {field}: KHÔNG TÌM THẤY")
-
+    
     print(f"\n📊 THỐNG KÊ:")
     print(f"   - Thành công: {len(successful_fields)}/{total_fields} trường")
     print(f"   - Thất bại: {len(failed_fields)}/{total_fields} trường")
-
+    
     if failed_fields:
         print(f"\n🔍 CÁC TRƯỜNG THẤT BẠI:")
         for field in failed_fields:
             print(f"   - {field}")
 
+    # --- CẤU TRÚC LẠI DỮ LIỆU ---
     if template_id == "template4":
         structured_result = structure_data_for_loan_assessment_report(final_result, mapping)
+        
+        # Serialize JSON để log với format đẹp
+        import json
         try:
             json_output = json.dumps(structured_result, indent=2, ensure_ascii=False)
             print(json_output)
         except Exception as e:
             print(f"❌ Lỗi serialize JSON: {e}")
             print(f"📊 Raw data: {structured_result}")
+            
         print(f"{'='*80}")
         print(f"✅ KẾT THÚC LOG DỮ LIỆU FRONTEND")
         print(f"{'='*80}\n")
+        
         return structured_result
-
-    return final_result
+    
+    return final_result 

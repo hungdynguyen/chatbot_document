@@ -1,4 +1,3 @@
-# File: api_key_manager.py
 import time
 
 class ApiKeyManager:
