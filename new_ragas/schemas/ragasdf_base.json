@@ -1,0 +1,162 @@
+[
+  {
+    "question": "Tên đầy đủ của khách hàng là gì? Chỉ trả về duy nhất cái tên",
+    "ground_truth": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG"
+  },
+  {
+    "question": "Số giấy phép đăng ký kinh doanh của khách hàng là gì? Chỉ trả về duy nhất số giấy phép",
+    "ground_truth": "0101442420"
+  },
+  {
+    "question": "ID khách hàng là gì? Chỉ trả về duy nhất ID",
+    "ground_truth": "22079986"
+  },
+  {
+    "question": "Phân khúc của khách hàng là gì? Chỉ trả về duy nhất phân khúc",
+    "ground_truth": "MM"
+  },
+  {
+    "question": "Loại khách hàng là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Ngành nghề hoạt động kinh doanh của khách hàng là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Mục đích báo cáo là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Kết quả phân luồng của khách hàng là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "XHTD của khách hàng là gì?, XHTD là xếp hạng tín dụng của khách hàng và thường có các giá trị như Aa3, Baa2, v.v. Chỉ trả về duy nhất giá trị xếp hạng tín dụng",
+    "ground_truth": "Aa3"
+  },
+  {
+    "question": "Ngày thành lập công ty là ngày nào? Chỉ trả về duy nhất ngày thành lập",
+    "ground_truth": "19/01/2004"
+  },
+  {
+    "question": "Địa chỉ đăng ký kinh doanh của công ty là gì? Chỉ trả về duy nhất địa chỉ đăng ký kinh doanh",
+    "ground_truth": "Lô CN4 – 2.1, KCN Thạch Thất, thị trấn Quốc Oai, huyện Quốc Oai, thành phố Hà Nội"
+  },
+  {
+    "question": "Người đại diện theo pháp luật của công ty là ai? Chỉ trả về duy nhất tên người đại diện",
+    "ground_truth": "ĐÀO CÔNG DUY"
+  },
+  {
+    "question": "Khách hàng có kinh doanh ngành nghề có điều kiện không?",
+    "ground_truth": "Có"
+  },
+  {
+    "question": "Thông tin chi tiết về ban lãnh đạo công ty là gì. Hãy liệt kê đầy đủ tên các thành viên, chức vụ, tỉ lệ góp vốn nếu có?  (Định dạng: Chuỗi JSON chứa một danh sách các đối tượng. Mỗi đối tượng phải có các khóa \"ten\", \"tyLeVon\", \"chucVu\", \"mucDoAnhHuong\", \"danhGia\". Nếu không có thông tin về một khóa nào đó, hãy để giá trị là null.",
+    "ground_truth": "[{\"ten\": \"Đào Công Duy\", \"tyLeVon\": \"90%\", \"chucVu\": \"Tổng giám đốc\", \"mucDoAnhHuong\": null, \"danhGia\": null}, {\"ten\": \"Thái Thị Kim Dung\", \"tyLeVon\": \"8%\", \"chucVu\": \"Phụ trách tài chính\", \"mucDoAnhHuong\": null, \"danhGia\": null}, {\"ten\": \"Đào Công Dũng\", \"tyLeVon\": \"2%\", \"chucVu\": \"Phụ trách kỹ thuật\", \"mucDoAnhHuong\": null, \"danhGia\": null}]"
+  },
+  {
+    "question": "Thông tin chi tiết về đầu vào sản xuất kinh doanh là gì? (Định dạng: Chuỗi JSON với các khóa \"matHang\", \"chiTiet\", \"pttt\". Nếu không có thông tin cho một khóa, hãy dùng giá trị `null`.)",
+    "ground_truth": "{\"matHang\": \"Nhôm thanh, phôi kính\", \"chiTiet\": \"Nhôm thanh kích thước nhỏ nhập khẩu trong nước, kích thước lớn nhập khẩu từ Trung Quốc. Kính không màu nhập trong nước, kính có màu nhập khẩu.\", \"pttt\": null}"
+  },
+  {
+    "question": "Thông tin chi tiết về đầu ra sản xuất kinh doanh là gì?",
+    "ground_truth": "{\"kenh\": null, \"tyTrong\": null, \"pttt\": null}"
+  },
+  {
+    "question": "Nhận xét về thông tin khách hàng là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Nhận xét về pháp lý/GPKD có điều kiện là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Nhận xét về chủ doanh nghiệp/ban lãnh đạo là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Nhận xét về KYC là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Lĩnh vực kinh doanh của công ty là gì?",
+    "ground_truth": "Dịch vụ xây lắp, lắp đặt"
+  },
+  {
+    "question": "Sản phẩm/dịch vụ của công ty là gì?",
+    "ground_truth": "Hệ thống mặt dựng kính, tấm ốp Alu, Hê thống cửa kính, cửa sổ, lam chắn nắng, cầu thang kính"
+  },
+  {
+    "question": "Tỷ trọng doanh thu năm N-1 (%) là bao nhiêu?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Tỷ trọng doanh thu năm N (%) là bao nhiêu?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Nhóm mặt hàng của công ty là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Tỷ trọng doanh thu năm 2023 là bao nhiêu?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Tỷ trọng doanh thu 10T/2024 là bao nhiêu?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Mô tả chung về sản phẩm của công ty là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Mô tả lợi thế cạnh tranh của công ty là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Mô tả năng lực đấu thầu của công ty là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Quy trình vận hành (tóm tắt) của công ty là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Đầu vào - mặt hàng là gì?",
+    "ground_truth": "Nhôm thanh, phôi kính"
+  },
+  {
+    "question": "Đầu vào - chi tiết là gì?",
+    "ground_truth": "Nhôm thanh kích thước nhỏ nhập khẩu trong nước, kích thước lớn nhập khẩu từ Trung Quốc. Kính không màu nhập trong nước, kính có màu nhập khẩu."
+  },
+  {
+    "question": "Đầu vào - phương thức thanh toán là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Đầu ra - kênh phân phối là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Đầu ra - tỷ trọng là bao nhiêu?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Đầu ra - phương thức thanh toán là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Nhận xét tổng quan về hoạt động kinh doanh là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Phân tích cung cầu ngành là gì?",
+    "ground_truth": ""
+  },
+  {
+    "question": "Nhận xét về thông tin ngành là gì?",
+    "ground_truth": ""
+  }
+]
