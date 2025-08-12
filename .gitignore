@@ -80,6 +80,7 @@ text-embeddings.log
 backend/uploaded_files/
 backend/parsed_output/
 backend/context/
+backend/evaluation_results/
 # Qdrant local storage
 qdrant_storage/
 
