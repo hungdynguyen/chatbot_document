@@ -1,0 +1,78 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "giayPhep": "0101442420",
+      "idT24": "22079986",
+      "phanKhuc": "MM",
+      "loaiKhachHang": "",
+      "nganhNghe": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "mucDichBaoCao": "",
+      "ketQuaPhanLuong": "Khuyên khích",
+      "xhtd": "Aa3"
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "",
+        "diaChi": "",
+        "nguoiDaiDien": "",
+        "nganhNgheCoDieuKien": ""
+      },
+      "banLanhDao": [
+        {
+          "ten": "ĐÀO CÔNG DUY",
+          "chucVu": "Tổng Giám đốc",
+          "tyLeVon": "",
+          "mucDoAnhHuong": "",
+          "danhGia": ""
+        }
+      ],
+      "nhanXet": {
+        "thongTinChung": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+        "phapLyGpkd": "",
+        "chuDoanhNghiep": "",
+        "kyc": ""
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Sản xuất",
+        "sanPham": "",
+        "tyTrongN1": "",
+        "tyTrongN": ""
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "",
+        "nam2023": "",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "",
+        "loiThe": "",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG"
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG thuộc ngành xây dựng, được đánh giá có rủi ro rất thấp và khuyến khích đầu tư."
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "call-rp.xlsx",
+    "DKKD lan 8 ngay 12.04.2023.pdf",
+    "DN HMTD CAG 2024 (1).docx",
+    "MB01-HD.SPDN_43 - Hỗ Trợ Phân Nhóm Khách Hàng (1).xls",
+    "SO-SÁNH-DN-CÙNG-NGÀNH.docx"
+  ],
+  "collection_name": "session-s2b-3c3d2178-a30f-4cd3-9f0a-1e66e242d4fd",
+  "processing_time": 643.8968908786774,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755150355_f0938031"
+}

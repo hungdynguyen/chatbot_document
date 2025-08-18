@@ -1,0 +1,9 @@
+{
+  "timestamp": "2025-08-18T15:18:47.441416",
+  "field_name": "Có kinh doanh Ngành nghề kinh doanh có điều kiện",
+  "prompt": "Dựa vào tên đầy đủ của khách hàng. Có kinh doanh ngành có điều kiện (an ninh quốc gia, có yếu tố nước ngoài, tài chính ngân hàng, y tế, giáo dục và đào tạo)? Có/Không",
+  "raw_response_from_rag": "Không",
+  "cleaned_response": "Không",
+  "prompt_word_count": 36,
+  "response_word_count": 1
+}

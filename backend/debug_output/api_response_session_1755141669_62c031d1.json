@@ -1,0 +1,84 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "giayPhep": "0101442420",
+      "idT24": "",
+      "phanKhuc": "CIB",
+      "loaiKhachHang": "",
+      "nganhNghe": "",
+      "mucDichBaoCao": "",
+      "ketQuaPhanLuong": "",
+      "xhtd": ""
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 - 2.1, KCN Thạch Thất, Thị Trấn Quốc Oai, Huyện Quốc Oai, Thành phố Hà Nội, Việt Nam",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": ""
+      },
+      "banLanhDao": [
+        {
+          "ten": "ĐÀO CÔNG DUY",
+          "chucVu": "Tổng giám đốc",
+          "tyLeVon": "",
+          "mucDoAnhHuong": "",
+          "danhGia": ""
+        }
+      ],
+      "nhanXet": {
+        "thongTinChung": {
+          "năm thành lập": "2004",
+          "số năm hoạt động": "20",
+          "lĩnh vực": "",
+          "sản phẩm chính": ""
+        },
+        "phapLyGpkd": {
+          "số ĐKKD": "0101442420",
+          "ngày cấp lần đầu": "19/01/2004",
+          "cơ quan cấp": "PHÒNG ĐĂNG KÝ KINH DOANH - SỞ KẾ HOẠCH VÀ ĐẦU TƯ THÀNH PHỐ HÀ NỘI",
+          "các lần thay đổi": "8, ngày 12/04/2023"
+        },
+        "chuDoanhNghiep": "",
+        "kyc": ""
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Xây lắp",
+        "sanPham": "",
+        "tyTrongN1": "",
+        "tyTrongN": ""
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "",
+        "nam2023": "",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "",
+        "loiThe": "",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": ""
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": ""
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "DKKD lan 8 ngay 12.04.2023.pdf"
+  ],
+  "collection_name": "session-s2b-ddcdd7d7-9930-4820-9201-24e4ec5c91db",
+  "processing_time": 381.76326036453247,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755141669_62c031d1"
+}

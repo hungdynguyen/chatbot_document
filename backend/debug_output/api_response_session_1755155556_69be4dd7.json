@@ -1,0 +1,74 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "giayPhep": "0101442420",
+      "idT24": "0101442420",
+      "phanKhuc": "CIB",
+      "loaiKhachHang": "",
+      "nganhNghe": "",
+      "mucDichBaoCao": "",
+      "ketQuaPhanLuong": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "xhtd": ""
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 - 2.1, KCN Thạch Thất, Thị Trấn Quốc Oai, Huyện Quốc Oai, Thành phố Hà Nội, Việt Nam",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": "Không"
+      },
+      "banLanhDao": [
+        {
+          "ten": "ĐÀO CÔNG DUY",
+          "chucVu": "Tổng giám đốc",
+          "tyLeVon": "",
+          "mucDoAnhHuong": "",
+          "danhGia": ""
+        }
+      ],
+      "nhanXet": {
+        "thongTinChung": "Công ty Cổ phần Mặt dựng CAG thành lập năm 2004, hoạt động 20 năm trong lĩnh vực xây dựng, sản phẩm chính là mặt dựng.",
+        "phapLyGpkd": "0101442420, đăng ký lần đầu ngày 19/01/2004 tại Sở Kế hoạch và Đầu tư TP Hà Nội, thay đổi lần thứ 8 ngày 12/04/2023",
+        "chuDoanhNghiep": "",
+        "kyc": "Công ty Cổ phần Mặt Dựng CAG có lịch sử hoạt động từ năm 2004 và đã thực hiện 8 lần thay đổi đăng ký, gần nhất vào năm 2023, cho thấy sự ổn định và phát triển trong hoạt động kinh doanh."
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Xây lắp",
+        "sanPham": "",
+        "tyTrongN1": "",
+        "tyTrongN": ""
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "",
+        "nam2023": "",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "",
+        "loiThe": "",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": "Công ty Cổ phần Mặt Dựng CAG có quy mô vốn điều lệ lớn (800 tỷ đồng), đã thực hiện 8 lần thay đổi đăng ký kinh doanh, pháp lý rõ ràng với người đại diện hợp lệ."
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": ""
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "DKKD lan 8 ngay 12.04.2023.pdf"
+  ],
+  "collection_name": "session-s2b-70da1d35-7f81-4b4e-98eb-c8c9ced60e02",
+  "processing_time": 380.51449060440063,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755155556_69be4dd7"
+}

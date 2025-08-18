@@ -1,0 +1,88 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "giayPhep": "0101442420",
+      "idT24": "22079986",
+      "phanKhuc": "CIB",
+      "loaiKhachHang": "",
+      "nganhNghe": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "mucDichBaoCao": "",
+      "ketQuaPhanLuong": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "xhtd": ""
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 – 2.1, KCN Thạch Thất, thị trấn Quốc Oai, huyện Quốc Oai, thành phố Hà Nội",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": "Không"
+      },
+      "banLanhDao": [
+        {
+          "ten": "Đào Công Duy",
+          "chucVu": "",
+          "tyLeVon": "90%",
+          "mucDoAnhHuong": "",
+          "danhGia": ""
+        },
+        {
+          "ten": "Thái Thị Kim Dung",
+          "chucVu": "",
+          "tyLeVon": "8%",
+          "mucDoAnhHuong": "",
+          "danhGia": ""
+        },
+        {
+          "ten": "Đào Công Dũng",
+          "chucVu": "",
+          "tyLeVon": "2%",
+          "mucDoAnhHuong": "",
+          "danhGia": ""
+        }
+      ],
+      "nhanXet": {
+        "thongTinChung": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG thành lập ngày 19/01/2004, hoạt động trong lĩnh vực sản xuất mặt dựng.",
+        "phapLyGpkd": "Số 0101442420 do Phòng Đăng ký kinh doanh – Sở Kế hoạch và Đầu tư thành phố Hà Nội cấp, đăng ký lần đầu ngày 19/01/2004, đăng ký thay đổi lần thứ 8 ngày 12/04/2023",
+        "chuDoanhNghiep": "",
+        "kyc": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG"
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Thương mại",
+        "sanPham": "Bổ sung vốn lưu động phục vụ hoạt động SXKD, Phát hành bảo lãnh các gói thầu cho các CĐT thuộc offering FMCG - TPK Thương mại dược, VTTB Y tế, Phát hành bảo lãnh thanh toán cho đối tác đầu vào, Phát hành LC nhập khẩu NVL",
+        "tyTrongN1": "",
+        "tyTrongN": "55 tỷ"
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+        "nam2023": "55 tỷ",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "",
+        "loiThe": "",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG"
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG hoạt động trong ngành sản xuất và kinh doanh mặt dựng, bổ sung vốn lưu động phục vụ hoạt động SXKD."
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "DN HMTD CAG 2024 (1).docx"
+  ],
+  "collection_name": "session-s2b-a3253178-8abb-4ed6-99d8-960203d386b8",
+  "processing_time": 467.6047434806824,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755165811_39555d9f"
+}

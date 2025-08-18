@@ -7,7 +7,7 @@ import uuid
 from .embedding_handler import embed_files_to_qdrant
 from .rag_client import query_rag_flow
 from .extractor import extract_information_from_docs
-
+from .extractor import StructuredExtractionTool
 # --- ĐỊNH NGHĨA SCHEMA (INPUT) CHO TỪNG TOOL ---
 
 class IngestSchema(BaseModel):

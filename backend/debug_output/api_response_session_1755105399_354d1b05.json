@@ -1,0 +1,70 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+      "giayPhep": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+      "idT24": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+      "phanKhuc": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+      "loaiKhachHang": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+      "nganhNghe": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+      "mucDichBaoCao": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+      "ketQuaPhanLuong": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+      "xhtd": "Không tìm thấy thông tin nào liên quan trong tài liệu."
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "diaChi": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "nguoiDaiDien": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "nganhNgheCoDieuKien": "Không tìm thấy thông tin nào liên quan trong tài liệu."
+      },
+      "banLanhDao": [],
+      "nhanXet": {
+        "thongTinChung": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "phapLyGpkd": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "chuDoanhNghiep": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "kyc": "Không tìm thấy thông tin nào liên quan trong tài liệu."
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "sanPham": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "tyTrongN1": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "tyTrongN": "Không tìm thấy thông tin nào liên quan trong tài liệu."
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "nam2023": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "nam10T2024": "Không tìm thấy thông tin nào liên quan trong tài liệu."
+      },
+      "moTaSanPham": {
+        "sanPham": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "loiThe": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+        "nangLucDauThau": "Không tìm thấy thông tin nào liên quan trong tài liệu."
+      },
+      "quyTrinhVanHanhText": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": "Không tìm thấy thông tin nào liên quan trong tài liệu."
+    },
+    "thongTinNganh": {
+      "cungCau": "Không tìm thấy thông tin nào liên quan trong tài liệu.",
+      "nhanXet": "Không tìm thấy thông tin nào liên quan trong tài liệu."
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "call-rp.xlsx",
+    "DKKD lan 8 ngay 12.04.2023.pdf",
+    "DN HMTD CAG 2024 (1).docx",
+    "MB01-HD.SPDN_43 - Hỗ Trợ Phân Nhóm Khách Hàng (1).xls",
+    "SO-SÁNH-DN-CÙNG-NGÀNH.docx"
+  ],
+  "collection_name": "session-s2b-190945a6-c18d-4af4-b270-a1ecc0994bba",
+  "processing_time": 218.56960558891296,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755105399_354d1b05"
+}

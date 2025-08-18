@@ -1,0 +1,74 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "giayPhep": "0101442420",
+      "idT24": "0101442420",
+      "phanKhuc": "CIB",
+      "loaiKhachHang": "",
+      "nganhNghe": "",
+      "mucDichBaoCao": "",
+      "ketQuaPhanLuong": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "xhtd": ""
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 - 2.1, KCN Thạch Thất, Thị Trấn Quốc Oai, Huyện Quốc Oai, Thành phố Hà Nội, Việt Nam",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": "Không"
+      },
+      "banLanhDao": [
+        {
+          "ten": "ĐÀO CÔNG DUY",
+          "chucVu": "Tổng giám đốc",
+          "tyLeVon": "",
+          "mucDoAnhHuong": "",
+          "danhGia": ""
+        }
+      ],
+      "nhanXet": {
+        "thongTinChung": "Công ty Cổ phần Mặt dựng CAG thành lập năm 2004, hoạt động 20 năm trong lĩnh vực xây dựng, sản phẩm chính là mặt dựng.",
+        "phapLyGpkd": "0101442420, ngày 19/01/2004, Sở Kế hoạch và Đầu tư Thành phố Hà Nội, thay đổi lần thứ 8 ngày 12/04/2023",
+        "chuDoanhNghiep": "",
+        "kyc": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG có lịch sử hoạt động từ năm 2004 và đã thực hiện 8 lần thay đổi đăng ký, thể hiện sự ổn định và phát triển bền vững."
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Xây lắp",
+        "sanPham": "",
+        "tyTrongN1": "",
+        "tyTrongN": ""
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "",
+        "nam2023": "",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "",
+        "loiThe": "",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": ""
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": ""
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "DKKD lan 8 ngay 12.04.2023.pdf"
+  ],
+  "collection_name": "session-s2b-00ae38d9-9108-4da2-9dbf-2a77271a5bd7",
+  "processing_time": 343.48894023895264,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755252679_0189d5af"
+}

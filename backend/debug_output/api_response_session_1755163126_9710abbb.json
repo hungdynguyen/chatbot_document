@@ -1,0 +1,95 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "giayPhep": "0101442420",
+      "idT24": "22079986",
+      "phanKhuc": "MM",
+      "loaiKhachHang": "",
+      "nganhNghe": "Bán buôn thép và các sản phẩm từ thép - Thép đông lạnh",
+      "mucDichBaoCao": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "ketQuaPhanLuong": "Không thuc nhóm không ti■p c_n",
+      "xhtd": "Aa3"
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 – 2.1, KCN Thạch Thất, thị trấn Quốc Oai, huyện Quốc Oai, thành phố Hà Nội",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": "Không"
+      },
+      "banLanhDao": [],
+      "nhanXet": {
+        "thongTinChung": "Công ty Cổ phần Mặt Dựng CAG thành lập năm 2004, hoạt động 20 năm trong lĩnh vực xây dựng, sản phẩm chính là mặt dựng.",
+        "phapLyGpkd": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG, số ĐKKD 0101442420 do Phòng Đăng ký kinh doanh – Sở Kế hoạch và Đầu tư thành phố Hà Nội cấp lần đầu ngày 19/01/2004, đăng ký thay đổi lần thứ 8 ngày 12/04/2023.",
+        "chuDoanhNghiep": "",
+        "kyc": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG"
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Sản xuất",
+        "sanPham": "",
+        "tyTrongN1": "",
+        "tyTrongN": ""
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": [
+          "Bán buôn chè",
+          "Bán buôn ung có căn",
+          "Bán buôn rau, qul",
+          "Bán buôn săn phm thuc lá, thuc lào",
+          "Bán buôn thét và các sn phm t tht - Th_t ông lnh",
+          "Bán buôn thét và các sn phm t tht - Th_t i song",
+          "Bán buôn th c ph m khác",
+          "Bán ng th c trong các của hàng chuyên doanh",
+          "Bán thất và các sn phm th_t trong các của hàng chuyên doanh",
+          "Bán thly sin trong các của hàng chuyên doanh",
+          "Bán rau, qu trong các của hàng chuyên doanh",
+          "Bán Ing, sữa và các sn phm sa, bánh, mt, ko và các sn ph m ch bin t ng cc, bt, tinh bt tro",
+          "Bán I thúc phm khác trong các của hàng chuyên doanh",
+          "Bán ung trong các của hàng chuyên doanh",
+          "Bán sn phm thuc lá, thuc lào trong các của hàng chuyên doanh",
+          "Bán Ing th_c lung hoc ti ch",
+          "Bán thực phm khô, thúc phảm công nghip, Ing sa bánh ko Ing hoc t",
+          "Bán ung lu Ing hoc ti ch",
+          "Bán I sn phm thuc lá, thuc lào lung hoc ti ch",
+          "Bán thét gia súc, gia cm ti sng, ông lnh lung hoc ti chl",
+          "Bán thy sn ti sng, ông Inh lung hoc ti ch",
+          "Bán I rau qu lung hoc ti ch",
+          "Bán thc ph m chín lung hoc ti chl",
+          "Bán th_c phm loi khác chưa Ic phân vào âu"
+        ],
+        "nam2023": "944 tỷ đồng",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+        "loiThe": "",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "Nhập phôi kính gia công (gia công nhiệt (tôi kính để tăng tính cường lực), dán (mua phim an toàn), lắp kính hộp. Nhập NVL (Nhôm đùn sẵn) Sơn tĩnh điện Cắt Lên khung Lên Ulip Giao sản phẩm",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG có vốn điều lệ 800 tỷ đồng, kế hoạch sử dụng vốn tổng 800 tỷ với 400 tỷ vay và 250 tỷ vốn khác."
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": ""
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "call-rp.xlsx",
+    "DKKD lan 8 ngay 12.04.2023.pdf",
+    "DN HMTD CAG 2024 (1).docx",
+    "MB01-HD.SPDN_43 - Hỗ Trợ Phân Nhóm Khách Hàng (1).xls",
+    "SO-SÁNH-DN-CÙNG-NGÀNH.docx"
+  ],
+  "collection_name": "session-s2b-c1e3829b-6e97-4ae6-9f49-86d0e626a9c7",
+  "processing_time": 692.6550970077515,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755163126_9710abbb"
+}

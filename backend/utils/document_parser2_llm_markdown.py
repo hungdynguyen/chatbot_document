@@ -9,15 +9,16 @@ import google.generativeai as genai
 from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import warnings
-from config import GOOGLE_API_KEY
-
-# Imports for conversion (tích hợp từ file_converter.py)
+from config import GOOGLE_API_KEY, TOGETHER_API_KEY
+from langchain_together import ChatTogether
+from langchain_core.messages import HumanMessage
 import pandas as pd
 from reportlab.lib.pagesizes import A4
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
-
+import base64
+import textwrap
 warnings.filterwarnings("ignore", category=UserWarning, module='unstructured')
 
 class DocumentParser:
@@ -57,6 +58,21 @@ class DocumentParser:
         except Exception as e:
             print(f"⚠️ Fallback to gemini-1.5-flash: {e}")
             self.llm_client = genai.GenerativeModel('gemini-1.5-flash')
+        
+        
+        # if not TOGETHER_API_KEY:
+        #     raise ValueError("TOGETHER_API_KEY không được tìm thấy trong config.py")
+
+        # try:
+        #     self.llm_client = ChatTogether(
+        #         model="meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo",
+        #         temperature=0,
+        #         together_api_key=TOGETHER_API_KEY
+        #     )
+        #     print(f"✅ Together AI client Llama3.2-90B for parsing đã sẵn sàng.")
+        # except Exception as e:
+        #     print(f"❌ Lỗi khi khởi tạo Together AI client: {e}")
+        #     raise
 
         # Supported file types cho direct processing
         self.supported_direct_types = {".pdf", ".txt", ".png", ".jpg", ".jpeg", ".gif", ".webp"}
@@ -433,6 +449,132 @@ class DocumentParser:
                     print(f"🧹 Đã xóa file tạm: {file_path}")
                 except:
                     pass
+    
+    
+    
+    # def _parse_with_llm_with_retry(self, file_path: Path) -> str:
+    #     """
+    #     Parse file với conversion support và retry logic, sử dụng Together AI.
+    #     """
+    #     original_path = file_path
+    #     temp_file_created = False
+    #     result_content = "" # Biến để lưu kết quả, thay cho việc return ngay lập tức
+
+    #     # Check if conversion is needed
+    #     if file_path.suffix.lower() not in self.supported_direct_types:
+    #         if file_path.suffix.lower() in self.convertible_types:
+    #             # SỬA LỖI #3: Cập nhật thông báo
+    #             print(f"📋 File type {file_path.suffix} không được hỗ trợ trực tiếp. Đang convert...")
+    #             try:
+    #                 file_path = self._convert_to_supported_format(file_path)
+    #                 temp_file_created = True
+    #             except Exception as conv_error:
+    #                 print(f"❌ Conversion failed: {conv_error}")
+    #                 return ""
+    #         else:
+    #             print(f"❌ File type {file_path.suffix} không được hỗ trợ.")
+    #             return ""
+
+    #     print(f"🧠 Bắt đầu parsing bằng LLM (Llama 3.2) cho file: {original_path.name}...")
+
+    #     try:
+    #         with open(file_path, "rb") as f:
+    #             file_content_base64 = base64.b64encode(f.read()).decode('utf-8')
+    #     except Exception as e:
+    #         print(f"❌ Lỗi khi đọc và encode file: {file_path.name} - {e}")
+    #         return ""
+
+    #     # SỬA LỖI #1: Thêm xử lý cho .txt
+    #     mime_type = "application/pdf"
+    #     suffix = file_path.suffix.lower()
+    #     if suffix in [".png", ".jpg", ".jpeg"]:
+    #         mime_type = f"image/{suffix[1:]}"
+    #     elif suffix == ".webp":
+    #         mime_type = "image/webp"
+    #     elif suffix == ".txt":
+    #         mime_type = "text/plain"
+
+    #     for attempt in range(self.max_retries):
+    #         try:
+    #             self._apply_rate_limit()
+                
+    #             # Sử dụng textwrap.dedent để xóa các khoảng trắng thụt lề
+    #             prompt = textwrap.dedent("""
+    #                 <TASK_DEFINITION>
+    #                 You are an automated data processing engine. Your sole task is to analyze the provided file and convert its entire content into a single, clean, and well-structured Markdown string. The output must be a perfect representation of the original data, suitable for machine parsing later.
+    #                 Follow these critical instructions precisely:
+    #                 1.  **Analyze Layout:** First, analyze the visual layout of the document. Identify key-value pairs (e.g., a label in one cell and its value in another, potentially non-adjacent cell) and structured tables.
+    #                 2.  **Convert Key-Value Pairs:** Represent all identified key-value pairs clearly.
+    #                 3.  **Convert Tables:** Convert all structured tables into standard Markdown table format.
+    #                 4.  **Preserve Content:** All text and numerical data must be preserved exactly as it appears in the original file.
+    #                 5.  **No Extra Content:** Do not add any summaries, explanations, comments, or any text that is not present in the original document.
+    #                 6.  **Strict Output Format:** Your entire output must be ONLY the Markdown content. Do not wrap it in ```markdown ... ``` or any other formatting.
+    #                 7.  **No Leading/Trailing Whitespace:** The output must not start or end with any whitespace, spaces, or newlines.
+    #                 </TASK_DEFINITION>
+    #                 <OUTPUT_EXAMPLE>
+    #                 ### A. THÔNG TIN CHUNG
+    #                 - **Ngày thực hiện:** 4/16/2024
+    #                 - **CusID:** 22079986
+    #                 - **Tên Khách hàng:** CÔNG TY CỔ PHẦN MẶT DỰNG CAG
+    #                 - **Phân khúc:** MM
+    #                 - **Subsegment:** Dịch vụ Xây lắp, lắp đặt
+    #                 - **XHTD:** Aa3
+    #                 - **BBC:** (Trống)
+    #                 - **DDA:** Vùng
+    #                 </OUTPUT_EXAMPLE>
+    #                 Analyze the provided file. Think step-by-step to ensure all data is captured accurately, then generate the final Markdown output.
+    #             """)
+
+    #             message = HumanMessage(
+    #                 content=[
+    #                     {"type": "text", "text": prompt},
+    #                     {"type": "image_url", "image_url": {"url": f"data:{mime_type};base64,{file_content_base64}"}},
+    #                 ]
+    #             )
+
+    #             response = self.llm_client.invoke([message])
+    #             print(f"✅ LLM (Llama 3.2) đã parse thành công file: {original_path.name}")
+                
+    #             # SỬA LỖI #2: Gán kết quả vào biến và break vòng lặp
+    #             raw_content = response.content
+    #             result_content = raw_content.strip() # Dọn dẹp khoảng trắng
+    #             break  # Thoát khỏi vòng lặp retry khi đã thành công
+
+    #         except Exception as e:
+    #             error_message = str(e)
+    #             if "429" in error_message or "quota" in error_message.lower():
+    #                 retry_delay = self.base_retry_delay * (2 ** attempt)
+    #                 print(f"  ⚠️ Gặp lỗi Rate Limit. Đang thử lại sau {retry_delay} giây... (Lần {attempt + 1}/{self.max_retries})")
+    #                 time.sleep(retry_delay)
+    #                 continue
+    #             elif "mimeType" in error_message or "not supported" in error_message:
+    #                 print(f"❌ Lỗi MIME type không được hỗ trợ: {e}")
+    #                 break
+    #             elif "503" in error_message or "Service Unavailable" in error_message:
+    #                 retry_delay = self.base_retry_delay * (2 ** attempt)
+    #                 # SỬA LỖI #3: Cập nhật thông báo
+    #                 print(f"  ⚠️ Service không khả dụng (503). Đang thử lại sau {retry_delay} giây... (Lần {attempt + 1}/{self.max_retries})")
+    #                 time.sleep(retry_delay)
+    #                 continue
+    #             else:
+    #                 print(f"❌ Lỗi khác khi parsing: {e}")
+    #                 break
+        
+    #     # Chỉ in thông báo này nếu vòng lặp kết thúc mà không thành công
+    #     if not result_content:
+    #         print(f"  ❌ Đã thử lại {self.max_retries} lần nhưng vẫn gặp lỗi. Bỏ cuộc.")
+
+    #     # Luôn chạy khối finally để dọn dẹp
+    #     try:
+    #         if temp_file_created and file_path.exists():
+    #             try:
+    #                 os.unlink(file_path)
+    #                 print(f"🧹 Đã xóa file tạm: {file_path}")
+    #             except:
+    #                 pass
+    #     finally:
+    #         # Câu lệnh return duy nhất, giúp code dễ đọc hơn
+    #         return result_content
 
     def parse_file(self, file_path: str) -> List[Document]:
         """

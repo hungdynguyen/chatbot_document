@@ -1,0 +1,125 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "Tên Khách hàng",
+      "giayPhep": "0101442420",
+      "idT24": "22079986",
+      "phanKhuc": "MM",
+      "loaiKhachHang": "",
+      "nganhNghe": "LOGISTICS",
+      "mucDichBaoCao": "cấp tín dụng mới",
+      "ketQuaPhanLuong": "",
+      "xhtd": "Aa3"
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 - 2.1, KCN Thạch Thất, Thị Trấn Quốc Oai, Huyện Quốc Oai, Thành phố Hà Nội, Việt Nam",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": "Không"
+      },
+      "banLanhDao": [],
+      "nhanXet": {
+        "thongTinChung": "Sunspace (2003, 20 năm), CAG (2004, 19 năm), Eurowindow (2002, 21 năm), BM Windows (2016, 7 năm) hoạt động trong lĩnh vực xây dựng, sản phẩm chính gồm hệ thống vách kính, cửa nhôm, cửa uPVC, mặt dựng nhôm kính.",
+        "phapLyGpkd": "Số 0101442420 do Phòng Đăng ký kinh doanh – Sở Kế hoạch và Đầu tư thành phố Hà Nội cấp, đăng ký lần đầu ngày 19/01/2004, đăng ký thay đổi lần thứ 8 ngày 12/04/2023",
+        "chuDoanhNghiep": "",
+        "kyc": "Tình hình tài chính có xu hướng xấu đi, không có hoạt động đầu tư tài sản cố định trong 3 năm gần nhất."
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Xây dựng",
+        "sanPham": [
+          "Hệ thống vách kính – mặt dựng",
+          "Hệ thống cửa nhôm – vách kính",
+          "Hệ thống cabin tắm và lan can kính",
+          "Hệ thống cửa nhựa uPVC",
+          "Hệ thống cửa kính tự động",
+          "Hệ thống cửa cuốn",
+          "Hệ thống mặt dựng kính",
+          "Tấm ốp Alu",
+          "Hệ thống cửa kính (cửa tự động, cửa mở quay, cửa đi lùa), cửa sổ (mở quay, mở hắt)",
+          "Lam chắn nắng, cầu thang kính",
+          "Cửa uPVC",
+          "Cửa gỗ, nội thất, cửa cuốn, cửa chống cháy",
+          "Cửa nhôm và hệ vách nhôm kính lớn",
+          "Kính",
+          "Mặt dựng nhôm kính",
+          "Hệ thống cửa"
+        ],
+        "tyTrongN1": "",
+        "tyTrongN": ""
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": [
+          "Bán buôn thực phẩm khác",
+          "Bán lẻ thực phẩm trong các cửa hàng chuyên doanh",
+          "Bán thịt và các sản phẩm từ thịt trong các cửa hàng chuyên doanh",
+          "Bán thủy sản trong các cửa hàng chuyên doanh",
+          "Bán rau, quả trong các cửa hàng chuyên doanh",
+          "Bán lẻ sữa và các sản phẩm từ sữa, bánh, mứt, kẹo và các sản phẩm chế biến từ ngũ cốc, bột, tinh bột",
+          "Bán lẻ thực phẩm khác trong các cửa hàng chuyên doanh",
+          "Bán đồ uống trong các cửa hàng chuyên doanh",
+          "Bán sản phẩm thuốc lá, thuốc lào trong các cửa hàng chuyên doanh",
+          "Bán buôn thực phẩm khô, thực phẩm công nghiệp, ngũ cốc sữa bánh kẹo",
+          "Vận tải hàng hóa bằng đường sắt",
+          "Vận tải hàng hóa bằng ô tô chuyên dùng",
+          "Vận tải hàng hóa bằng ô tô loại khác",
+          "Vận tải hàng hóa bằng xe có động cơ loại khác",
+          "Vận tải hàng hóa ven biển",
+          "Vận tải hàng hóa viễn dương",
+          "Kho bãi và lưu giữ hàng hóa trong kho ngoại quan",
+          "Kho bãi và lưu giữ hàng hóa trong kho đông lạnh",
+          "Bán buôn chuyên doanh dụng cụ nguyên sinh",
+          "Bán buôn nước hoa, hàng mỹ phẩm và chế phẩm vệ sinh",
+          "Bán lẻ trong siêu thị",
+          "Bán lẻ trong cửa hàng tiện lợi",
+          "Bán lẻ trong cửa hàng kinh doanh tổng hợp khác",
+          "Bán buôn thức ăn và nguyên liệu làm thức ăn cho gia súc, gia cầm và thủy sản",
+          "Bán buôn thóc, ngô và các loại hạt ngũ cốc khác",
+          "Sản xuất thuốc các loại",
+          "Sản xuất hóa dược và dược liệu",
+          "Sản xuất thiết bị, dụng cụ y tế, nha khoa",
+          "Bán lẻ dược phẩm và dụng cụ y tế",
+          "Bán buôn máy móc, thiết bị y tế",
+          "Bán buôn đồ uống không có cồn",
+          "Bán buôn ngũ cốc, sữa và các sản phẩm từ sữa, bánh kẹo",
+          "Bán buôn chè",
+          "Bán buôn đồ uống có cồn",
+          "Bán buôn rau, quả",
+          "Bán buôn sản phẩm thuốc lá, thuốc lào",
+          "Bán buôn thịt và các sản phẩm từ thịt"
+        ],
+        "nam2023": "",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "• Chủ yếu thi công các dự án của Vingroup, các tổng thầu lớn (Hòa Bình, BIM group, ..) • NSNN: Bộ ban ngành, ACV, TKV, bệnh viện • CĐT tư nhân • NSNN: Bộ ban ngành, trụ sở cơ quan các tỉnh, ACV, bệnh viện • CĐT tư nhân • Chủ yếu CĐT tư nhân • Dự án ngoài nước",
+        "loiThe": "",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "Nhập phôi kính gia công (gia công nhiệt, dán, lắp kính hộp); Nhập NVL (Nhôm đùn sẵn) Sơn tĩnh điện Cắt Lên khung Lên Ulip Giao sản phẩm",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": ""
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": "Ngành logistics đa dạng với hoạt động vận tải, điều hành cảng biển, bốc xếp hàng hóa và dịch vụ hỗ trợ liên quan. Các ngành khác như sản xuất giấy, bao bì, dệt may và thực phẩm cũng được đề cập với tiềm năng tăng trưởng và rủi ro khác nhau."
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "call-rp.xlsx",
+    "DKKD lan 8 ngay 12.04.2023.pdf",
+    "DN HMTD CAG 2024 (1).docx",
+    "MB01-HD.SPDN_43 - Hỗ Trợ Phân Nhóm Khách Hàng (1).xls",
+    "SO-SÁNH-DN-CÙNG-NGÀNH.docx"
+  ],
+  "collection_name": "session-s2b-1af49d50-5200-47cd-a98f-fc4346d11b41",
+  "processing_time": 722.1804103851318,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755143242_f6b4e149"
+}

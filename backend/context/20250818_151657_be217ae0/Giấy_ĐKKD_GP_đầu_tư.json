@@ -1,0 +1,9 @@
+{
+  "timestamp": "2025-08-18T15:17:12.790519",
+  "field_name": "Giấy ĐKKD/GP đầu tư",
+  "prompt": "Dựa vào tên đầy đủ của khách hàng. Tìm số Giấy Đăng Ký Kinh Doanh hoặc Giấy Phép đầu tư",
+  "raw_response_from_rag": "0101442420",
+  "cleaned_response": "0101442420",
+  "prompt_word_count": 20,
+  "response_word_count": 1
+}

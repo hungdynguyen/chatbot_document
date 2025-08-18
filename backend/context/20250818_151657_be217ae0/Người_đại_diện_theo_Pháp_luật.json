@@ -1,0 +1,9 @@
+{
+  "timestamp": "2025-08-18T15:18:39.445734",
+  "field_name": "Người đại diện theo Pháp luật",
+  "prompt": "Dựa vào tên đầy đủ của khách hàng. Tìm họ tên người đại diện theo ĐKKD hoặc giấy đề nghị cấp TD",
+  "raw_response_from_rag": "ĐÀO CÔNG DUY",
+  "cleaned_response": "ĐÀO CÔNG DUY",
+  "prompt_word_count": 22,
+  "response_word_count": 3
+}

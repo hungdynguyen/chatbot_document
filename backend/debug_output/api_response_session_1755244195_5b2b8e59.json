@@ -1,0 +1,66 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "giayPhep": "0101442420",
+      "idT24": "22079986",
+      "phanKhuc": "CIB",
+      "loaiKhachHang": "OTC",
+      "nganhNghe": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "mucDichBaoCao": "",
+      "ketQuaPhanLuong": "",
+      "xhtd": ""
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 – 2.1, KCN Thạch Thất, thị trấn Quốc Oai, huyện Quốc Oai, thành phố Hà Nội",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": "Không"
+      },
+      "banLanhDao": [],
+      "nhanXet": {
+        "thongTinChung": "Công ty Cổ phần Mặt Dựng CAG thành lập năm 2004, hoạt động 20 năm trong lĩnh vực mặt dựng, sản phẩm chính là vật liệu mặt dựng.",
+        "phapLyGpkd": "Số 0101442420 do Phòng Đăng ký kinh doanh – Sở Kế hoạch và Đầu tư thành phố Hà Nội cấp ngày 19/01/2004, thay đổi lần thứ 8 ngày 12/04/2023.",
+        "chuDoanhNghiep": "",
+        "kyc": ""
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Xây lắp",
+        "sanPham": "",
+        "tyTrongN1": "",
+        "tyTrongN": ""
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "",
+        "nam2023": "",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "",
+        "loiThe": "",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": ""
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": ""
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "DN HTMD CAG 2024_1.docx"
+  ],
+  "collection_name": "session-s2b-f4648224-4749-4ce9-8de3-a4678bfee004",
+  "processing_time": 344.2626123428345,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755244195_5b2b8e59"
+}

@@ -1,0 +1,70 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "Tên Khách hàng",
+      "giayPhep": "0101442420",
+      "idT24": "22079986",
+      "phanKhuc": "MM",
+      "loaiKhachHang": "",
+      "nganhNghe": "",
+      "mucDichBaoCao": "",
+      "ketQuaPhanLuong": "Không thuc nhóm không ti■p c_n",
+      "xhtd": "Aa3"
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 – 2.1, KCN Thạch Thất, thị trấn Quốc Oai, huyện Quốc Oai, thành phố Hà Nội",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": "Không"
+      },
+      "banLanhDao": [],
+      "nhanXet": {
+        "thongTinChung": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG thành lập năm 2004, hoạt động 20 năm trong lĩnh vực sản xuất vật liệu xây dựng, sản phẩm chính là mặt dựng.",
+        "phapLyGpkd": "Số 0101442420 do Phòng Đăng ký kinh doanh – Sở Kế hoạch và Đầu tư thành phố Hà Nội cấp, đăng ký lần đầu ngày 19/01/2004, đăng ký thay đổi lần thứ 8 ngày 12/04/2023",
+        "chuDoanhNghiep": "",
+        "kyc": ""
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Sản xuất Xây dựng - Nhóm Sản xuất Xây dựng",
+        "sanPham": "",
+        "tyTrongN1": "",
+        "tyTrongN": ""
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "",
+        "nam2023": "",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+        "loiThe": "",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "Nhập phôi kính gia công (gia công nhiệt (tôi kính để tăng tính cường lực), dán (mua phim an toàn), lắp kính hộp. Nhập NVL (Nhôm đùn sẵn) Sơn tĩnh điện Cắt Lên khung Lên Ulip Giao sản phẩm",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG có giấy CNĐKDN hợp lệ, quy mô vừa với cổ đông lớn chiếm 90% vốn, cam kết hoàn thiện chứng từ sử dụng vốn vay và tuân thủ điều khoản của Techcombank."
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": ""
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "call-rp.xlsx",
+    "DKKD lan 8 ngay 12.04.2023.pdf",
+    "DN HMTD CAG 2024 (1).docx",
+    "MB01-HD.SPDN_43 - Hỗ Trợ Phân Nhóm Khách Hàng (1).xls",
+    "SO-SÁNH-DN-CÙNG-NGÀNH.docx"
+  ],
+  "collection_name": "session-s2b-129a6e28-c1b8-403c-9485-b0959776ac90",
+  "processing_time": 689.396603345871,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755158827_e1fee053"
+}

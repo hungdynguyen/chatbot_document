@@ -1,0 +1,66 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": {},
+      "giayPhep": {},
+      "idT24": {},
+      "phanKhuc": {},
+      "loaiKhachHang": {},
+      "nganhNghe": {},
+      "mucDichBaoCao": {},
+      "ketQuaPhanLuong": {},
+      "xhtd": {}
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": {},
+        "diaChi": {},
+        "nguoiDaiDien": {},
+        "nganhNgheCoDieuKien": {}
+      },
+      "banLanhDao": [],
+      "nhanXet": {
+        "thongTinChung": {},
+        "phapLyGpkd": {},
+        "chuDoanhNghiep": {},
+        "kyc": {}
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": {},
+        "sanPham": {},
+        "tyTrongN1": {},
+        "tyTrongN": {}
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": {},
+        "nam2023": {},
+        "nam10T2024": {}
+      },
+      "moTaSanPham": {
+        "sanPham": {},
+        "loiThe": {},
+        "nangLucDauThau": {}
+      },
+      "quyTrinhVanHanhText": {},
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": {}
+    },
+    "thongTinNganh": {
+      "cungCau": {},
+      "nhanXet": {}
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "DKKD lan 8 ngay 12.04.2023.pdf"
+  ],
+  "collection_name": "session-s2b-6b5ee221-582e-4fe2-8ad3-2b2ebe7fda23",
+  "processing_time": 184.03218603134155,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755092614_e79dab7f"
+}

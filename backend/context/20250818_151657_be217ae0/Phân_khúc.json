@@ -1,0 +1,9 @@
+{
+  "timestamp": "2025-08-18T15:17:29.964800",
+  "field_name": "Phân khúc",
+  "prompt": "Dựa vào tên đầy đủ của khách hàng. Xác định phân khúc: Micro (siêu nhỏ), SME (nhỏ vừa), SME+ (nâng cao), MM (trung cấp), CIB (lớn)",
+  "raw_response_from_rag": "CIB",
+  "cleaned_response": "CIB",
+  "prompt_word_count": 26,
+  "response_word_count": 1
+}

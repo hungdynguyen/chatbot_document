@@ -1,0 +1,78 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "Không có thông tin về tên đầy đủ công ty/doanh nghiệp khách hàng trong ngữ cảnh được cung cấp.",
+      "giayPhep": "0101442420",
+      "idT24": "22079986",
+      "phanKhuc": "Tôi không thể trả lời câu hỏi này vì không có thông tin liên quan đến các phân khúc \"Micro, SME, SME+, MM, CIB\" trong ngữ cảnh được cung cấp.",
+      "loaiKhachHang": "Không có thông tin về loại KH: ETC (Exclusive Trading - độc quyền) hoặc OTC (đại trà) trong ngữ cảnh được cung cấp.",
+      "nganhNghe": "Tôi không thể trả lời câu hỏi này vì không có thông tin về \"ngành nghề chính theo ĐKKD lần 8\" trong ngữ cảnh được cung cấp.",
+      "mucDichBaoCao": "Không có thông tin trong ngữ cảnh để trả lời câu hỏi này.",
+      "ketQuaPhanLuong": "Ket qua",
+      "xhtd": "Aa3"
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 - 2.1, KCN Thạch Thất, Thị Trấn Quốc Oai, Huyện Quốc Oai, Thành phố Hà Nội, Việt Nam",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": "Không"
+      },
+      "banLanhDao": [
+        {
+          "ten": "ĐÀO CÔNG DUY",
+          "chucVu": "Tổng giám đốc",
+          "tyLeVon": null,
+          "mucDoAnhHuong": null,
+          "danhGia": null
+        }
+      ],
+      "nhanXet": {
+        "thongTinChung": "Dựa vào ngữ cảnh đã cho, không thể cung cấp năm thành lập và số năm hoạt động.\n\nLĩnh vực:\n* Hệ thống mặt dựng kính\n* Tấm ốp Alu\n* Hệ thống cửa kính (cửa tự động, cửa mở quay, cửa đi lùa), cửa sổ (mở quay, mở hắt)\n* Lam chắn nắng, cầu thang kính",
+        "phapLyGpkd": "Số 0101442420, 19/01/2004, Phòng Đăng ký kinh doanh – Sở Kế hoạch và Đầu tư thành phố Hà Nội, 8",
+        "chuDoanhNghiep": "Không có thông tin về kinh nghiệm, thành tích, khả năng quản lý của công ty này.",
+        "kyc": "Tình hình tài chính của doanh nghi p có xu hng chuyn bin xu dn"
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Sản xuất, Xây dựng, Thương mại, Dịch vụ",
+        "sanPham": "• Hệ thống vách kính – mặt dựng\n• Hệ thống cửa nhôm – vách kính\n• Hệ thống cabin tắm và lan can kính\n• Hệ thống cửa nhựa uPVC\n• Hệ thống cửa kính tự động\n• Hệ thống cửa cuốn\n• Hệ thống mặt dựng kính\n• Tấm ốp Alu\n• Hệ thống cửa kính (cửa tự động, cửa mở quay, cửa đi lùa), cửa sổ (mở quay, mở hắt)\n• Lam chắn nắng, cầu thang kính\n• Cửa uPVC\n• Cửa gỗ, nội thất, cửa cuốn, cửa chống cháy\n• Cửa nhôm và hệ vách nhôm kính lớn\n• Kính\n• Mặt dựng nhôm kính\n• Hệ thống cửa",
+        "tyTrongN1": "Không có thông tin.",
+        "tyTrongN": "5. 8%"
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "- Hệ thống vách kính – mặt dựng\n- Hệ thống cửa nhôm – vách kính\n- Hệ thống cabin tắm và lan can kính\n- Hệ thống cửa nhựa uPVC\n- Hệ thống cửa kính tự động\n- Hệ thống cửa cuốn\n- Hệ thống mặt dựng kính\n- Tấm ốp Alu\n- Hệ thống cửa kính (cửa tự động, cửa mở quay, cửa đi lùa), cửa sổ (mở quay, mở hắt)\n- Lam chắn nắng, cầu thang kính\n- Cửa uPVC\n- Cửa gỗ, nội thất, cửa cuốn, cửa chống cháy\n- Cửa nhôm và hệ vách nhôm kính lớn\n- Kính\n- Mặt dựng nhôm kính\n- Hệ thống cửa",
+        "nam2023": "Tôi không thể trả lời câu hỏi này vì không có thông tin về % doanh thu năm 2023.",
+        "nam10T2024": "Không có thông tin về % doanh thu 10 tháng 2024."
+      },
+      "moTaSanPham": {
+        "sanPham": "- Sn xuất giày, dép\n- Sn xu t th m, ch_n, Im\n- Sn xuất bao bì t■ plastic_Chi ti■t: S■n xu t nha bao bì\n- Sn xut sn phm khác t■ plastic – Chi tit: Sn xu t nha xây d ng, nha k thut, nha gia d\n- Sn xuất các lo■i dây bén và li – Chi tit: sn xut dây, sl\n- Sn xut sn phm khác t■ plastic\n- Sn xu_t thcn gia súc, gia cm\n- Sn xu t th c n thu sn\n- Sn xut nc ép t rau qu\n- Sn xuất các loi bánh t bt\n- Sn xu_tng\n- Sn xut sl\n- Sn xut vi dt thoi\n- Hoàn thin sn phm dt\n- Sn xut vi dt kim, vi an móc và vi không dt khác\n- Sn xut bao bì bng gily, bìa_Chi tit: sn xut bao bì gily.\n- Sn xut gily nhăn và bìa nh█n_Chi tit: sn xut gily bao bì\n- Sn xut bt gi■y, gi█y và bìa_Chi ti█t: sn xut gily bao bì.\n- Sn xut bt giy, gily và bìa_Chi ti■t: sn xut gily in/photo.\n- Sn xut bt gi■y, gily và bìa Chi ti█t: sn xut gily tiêu dùng/tissue\n- Sn xut bt gily, gily và bìa _Chi ti█t: sn xut bt gily\n- Sn xuất các sān phím khác t■ gily và bìa chac phân vào âu_Chi tit: sn xut gi\n- May trang phc (tr trang phúc t da lông thú)\n- Sn xut trang phuc dt kim, ■an móc\n- Sn xuất giày, dép",
+        "loiThe": "*   Các nhà máy sản xuất nhôm thanh\n*   Các công ty thương mại chuyên nhập khẩu nhôm thanh (các mã kích thước lớn)\n*   Công ty nhập và sản xuất\n*   Sản phẩm: may đo theo từng dự án (SP đặc thù)\n*   Trích lúp dễ phòng",
+        "nangLucDauThau": "Không có thông tin về số lượng gói thầu tham gia, trúng, trượt hay đang chờ kết quả trong ngữ cảnh được cung cấp."
+      },
+      "quyTrinhVanHanhText": "*   Nhập phôi kính gia công (gia công nhiệt (tôi kính để tăng tính cường lực), dán (mua phim an\n    toàn), lắp kính hộp\n*   Nhập NVL (Nhôm đùn sẵn) Sơn tĩnh điện Cắt Lên khung Lên Ulip Giao sản phẩm",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": "Không có thông tin về pháp lý và kế hoạch tương lai.\n\nQuy mô:\n* Sunspace: 769 tỷ đồng (doanh thu 2023)\n* CAG: 944 tỷ đồng (doanh thu 2023)\n* Eurowindow: >2000 tỷ đồng (doanh thu 2023)\n* BM Windows: > 2000 tỷ đồng (doanh thu 2023)"
+    },
+    "thongTinNganh": {
+      "cungCau": "Tôi xin lỗi, tôi không thể trả lời câu hỏi này dựa trên ngữ cảnh được cung cấp.",
+      "nhanXet": "- Doanh nghi p ang cui chu ku t ti VN\n- Bã c gn nhã khu hao hút và không có hot ng u t tài s█n c nh trong vòng 03 nm gn nh_t\n- Ing thuê h■ tăng sp ht hn nh ng doanh nghi■p không có ph█■ng án tip tác gia hn/tái tc hp ng\n- Tình hình tài chính của doanh nghi p có xu hng chuyn bin xu dn"
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "call-rp.xlsx",
+    "DKKD lan 8 ngay 12.04.2023.pdf",
+    "DN HMTD CAG 2024 (1).docx",
+    "MB01-HD.SPDN_43 - Hỗ Trợ Phân Nhóm Khách Hàng (1).xls",
+    "SO-SÁNH-DN-CÙNG-NGÀNH.docx"
+  ],
+  "collection_name": "session-s2b-a2a02899-ebfd-446b-8d27-88d60689e35a",
+  "processing_time": 537.8609101772308,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755098662_e3aee7d9"
+}

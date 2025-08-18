@@ -1,29 +1,253 @@
-import requests
+from typing import Dict, List, Any, Type, Tuple
+from pydantic import BaseModel, Field
+from langchain_core.tools import BaseTool
 import json
-import asyncio
 import os
-from typing import List, Dict, Tuple
+import traceback
 import re
-import time
 import uuid
 from datetime import datetime
-# Import từ config
-from config import LANGFLOW_EXTRACTOR_URL, HEADERS, QDRANT_COMPONENT_ID_EXTRACTOR
-from .extraction_tools import StructuredExtractionTool
-MAX_ITERATIONS = 100  # Tăng lên vì sẽ xử lý từng field riêng lẻ
-# Giới hạn số từ cho prompt đầu vào của embedding model - giảm xuống mức an toàn
-MAX_PROMPT_WORDS = 80  # Giảm từ 128 xuống 80 để đảm bảo an toàn với model embedding
+import requests
+import time
 
-# Timeout settings để tránh bị limit API
-FIELD_PROCESSING_DELAY = 4.1  # Delay giữa các field (giây)
-TABLE_PROCESSING_DELAY = 4.1  # Delay cho xử lý bảng (giây)
-API_REQUEST_TIMEOUT = 180  # Timeout cho mỗi request (3 phút) 
+# Import từ config
+from .rag_client import query_rag_flow
+
+# Constants
+MAX_ITERATIONS = 100
+MAX_PROMPT_WORDS = 80
+FIELD_PROCESSING_DELAY = 4.1
+TABLE_PROCESSING_DELAY = 4.1
+API_REQUEST_TIMEOUT = 180
 
 # Đường dẫn tới thư mục schemas
 SCHEMAS_DIR = os.path.join(os.path.dirname(__file__), "..", "schemas")
 
 # Đường dẫn tới thư mục context
 CONTEXT_DIR = os.path.join(os.path.dirname(__file__), "..", "context")
+
+class ExtractionSchema(BaseModel):
+    prompt: str = Field(description="Yêu cầu trích xuất của người dùng, ví dụ: 'trích xuất báo cáo thẩm định'")
+    file_ids: List[str] = Field(description="Danh sách ID của các file cần trích xuất.")
+    collection_name: str = Field(description="Tên collection Qdrant cho session này.")
+    template_id: str = Field(description="ID của template cần trích xuất, ví dụ 'template4'.")
+
+class StructuredExtractionTool(BaseTool):
+    """Extracts structured information from documents based on a predefined template."""
+    name: str = "structured_extraction"
+    description: str = "Extracts structured information from documents based on a predefined template."
+    args_schema: Type[BaseModel] = ExtractionSchema
+    
+    # Biến để ngăn đệ quy vô hạn
+    _extraction_in_progress = False
+
+    async def _arun(self, prompt: str, file_ids: List[str], collection_name: str, template_id: str) -> Dict[str, Any]:
+        print(f"Tool: Extracting info with prompt '{prompt}' from collection '{collection_name}' using template '{template_id}'")
+        
+        # THÊM CHECK ĐỂ TRÁNH ĐỆ QUY
+        if self.__class__._extraction_in_progress:
+            print("⚠️ Phát hiện đệ quy! Ngăn chặn vòng lặp vô tận.")
+            return {"extracted_data": {"error": "Recursive call detected"}, 
+                    "message": "Stopped recursive extraction"}
+            
+        try:
+            self.__class__._extraction_in_progress = True
+            
+            # Cải thiện prompt để đảm bảo kết quả luôn là JSON
+            improved_prompt = f"{prompt}\n\n"
+            improved_prompt += "QUAN TRỌNG: Kết quả trả về PHẢI là một đối tượng JSON hợp lệ, không phải văn bản tự do. "
+            improved_prompt += "Đảm bảo đối tượng JSON tuân theo schema của template4 với các key chính là: "
+            improved_prompt += "thongTinChung, thongTinKhachHang, hoatDongKinhDoanh, thongTinNganh. "
+            improved_prompt += "CHỈ trả về object JSON, không thêm văn bản hay giải thích."
+            
+            # Sử dụng extract_information_from_docs để lấy dữ liệu có cấu trúc
+            extracted_data = await extract_information_from_docs(improved_prompt, file_ids, collection_name, template_id)
+            
+            # Kiểm tra và đảm bảo dữ liệu trả về là dict hợp lệ
+            if not isinstance(extracted_data, dict):
+                print("⚠️ Dữ liệu trả về không phải là dict! Chuyển đổi sang dict rỗng.")
+                extracted_data = {}
+            
+            # Kiểm tra xem có đủ các trường chính trong template4 không
+            expected_keys = ["thongTinChung", "thongTinKhachHang", "hoatDongKinhDoanh", "thongTinNganh"]
+            missing_keys = [key for key in expected_keys if key not in extracted_data]
+            
+            if missing_keys:
+                print(f"⚠️ Thiếu các trường chính trong kết quả: {missing_keys}")
+                # Tạo cấu trúc cho các trường bị thiếu
+                for key in missing_keys:
+                    extracted_data[key] = {}
+            
+            # Lưu JSON kết quả để debug
+            try:
+                debug_dir = os.path.join(os.path.dirname(__file__), "..", "debug_output")
+                os.makedirs(debug_dir, exist_ok=True)
+                debug_file = os.path.join(debug_dir, f"extraction_result_{template_id}_{hash(prompt)}.json")
+                with open(debug_file, 'w', encoding='utf-8') as f:
+                    json.dump(extracted_data, f, ensure_ascii=False, indent=2)
+                print(f"✅ Đã lưu kết quả JSON để debug tại: {debug_file}")
+            except Exception as debug_err:
+                print(f"⚠️ Không thể lưu file debug: {debug_err}")
+            
+            # In ra cấu trúc dữ liệu để debug
+            print("\n🔍 CẤU TRÚC DỮ LIỆU ĐÃ PARSE:")
+            print("-"*50)
+            import pprint
+            debug_keys = {}
+            for k in extracted_data.keys():
+                if isinstance(extracted_data[k], dict):
+                    debug_keys[k] = {subk: "..." for subk in extracted_data[k].keys()}
+                else:
+                    debug_keys[k] = "..."
+            pprint.pprint(debug_keys)
+            print("-"*50 + "\n")
+            
+            return {"extracted_data": extracted_data, "message": "Extraction complete"}
+            
+        except Exception as e:
+            print(f"Error during extraction: {e}")
+            traceback_str = traceback.format_exc()
+            print(f"Traceback: {traceback_str}")
+            
+            # Trả về cấu trúc template4 rỗng thay vì None
+            empty_template4 = {
+                "thongTinChung": {},
+                "thongTinKhachHang": {},
+                "hoatDongKinhDoanh": {},
+                "thongTinNganh": {}
+            }
+            
+            return {"extracted_data": empty_template4, "message": f"Error: {str(e)}"}
+        finally:
+            self.__class__._extraction_in_progress = False
+
+# --- DANH SÁCH CÁC TRƯỜNG ĐẶC BIỆT DẠNG BẢNG ---
+# Chúng ta sẽ xử lý các trường này bằng một chiến lược riêng
+TABLE_FIELDS_TEMPLATE4 = [
+    "thong_tin_ban_lanh_dao_day_du",
+    "thong_tin_dau_vao_day_du", 
+    "thong_tin_dau_ra_day_du"
+]
+
+# -- Kho prompt chi tiết đã được cập nhật --
+TEMPLATE4_DETAILED_PROMPTS = {
+    # --- PROMPT CHO CÁC BẢNG (ĐÃ TỐI ƯU) ---
+    "thong_tin_ban_lanh_dao_day_du": """
+    Trích xuất TOÀN BỘ thông tin chi tiết về Ban lãnh đạo trong ngữ cảnh. Lấy tất cả các thành viên.
+    Trả về DUY NHẤT một JSON array với cấu trúc:
+    [
+      {"ten":"...", "chucVu":"...", "tyLeVon":"...", "mucDoAnhHuong":"...", "danhGia":"..."}
+    ]
+    Nếu một trường thông tin không có, hãy để giá trị là một chuỗi rỗng "".
+    KHÔNG GIẢI THÍCH. Nếu không có thông tin, trả về [].
+    """,
+    
+    "thong_tin_dau_vao_day_du": """
+    Trích xuất TOÀN BỘ thông tin về đầu vào kinh doanh trong ngữ cảnh. Lấy tất cả các mặt hàng.
+    Trả về DUY NHẤT một JSON array với cấu trúc:
+    [
+      {"matHang":"...", "chiTiet":"...", "pttt":"..."}
+    ]
+    Nếu một trường thông tin không có, hãy để giá trị là một chuỗi rỗng "".
+    KHÔNG GIẢI THÍCH. Nếu không có thông tin, trả về [].
+    """,
+    
+    "thong_tin_dau_ra_day_du": """
+    Trích xuất TOÀN BỘ thông tin về đầu ra sản phẩm trong ngữ cảnh. Lấy tất cả các kênh phân phối.
+    Trả về DUY NHẤT một JSON array với cấu trúc:
+    [
+      {"kenh":"...", "tyTrong":"...", "pttt":"..."}
+    ]
+    Nếu một trường thông tin không có, hãy để giá trị là một chuỗi rỗng "".
+    KHÔNG GIẢI THÍCH. Nếu không có thông tin, trả về [].
+    """,
+
+    # --- CÁC TRƯỜNG THÔNG TIN CHUNG (ĐÃ RÚT GỌN) ---
+    "Tên đầy đủ của khách hàng": "Tìm tên đầy đủ công ty/doanh nghiệp khách hàng",
+    "Giấy ĐKKD/GP đầu tư": "Dựa vào tên đầy đủ của khách hàng. Tìm số Giấy Đăng Ký Kinh Doanh hoặc Giấy Phép đầu tư",
+    "ID trên T24": "Dựa vào tên đầy đủ của khách hàng. Tìm ID của khách hàng trên hệ thống",
+    "Phân khúc": "Dựa vào tên đầy đủ của khách hàng. Xác định phân khúc: Micro (siêu nhỏ), SME (nhỏ vừa), SME+ (nâng cao), MM (trung cấp), CIB (lớn)",
+    "Loại khách hàng": "Dựa vào tên đầy đủ của khách hàng. Tìm loại KH: ETC (Exclusive Trading - độc quyền) hoặc OTC (đại trà)",
+    "Ngành nghề HĐKD theo ĐKKD": "Dựa vào tên đầy đủ của khách hàng. Tìm ngành nghề chính theo ĐKKD (Đăng ký kinh doanh)",
+    "Mục đích báo cáo": "Dựa vào tên đầy đủ của khách hàng. Xác định: cấp tín dụng mới hay cấp lại cho khách hàng",
+    "Kết quả phân luồng": "Dựa vào tên đầy đủ của khách hàng. Tìm kết quả phân luồng khách hàng",
+    "XHTD": "Dựa vào tên đầy đủ của khách hàng. Tìm bậc xếp hạng tín dụng XHTD (xếp hạng tín dụng của khách hàng). Nếu thấy các giá trị như Aa3, Aa1, Bb1, Aa2,... thì đó là xếp hạng tín dụng",
+
+    # --- THÔNG TIN PHÁP LÝ (RÚT GỌN) ---
+    "Ngày thành lập": "Dựa vào tên đầy đủ của khách hàng. Tìm ngày thành lập theo ĐKKD lần đầu tiên (không phải sửa đổi), format DD/MM/YYYY",
+    "Địa chỉ trên ĐKKD": "Dựa vào tên đầy đủ của khách hàng. Tìm địa chỉ đầy đủ, chi tiết theo ĐKKD",
+    "Người đại diện theo Pháp luật": "Dựa vào tên đầy đủ của khách hàng. Tìm họ tên người đại diện theo ĐKKD hoặc giấy đề nghị cấp TD",
+    "Có kinh doanh Ngành nghề kinh doanh có điều kiện": "Dựa vào tên đầy đủ của khách hàng. Có kinh doanh ngành có điều kiện (an ninh quốc gia, có yếu tố nước ngoài, tài chính ngân hàng, y tế, giáo dục và đào tạo)? Có/Không",
+
+    # --- NHẬN XÉT (SUY LUẬN - ĐÃ TỐI ƯU) ---
+    "Nhận xét - Thông tin khách hàng": "Dựa vào tên đầy đủ của khách hàng. Tóm tắt: năm thành lập, số năm hoạt động, lĩnh vực, sản phẩm chính. Tạo thành 1 đoạn văn ngắn 1,2 câu",
+    "Nhận xét - Pháp lý/GPKD có ĐK": "Dựa vào tên đầy đủ của khách hàng. Tóm tắt: số ĐKKD, ngày cấp lần đầu, cơ quan cấp, các lần thay đổi. Tạo thành 1 đoạn văn ngắn 1,2 câu",
+    "Nhận xét - Chủ doanh nghiệp/Ban lãnh đạo": "Dựa vào tên đầy đủ của khách hàng. Nhận xét về chủ doanh nghiệp, kinh nghiệm, thành tích, khả năng quản lý của công ty này với những thông tin được cung cấp. Tạo thành 1 đoạn văn ngắn 1,2 câu",
+    "Nhận xét - KYC": "Dựa vào tên đầy đủ của khách hàng. Đánh giá chủ quan về tình trạng hoạt động ổn định của DN. Tạo thành 1 đoạn văn ngắn 1,2 câu",
+
+    # --- HOẠT ĐỘNG KINH DOANH (ĐÃ RÚT GỌN) ---
+    "Lĩnh vực kinh doanh": "Dựa vào tên đầy đủ của khách hàng. Tìm lĩnh vực chung: Xây lắp, Thương mại, Sản xuất, Dịch vụ...",
+    "Sản phẩm/Dịch vụ": "Dựa vào tên đầy đủ của khách hàng. Liệt kê sản phẩm/dịch vụ cụ thể, chi tiết",
+    "Tỷ trọng doanh thu năm N-1 (%)": "Dựa vào tên đầy đủ của khách hàng. Tìm % doanh thu năm N-1",
+    "Tỷ trọng doanh thu năm N (%)": "Dựa vào tên đầy đủ của khách hàng. Tìm % doanh thu năm N",
+    "Nhóm mặt hàng": "Dựa vào tên đầy đủ của khách hàng. Liệt kê các nhóm mặt hàng kinh doanh",
+    "Tỷ trọng doanh thu 2023": "Dựa vào tên đầy đủ của khách hàng. Tìm % doanh thu năm 2023",
+    "Tỷ trọng doanh thu 10T/2024": "Dựa vào tên đầy đủ của khách hàng. Tìm % doanh thu 10 tháng 2024",
+    "Mô tả chung sản phẩm": "Dựa vào tên đầy đủ của khách hàng. Mô tả chi tiết sản phẩm đầu ra",
+    "Mô tả lợi thế cạnh tranh": "Dựa vào tên đầy đủ của khách hàng. Tìm lợi thế so với đối thủ",
+    "Mô tả năng lực đấu thầu": "Dựa vào tên đầy đủ của khách hàng. Tìm chi tiết: tham gia bao nhiêu gói, trúng bao nhiêu, trượt bao nhiêu, chờ KQ",
+    "Quy trình vận hành (tóm tắt)": "Dựa vào tên đầy đủ của khách hàng. Mô tả cơ bản quy trình sản xuất/vận hành từ call report",
+    "Đầu vào - Mặt hàng": "Dựa vào tên đầy đủ của khách hàng. Liệt kê từng loại nguyên vật liệu đầu vào cụ thể",
+    "Đầu vào - Chi tiết": "Dựa vào tên đầy đủ của khách hàng. Nguồn mua: từ đâu, nhà cung cấp nào",
+    "Đầu vào - Phương thức thanh toán": "Dựa vào tên đầy đủ của khách hàng. PTTT với nhà cung cấp + thời hạn thanh toán",
+    "Đầu ra - Kênh phân phối": "Dựa vào tên đầy đủ của khách hàng. Các kênh bán hàng, phân phối cụ thể",
+    "Đầu ra - Tỷ trọng": "Dựa vào tên đầy đủ của khách hàng. % tỷ trọng theo từng kênh phân phối",
+    "Đầu ra - Phương thức thanh toán": "Dựa vào tên đầy đủ của khách hàng. PTTT của khách hàng + thời hạn thanh toán",
+    "Nhận xét tổng quan hoạt động kinh doanh": "Dựa vào tên đầy đủ của khách hàng. Nhận xét: pháp lý, quy mô, kế hoạch tương lai. Tạo thành 1 đoạn văn ngắn 1,2 câu",
+
+    # --- THÔNG TIN NGÀNH (RÚT GỌN) ---
+    "Phân tích cung cầu ngành": "Dựa vào tên đầy đủ của khách hàng. Tìm phân tích cung cầu ngành. Tạo thành 1 đoạn văn ngắn 1,2 câu",
+    "Nhận xét thông tin ngành": "Dựa vào tên đầy đủ của khách hàng. Tìm nhận xét về ngành. Tạo thành 1 đoạn văn ngắn 1,2 câu"
+}
+
+def _clean_llm_response(raw_response: Any) -> Any:
+    """
+    Làm sạch output thô từ LLM để lấy giá trị cốt lõi.
+    - Cố gắng parse JSON nếu output là string chứa JSON.
+    - Loại bỏ các ký tự không cần thiết và văn bản giới thiệu.
+    """
+    if not isinstance(raw_response, str):
+        return raw_response # Trả về nguyên bản nếu không phải là chuỗi (ví dụ: đã là list)
+
+    response_str = raw_response.strip()
+
+    # Ưu tiên 1: Cố gắng tìm và parse JSON array hoặc object
+    try:
+        # Sử dụng regex để tìm cấu trúc JSON đầu tiên trong chuỗi
+        json_match = re.search(r'(\[.*\]|\{.*\})', response_str, re.DOTALL)
+        if json_match:
+            json_str = json_match.group(1)
+            # Cố gắng load nó thành đối tượng Python
+            return json.loads(json_str)
+    except (json.JSONDecodeError, TypeError):
+        # Nếu thất bại, tiếp tục các bước làm sạch văn bản
+        pass
+
+    # Ưu tiên 2: Làm sạch văn bản đơn giản
+    # Loại bỏ các tiền tố phổ biến
+    prefixes_to_remove = [
+        "Trả lời:", "Câu trả lời là:", "Đây là câu trả lời:", "Kết quả là:",
+        "Dữ liệu trích xuất được là:", "The answer is:", "Answer:"
+    ]
+    for prefix in prefixes_to_remove:
+        if response_str.lower().startswith(prefix.lower()):
+            response_str = response_str[len(prefix):].strip()
+
+    # Loại bỏ dấu ngoặc kép hoặc nháy đơn ở đầu và cuối nếu có
+    if response_str.startswith(('"', "'")) and response_str.endswith(('"', "'")):
+        response_str = response_str[1:-1]
+        
+    return response_str.strip()
 
 def create_context_session():
     """Tạo session ID unique cho mỗi lần chạy extraction"""
@@ -32,58 +256,17 @@ def create_context_session():
     os.makedirs(session_dir, exist_ok=True)
     return session_id, session_dir
 
-def save_field_context(session_dir: str, field_name: str, prompt: str, documents_context: str, response: str):
-    """Lưu context của một trường được trích xuất"""
-    
-    # Parse context thành array các documents riêng biệt
-    formatted_context = documents_context
-    if isinstance(documents_context, str) and documents_context.strip():
-        try:
-            # Decode Unicode escape sequences trước
-            decoded_context = documents_context.encode().decode('unicode_escape')
-            
-            # Tách context thành các documents riêng biệt bằng \n\n
-            if '\n\n{' in decoded_context:
-                # Tách bằng double newline + JSON object
-                doc_parts = decoded_context.split('\n\n')
-                parsed_docs = []
-                
-                for part in doc_parts:
-                    part = part.strip()
-                    if part and part.startswith('{') and part.endswith('}'):
-                        try:
-                            doc_obj = json.loads(part)
-                            parsed_docs.append(doc_obj)
-                        except json.JSONDecodeError:
-                            # Nếu không parse được thì giữ string
-                            parsed_docs.append(part)
-                    elif part:  # Text không phải JSON
-                        parsed_docs.append(part)
-                
-                if parsed_docs:
-                    formatted_context = parsed_docs
-                else:
-                    formatted_context = decoded_context
-            else:
-                # Nếu không có pattern \n\n thì chỉ decode Unicode
-                formatted_context = decoded_context
-                
-        except Exception as e:
-            # Nếu lỗi thì chỉ decode Unicode
-            try:
-                formatted_context = documents_context.encode().decode('unicode_escape')
-            except:
-                # Nếu decode cũng lỗi thì giữ nguyên
-                formatted_context = documents_context
+def save_field_context(session_dir: str, field_name: str, prompt: str, raw_response: str, cleaned_response: str):
+    """Lưu context của một trường được trích xuất (đã đơn giản hóa)."""
     
     context_data = {
         "timestamp": datetime.now().isoformat(),
         "field_name": field_name,
         "prompt": prompt,
-        "documents_context": formatted_context,
-        "raw_response": response,
+        "raw_response_from_rag": raw_response,
+        "cleaned_response": cleaned_response,
         "prompt_word_count": len(prompt.split()),
-        "context_word_count": len(str(formatted_context).split()) if isinstance(formatted_context, str) else sum(len(str(doc).split()) for doc in formatted_context) if isinstance(formatted_context, list) else 0
+        "response_word_count": len(str(cleaned_response).split())
     }
     
     # Tạo tên file an toàn
@@ -94,7 +277,7 @@ def save_field_context(session_dir: str, field_name: str, prompt: str, documents
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(context_data, f, indent=2, ensure_ascii=False)
     
-    print(f"💾 Đã lưu context: {filename}")
+    print(f"💾 Đã lưu tóm tắt trích xuất: {filename}")
 
 def save_session_summary(session_dir: str, session_id: str, total_fields: int, success_count: int, error_count: int):
     """Lưu tóm tắt session"""
@@ -113,80 +296,6 @@ def save_session_summary(session_dir: str, session_id: str, total_fields: int, s
     
     print(f"📊 Đã lưu tóm tắt session: {session_id}")
 
-# --- DANH SÁCH CÁC TRƯỜNG ĐẶC BIỆT DẠNG BẢNG ---
-# Chúng ta sẽ xử lý các trường này bằng một chiến lược riêng
-TABLE_FIELDS_TEMPLATE4 = [
-    "thong_tin_ban_lanh_dao_day_du",
-    "thong_tin_dau_vao_day_du", 
-    "thong_tin_dau_ra_day_du"
-]
-
-# -- Kho prompt chi tiết đã được cập nhật --
-TEMPLATE4_DETAILED_PROMPTS = {
-    # --- PROMPT CHO CÁC BẢNG (ĐÃ TỐI ƯU) ---
-    "thong_tin_ban_lanh_dao_day_du": """
-    Tìm thông tin chi tiết ban lãnh đạo. Trả về JSON array:
-    [{"ten":"họ tên thành viên", "chucVu":"chức vụ cụ thể", "tyLeVon":"tỷ lệ góp vốn", "mucDoAnhHuong":"chủ doanh nghiệp hay chỉ là người góp vốn", "danhGia":"năng lực, uy tín, kinh nghiệm"}]
-    """,
-    
-    "thong_tin_dau_vao_day_du": """
-    Tìm thông tin đầu vào kinh doanh. Trả về JSON array:
-    [{"matHang":"tên nguyên vật liệu", "chiTiet":"nguồn mua, nhà cung cấp", "pttt":"phương thức thanh toán, thời hạn"}]
-    """,
-    
-    "thong_tin_dau_ra_day_du": """
-    Tìm thông tin đầu ra sản phẩm. Trả về JSON array:
-    [{"kenh":"kênh phân phối, bán hàng", "tyTrong":"% tỷ trọng theo kênh", "pttt":"phương thức TT khách hàng"}]
-    """,
-
-    # --- CÁC TRƯỜNG THÔNG TIN CHUNG (ĐÃ RÚT GỌN) ---
-    "Tên đầy đủ của khách hàng": "Tìm tên đầy đủ công ty/doanh nghiệp khách hàng",
-    "Giấy ĐKKD/GP đầu tư": "Tìm số Giấy Đăng Ký Kinh Doanh hoặc Giấy Phép đầu tư",
-    "ID trên T24": "Tìm ID của khách hàng trên hệ thống T24 của TCB",
-    "Phân khúc": "Xác định phân khúc: Micro (siêu nhỏ), SME (nhỏ vừa), SME+ (nâng cao), MM (trung cấp), CIB (lớn)",
-    "Loại khách hàng": "Tìm loại KH: ETC (Exclusive Trading - độc quyền) hoặc OTC (đại trà)",
-    "Ngành nghề HĐKD theo ĐKKD": "Tìm ngành nghề chính theo ĐKKD lần 8",
-    "Mục đích báo cáo": "Xác định: cấp tín dụng mới hay cấp lại cho KH",
-    "Kết quả phân luồng": "Tìm kết quả phân luồng khách hàng",
-    "XHTD": "Tìm bậc xếp hạng tín dụng XHTD",
-
-    # --- THÔNG TIN PHÁP LÝ (RÚT GỌN) ---
-    "Ngày thành lập": "Tìm ngày thành lập theo ĐKKD lần đầu tiên (không phải sửa đổi), format DD/MM/YYYY",
-    "Địa chỉ trên ĐKKD": "Tìm địa chỉ đầy đủ, chi tiết theo ĐKKD",
-    "Người đại diện theo Pháp luật": "Tìm họ tên người đại diện theo ĐKKD hoặc giấy đề nghị cấp TD",
-    "Có kinh doanh Ngành nghề kinh doanh có điều kiện": "Có kinh doanh ngành cần GP đặc biệt (vốn, giấy phép, nhân sự...)? Có/Không",
-
-    # --- NHẬN XÉT (SUY LUẬN - ĐÃ TỐI ƯU) ---
-    "Nhận xét - Thông tin khách hàng": "Tóm tắt: năm thành lập, số năm hoạt động, lĩnh vực, sản phẩm chính",
-    "Nhận xét - Pháp lý/GPKD có ĐK": "Tóm tắt: số ĐKKD, ngày cấp lần đầu, cơ quan cấp, các lần thay đổi",
-    "Nhận xét - Chủ doanh nghiệp/Ban lãnh đạo": "Nhận xét về chủ doanh nghiệp, kinh nghiệm, thành tích, khả năng quản lý của công ty này với những thông tin được cung cấp",
-    "Nhận xét - KYC": "Đánh giá chủ quan về tình trạng hoạt động ổn định của DN",
-
-    # --- HOẠT ĐỘNG KINH DOANH (ĐÃ RÚT GỌN) ---
-    "Lĩnh vực kinh doanh": "Tìm lĩnh vực chung: Xây lắp, Thương mại, Sản xuất, Dịch vụ...",
-    "Sản phẩm/Dịch vụ": "Liệt kê sản phẩm/dịch vụ cụ thể, chi tiết",
-    "Tỷ trọng doanh thu năm N-1 (%)": "Tìm % doanh thu năm N-1",
-    "Tỷ trọng doanh thu năm N (%)": "Tìm % doanh thu năm N",
-    "Nhóm mặt hàng": "Liệt kê các nhóm mặt hàng kinh doanh",
-    "Tỷ trọng doanh thu 2023": "Tìm % doanh thu năm 2023",
-    "Tỷ trọng doanh thu 10T/2024": "Tìm % doanh thu 10 tháng 2024",
-    "Mô tả chung sản phẩm": "Mô tả chi tiết sản phẩm đầu ra",
-    "Mô tả lợi thế cạnh tranh": "Tìm lợi thế so với đối thủ",
-    "Mô tả năng lực đấu thầu": "Tìm chi tiết: tham gia bao nhiêu gói, trúng bao nhiêu, trượt bao nhiêu, chờ KQ",
-    "Quy trình vận hành (tóm tắt)": "Mô tả cơ bản quy trình sản xuất/vận hành từ call report",
-    "Đầu vào - Mặt hàng": "Liệt kê từng loại nguyên vật liệu đầu vào cụ thể",
-    "Đầu vào - Chi tiết": "Nguồn mua: từ đâu, nhà cung cấp nào",
-    "Đầu vào - Phương thức thanh toán": "PTTT với nhà cung cấp + thời hạn thanh toán",
-    "Đầu ra - Kênh phân phối": "Các kênh bán hàng, phân phối cụ thể",
-    "Đầu ra - Tỷ trọng": "% tỷ trọng theo từng kênh phân phối",
-    "Đầu ra - Phương thức thanh toán": "PTTT của khách hàng + thời hạn thanh toán",
-    "Nhận xét tổng quan hoạt động kinh doanh": "Nhận xét: pháp lý, quy mô, kế hoạch tương lai",
-
-    # --- THÔNG TIN NGÀNH (RÚT GỌN) ---
-    "Phân tích cung cầu ngành": "Tìm phân tích cung cầu ngành",
-    "Nhận xét thông tin ngành": "Tìm nhận xét về ngành"
-}
-
 def load_template_schema(template_id: str) -> Dict:
     """
     Tải schema từ file JSON cho template_id đã cho.
@@ -199,10 +308,8 @@ def load_template_schema(template_id: str) -> Dict:
         print(f"⚠️ Không tìm thấy schema file cho template '{template_id}'.")
         return {"fields": [], "mapping": {}}
     except Exception as e:
-        print(f"❌ Lỗi khi đọc schema '{template_id}': {e}")
+        print(f"⚠️ Lỗi khi đọc schema file: {e}")
         return {"fields": [], "mapping": {}}
-
-
 
 def structure_data_for_loan_assessment_report(flat_data: Dict, mapping: Dict) -> Dict:
     """
@@ -212,28 +319,60 @@ def structure_data_for_loan_assessment_report(flat_data: Dict, mapping: Dict) ->
     print(f"\n🏗️ BẮT ĐẦU CẤU TRÚC LẠI DỮ LIỆU...")
     print(f"📥 Input có {len(flat_data)} trường dữ liệu thô")
     
+    # Khởi tạo cấu trúc dữ liệu chính xác theo template4.json
     structured_data = {
-        "thongTinChung": {},
+        "thongTinChung": {
+            "tenKhachHang": "",
+            "giayPhep": "",
+            "idT24": "",
+            "phanKhuc": "",
+            "loaiKhachHang": "",
+            "nganhNghe": "",
+            "mucDichBaoCao": "",
+            "ketQuaPhanLuong": "",
+            "xhtd": ""
+        },
         "thongTinKhachHang": {
-            "phapLy": {},
-            # Khởi tạo là một danh sách rỗng để chứa các thành viên
-            "banLanhDao": [], 
-            "nhanXet": {}
+            "phapLy": {
+                "ngayThanhLap": "",
+                "diaChi": "",
+                "nguoiDaiDien": "",
+                "nganhNgheCoDieuKien": ""
+            },
+            "banLanhDao": [],
+            "nhanXet": {
+                "thongTinChung": "",
+                "phapLyGpkd": "",
+                "chuDoanhNghiep": "",
+                "kyc": ""
+            }
         },
         "hoatDongKinhDoanh": {
-            "linhVuc": {},
-            "tyTrongTheoNhomHang": {},
-            "moTaSanPham": {},
+            "linhVuc": {
+                "linhVuc": "",
+                "sanPham": "",
+                "tyTrongN1": "",
+                "tyTrongN": ""
+            },
+            "tyTrongTheoNhomHang": {
+                "nhomHang": "",
+                "nam2023": "",
+                "nam10T2024": ""
+            },
+            "moTaSanPham": {
+                "sanPham": "",
+                "loiThe": "",
+                "nangLucDauThau": ""
+            },
             "quyTrinhVanHanhText": "",
-            "dauVao": [],  # Đổi thành array để chứa dữ liệu bảng
-            "dauRa": [],   # Đổi thành array để chứa dữ liệu bảng
-            "nhanXetHoatDong": {}  # Đổi thành object để chứa phân tích chi tiết
+            "dauVao": [],
+            "dauRa": [],
+            "nhanXetHoatDong": ""
         },
         "thongTinNganh": {
             "cungCau": "",
             "nhanXet": ""
-        },
-        "kiemTraQuyDinh": {}
+        }
     }
     
     # === XỬ LÝ DỮ LIỆU BẢNG TRƯỚC ===
@@ -241,80 +380,111 @@ def structure_data_for_loan_assessment_report(flat_data: Dict, mapping: Dict) ->
     
     # 1. Bảng Ban lãnh đạo (5 cột)
     leadership_list = flat_data.get("thong_tin_ban_lanh_dao_day_du", [])
+    # Xử lý trường hợp dữ liệu không phải là list
+    if not isinstance(leadership_list, list):
+        try:
+            if isinstance(leadership_list, str) and leadership_list.strip():
+                leadership_list = json.loads(leadership_list)
+            else:
+                leadership_list = []
+        except:
+            leadership_list = []
+    
     if isinstance(leadership_list, list) and leadership_list:
-        structured_data["thongTinKhachHang"]["banLanhDao"] = [
-            {
-                "ten": member.get("ten"),
-                "tyLeVon": member.get("tyLeVon"),
-                "chucVu": member.get("chucVu"),
-                "mucDoAnhHuong": member.get("mucDoAnhHuong"),
-                "danhGia": member.get("danhGia")
-            }
-            for member in leadership_list
-        ]
-        print(f"   ✅ Ban lãnh đạo: {len(leadership_list)} thành viên")
+        structured_data["thongTinKhachHang"]["banLanhDao"] = leadership_list
+        print(f"  ✓ Bảng Ban lãnh đạo: {len(leadership_list)} dòng")
     else:
-        print(f"   ❌ Ban lãnh đạo: không có dữ liệu")
+        print(f"  ✗ Bảng Ban lãnh đạo: Không có dữ liệu")
+        structured_data["thongTinKhachHang"]["banLanhDao"] = []
 
     # 2. Bảng Đầu vào (3 cột)
     input_list = flat_data.get("thong_tin_dau_vao_day_du", [])
+    # Xử lý trường hợp dữ liệu không phải là list
+    if not isinstance(input_list, list):
+        try:
+            if isinstance(input_list, str) and input_list.strip():
+                input_list = json.loads(input_list)
+            else:
+                input_list = []
+        except:
+            input_list = []
+    
     if isinstance(input_list, list) and input_list:
-        structured_data["hoatDongKinhDoanh"]["dauVao"] = [
-            {
-                "matHang": item.get("matHang"),
-                "chiTiet": item.get("chiTiet"),
-                "pttt": item.get("pttt")
-            }
-            for item in input_list
-        ]
-        print(f"   ✅ Đầu vào: {len(input_list)} mục")
+        structured_data["hoatDongKinhDoanh"]["dauVao"] = input_list
+        print(f"  ✓ Bảng Đầu vào: {len(input_list)} dòng")
     else:
-        print(f"   ❌ Đầu vào: không có dữ liệu")
+        print(f"  ✗ Bảng Đầu vào: Không có dữ liệu")
+        structured_data["hoatDongKinhDoanh"]["dauVao"] = []
 
     # 3. Bảng Đầu ra (3 cột) 
     output_list = flat_data.get("thong_tin_dau_ra_day_du", [])
+    # Xử lý trường hợp dữ liệu không phải là list
+    if not isinstance(output_list, list):
+        try:
+            if isinstance(output_list, str) and output_list.strip():
+                output_list = json.loads(output_list)
+            else:
+                output_list = []
+        except:
+            output_list = []
+    
     if isinstance(output_list, list) and output_list:
-        structured_data["hoatDongKinhDoanh"]["dauRa"] = [
-            {
-                "kenh": item.get("kenh"),
-                "tyTrong": item.get("tyTrong"),
-                "pttt": item.get("pttt")
-            }
-            for item in output_list
-        ]
-        print(f"   ✅ Đầu ra: {len(output_list)} kênh")
+        structured_data["hoatDongKinhDoanh"]["dauRa"] = output_list
+        print(f"  ✓ Bảng Đầu ra: {len(output_list)} dòng")
     else:
-        print(f"   ❌ Đầu ra: không có dữ liệu")
+        print(f"  ✗ Bảng Đầu ra: Không có dữ liệu")
+        structured_data["hoatDongKinhDoanh"]["dauRa"] = []
 
     # === XỬ LÝ CÁC TRƯỜNG CÒN LẠI ===
     print(f"📝 Xử lý các trường đơn lẻ...")
-    reverse_mapping = {}
-    for category, fields in mapping.items():
-        if isinstance(fields, dict):
-            for key, llm_name in fields.items():
-                if isinstance(llm_name, str):
-                    reverse_mapping[llm_name] = (category, key)
-                elif isinstance(llm_name, dict):
-                    # Bỏ qua các bảng đã xử lý riêng ở trên
-                    if key in ["banLanhDao", "dauVao", "dauRa"]: continue
-                    for nested_key, nested_llm_name in llm_name.items():
-                        reverse_mapping[nested_llm_name] = (category, key, nested_key)
-    for llm_name, value in flat_data.items():
-        # Bỏ qua các trường bảng đã xử lý
-        if llm_name in ["thong_tin_ban_lanh_dao_day_du", "thong_tin_dau_vao_day_du", "thong_tin_dau_ra_day_du"]:
-            continue
-            
-        if llm_name in reverse_mapping:
-            path = reverse_mapping[llm_name]
-            if len(path) == 2:
-                cat, key = path
-                if cat not in structured_data: structured_data[cat] = {}
-                structured_data[cat][key] = value
-            elif len(path) == 3:
-                cat, sub_cat, key = path
-                if cat not in structured_data: structured_data[cat] = {}
-                if sub_cat not in structured_data[cat]: structured_data[cat][sub_cat] = {}
-                structured_data[cat][sub_cat][key] = value
+    
+    # Ánh xạ trực tiếp theo template4.json
+    # Thông tin chung
+    structured_data["thongTinChung"]["tenKhachHang"] = flat_data.get("Tên đầy đủ của khách hàng", "")
+    structured_data["thongTinChung"]["giayPhep"] = flat_data.get("Giấy ĐKKD/GP đầu tư", "")
+    structured_data["thongTinChung"]["idT24"] = flat_data.get("ID trên T24", "")
+    structured_data["thongTinChung"]["phanKhuc"] = flat_data.get("Phân khúc", "")
+    structured_data["thongTinChung"]["loaiKhachHang"] = flat_data.get("Loại khách hàng", "")
+    structured_data["thongTinChung"]["nganhNghe"] = flat_data.get("Ngành nghề HĐKD theo ĐKKD", "")
+    structured_data["thongTinChung"]["mucDichBaoCao"] = flat_data.get("Mục đích báo cáo", "")
+    structured_data["thongTinChung"]["ketQuaPhanLuong"] = flat_data.get("Kết quả phân luồng", "")
+    structured_data["thongTinChung"]["xhtd"] = flat_data.get("XHTD", "")
+    
+    # Thông tin khách hàng - Pháp lý
+    structured_data["thongTinKhachHang"]["phapLy"]["ngayThanhLap"] = flat_data.get("Ngày thành lập", "")
+    structured_data["thongTinKhachHang"]["phapLy"]["diaChi"] = flat_data.get("Địa chỉ trên ĐKKD", "")
+    structured_data["thongTinKhachHang"]["phapLy"]["nguoiDaiDien"] = flat_data.get("Người đại diện theo Pháp luật", "")
+    structured_data["thongTinKhachHang"]["phapLy"]["nganhNgheCoDieuKien"] = flat_data.get("Có kinh doanh Ngành nghề kinh doanh có điều kiện", "")
+    
+    # Thông tin khách hàng - Nhận xét
+    structured_data["thongTinKhachHang"]["nhanXet"]["thongTinChung"] = flat_data.get("Nhận xét - Thông tin khách hàng", "")
+    structured_data["thongTinKhachHang"]["nhanXet"]["phapLyGpkd"] = flat_data.get("Nhận xét - Pháp lý/GPKD có ĐK", "")
+    structured_data["thongTinKhachHang"]["nhanXet"]["chuDoanhNghiep"] = flat_data.get("Nhận xét - Chủ doanh nghiệp/Ban lãnh đạo", "")
+    structured_data["thongTinKhachHang"]["nhanXet"]["kyc"] = flat_data.get("Nhận xét - KYC", "")
+    
+    # Hoạt động kinh doanh - Lĩnh vực
+    structured_data["hoatDongKinhDoanh"]["linhVuc"]["linhVuc"] = flat_data.get("Lĩnh vực kinh doanh", "")
+    structured_data["hoatDongKinhDoanh"]["linhVuc"]["sanPham"] = flat_data.get("Sản phẩm/Dịch vụ", "")
+    structured_data["hoatDongKinhDoanh"]["linhVuc"]["tyTrongN1"] = flat_data.get("Tỷ trọng doanh thu năm N-1 (%)", "")
+    structured_data["hoatDongKinhDoanh"]["linhVuc"]["tyTrongN"] = flat_data.get("Tỷ trọng doanh thu năm N (%)", "")
+    
+    # Hoạt động kinh doanh - Tỷ trọng theo nhóm hàng
+    structured_data["hoatDongKinhDoanh"]["tyTrongTheoNhomHang"]["nhomHang"] = flat_data.get("Nhóm mặt hàng", "")
+    structured_data["hoatDongKinhDoanh"]["tyTrongTheoNhomHang"]["nam2023"] = flat_data.get("Tỷ trọng doanh thu 2023", "")
+    structured_data["hoatDongKinhDoanh"]["tyTrongTheoNhomHang"]["nam10T2024"] = flat_data.get("Tỷ trọng doanh thu 10T/2024", "")
+    
+    # Hoạt động kinh doanh - Mô tả sản phẩm
+    structured_data["hoatDongKinhDoanh"]["moTaSanPham"]["sanPham"] = flat_data.get("Mô tả chung sản phẩm", "")
+    structured_data["hoatDongKinhDoanh"]["moTaSanPham"]["loiThe"] = flat_data.get("Mô tả lợi thế cạnh tranh", "")
+    structured_data["hoatDongKinhDoanh"]["moTaSanPham"]["nangLucDauThau"] = flat_data.get("Mô tả năng lực đấu thầu", "")
+    
+    # Hoạt động kinh doanh - Quy trình vận hành
+    structured_data["hoatDongKinhDoanh"]["quyTrinhVanHanhText"] = flat_data.get("Quy trình vận hành (tóm tắt)", "")
+    structured_data["hoatDongKinhDoanh"]["nhanXetHoatDong"] = flat_data.get("Nhận xét tổng quan hoạt động kinh doanh", "")
+    
+    # Thông tin ngành
+    structured_data["thongTinNganh"]["cungCau"] = flat_data.get("Phân tích cung cầu ngành", "")
+    structured_data["thongTinNganh"]["nhanXet"] = flat_data.get("Nhận xét thông tin ngành", "")
     
     print(f"✅ Hoàn tất cấu trúc dữ liệu!")
     return structured_data
@@ -326,9 +496,7 @@ def truncate_text_by_words(text: str, max_words: int) -> str:
     """
     words = text.split()
     if len(words) > max_words:
-        # Cắt ngắn và thêm dấu hiệu để biết đã bị cắt
-        truncated = " ".join(words[:max_words])
-        return truncated + "..."
+        return ' '.join(words[:max_words])
     return text
 
 def is_valid_value(value) -> bool:
@@ -342,209 +510,165 @@ def is_valid_value(value) -> bool:
         return False
     return True
 
-
-async def query_langgraph_extraction_tool(prompt: str, file_ids: List[str], collection_name: str, template_id: str) -> dict:
+def _get_answer_from_rag(question_prompt: str, collection_name: str, session_dir: str) -> str:
     """
-    Gọi tool extraction của LangGraph agent thay cho gọi API Langflow.
+    Hàm bao bọc mới để gọi trực tiếp logic RAG nội bộ.
+    Nó sẽ truyền session_dir để có thể ghi log chi tiết.
     """
-    tool = StructuredExtractionTool()
-    # _arun nhận các tham số: prompt, file_ids, collection_name, template_id
-    result = await tool._arun(prompt, file_ids, collection_name, template_id)
-    # result là dict, có thể chứa 'extracted_data'
-    return result.get("extracted_data", {})
+    print(f"  - 🧠 Gọi RAG nội bộ (collection: '{collection_name}')")
+    try:
+        # Gọi thẳng hàm query_rag_flow từ rag_client.py
+        # Truyền session_dir vào context_dir để RAG có thể ghi log
+        answer = query_rag_flow(
+            question=question_prompt,
+            collection_name=collection_name,
+            context_dir=session_dir 
+        )
+        return answer
+    except Exception as e:
+        print(f"  - ❌ Lỗi khi đang gọi RAG nội bộ: {e}")
+        # In traceback để debug dễ hơn
+        traceback.print_exc()
+        return ""
 
 async def extract_information_from_docs(prompt: str, file_ids: List[str], collection_name: str, template_id: str) -> Dict:
     """
-    Trích xuất thông tin từ tài liệu với logic mới:
-    - Mỗi trường (không phải bảng) = 1 prompt = 1 tool call LangGraph agent
-    - Xử lý bảng riêng để lấy cấu trúc nhiều dòng
-    - Có timeout để tránh bị limit API
+    Trích xuất thông tin từ tài liệu với logic mới, đã được sửa lỗi và tối ưu hóa.
     """
+    # Tạo session context cho lần chạy này
     session_id, session_dir = create_context_session()
     print(f"🆔 Session ID: {session_id}")
     print(f"📁 Context folder: {session_dir}")
-
+    
     schema = load_template_schema(template_id)
     fields_to_extract = schema.get("fields", [])
     mapping = schema.get("mapping", {})
     final_result = {}
-
+    
+    # Tracking variables for session summary
     success_count = 0
     error_count = 0
 
     prompt_dictionary = {}
+    table_fields_to_run = []
     if template_id == 'template4':
         prompt_dictionary = TEMPLATE4_DETAILED_PROMPTS
-        table_fields_to_run = [f for f in TABLE_FIELDS_TEMPLATE4 if f in fields_to_extract]
+        table_fields_to_run = TABLE_FIELDS_TEMPLATE4
     else:
-        table_fields_to_run = []
+        # Tạo prompt mặc định cho các template khác
+        prompt_dictionary = {field: f"Trích xuất thông tin về: {field}" for field in fields_to_extract}
 
+    # Phân loại các trường: bảng và không phải bảng
     non_table_fields = [f for f in fields_to_extract if f not in table_fields_to_run]
+    
     total_fields = len(non_table_fields) + len(table_fields_to_run)
     print(f"🚀 Bắt đầu trích xuất cho {total_fields} trường:")
     print(f"   - {len(non_table_fields)} trường đơn lẻ")
     print(f"   - {len(table_fields_to_run)} trường bảng")
-
+    
     current_field_count = 0
-
+    
     # --- XỬ LÝ CÁC TRƯỜNG ĐƠN LẺ ---
     if non_table_fields:
-        print("\n📝 Bắt đầu xử lý các trường đơn lẻ...")
+        print(f"\n🔎 Trích xuất {len(non_table_fields)} trường đơn lẻ...")
+        
         for field in non_table_fields:
             current_field_count += 1
-            print(f"\n--- [{current_field_count}/{total_fields}] Xử lý trường: '{field}' ---")
-            if field in prompt_dictionary:
-                prompt_template = prompt_dictionary[field]
-                final_prompt = f"{prompt_template}. Trả về JSON với key='{field}'"
-            else:
-                final_prompt = f"Trích xuất thông tin: {field}"
-
-            if len(final_prompt.split()) > MAX_PROMPT_WORDS:
-                final_prompt = f"Tìm: {field}"
-                print(f"  - ⚠️ Prompt đã được rút gọn do giới hạn độ dài")
-
-            response_json = await query_langgraph_extraction_tool(final_prompt, file_ids, collection_name, template_id)
-            documents_context = ""  # Nếu muốn lưu context thực, cần sửa tool trả về context
-
-            save_field_context(session_dir, field, final_prompt, documents_context, str(response_json))
-
-            if response_json:
-                if field in response_json and is_valid_value(response_json[field]):
-                    final_result[field] = response_json[field]
+            field_prompt = prompt_dictionary.get(field, f"Trích xuất thông tin về: {field}")
+            
+            print(f"\n[{current_field_count}/{total_fields}] 🔍 Đang trích xuất: {field}")
+            try:
+                raw_result = _get_answer_from_rag(field_prompt, collection_name, session_dir)
+                cleaned_result = _clean_llm_response(raw_result)
+                
+                if is_valid_value(cleaned_result):
+                    final_result[field] = cleaned_result
                     success_count += 1
-                    print(f"  ✅ Đã tìm thấy: '{field}'")
-                elif len(response_json) == 1:
-                    key, value = next(iter(response_json.items()))
-                    if is_valid_value(value):
-                        final_result[field] = value
-                        success_count += 1
-                        print(f"  ✅ Đã tìm thấy (key khác): '{field}'")
-                    else:
-                        final_result[field] = None
-                        error_count += 1
-                        print(f"  ❌ Không tìm thấy giá trị hợp lệ: '{field}'")
+                    print(f"  - ✅ Trích xuất thành công")
+                    save_field_context(session_dir, field, field_prompt, str(raw_result), str(cleaned_result))
                 else:
-                    final_result[field] = None
                     error_count += 1
-                    print(f"  ❌ Không tìm thấy trong response: '{field}'")
-            else:
-                final_result[field] = None
+                    final_result[field] = ""
+                    print(f"  - ⚠️ Kết quả không hợp lệ hoặc rỗng")
+                
+                time.sleep(FIELD_PROCESSING_DELAY)
+                
+            except Exception as e:
                 error_count += 1
-                print(f"  ❌ Không có response hợp lệ: '{field}'")
-
-            if current_field_count < len(non_table_fields):
-                print(f"  ⏱️ Chờ {FIELD_PROCESSING_DELAY}s trước khi xử lý field tiếp theo...")
-                await asyncio.sleep(FIELD_PROCESSING_DELAY)
+                final_result[field] = ""
+                print(f"  - ❌ Lỗi khi xử lý trường '{field}': {str(e)}")
 
     # --- XỬ LÝ CÁC TRƯỜNG BẢNG ---
     if table_fields_to_run:
-        print(f"\n📊 Bắt đầu xử lý các trường bảng...")
+        print(f"\n📊 Trích xuất {len(table_fields_to_run)} trường bảng...")
+        
         for field in table_fields_to_run:
             current_field_count += 1
-            print(f"\n--- [{current_field_count}/{total_fields}] Xử lý bảng: '{field}' ---")
-            prompt_template = prompt_dictionary.get(field)
-            if not prompt_template:
-                print(f"  ❌ Lỗi: Không tìm thấy prompt chuyên dụng cho bảng '{field}'. Bỏ qua.")
-                final_result[field] = []
-                continue
-
-            if len(prompt_template.split()) > MAX_PROMPT_WORDS:
-                print(f"  - ⚠️ Prompt bảng quá dài ({len(prompt_template.split())} từ), sử dụng prompt đơn giản...")
-                if "ban_lanh_dao" in field:
-                    final_prompt = "Tìm ban lãnh đạo. JSON array: ten, chucVu, tyLeVon, mucDoAnhHuong, danhGia"
-                elif "dau_vao" in field:
-                    final_prompt = "Tìm đầu vào. JSON array: matHang, chiTiet (nguồn mua), pttt"
-                elif "dau_ra" in field:
-                    final_prompt = "Tìm đầu ra. JSON array: kenh, tyTrong (%), pttt"
-                else:
-                    final_prompt = "Tìm thông tin bảng. Trả về JSON array"
-            else:
-                final_prompt = prompt_template
-
-            if len(final_prompt.split()) > MAX_PROMPT_WORDS:
-                if "ban_lanh_dao" in field:
-                    final_prompt = "Trích xuất thông tin ban lãnh đạo dạng JSON array"
-                elif "dau_vao" in field:
-                    final_prompt = "Trích xuất thông tin đầu vào dạng JSON array"
-                elif "dau_ra" in field:
-                    final_prompt = "Trích xuất thông tin đầu ra dạng JSON array"
-                else:
-                    final_prompt = "Trích xuất thông tin bảng dạng JSON array"
-                print(f"  - 🔄 Sử dụng prompt rất đơn giản do giới hạn độ dài")
-
-            response_json = await query_langgraph_extraction_tool(final_prompt, file_ids, collection_name, template_id)
-            documents_context = ""
-            save_field_context(session_dir, field, final_prompt, documents_context, str(response_json))
-
-            extracted_data = None
-            if isinstance(response_json, dict) and field in response_json:
-                extracted_data = response_json[field]
-            elif isinstance(response_json, list):
-                extracted_data = response_json
-            elif isinstance(response_json, dict) and len(response_json) == 1:
-                key, value = next(iter(response_json.items()))
-                if isinstance(value, list):
-                    extracted_data = value
-
-            if extracted_data and isinstance(extracted_data, list) and len(extracted_data) > 0:
-                final_result[field] = extracted_data
-                success_count += 1
-                print(f"  ✅ Đã tìm thấy bảng '{field}' với {len(extracted_data)} dòng")
-                if extracted_data[0]:
-                    print(f"      Preview dòng đầu: {str(extracted_data[0])[:100]}...")
-            else:
+            table_prompt = prompt_dictionary.get(field)
+            
+            if not table_prompt:
+                print(f"\n[{current_field_count}/{total_fields}] ⚠️ Không có prompt cho bảng: {field}")
                 final_result[field] = []
                 error_count += 1
-                print(f"  ❌ Không tìm thấy dữ liệu bảng hợp lệ cho '{field}'")
-
-            if current_field_count < total_fields:
-                print(f"  ⏱️ Chờ {TABLE_PROCESSING_DELAY}s sau khi xử lý bảng...")
-                await asyncio.sleep(TABLE_PROCESSING_DELAY)
+                continue
+                
+            print(f"\n[{current_field_count}/{total_fields}] 📋 Đang trích xuất bảng: {field}")
+            
+            try:
+                ## BUG FIX: Sử dụng 'table_prompt' thay vì 'field_prompt'
+                raw_result = _get_answer_from_rag(table_prompt, collection_name, session_dir)
+                cleaned_result = _clean_llm_response(raw_result)
+                
+                ## OPTIMIZATION: Đơn giản hóa logic parse vì _clean_llm_response đã làm việc này
+                parsed_result = []
+                if isinstance(cleaned_result, list):
+                    parsed_result = cleaned_result
+                
+                # Lưu kết quả
+                final_result[field] = parsed_result
+                
+                if parsed_result:
+                    success_count += 1
+                    print(f"  - ✅ Trích xuất thành công: {len(parsed_result)} mục")
+                    save_field_context(session_dir, field, table_prompt, str(raw_result), str(parsed_result))
+                else:
+                    error_count += 1
+                    print(f"  - ⚠️ Không tìm thấy dữ liệu bảng hoặc không parse được")
+                
+                time.sleep(TABLE_PROCESSING_DELAY)
+                    
+            except Exception as e:
+                error_count += 1
+                final_result[field] = []
+                print(f"  - ❌ Lỗi khi trích xuất bảng '{field}': {str(e)}")
 
     print(f"\n\n✅ Hoàn tất trích xuất {total_fields} trường!")
     print(f"   - Thành công: {success_count} trường")
     print(f"   - Lỗi: {error_count} trường")
-    print(f"   - Tỷ lệ thành công: {(success_count/total_fields*100):.1f}%")
-
+    print(f"   - Tỷ lệ thành công: {(success_count/total_fields*100):.1f}%" if total_fields > 0 else "0%")
+    
     save_session_summary(session_dir, session_id, total_fields, success_count, error_count)
 
     print(f"\n📋 CHI TIẾT KẾT QUẢ TRÍCH XUẤT:")
     print("=" * 80)
+    
     successful_fields = []
     failed_fields = []
+    
     for field, value in final_result.items():
-        if value is not None and value != []:
+        if is_valid_value(value):
             successful_fields.append(field)
-            if isinstance(value, list):
-                print(f"✅ {field}: ARRAY với {len(value)} phần tử")
-                if len(value) > 0:
-                    print(f"    └─ Phần tử đầu: {str(value[0])[:150]}...")
-            else:
-                print(f"✅ {field}: {str(value)[:100]}{'...' if len(str(value)) > 100 else ''}")
         else:
             failed_fields.append(field)
-            print(f"❌ {field}: KHÔNG TÌM THẤY")
-
+    
     print(f"\n📊 THỐNG KÊ:")
     print(f"   - Thành công: {len(successful_fields)}/{total_fields} trường")
     print(f"   - Thất bại: {len(failed_fields)}/{total_fields} trường")
-
+    
     if failed_fields:
-        print(f"\n🔍 CÁC TRƯỜNG THẤT BẠI:")
-        for field in failed_fields:
-            print(f"   - {field}")
+        print(f"   - Các trường thất bại: {', '.join(failed_fields)}")
 
     if template_id == "template4":
-        structured_result = structure_data_for_loan_assessment_report(final_result, mapping)
-        try:
-            json_output = json.dumps(structured_result, indent=2, ensure_ascii=False)
-            print(json_output)
-        except Exception as e:
-            print(f"❌ Lỗi serialize JSON: {e}")
-            print(f"📊 Raw data: {structured_result}")
-        print(f"{'='*80}")
-        print(f"✅ KẾT THÚC LOG DỮ LIỆU FRONTEND")
-        print(f"{'='*80}\n")
-        return structured_result
-
+        return structure_data_for_loan_assessment_report(final_result, mapping)
+    
     return final_result

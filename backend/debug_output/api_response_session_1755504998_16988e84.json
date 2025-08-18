@@ -1,0 +1,74 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "giayPhep": "0101442420",
+      "idT24": "0101442420",
+      "phanKhuc": "CIB",
+      "loaiKhachHang": "",
+      "nganhNghe": "",
+      "mucDichBaoCao": "",
+      "ketQuaPhanLuong": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "xhtd": ""
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 - 2.1, KCN Thạch Thất, Thị Trấn Quốc Oai, Huyện Quốc Oai, Thành phố Hà Nội, Việt Nam",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": "Không"
+      },
+      "banLanhDao": [
+        {
+          "ten": "ĐÀO CÔNG DUY",
+          "chucVu": "Tổng giám đốc",
+          "tyLeVon": "",
+          "mucDoAnhHuong": "",
+          "danhGia": ""
+        }
+      ],
+      "nhanXet": {
+        "thongTinChung": "2004, 20 năm, mặt dựng, sản phẩm mặt dựng",
+        "phapLyGpkd": "0101442420, ngày 19/01/2004, Sở Kế hoạch và Đầu tư Thành phố Hà Nội, thay đổi lần 8 ngày 12/04/2023",
+        "chuDoanhNghiep": "",
+        "kyc": "Công ty Cổ phần Mặt Dựng CAG hoạt động ổn định với vốn điều lệ lớn và lịch sử hoạt động lâu dài từ năm 2004."
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Xây lắp",
+        "sanPham": "",
+        "tyTrongN1": "",
+        "tyTrongN": ""
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "",
+        "nam2023": "",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "",
+        "loiThe": "",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": "Công ty cổ phần Mặt dựng CAG có vốn điều lệ 800 tỷ đồng, đăng ký kinh doanh từ năm 2004 và đã thay đổi thông tin 8 lần, thể hiện quy mô lớn và sự ổn định pháp lý."
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": ""
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "DKKD lan 8 ngay 12.04.2023.pdf"
+  ],
+  "collection_name": "session-s2b-d4e6a27b-b372-4017-8202-bc853123990f",
+  "processing_time": 362.0568206310272,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755504998_16988e84"
+}

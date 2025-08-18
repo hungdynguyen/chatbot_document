@@ -1,0 +1,9 @@
+{
+  "timestamp": "2025-08-18T15:18:56.245285",
+  "field_name": "Nhận xét - Thông tin khách hàng",
+  "prompt": "Dựa vào tên đầy đủ của khách hàng. Tóm tắt: năm thành lập, số năm hoạt động, lĩnh vực, sản phẩm chính. Tạo thành 1 đoạn văn ngắn 1,2 câu",
+  "raw_response_from_rag": "2004, 20 năm, mặt dựng, sản phẩm mặt dựng",
+  "cleaned_response": "2004, 20 năm, mặt dựng, sản phẩm mặt dựng",
+  "prompt_word_count": 30,
+  "response_word_count": 9
+}

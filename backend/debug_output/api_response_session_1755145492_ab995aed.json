@@ -1,0 +1,70 @@
+{
+  "summary": "Quá trình trích xuất thông tin đã hoàn tất.",
+  "extracted_data": {
+    "thongTinChung": {
+      "tenKhachHang": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "giayPhep": "0101442420",
+      "idT24": "22079986",
+      "phanKhuc": "MM",
+      "loaiKhachHang": "",
+      "nganhNghe": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+      "mucDichBaoCao": "cấp tín dụng mới",
+      "ketQuaPhanLuong": "Khuyên khích",
+      "xhtd": "Aa3"
+    },
+    "thongTinKhachHang": {
+      "phapLy": {
+        "ngayThanhLap": "19/01/2004",
+        "diaChi": "Lô CN4 – 2.1, KCN Thạch Thất, thị trấn Quốc Oai, huyện Quốc Oai, thành phố Hà Nội",
+        "nguoiDaiDien": "ĐÀO CÔNG DUY",
+        "nganhNgheCoDieuKien": "Không"
+      },
+      "banLanhDao": [],
+      "nhanXet": {
+        "thongTinChung": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG thành lập năm 2004, hoạt động 19 năm trong lĩnh vực sản xuất mặt dựng nhôm kính, sản phẩm chính là hệ nhôm kính và mặt dựng.",
+        "phapLyGpkd": "Số 0101442420 do Phòng Đăng ký kinh doanh – Sở Kế hoạch và Đầu tư thành phố Hà Nội cấp, đăng ký lần đầu ngày 19/01/2004, đăng ký thay đổi lần thứ 8 ngày 12/04/2023",
+        "chuDoanhNghiep": "ĐÀO CÔNG DUY là Tổng Giám đốc CÔNG TY CỔ PHẦN MẶT DỰNG CAG, có kinh nghiệm quản lý với 90% vốn góp, công ty hoạt động trong lĩnh vực mặt dựng và nhôm kính.",
+        "kyc": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG hoạt động ổn định với vốn điều lệ lớn và cơ cấu cổ đông rõ ràng."
+      }
+    },
+    "hoatDongKinhDoanh": {
+      "linhVuc": {
+        "linhVuc": "Sản xuất",
+        "sanPham": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
+        "tyTrongN1": "",
+        "tyTrongN": ""
+      },
+      "tyTrongTheoNhomHang": {
+        "nhomHang": "Mặt dựng nhôm kính",
+        "nam2023": "",
+        "nam10T2024": ""
+      },
+      "moTaSanPham": {
+        "sanPham": "Nhôm kính, mặt dựng",
+        "loiThe": "3 nhà máy lắp ráp & thi công",
+        "nangLucDauThau": ""
+      },
+      "quyTrinhVanHanhText": "Nhập phôi kính gia công (gia công nhiệt (tôi kính để tăng tính cường lực), dán (mua phim an toàn), lắp kính hộp. Nhập NVL (Nhôm đùn sẵn) Sơn tĩnh điện Cắt Lên khung Lên Ulip Giao sản phẩm",
+      "dauVao": [],
+      "dauRa": [],
+      "nhanXetHoatDong": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG có vốn điều lệ 800 tỷ đồng, hoạt động trong lĩnh vực sản xuất mặt dựng nhôm kính với quy trình sản xuất chuyên nghiệp, đáp ứng 70% nhu cầu kho hàng."
+    },
+    "thongTinNganh": {
+      "cungCau": "",
+      "nhanXet": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG hoạt động trong ngành sản xuất và thi công hệ nhôm kính, mặt dựng, chuyên cung cấp sản phẩm cho các công trình cao cấp và dân dụng."
+    }
+  },
+  "prompt": "Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
+  "file_ids": [
+    "call-rp.xlsx",
+    "DKKD lan 8 ngay 12.04.2023.pdf",
+    "DN HMTD CAG 2024 (1).docx",
+    "MB01-HD.SPDN_43 - Hỗ Trợ Phân Nhóm Khách Hàng (1).xls",
+    "SO-SÁNH-DN-CÙNG-NGÀNH.docx"
+  ],
+  "collection_name": "session-s2b-a034fc4d-a79d-48e6-80b3-7270b6661cda",
+  "processing_time": 609.2009973526001,
+  "status": "success",
+  "message": "Extracted data successfully",
+  "session_id": "session_1755145492_ab995aed"
+}

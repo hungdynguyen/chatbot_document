@@ -1,0 +1,1134 @@
+[
+  {
+    "question": "Tên đầy đủ của khách hàng là gì? Chỉ trả về duy nhất cái tên hiện tại",
+    "type": "TEXT",
+    "ground_truth": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG"
+  },
+  {
+    "question": "Số giấy phép đăng ký kinh doanh của khách hàng là gì? Chỉ trả về duy nhất số giấy phép",
+    "type": "TEXT",
+    "ground_truth": "0101442420"
+  },
+  {
+    "question": "ID khách hàng là gì? Chỉ trả về duy nhất ID",
+    "type": "TEXT",
+    "ground_truth": "0100016422"
+  },
+  {
+    "question": "Phân khúc của khách hàng là gì? Chỉ trả về duy nhất phân khúc",
+    "type": "TEXT",
+    "ground_truth": "MM"
+  },
+  {
+    "question": "XHTD của khách hàng là gì?, XHTD là xếp hạng tín dụng của khách hàng và thường có các giá trị như Aa3, Baa2, v.v. Chỉ trả về duy nhất giá trị xếp hạng tín dụng",
+    "type": "TEXT",
+    "ground_truth": "Aa3"
+  },
+  {
+    "question": "Ngày thành lập công ty là ngày nào? Chỉ trả về duy nhất ngày thành lập",
+    "type": "TEXT",
+    "ground_truth": "19/01/2004"
+  },
+  {
+    "question": "Địa chỉ đăng ký kinh doanh của công ty là gì? Chỉ trả về duy nhất địa chỉ đăng ký kinh doanh",
+    "type": "TEXT",
+    "ground_truth": "LÔ CN4 - 2.1, KCN THẠCH THẤT, THỊ TRẤN QUỐC OAI, HUYỆN QUỐC OAI, TP HÀ NỘI"
+  },
+  {
+    "question": "Người đại diện theo pháp luật của công ty là ai? Chỉ trả về duy nhất tên người đại diện",
+    "type": "TEXT",
+    "ground_truth": "ĐÀO CÔNG DUY"
+  },
+  {
+    "question": "Khách hàng có kinh doanh ngành nghề có điều kiện không?",
+    "type": "TEXT",
+    "ground_truth": "Có"
+  },
+  {
+    "question": "Thông tin chi tiết về ban lãnh đạo công ty là gì. Hãy liệt kê đầy đủ tên các thành viên, chức vụ, tỉ lệ góp vốn nếu có? (Định dạng: Chuỗi JSON chứa một danh sách các đối tượng. Mỗi đối tượng phải có các khóa \"ten\", \"tyLeVon\", \"chucVu\", \"mucDoAnhHuong\", \"danhGia\". Nếu không có thông tin về một khóa nào đó, hãy để giá trị là null.",
+    "type": "TEXT",
+    "ground_truth": "[{\"ten\": \"Đào Công Duy\", \"tyLeVon\": \"90%\", \"chucVu\": \"Tổng giám đốc\", \"mucDoAnhHuong\": null, \"danhGia\": null}, {\"ten\": \"Thái Thị Kim Dung\", \"tyLeVon\": \"8%\", \"chucVu\": \"Phụ trách tài chính\", \"mucDoAnhHuong\": null, \"danhGia\": null}, {\"ten\": \"Đào Công Dũng\", \"tyLeVon\": \"2%\", \"chucVu\": \"Phụ trách kỹ thuật\", \"mucDoAnhHuong\": null, \"danhGia\": null}]"
+  },
+  {
+    "question": "Thông tin chi tiết về đầu vào sản xuất kinh doanh là gì? (Định dạng: Chuỗi JSON với các khóa \"matHang\", \"chiTiet\", \"pttt\". Nếu không có thông tin cho một khóa, hãy dùng giá trị `null`.)",
+    "type": "TEXT",
+    "ground_truth": "{\"matHang\": \"Nhôm thanh, phôi kính\", \"chiTiet\": \"Nhôm thanh kích thước nhỏ nhập khẩu trong nước, kích thước lớn nhập khẩu từ Trung Quốc. Kính không màu nhập trong nước, kính có màu nhập khẩu.\", \"pttt\": null}"
+  },
+  {
+    "question": "Thông tin chi tiết về đầu ra sản xuất kinh doanh là gì?",
+    "type": "TEXT",
+    "ground_truth": "{\"kenh\": null, \"tyTrong\": null, \"pttt\": null}"
+  },
+  {
+    "question": "Lĩnh vực kinh doanh (ngành nghề kinh doanh) của công ty là gì?",
+    "type": "TEXT",
+    "ground_truth": "Dịch vụ xây lắp, lắp đặt"
+  },
+  {
+    "question": "Sản phẩm/dịch vụ của công ty là gì?",
+    "type": "TEXT",
+    "ground_truth": "Hệ thống mặt dựng kính, tấm ốp Alu, Hệ thống cửa kính, cửa sổ, lam chắn nắng, cầu thang kính"
+  },
+  {
+    "question": "Đầu vào - mặt hàng là gì?",
+    "type": "TEXT",
+    "ground_truth": "Nhôm thanh, phôi kính"
+  },
+  {
+    "question": "Đầu vào - chi tiết là gì?",
+    "type": "TEXT",
+    "ground_truth": "Nhôm thanh kích thước nhỏ nhập khẩu trong nước, kích thước lớn nhập khẩu từ Trung Quốc. Kính không màu nhập trong nước, kính có màu nhập khẩu."
+  },
+  {
+    "question": "Xu hướng nợ trong 12 tháng gần đây",
+    "type": "TABLE",
+    "ground_truth": {
+      "title": "Diễn biến dư nợ 12 tháng gần nhất",
+      "columns": [
+        "Thời gian",
+        "Dư nợ vay",
+        "Dư nợ thẻ",
+        "Tổng dư nợ"
+      ],
+      "data": [
+        {
+          "Thời gian": "03/2024",
+          "Dư nợ vay": "471,315",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "471,315"
+        },
+        {
+          "Thời gian": "02/2024",
+          "Dư nợ vay": "442,996",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "442,996"
+        },
+        {
+          "Thời gian": "01/2024",
+          "Dư nợ vay": "429,515",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "429,515"
+        },
+        {
+          "Thời gian": "12/2023",
+          "Dư nợ vay": "445,225",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "445,225"
+        },
+        {
+          "Thời gian": "11/2023",
+          "Dư nợ vay": "420,580",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "420,580"
+        },
+        {
+          "Thời gian": "10/2023",
+          "Dư nợ vay": "386,621",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "386,621"
+        },
+        {
+          "Thời gian": "09/2023",
+          "Dư nợ vay": "391,148",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "391,148"
+        },
+        {
+          "Thời gian": "08/2023",
+          "Dư nợ vay": "385,872",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "385,872"
+        },
+        {
+          "Thời gian": "07/2023",
+          "Dư nợ vay": "361,718",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "361,718"
+        },
+        {
+          "Thời gian": "06/2023",
+          "Dư nợ vay": "386,237",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "386,237"
+        },
+        {
+          "Thời gian": "05/2023",
+          "Dư nợ vay": "377,829",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "377,829"
+        },
+        {
+          "Thời gian": "04/2023",
+          "Dư nợ vay": "403,504",
+          "Dư nợ thẻ": null,
+          "Tổng dư nợ": "403,504"
+        }
+      ]
+    }
+  },
+  {
+    "question": "So sánh quy mô doanh nghiệp cùng ngành.",
+    "type": "TABLE",
+    "ground_truth": {
+      "title": "So sánh quy mô một số doanh nghiệp cùng ngành",
+      "columns": [
+        "Chỉ tiêu",
+        "Sunspace",
+        "CAG",
+        "Eurowindow",
+        "BM Windows"
+      ],
+      "data": [
+        {
+          "Chỉ tiêu": "Năm Thành lập",
+          "Sunspace": "2003",
+          "CAG": "2004",
+          "Eurowindow": "2002",
+          "BM Windows": "2016"
+        },
+        {
+          "Chỉ tiêu": "Quy mô doanh thu 2023",
+          "Sunspace": "769 tỷ đồng",
+          "CAG": "944 tỷ đồng",
+          "Eurowindow": ">2000 tỷ đồng",
+          "BM Windows": ">2000 tỷ đồng"
+        },
+        {
+          "Chỉ tiêu": "Sản phẩm",
+          "Sunspace": "Hệ thống vách kính – mặt dựng\nHệ thống cửa nhôm – vách kính\nHệ thống cabin tắm và lan can kính\nHệ thống cửa nhựa uPVC\nHệ thống cửa kính tự động\nHệ thống cửa cuốn",
+          "CAG": "Hệ thống mặt dựng kính\nTấm ốp Alu\nHệ thống cửa kính (cửa tự động, cửa mở quay, cửa đi lùa), cửa sổ (mở quay, mở hắt)\nLam chắn nắng, cầu thang kính",
+          "Eurowindow": "Cửa uPVC\nCửa gỗ, nội thất, cửa cuốn, cửa chống cháy\nCửa nhôm và hệ vách nhôm kính lớn\nKính",
+          "BM Windows": "Mặt dựng nhôm kính\nHệ thống cửa"
+        },
+        {
+          "Chỉ tiêu": "Năng lực sản xuất",
+          "Sunspace": "Nhà máy Miền Bắc: Địa chỉ: Hưng yên; Diện tích: 10,000 m2; Sản phẩm: Cửa nhôm – vách kính mặt dụng; Năng lực SX: 300,000 m2/năm\nNhà máy miền Nam: Địa điểm: Đồng Nai; Diện tích: 20,000 m2; Sản phẩm: Cửa nhôm – vách kính; Năng lực SX: 250,000 m2/năm",
+          "CAG": "Nhà máy CAG 1: Địa điểm: Lô CN4, KCN Thạch Thất; Diện tích: 10,000 m2; Sản phẩm: Tôi kính, cắt kính; Năng lực sản xuất: 60 công nhân\nNhà máy CAG 2: Địa điểm: Lô CN7, KCN Thạch Thất; Diện tích: 20,000 m2 (2 tầng); Sản phẩm: chuyên về nhôm + sơn và hoàn thiện sản phẩm; 100 công nhân\nNhà máy CAG 3: Địa điểm: Đồng Nai; Diện tích: 17,000 m2; Sản phẩm: gia công khung nhôm; 40 công nhân",
+          "Eurowindow": "Nhà máy Eurowindow 1: Địa điểm: Lô 15, KCN Quang Minh, HN\nNhà máy Eurowindow 2: Địa điểm: Tân Uyên, Bình Dương\nNhà máy Eurowindow 3: Địa điểm: Liên Chiểu, Đà Nẵng\nNhà máy Eurowindow 4: Địa điểm: Mê Linh, HN\nNhà máy Eurowindow 5: Địa điểm: Tân Uyên, Bình Dương",
+          "BM Windows": "Nhà máy Bình Dương 1: Diện tích: 25,000 m2; Công suất: 1,000,000 m2/năm; 200 công nhân\nNhà máy Bình Dương 2: Diện tích: 14,000 m2; Công suất: 500,000 m2/năm; 100 công nhân\nNhà máy Hà Nội: Diện tích: 8,000 m2; Công suất: 300,000 m2/năm; 100 công nhân\nNhà máy Long An: Diện tích: 5,000 m2; Công suất: 200,000 m2; 100 công nhân"
+        },
+        {
+          "Chỉ tiêu": "Đầu ra",
+          "Sunspace": "Chủ yếu thi công các dự án của Vingroup, các tổng thầu lớn (Hòa Bình, BIM group, ..)",
+          "CAG": "NSNN: Bộ ban ngành, ACV, TKV, bệnh viện\nCĐT tư nhân",
+          "Eurowindow": "NSNN: Bộ ban ngành, trụ sở cơ quan các tỉnh, ACV, bệnh viện\nCĐT tư nhân",
+          "BM Windows": "Chủ yếu CĐT tư nhân\nDự án ngoài nước"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Báo cáo lưu chuyển tiền tệ",
+    "type": "TABLE",
+    "ground_truth": {
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ (THEO PP TRỰC TIẾP) Tại ngày 31/12/2023",
+      "columns": [
+        "STT",
+        "Chỉ tiêu",
+        "Mã",
+        "Thuyết minh",
+        "Số năm nay",
+        "Số năm trước"
+      ],
+      "data": [
+        {
+          "STT": "(1)",
+          "Chỉ tiêu": "(2)",
+          "Mã": "(3)",
+          "Thuyết minh": "(4)",
+          "Số năm nay": "(5)",
+          "Số năm trước": "(6)"
+        },
+        {
+          "STT": "I",
+          "Chỉ tiêu": "Lưu chuyển tiền từ hoạt động kinh doanh",
+          "Mã": null,
+          "Thuyết minh": null,
+          "Số năm nay": null,
+          "Số năm trước": null
+        },
+        {
+          "STT": "1",
+          "Chỉ tiêu": "1. Tiền thu từ bán hàng, cung cấp dịch vụ và doanh thu khác",
+          "Mã": "01",
+          "Thuyết minh": null,
+          "Số năm nay": "1.063.409.184.538",
+          "Số năm trước": "963.438.952.280"
+        },
+        {
+          "STT": "2",
+          "Chỉ tiêu": "2. Tiền chi trả cho người cung cấp hàng hóa và dịch vụ",
+          "Mã": "02",
+          "Thuyết minh": null,
+          "Số năm nay": "(819.423.628.720)",
+          "Số năm trước": "(741.545.185.413)"
+        },
+        {
+          "STT": "3",
+          "Chỉ tiêu": "3. Tiền chi trả cho người lao động",
+          "Mã": "03",
+          "Thuyết minh": null,
+          "Số năm nay": "(60.530.373.167)",
+          "Số năm trước": "(55.032.292.508)"
+        },
+        {
+          "STT": "4",
+          "Chỉ tiêu": "4. Tiền chi trả lãi vay",
+          "Mã": "04",
+          "Thuyết minh": null,
+          "Số năm nay": "(38.887.116.978)",
+          "Số năm trước": "(35.467.308.480)"
+        },
+        {
+          "STT": "5",
+          "Chỉ tiêu": "5. Tiền chi nộp thuế thu nhập doanh nghiệp",
+          "Mã": "05",
+          "Thuyết minh": null,
+          "Số năm nay": "(13.220.026.563)",
+          "Số năm trước": "(14.044.875.856)"
+        },
+        {
+          "STT": "6",
+          "Chỉ tiêu": "6. Tiền thu khác từ hoạt động kinh doanh",
+          "Mã": "06",
+          "Thuyết minh": null,
+          "Số năm nay": "12.529.391.591",
+          "Số năm trước": "17.022.312.998"
+        },
+        {
+          "STT": "7",
+          "Chỉ tiêu": "7. Tiền chi khác cho hoạt động kinh doanh",
+          "Mã": "07",
+          "Thuyết minh": null,
+          "Số năm nay": "(73.108.553.062)",
+          "Số năm trước": "(57.863.816.215)"
+        },
+        {
+          "STT": null,
+          "Chỉ tiêu": "Lưu chuyển tiền thuần từ hoạt động kinh doanh",
+          "Mã": "20",
+          "Thuyết minh": null,
+          "Số năm nay": "70.768.877.639",
+          "Số năm trước": "76.507.786.806"
+        },
+        {
+          "STT": "II",
+          "Chỉ tiêu": "Lưu chuyển tiền từ hoạt động đầu tư",
+          "Mã": null,
+          "Thuyết minh": null,
+          "Số năm nay": null,
+          "Số năm trước": null
+        },
+        {
+          "STT": "1",
+          "Chỉ tiêu": "1. Tiền chi mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",
+          "Mã": "21",
+          "Thuyết minh": null,
+          "Số năm nay": "(321.100.000)",
+          "Số năm trước": "(397.100.000)"
+        },
+        {
+          "STT": "2",
+          "Chỉ tiêu": "2. Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",
+          "Mã": "22",
+          "Thuyết minh": null,
+          "Số năm nay": null,
+          "Số năm trước": null
+        },
+        {
+          "STT": "3",
+          "Chỉ tiêu": "3. Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",
+          "Mã": "23",
+          "Thuyết minh": null,
+          "Số năm nay": "(200.000.000)",
+          "Số năm trước": "(200.000.000)"
+        },
+        {
+          "STT": "4",
+          "Chỉ tiêu": "4. Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",
+          "Mã": "24",
+          "Thuyết minh": null,
+          "Số năm nay": null,
+          "Số năm trước": null
+        },
+        {
+          "STT": "5",
+          "Chỉ tiêu": "5. Tiền chi đầu tư góp vốn vào đơn vị khác",
+          "Mã": "25",
+          "Thuyết minh": null,
+          "Số năm nay": "(3.800.000.000)",
+          "Số năm trước": "(31.100.000.000)"
+        },
+        {
+          "STT": "6",
+          "Chỉ tiêu": "6. Tiền thu hồi đầu tư góp vốn vào đơn vị khác",
+          "Mã": "26",
+          "Thuyết minh": null,
+          "Số năm nay": null,
+          "Số năm trước": null
+        },
+        {
+          "STT": "7",
+          "Chỉ tiêu": "7. Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",
+          "Mã": "27",
+          "Thuyết minh": null,
+          "Số năm nay": "733.181.156",
+          "Số năm trước": "591.496.523"
+        },
+        {
+          "STT": null,
+          "Chỉ tiêu": "Lưu chuyển tiền thuần từ hoạt động đầu tư",
+          "Mã": "30",
+          "Thuyết minh": null,
+          "Số năm nay": "(3.587.918.844)",
+          "Số năm trước": "(31.105.603.477)"
+        },
+        {
+          "STT": "III",
+          "Chỉ tiêu": "Lưu chuyển tiền từ hoạt động tài chính",
+          "Mã": null,
+          "Thuyết minh": null,
+          "Số năm nay": null,
+          "Số năm trước": null
+        },
+        {
+          "STT": "1",
+          "Chỉ tiêu": "1. Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu",
+          "Mã": "31",
+          "Thuyết minh": null,
+          "Số năm nay": null,
+          "Số năm trước": null
+        },
+        {
+          "STT": "2",
+          "Chỉ tiêu": "2. Tiền chi trả vốn góp cho các chủ sở hữu, mua lại cổ phiếu của doanh nghiệp đã phát hành",
+          "Mã": "32",
+          "Thuyết minh": null,
+          "Số năm nay": null,
+          "Số năm trước": null
+        },
+        {
+          "STT": "3",
+          "Chỉ tiêu": "3. Tiền vay ngắn hạn, dài hạn nhận được",
+          "Mã": "33",
+          "Thuyết minh": null,
+          "Số năm nay": "404.258.252.580",
+          "Số năm trước": "370.316.318.745"
+        },
+        {
+          "STT": "4",
+          "Chỉ tiêu": "4. Tiền chi trả nợ gốc vay",
+          "Mã": "34",
+          "Thuyết minh": null,
+          "Số năm nay": "(412.841.338.550)",
+          "Số năm trước": "(388.635.478.336)"
+        },
+        {
+          "STT": "5",
+          "Chỉ tiêu": "5. Tiền chi trả nợ thuê tài chính",
+          "Mã": "35",
+          "Thuyết minh": null,
+          "Số năm nay": "(2.066.914.906)",
+          "Số năm trước": "(1.884.410.252)"
+        },
+        {
+          "STT": "6",
+          "Chỉ tiêu": "6. Cổ tức, lợi nhuận đã trả cho chủ sở hữu",
+          "Mã": "36",
+          "Thuyết minh": null,
+          "Số năm nay": null,
+          "Số năm trước": "(40.000.000.000)"
+        },
+        {
+          "STT": null,
+          "Chỉ tiêu": "Lưu chuyển tiền thuần từ hoạt động tài chính",
+          "Mã": "40",
+          "Thuyết minh": null,
+          "Số năm nay": "(10.650.000.876)",
+          "Số năm trước": "(60.203.569.843)"
+        },
+        {
+          "STT": null,
+          "Chỉ tiêu": "Lưu chuyển tiền thuần trong năm",
+          "Mã": "50",
+          "Thuyết minh": null,
+          "Số năm nay": "56.530.957.919",
+          "Số năm trước": "(14.801.386.514)"
+        },
+        {
+          "STT": null,
+          "Chỉ tiêu": "Tiền và tương đương tiền đầu năm",
+          "Mã": "60",
+          "Thuyết minh": null,
+          "Số năm nay": "14.330.002.099",
+          "Số năm trước": "29.131.388.613"
+        },
+        {
+          "STT": null,
+          "Chỉ tiêu": "Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ",
+          "Mã": "61",
+          "Thuyết minh": null,
+          "Số năm nay": null,
+          "Số năm trước": null
+        },
+        {
+          "STT": null,
+          "Chỉ tiêu": "Tiền và tương đương tiền cuối kỳ",
+          "Mã": "70",
+          "Thuyết minh": "VII.34",
+          "Số năm nay": "70.860.960.018",
+          "Số năm trước": "14.330.002.099"
+        }
+      ]
+    }
+  },
+  {
+    "question": "Phải thu khách hàng.",
+    "type": "TABLE",
+    "ground_truth": {
+      "title": "BẢNG KÊ CHI TIẾT CÁC KHOẢN PHẢI THU KHÁCH HÀNG Từ ngày 01/01/2023 đến hết ngày 31/12/2023",
+      "columns": [
+        "TT",
+        "Khách hàng",
+        "Dư đầu kỳ - Nợ",
+        "Dư đầu kỳ - Có",
+        "Phát sinh trong năm - Nợ",
+        "Phát sinh trong năm - Có",
+        "Dư cuối kỳ - Nợ",
+        "Dư cuối kỳ - Có"
+      ],
+      "data": [
+        {
+          "TT": "1",
+          "Khách hàng": "Công ty CP xây lắp dầu khí Miền Trung",
+          "Dư đầu kỳ - Nợ": "2.288.510.173",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "2.288.510.173",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "2",
+          "Khách hàng": "BQL xây dựng đài truyền hình KTS VTC",
+          "Dư đầu kỳ - Nợ": "7.685.580.373",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "7.685.580.373",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "3",
+          "Khách hàng": "Tổng công ty CP ĐT XD và TM Việt Nam",
+          "Dư đầu kỳ - Nợ": "3.152.375.867",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "3.152.375.867",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "4",
+          "Khách hàng": "Tổng công ty TMXD Vietracimex",
+          "Dư đầu kỳ - Nợ": "2.285.394.334",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "2.285.394.334",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "5",
+          "Khách hàng": "Tổng công ty ĐT PT hạ tầng đô thị UDIC - Công ty TNHH MTV",
+          "Dư đầu kỳ - Nợ": "7.621.150.840",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "7.621.150.840",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "6",
+          "Khách hàng": "Ban QLDA đầu tư xây dựng Bộ ngoại giao",
+          "Dư đầu kỳ - Nợ": "10.173.530.681",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "10.173.530.681",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "7",
+          "Khách hàng": "Công ty cổ phần Sông Đà Thăng Long",
+          "Dư đầu kỳ - Nợ": null,
+          "Dư đầu kỳ - Có": "876.234.268",
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": "876.234.268"
+        },
+        {
+          "TT": "8",
+          "Khách hàng": "Công ty CP ĐT xây lắp dầu khí IMICO",
+          "Dư đầu kỳ - Nợ": "18.240.281.799",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "8.400.000.000",
+          "Dư cuối kỳ - Nợ": "9.840.281.799",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "9",
+          "Khách hàng": "XN XD số 4 - Tổng công ty ĐTPT hạ tầng đô thị UDIC",
+          "Dư đầu kỳ - Nợ": "11.931.838.251",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "700.000.000",
+          "Dư cuối kỳ - Nợ": "11.231.838.251",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "10",
+          "Khách hàng": "Công ty TNHH MTV ĐT Nam Khánh",
+          "Dư đầu kỳ - Nợ": "482.971.771",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "482.971.771",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "11",
+          "Khách hàng": "Ban QL các dự án từ nguồn vốn ngân sách",
+          "Dư đầu kỳ - Nợ": "3.221.555.047",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "3.221.555.047",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "12",
+          "Khách hàng": "Ngân hàng TMCP Quân Đội - Cty CP tổng cty Mbland",
+          "Dư đầu kỳ - Nợ": "16.596.840.640",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "7.312.078.946",
+          "Phát sinh trong năm - Có": "23.908.919.586",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "13",
+          "Khách hàng": "Công ty CP ĐT và XD Sơn Lâm Nha Trang",
+          "Dư đầu kỳ - Nợ": "17.283.201.719",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "7.700.000.000",
+          "Dư cuối kỳ - Nợ": "9.583.201.719",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "14",
+          "Khách hàng": "Công ty cổ phần kinh doanh địa ốc Phương Nam 3A-2",
+          "Dư đầu kỳ - Nợ": "90.300.244.950",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "90.300.244.950",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "15",
+          "Khách hàng": "Công ty cổ phần Tôn Đản Hà Nội",
+          "Dư đầu kỳ - Nợ": "14.372.283.763",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "13.856.576.801",
+          "Dư cuối kỳ - Nợ": "515.706.962",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "16",
+          "Khách hàng": "Công ty CP ĐT và XD Bảo Quân",
+          "Dư đầu kỳ - Nợ": "2.461.204.841",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "2.461.204.841",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "17",
+          "Khách hàng": "Tập đoàn công nghiệp Than - Khoáng Sản Việt Nam",
+          "Dư đầu kỳ - Nợ": "53.516.855.219",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "53.516.855.219",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "18",
+          "Khách hàng": "Công ty BĐS Viettel - CN Tập đoàn công nghiệp viễn thông Quân Đội",
+          "Dư đầu kỳ - Nợ": "322.930.804",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "322.930.804",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "19",
+          "Khách hàng": "Công ty cổ phần công nghiệp Thuận Tường",
+          "Dư đầu kỳ - Nợ": "47.760.466.721",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "20.213.935.186",
+          "Phát sinh trong năm - Có": "41.574.334.271",
+          "Dư cuối kỳ - Nợ": "26.400.067.636",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "20",
+          "Khách hàng": "Ngân hàng BIDV - CN Thái Hà",
+          "Dư đầu kỳ - Nợ": "256.500.000",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "256.500.000",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "21",
+          "Khách hàng": "Tổng công ty Thành An",
+          "Dư đầu kỳ - Nợ": "7.665.191.546",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "24.194.822.517",
+          "Phát sinh trong năm - Có": "23.558.145.105",
+          "Dư cuối kỳ - Nợ": "8.301.868.958",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "22",
+          "Khách hàng": "Công ty cổ phần TKKT kỹ thuật cao",
+          "Dư đầu kỳ - Nợ": "6.225.827.223",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "2.154.748.875",
+          "Phát sinh trong năm - Có": "6.871.460.880",
+          "Dư cuối kỳ - Nợ": "1.509.115.218",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "23",
+          "Khách hàng": "Công ty CPXD công trình giao thông và cơ giới",
+          "Dư đầu kỳ - Nợ": "2.563.547.466",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "658.758.750",
+          "Phát sinh trong năm - Có": "1.500.000.000",
+          "Dư cuối kỳ - Nợ": "1.722.306.216",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "24",
+          "Khách hàng": "Công ty cổ phần quản lý đầu tư và phát triển (IDMC)",
+          "Dư đầu kỳ - Nợ": "1.557.443.335",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "619.963.535",
+          "Dư cuối kỳ - Nợ": "937.479.800",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "25",
+          "Khách hàng": "Công ty CP ĐT XD Ricons",
+          "Dư đầu kỳ - Nợ": "2.507.139.203",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "2.507.139.203",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "26",
+          "Khách hàng": "Viện đào tạo quốc tế FPT TP HCM",
+          "Dư đầu kỳ - Nợ": "161.867.782",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "161.867.782",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "27",
+          "Khách hàng": "Công ty cổ phần Đồng Gia",
+          "Dư đầu kỳ - Nợ": "12.316.880.234",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "29.839.918.364",
+          "Phát sinh trong năm - Có": "21.586.995.800",
+          "Dư cuối kỳ - Nợ": "20.569.802.798",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "28",
+          "Khách hàng": "Công ty TNHH thiết bị Minh Tâm",
+          "Dư đầu kỳ - Nợ": "2.315.712.759",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "333.434.724",
+          "Phát sinh trong năm - Có": "2.649.147.483",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "29",
+          "Khách hàng": "Công ty cổ phần tư vấn đầu tư tài chính Toàn Cầu",
+          "Dư đầu kỳ - Nợ": "10.065.000",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "10.065.000",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "30",
+          "Khách hàng": "Công ty CP ĐT Châu á - Thái bình dương",
+          "Dư đầu kỳ - Nợ": "2.742.830.852",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "2.742.830.852",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "31",
+          "Khách hàng": "Chip Mong Retail Co., Ltd",
+          "Dư đầu kỳ - Nợ": "30.989.030.029",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "12.763.915.606",
+          "Phát sinh trong năm - Có": "19.908.757.182",
+          "Dư cuối kỳ - Nợ": "23.844.188.453",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "32",
+          "Khách hàng": "Công ty CP phát triển Tây Hà Nội",
+          "Dư đầu kỳ - Nợ": "10.747.763.331",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "7.124.526.385",
+          "Phát sinh trong năm - Có": "7.400.000.000",
+          "Dư cuối kỳ - Nợ": "10.472.289.716",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "33",
+          "Khách hàng": "Công ty CP Trần Thái Cam Ranh",
+          "Dư đầu kỳ - Nợ": "12.666.420.820",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "10.551.832.989",
+          "Dư cuối kỳ - Nợ": "2.114.587.831",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "34",
+          "Khách hàng": "Công ty CP xây dựng và TM Thành Ngân",
+          "Dư đầu kỳ - Nợ": "20.323.707.050",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "62.734.326.507",
+          "Phát sinh trong năm - Có": "70.911.694.191",
+          "Dư cuối kỳ - Nợ": "12.146.339.366",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "35",
+          "Khách hàng": "Công ty CP ĐT BĐS Toàn Cầu",
+          "Dư đầu kỳ - Nợ": "43.905.653",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "43.905.653",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "36",
+          "Khách hàng": "Công ty CP ĐT&XD số 18.5",
+          "Dư đầu kỳ - Nợ": null,
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "652.847.585",
+          "Phát sinh trong năm - Có": "652.847.585",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "37",
+          "Khách hàng": "Công ty CP đầu tư quản lý và phát triển Dự án",
+          "Dư đầu kỳ - Nợ": "3.057.432.358",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": null,
+          "Dư cuối kỳ - Nợ": "3.057.432.358",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "38",
+          "Khách hàng": "Công ty CP tập đoàn thời trang Thái Tuấn",
+          "Dư đầu kỳ - Nợ": null,
+          "Dư đầu kỳ - Có": "400.000.000",
+          "Phát sinh trong năm - Nợ": "3.906.000.000",
+          "Phát sinh trong năm - Có": "2.604.000.000",
+          "Dư cuối kỳ - Nợ": "902.000.000",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "39",
+          "Khách hàng": "Công ty cổ phần ĐT TM KB Group",
+          "Dư đầu kỳ - Nợ": "480.000.000",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "480.000.000",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "40",
+          "Khách hàng": "Công ty CP Đô thị FPT Đà Nẵng",
+          "Dư đầu kỳ - Nợ": "5.037.230.254",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "5.037.230.254",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "41",
+          "Khách hàng": "Công ty TNHH Xây dựng Quang Thành",
+          "Dư đầu kỳ - Nợ": "3.937.875.747",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "2.098.980.241",
+          "Dư cuối kỳ - Nợ": "1.838.895.506",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "42",
+          "Khách hàng": "Công ty TNHH xây dựng và công nghiệp TST Việt Nam",
+          "Dư đầu kỳ - Nợ": "10.489.558.765",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "5.896.553.854",
+          "Dư cuối kỳ - Nợ": "4.593.004.911",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "43",
+          "Khách hàng": "Công ty CP Tập đoàn Danko",
+          "Dư đầu kỳ - Nợ": "4.420.754.018",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "2.856.847.254",
+          "Phát sinh trong năm - Có": "5.943.621.521",
+          "Dư cuối kỳ - Nợ": "1.333.979.751",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "44",
+          "Khách hàng": "Công ty TNHH Đầu tư XD Unicons",
+          "Dư đầu kỳ - Nợ": "2.909.630.452",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "12.514.256.941",
+          "Phát sinh trong năm - Có": "12.054.027.599",
+          "Dư cuối kỳ - Nợ": "3.369.859.794",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "45",
+          "Khách hàng": "Công ty Lotte Engineering & Contruction Co.,LTD",
+          "Dư đầu kỳ - Nợ": "17.168.618.000",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "15.935.029.870",
+          "Phát sinh trong năm - Có": "29.952.760.370",
+          "Dư cuối kỳ - Nợ": "3.150.887.500",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "46",
+          "Khách hàng": "CÔNG TY 492 - TỔNG CÔNG TY XÂY DỰNG TRƯỜNG SƠN",
+          "Dư đầu kỳ - Nợ": "9.325.974.575",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "4.200.000.000",
+          "Dư cuối kỳ - Nợ": "5.125.974.575",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "47",
+          "Khách hàng": "CHI NHÁNH HÀ NỘI - CÔNG TY CỔ PHẦN PHÚC LONG HERITAGE",
+          "Dư đầu kỳ - Nợ": "45.000.000",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "1.980.000.000",
+          "Phát sinh trong năm - Có": "1.980.000.000",
+          "Dư cuối kỳ - Nợ": "45.000.000",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "48",
+          "Khách hàng": "Công ty CP đầu tư IRB",
+          "Dư đầu kỳ - Nợ": "3.884.720.000",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "1.700.000.000",
+          "Dư cuối kỳ - Nợ": "2.184.720.000",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "49",
+          "Khách hàng": "XÍ NGHIỆP XÂY LẮP 10 - CN TỔNG CÔNG TY 319",
+          "Dư đầu kỳ - Nợ": "10.739.556.758",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "5.488.455.421",
+          "Dư cuối kỳ - Nợ": "5.251.101.337",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "50",
+          "Khách hàng": "Công ty CP đầu tư và khoáng sản Hợp Thành",
+          "Dư đầu kỳ - Nợ": "20.195.723.511",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "41.529.571.550",
+          "Phát sinh trong năm - Có": "54.200.822.576",
+          "Dư cuối kỳ - Nợ": "7.524.472.485",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "51",
+          "Khách hàng": "Công ty CP Sunbay Ninh Thuận",
+          "Dư đầu kỳ - Nợ": "21.336.366.926",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "32.355.587.289",
+          "Phát sinh trong năm - Có": "42.221.809.550",
+          "Dư cuối kỳ - Nợ": "11.470.144.665",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "52",
+          "Khách hàng": "Công ty Cổ phần KLB",
+          "Dư đầu kỳ - Nợ": "61.555.600",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "48.153.683.899",
+          "Phát sinh trong năm - Có": "38.245.368.675",
+          "Dư cuối kỳ - Nợ": "9.969.870.824",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "53",
+          "Khách hàng": "Tổng công ty 789",
+          "Dư đầu kỳ - Nợ": "4.046.283.370",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "482.698.756",
+          "Phát sinh trong năm - Có": "6.377.208.756",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": "1.848.226.630"
+        },
+        {
+          "TT": "54",
+          "Khách hàng": "Công ty cổ phần đầu tư và dịch vụ Thuận Phát",
+          "Dư đầu kỳ - Nợ": "30.974.697.590",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "28.049.533.531",
+          "Phát sinh trong năm - Có": "48.010.386.661",
+          "Dư cuối kỳ - Nợ": "11.013.844.460",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "55",
+          "Khách hàng": "Công ty cổ phần tổng công ty MBLAND",
+          "Dư đầu kỳ - Nợ": "29.125.638.000",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "29.053.616.438",
+          "Phát sinh trong năm - Có": "40.042.184.846",
+          "Dư cuối kỳ - Nợ": "18.137.069.592",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "56",
+          "Khách hàng": "Công ty cổ phần Eurowindow",
+          "Dư đầu kỳ - Nợ": "13.931.065.750",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "19.057.344.264",
+          "Phát sinh trong năm - Có": "16.998.426.302",
+          "Dư cuối kỳ - Nợ": "15.989.983.712",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "57",
+          "Khách hàng": "BQL dự án phát triển đô thị và đầu tư xây dựng công trình dân dụng",
+          "Dư đầu kỳ - Nợ": null,
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "325.870.678.183",
+          "Phát sinh trong năm - Có": "243.617.592.000",
+          "Dư cuối kỳ - Nợ": "82.253.086.183",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "58",
+          "Khách hàng": "Công ty TNHH Dentsu Promotion Việt Nam",
+          "Dư đầu kỳ - Nợ": null,
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "17.068.864.000",
+          "Phát sinh trong năm - Có": "13.906.844.850",
+          "Dư cuối kỳ - Nợ": "3.162.019.150",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "59",
+          "Khách hàng": "Tổng công ty xây dựng Hà Nội - CTCP",
+          "Dư đầu kỳ - Nợ": null,
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "77.631.994.975",
+          "Phát sinh trong năm - Có": "61.428.361.649",
+          "Dư cuối kỳ - Nợ": "16.203.633.326",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "60",
+          "Khách hàng": "Tổng công ty 319 Bộ quốc phòng",
+          "Dư đầu kỳ - Nợ": null,
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "170.787.260.295",
+          "Phát sinh trong năm - Có": "112.263.185.000",
+          "Dư cuối kỳ - Nợ": "58.524.075.295",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": "61",
+          "Khách hàng": "Bệnh viện trung ương quân đội 108",
+          "Dư đầu kỳ - Nợ": null,
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": null,
+          "Phát sinh trong năm - Có": "8.055.000.000",
+          "Dư cuối kỳ - Nợ": null,
+          "Dư cuối kỳ - Có": "8.055.000.000"
+        },
+        {
+          "TT": "62",
+          "Khách hàng": "Khách hàng lẻ",
+          "Dư đầu kỳ - Nợ": "2.862.308.758",
+          "Dư đầu kỳ - Có": null,
+          "Phát sinh trong năm - Nợ": "33.719.653.660",
+          "Phát sinh trong năm - Có": "34.491.117.143",
+          "Dư cuối kỳ - Nợ": "2.090.845.275",
+          "Dư cuối kỳ - Có": null
+        },
+        {
+          "TT": null,
+          "Khách hàng": "Dư cuối",
+          "Dư đầu kỳ - Nợ": "616.821.040.508",
+          "Dư đầu kỳ - Có": "1.276.234.268",
+          "Phát sinh trong năm - Nợ": "1.028.935.934.350",
+          "Phát sinh trong năm - Có": "1.063.409.184.538",
+          "Dư cuối kỳ - Nợ": "591.851.016.950",
+          "Dư cuối kỳ - Có": "10.779.460.898"
+        }
+      ]
+    }
+  }
+]

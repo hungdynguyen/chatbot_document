@@ -18,8 +18,8 @@ from config import UPLOAD_DIRECTORY, origins
 from utils.extractor import extract_information_from_docs, load_template_schema
 from utils.rag_client import query_rag_flow
 from utils.embedding_handler import embed_files_to_qdrant, qdrant_client 
-from utils.document_parser import DocumentParser 
-from utils.auto_evaluator import auto_evaluator
+from utils.document_parser2_llm_markdown import DocumentParser 
+from utils.auto_evaluator1 import auto_evaluator
 import shutil 
 
 # -------------------------------------------------------------
@@ -45,9 +45,9 @@ app.add_middleware(
 class ProcessRequest(BaseModel):
     prompt: str
     file_ids: List[str]
-    template_id: str = "template1" # Thêm template_id, mặc định là template1
+    template_id: str = "template4" # Thêm template_id, mặc định là template4
     enable_auto_evaluation: bool = False  # Thêm flag để bật/tắt auto evaluation
-    run_full_metrics: bool = True  # Chạy toàn bộ metrics (faithfulness, answer_relevancy, context_precision, context_recall)
+    run_full_metrics: bool = False  # Chạy toàn bộ metrics (faithfulness, answer_relevancy, context_precision, context_recall)
 
 class RagRequest(BaseModel):
     question: str
@@ -58,7 +58,7 @@ class RagRequest(BaseModel):
 class FullEvaluationRequest(BaseModel):
     template_id: str = "template4"
     max_ragas_samples: int = 10  # Giới hạn số mẫu Ragas để tránh timeout
-    run_full_metrics: bool = True  # Chạy toàn bộ metrics
+    run_full_metrics: bool = False  # Chạy toàn bộ metrics
 
 # -------------------------------------------------------------
 # 3. ENDPOINT UPLOAD 
@@ -109,7 +109,7 @@ async def process_prompt(request: ProcessRequest):
 
     print(f"🚀 Nhận được yêu cầu xử lý cho {num_files} file với prompt: '{request.prompt}' và template: '{request.template_id}'")
     print(f"   Các File ID: {request.file_ids}")
-    print(f"   Auto Evaluation: {'Bật' if request.enable_auto_evaluation else 'Tắt'}")
+    print(f"   Auto Evaluation: {'Bật' if request.enable_auto_evaluation == True else 'Tắt'}")
 
     collection_name = None
     start_time = time.time()
@@ -133,17 +133,17 @@ async def process_prompt(request: ProcessRequest):
         latency = end_time - start_time
 
         # --- BƯỚC 3: AUTO EVALUATION (NẾU ĐƯỢC BẬT) ---
-        evaluation_result = None
-        if request.enable_auto_evaluation:
-            print(f"\n🎯 Bắt đầu auto-evaluation với full metrics: {request.run_full_metrics}...")
-            evaluation_result = auto_evaluator.auto_evaluate(
-                extracted_data=extracted_data,
-                template_id=request.template_id,
-                collection_name=collection_name,
-                file_ids=request.file_ids,
-                latency=latency,
-                run_full_metrics=request.run_full_metrics
-            )
+        # evaluation_result = None
+        # if request.enable_auto_evaluation:
+        #     print(f"\n🎯 Bắt đầu auto-evaluation với full metrics: {request.run_full_metrics}...")
+        #     evaluation_result = auto_evaluator.auto_evaluate(
+        #         extracted_data=extracted_data,
+        #         template_id=request.template_id,
+        #         collection_name=collection_name,
+        #         file_ids=request.file_ids,
+        #         latency=latency,
+        #         run_full_metrics=request.run_full_metrics
+        #     )
 
         # Trả về kết quả, bao gồm cả collection_name để client có thể dùng cho chat
         response_data = {
@@ -156,9 +156,9 @@ async def process_prompt(request: ProcessRequest):
         }
         
         # Thêm kết quả evaluation nếu có
-        if evaluation_result:
-            response_data["auto_evaluation"] = evaluation_result
-            print(f"✅ Kết quả auto-evaluation đã được thêm vào response")
+        # if evaluation_result:
+        #     response_data["auto_evaluation"] = evaluation_result
+        #     print(f"✅ Kết quả auto-evaluation đã được thêm vào response")
         
         return response_data
         
@@ -352,7 +352,7 @@ async def run_full_evaluation(request: FullEvaluationRequest):
             prompt="Trích xuất thông tin theo mẫu Báo cáo thẩm định.",
             file_ids=list(file_id_map.values()),
             template_id=request.template_id,
-            enable_auto_evaluation=True,
+            enable_auto_evaluation=False,
             run_full_metrics=request.run_full_metrics
         )
         
