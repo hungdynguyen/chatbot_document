@@ -1,9 +1,0 @@
-{
-  "timestamp": "2025-08-18T15:18:03.184941",
-  "field_name": "Kết quả phân luồng",
-  "prompt": "Dựa vào tên đầy đủ của khách hàng. Tìm kết quả phân luồng khách hàng",
-  "raw_response_from_rag": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
-  "cleaned_response": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
-  "prompt_word_count": 15,
-  "response_word_count": 7
-}

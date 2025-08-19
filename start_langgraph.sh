@@ -190,27 +190,19 @@ sleep 5
 
 
 # 6. Khởi động Backend API (FastAPI) 
-log_info "Khởi động Backend API (FastAPI - LangGraph)..."
+log_info "Khởi động Backend API (FastAPI)..."
 (
     # Chạy trong một subshell để đảm bảo môi trường được kích hoạt đúng cách
-    log_info "Kích hoạt môi trường 'venv' cho backend..."
-    if [ -f "$PROJECT_ROOT/venv/bin/activate" ]; then
-        source "$PROJECT_ROOT/venv/bin/activate"
-    else
-        log_error "Không tìm thấy môi trường ảo 'venv' trong thư mục project root"
-        exit 1
-    fi
-    
+    log_info "Kích hoạt môi trường Conda 'chatbot_backend' cho backend..."
+    . /root/miniconda3/etc/profile.d/conda.sh
+    conda activate chatbot2
+
+    log_info "Kiểm tra đường dẫn thực thi:"
+    which python 
+    which uvicorn 
     # Chuyển vào thư mục backend
     cd "$BACKEND_DIR" || exit 1
-    
-    # Khởi động FastAPI
-    export PYTHONPATH="$BACKEND_DIR:$PYTHONPATH"
-    nohup python -m uvicorn api.main_lang:app --reload --host 0.0.0.0 --port 8000 --loop asyncio > "$PROJECT_ROOT/backend_langgraph.log" 2>&1 &
-
-    # Quay lại thư mục gốc
-    cd "$PROJECT_ROOT"
-    # nohup uvicorn api.main:app --reload --host 0.0.0.0 --port 8000 > ../backend.log 2>&1 &
+    nohup /root/miniconda3/envs/chatbot2/bin/python -m uvicorn api.main_lang:app --reload --host 0.0.0.0 --port 8000 --loop asyncio > ../backend.log 2>&1 &
 )
 
 # Đợi Backend API khởi động với cơ chế kiểm tra lặp lại

@@ -1,26 +1,42 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Sidebar } from "@/components/sidebar"
 import { UploadSection } from "@/components/upload-section"
 import { DocumentEditor } from "@/components/document-editor"
 import { ChatSection } from "@/components/chat-section"
-
+import fallbackData from '@/data/template_mvp1.json';
 export default function Page() {
   const [viewMode, setViewMode] = useState<"upload" | "chat">("upload")
   const [documentContent, setDocumentContent] = useState<any>(null)
   const [processedFileIds, setProcessedFileIds] = useState<string[]>([])
   const [collectionName, setCollectionName] = useState<string | null>(null)
-  const [selectedTemplate, setSelectedTemplate] = useState<string>("template1")
+  const [selectedTemplate, setSelectedTemplate] = useState<string>("template_mvp1")
 
 
   const handleDocumentGenerated = (content: any, fileIds: string[], templateId: string, collectionName: string) => {
     setDocumentContent(content)
     setProcessedFileIds(fileIds)
     setSelectedTemplate(templateId)
-    setCollectionName(collectionName) // Lưu collection_name vào state
+    setCollectionName(collectionName) 
     setViewMode("chat")
   }
+
+  const handleGenerationFailed = (fileIds: string[], collectionName: string) => {
+    alert("Có lỗi xảy ra khi tạo báo cáo từ tài liệu của bạn.\nHệ thống sẽ tạo một báo cáo mẫu để bạn có thể chỉnh sửa.");
+
+    // Dùng dữ liệu tĩnh từ file JSON
+    setDocumentContent(fallbackData); 
+    
+    // Vẫn lưu fileIds và collectionName để có thể chat
+    setProcessedFileIds(fileIds);
+    setCollectionName(collectionName);
+    
+    // Đặt template ID là 'template_mvp1'
+    setSelectedTemplate("template_mvp1");
+    
+    // Chuyển sang giao diện chỉnh sửa
+    setViewMode("chat");
+  };
 
   const handleNewSession = async () => {
     if (collectionName) {
@@ -38,7 +54,7 @@ export default function Page() {
     setDocumentContent(null)
     setProcessedFileIds([])
     setCollectionName(null)
-    setSelectedTemplate("template1")
+    setSelectedTemplate("template_mvp1")
   }
 
   const handleExportPDF = async () => {
@@ -319,10 +335,6 @@ export default function Page() {
 
   return (
     <div className="h-screen flex bg-gradient-to-br from-red-50 to-red-100 overflow-hidden">
-      {/* <div className="hidden lg:block">
-        <Sidebar />
-      </div> */}
-
       <main className="flex-1 flex flex-col overflow-y-auto">
         {viewMode === "upload" ? (
           <div className="flex-1 flex flex-col items-center justify-center p-8">
@@ -335,6 +347,7 @@ export default function Page() {
               </p>
               <UploadSection
                 onDocumentGenerated={handleDocumentGenerated}
+                onGenerationFailed={handleGenerationFailed}
               />
             </div>
           </div>

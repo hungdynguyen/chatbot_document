@@ -1,9 +1,0 @@
-{
-  "timestamp": "2025-08-18T15:17:21.806978",
-  "field_name": "ID trên T24",
-  "prompt": "Dựa vào tên đầy đủ của khách hàng. Tìm ID của khách hàng trên hệ thống",
-  "raw_response_from_rag": "0101442420",
-  "cleaned_response": "0101442420",
-  "prompt_word_count": 16,
-  "response_word_count": 1
-}

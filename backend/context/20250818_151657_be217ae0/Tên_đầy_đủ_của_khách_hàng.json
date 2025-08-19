@@ -1,9 +1,0 @@
-{
-  "timestamp": "2025-08-18T15:17:04.420932",
-  "field_name": "Tên đầy đủ của khách hàng",
-  "prompt": "Tìm tên đầy đủ công ty/doanh nghiệp khách hàng",
-  "raw_response_from_rag": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
-  "cleaned_response": "CÔNG TY CỔ PHẦN MẶT DỰNG CAG",
-  "prompt_word_count": 9,
-  "response_word_count": 7
-}

@@ -6,10 +6,8 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Download, Edit, FileText, ArrowLeft, FileDown } from "lucide-react"
-import { LoanAssessmentTemplate } from "@/templates/loan-assessment-template"
-import { LoanAssessmentTemplateNew } from "@/templates/new_template"
-import { LoanReportTemplate } from "@/templates/loan-assessment-report-template"
 import { FullLoanReportTemplate } from "@/templates/template4"
+import { CreditAnalysisReportTemplate } from "@/templates/template_mvp1" 
 import { set } from 'lodash'; // Cần cài đặt lodash
 
 
@@ -71,16 +69,12 @@ export function DocumentEditor({ content, templateId, onExportPDF, onExportWord,
     }
 
     switch (templateId) {
-      case "template1":
-        return <LoanAssessmentTemplate {...commonProps} />
-      case "template2":
-        return <LoanAssessmentTemplateNew {...commonProps} />
-      case "template3":
-        return <LoanReportTemplate {...commonProps} />
       case "template4":
         return <FullLoanReportTemplate {...commonProps} />
+      case "template_mvp1": 
+          return <CreditAnalysisReportTemplate {...commonProps} />;
       default:
-        return <LoanAssessmentTemplate {...commonProps} />
+        return <FullLoanReportTemplate {...commonProps} />
     }
   };
 

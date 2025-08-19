@@ -30,10 +30,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Template1Preview } from "./template-previews/Template1Preview"
-import { Template2Preview } from "./template-previews/Template2Preview"
-import { Template3Preview } from "./template-previews/Template3Preview"
 import { Template4Preview } from "./template-previews/Template4Preview"
+import { Template_mvp1_preview } from "./template-previews/template_mvp1Preview"
 import { AVAILABLE_TEMPLATES, type Template } from "@/lib/templates"
 
 
@@ -50,10 +48,12 @@ interface UploadedFile {
 
 interface UploadSectionProps {
   onDocumentGenerated?: (content: any, fileIds: string[], templateId: string, collectionName: string) => void
+  onGenerationFailed?: (fileIds: string[], collectionName: string) => void;
 }
 
 export function UploadSection({
   onDocumentGenerated,
+  onGenerationFailed,
 }: UploadSectionProps) {
   const [files, setFiles] = useState<UploadedFile[]>([])
   const [prompt, setPrompt] = useState("Trích xuất thông tin theo mẫu Báo cáo thẩm định.")
@@ -61,7 +61,7 @@ export function UploadSection({
   const [isDragOver, setIsDragOver] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [showActions, setShowActions] = useState(false)
-  const [selectedTemplate, setSelectedTemplate] = useState("template1")
+  const [selectedTemplate, setSelectedTemplate] = useState("template_mvp1")
   const [showPreview, setShowPreview] = useState(false)
   const [availableTemplates] = useState<Template[]>(AVAILABLE_TEMPLATES)
   const router = useRouter()
@@ -210,7 +210,8 @@ export function UploadSection({
     }
 
     setIsProcessing(true)
-
+    let tempCollectionName = "";
+    
     try {
       const response = await fetch("http://localhost:8000/process_prompt", {
         method: "POST",
@@ -221,10 +222,12 @@ export function UploadSection({
           prompt: prompt.trim(),
           file_ids: uploadedFileIds,
           template_id: selectedTemplate, 
-          enable_auto_evaluation: true,
-          run_full_metrics: true,
         }),
       })
+
+      if (result.collection_name) {
+        tempCollectionName = result.collection_name;
+      }
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ detail: response.statusText }));
@@ -244,8 +247,12 @@ export function UploadSection({
       }
     } catch (error) {
       console.error("Processing error:", error)
+    if (onGenerationFailed) {
+      onGenerationFailed(uploadedFileIds, tempCollectionName);
+    } else {
       alert(`Lỗi xử lý: ${error instanceof Error ? error.message : "Unknown error"}`);
-      // Handle error state in UI
+    }
+    // ------------------------------------
     } finally {
       setIsProcessing(false)
     }
@@ -415,10 +422,8 @@ export function UploadSection({
               {/* Template Preview */}
               {showPreview && (
                 <div className="p-4 border rounded-md bg-gray-50">
-                  {selectedTemplate === 'template1' && <Template1Preview />}
-                  {selectedTemplate === 'template2' && <Template2Preview />}
-                  {selectedTemplate === 'template3' && <Template3Preview />}
                   {selectedTemplate === 'template4' && <Template4Preview />}
+                  {selectedTemplate === 'template_mvp1' && <Template_mvp1_preview />}
                 </div>
               )}
 

@@ -1,9 +1,0 @@
-{
-  "timestamp": "2025-08-18T15:18:20.468022",
-  "field_name": "Ngày thành lập",
-  "prompt": "Dựa vào tên đầy đủ của khách hàng. Tìm ngày thành lập theo ĐKKD lần đầu tiên (không phải sửa đổi), format DD/MM/YYYY",
-  "raw_response_from_rag": "19/01/2004",
-  "cleaned_response": "19/01/2004",
-  "prompt_word_count": 23,
-  "response_word_count": 1
-}

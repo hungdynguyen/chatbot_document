@@ -1,9 +1,0 @@
-{
-  "timestamp": "2025-08-18T15:22:19.806605",
-  "field_name": "thong_tin_ban_lanh_dao_day_du",
-  "prompt": "\n    Trích xuất TOÀN BỘ thông tin chi tiết về Ban lãnh đạo trong ngữ cảnh. Lấy tất cả các thành viên.\n    Trả về DUY NHẤT một JSON array với cấu trúc:\n    [\n      {\"ten\":\"...\", \"chucVu\":\"...\", \"tyLeVon\":\"...\", \"mucDoAnhHuong\":\"...\", \"danhGia\":\"...\"}\n    ]\n    Nếu một trường thông tin không có, hãy để giá trị là một chuỗi rỗng \"\".\n    KHÔNG GIẢI THÍCH. Nếu không có thông tin, trả về [].\n    ",
-  "raw_response_from_rag": "[\n  {\n    \"ten\": \"ĐÀO CÔNG DUY\",\n    \"chucVu\": \"Tổng giám đốc\",\n    \"tyLeVon\": \"\",\n    \"mucDoAnhHuong\": \"\",\n    \"danhGia\": \"\"\n  }\n]",
-  "cleaned_response": "[{'ten': 'ĐÀO CÔNG DUY', 'chucVu': 'Tổng giám đốc', 'tyLeVon': '', 'mucDoAnhHuong': '', 'danhGia': ''}]",
-  "prompt_word_count": 65,
-  "response_word_count": 14
-}

@@ -1,9 +1,0 @@
-{
-  "timestamp": "2025-08-18T15:19:33.283398",
-  "field_name": "Lĩnh vực kinh doanh",
-  "prompt": "Dựa vào tên đầy đủ của khách hàng. Tìm lĩnh vực chung: Xây lắp, Thương mại, Sản xuất, Dịch vụ...",
-  "raw_response_from_rag": "Xây lắp",
-  "cleaned_response": "Xây lắp",
-  "prompt_word_count": 20,
-  "response_word_count": 2
-}

@@ -1,9 +1,0 @@
-{
-  "timestamp": "2025-08-18T15:19:06.642978",
-  "field_name": "Nhận xét - Pháp lý/GPKD có ĐK",
-  "prompt": "Dựa vào tên đầy đủ của khách hàng. Tóm tắt: số ĐKKD, ngày cấp lần đầu, cơ quan cấp, các lần thay đổi. Tạo thành 1 đoạn văn ngắn 1,2 câu",
-  "raw_response_from_rag": "0101442420, ngày 19/01/2004, Sở Kế hoạch và Đầu tư Thành phố Hà Nội, thay đổi lần 8 ngày 12/04/2023",
-  "cleaned_response": "0101442420, ngày 19/01/2004, Sở Kế hoạch và Đầu tư Thành phố Hà Nội, thay đổi lần 8 ngày 12/04/2023",
-  "prompt_word_count": 31,
-  "response_word_count": 19
-}

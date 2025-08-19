@@ -1,9 +1,0 @@
-{
-  "timestamp": "2025-08-18T15:18:31.304886",
-  "field_name": "Địa chỉ trên ĐKKD",
-  "prompt": "Dựa vào tên đầy đủ của khách hàng. Tìm địa chỉ đầy đủ, chi tiết theo ĐKKD",
-  "raw_response_from_rag": "Lô CN4 - 2.1, KCN Thạch Thất, Thị Trấn Quốc Oai, Huyện Quốc Oai, Thành phố Hà Nội, Việt Nam",
-  "cleaned_response": "Lô CN4 - 2.1, KCN Thạch Thất, Thị Trấn Quốc Oai, Huyện Quốc Oai, Thành phố Hà Nội, Việt Nam",
-  "prompt_word_count": 17,
-  "response_word_count": 20
-}

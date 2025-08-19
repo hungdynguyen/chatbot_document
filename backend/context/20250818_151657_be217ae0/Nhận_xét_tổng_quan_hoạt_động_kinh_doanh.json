@@ -1,9 +1,0 @@
-{
-  "timestamp": "2025-08-18T15:21:53.091550",
-  "field_name": "Nhận xét tổng quan hoạt động kinh doanh",
-  "prompt": "Dựa vào tên đầy đủ của khách hàng. Nhận xét: pháp lý, quy mô, kế hoạch tương lai. Tạo thành 1 đoạn văn ngắn 1,2 câu",
-  "raw_response_from_rag": "Công ty cổ phần Mặt dựng CAG có vốn điều lệ 800 tỷ đồng, đăng ký kinh doanh từ năm 2004 và đã thay đổi thông tin 8 lần, thể hiện quy mô lớn và sự ổn định pháp lý.",
-  "cleaned_response": "Công ty cổ phần Mặt dựng CAG có vốn điều lệ 800 tỷ đồng, đăng ký kinh doanh từ năm 2004 và đã thay đổi thông tin 8 lần, thể hiện quy mô lớn và sự ổn định pháp lý.",
-  "prompt_word_count": 26,
-  "response_word_count": 40
-}
