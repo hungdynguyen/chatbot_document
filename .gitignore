@@ -250,6 +250,7 @@ public
 # Uploaded files directory
 backend/api/uploaded_files/
 backend/uploaded_files/
+backend/__pycache__/
 uploads/
 temp_files/
 temporary/
